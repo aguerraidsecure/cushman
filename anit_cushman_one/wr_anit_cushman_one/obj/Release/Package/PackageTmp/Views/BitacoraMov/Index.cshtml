@@ -1,0 +1,56 @@
+﻿@model IEnumerable<dynamic>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Bitácora";
+}
+
+<div class="table-responsive container modal-content">
+    <div class="panel-heading ">
+        <h3 class="text-center active panel-title well"><strong>Auditoría de movimientos en la aplicación</strong></h3>
+    </div>
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>
+                @Html.Label("ID USuario")
+            </th>
+            <th>
+                @Html.Label("USuario")
+            </th>
+            <th>
+                @Html.Label("Movimiento")
+            </th>
+            <th>
+                @Html.Label("Llave Modificada")
+            </th>
+            <th>
+                @Html.Label("Fecha")
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (dynamic item in Model)
+        {
+            <tr>
+                <td>
+                    @item.usuario.ToString()
+
+                </td>
+                <td>
+                    @item.nombre.ToString()
+                </td>
+                <td>
+                    @item.tabla.ToString()
+                </td>
+                <td>
+                    @item.id.ToString()
+                </td>
+                <td>
+                    @item.fecha.ToString()
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

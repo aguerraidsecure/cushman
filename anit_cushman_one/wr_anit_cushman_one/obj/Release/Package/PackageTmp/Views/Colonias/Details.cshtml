@@ -1,0 +1,62 @@
+﻿@model wr_anit_cushman_one.Models.tsg039_colonias
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="table-responsive container modal-content">
+    <h4 class="well"><strong>Detalle Colonias</strong></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Municipio
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tsg038_municipios.nb_municipio)
+        </dd>
+
+        <dt>
+            Estado
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cd_estado)
+        </dd>
+
+        <dt>
+            Colonia
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nb_colonia)
+        </dd>
+
+        <dt>
+            CP
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nu_cp)
+        </dd>
+
+        <dt>
+            Fecha Modificación
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fh_modif)
+        </dd>
+
+    </dl>
+    <hr />
+    <div class="form-group container">
+        <div class="col-md-offset-0 col-md-1">
+            @Html.ActionLink("Editar", "Edit", "Municipios", new { id = Model.cd_colonia }, new { @class = "btn btn-danger btn-block" })
+        </div>
+        <div class="col-md-offset-0 col-md-2">
+            @Html.ActionLink("Regresar a la Lista", "Index", "Municipios", new { @class = "btn btn-danger btn-block" })
+        </div>
+    </div>
+    <br />
+</div>

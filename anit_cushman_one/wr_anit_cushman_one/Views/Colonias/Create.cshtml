@@ -1,0 +1,119 @@
+﻿@model wr_anit_cushman_one.Models.tsg039_colonias
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal table-responsive container modal-content">
+        <h4 class="well"><strong>Nuevo Registro</strong></h4>
+        <h4>Colonias</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="control-label col-md-2">Estado</div>
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.cd_estado, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.DropDownList("cd_estado", null, "Seleccione una opción",htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.cd_estado, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="control-label col-md-2">Municipio</div>
+            <div class="col-md-10">
+                @*@Html.DropDownList("cd_municipio", null, htmlAttributes: new { @class = "form-control" })*@
+                @Html.DropDownListFor(model => model.cd_municipio, new List<SelectListItem> {
+                                                         new SelectListItem { Text = "", Value = "" }})
+                @Html.ValidationMessageFor(model => model.cd_municipio, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="control-label col-md-2">Colonia</div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nb_colonia, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nb_colonia, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">CP</div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nu_cp, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nu_cp, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group invisible">
+            <div class="control-label col-md-2">Fecha Modificación</div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.fh_modif, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.fh_modif, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-0 col-md-1">
+                <input type="submit" value="Guardar" class="btn btn-danger" />
+            </div>
+            <div class="col-md-offset-0 col-md-2">
+                @Html.ActionLink("Regresar a la Lista", "Index", "Colonias", new { @class = "btn btn-danger btn-block" })
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#cd_estado").change(function () {
+                //Se limpia el contenido del dropdownlist
+                $("#cd_municipio").empty();
+                $.ajax({
+                    type: 'POST',
+                    //Llamado al metodo GetDepartByGeren en el controlador
+                    url: '@Url.Action("GetMunicipioByCdEstado", "Colonias")',
+                    dataType: 'json',
+                    //Parametros que se envian al metodo del controlador
+                    data: { cd_estado: $("#cd_estado").val() },
+                    //En caso de resultado exitoso
+                    success: function (Municipio) {
+                        if (Municipio.length == 0) {
+                            $("#cd_municipio").append('<option value=""></option>');
+                        }
+                        else {
+                            //Se agrega el elemento vacio para poder desplegar que seleccione una opcion
+                            $("#cd_municipio").append('<option value=""></option>');
+                            $.each(Municipio, function (i, Municipio) {
+                                $("#cd_municipio").append('<option value="' + Municipio.Value + '">' +
+                                 Municipio.Text + '</option>');
+                            });
+                        }
+                        //Recargar el plugin para que tenga la funcionalidad del componente
+                        $("#cd_municipio").select2({ placeholder: "Seleccione un municipio", width: "30%" });
+                        //Se agrega el elemento vacio para poder desplegar que seleccione una opcion
+                        $("#cd_estado").select2({ placeholder: "Selecciones un estado", width: "30%" });
+
+                    },
+                    //Mensaje de error en caso de fallo
+                    error: function (ex) {
+                        alert('Fallo a presentar informacion en municipios.' + ex);
+                    }
+                });
+                return false;
+            })
+            //Se agrega el elemento vacio para poder desplegar que seleccione una opcion
+            $("#cd_municipio").select2({ placeholder: "Selecciones un municipio", width: "30%" });
+            //Se agrega el elemento vacio para poder desplegar que seleccione una opcion
+            $("#cd_estado").select2({ placeholder: "Selecciones un estado", width: "20%" });
+
+        });
+    </script>
+}

@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Administrador" xml:space="preserve">
+    <value>Administrator</value>
+  </data>
+  <data name="Agua" xml:space="preserve">
+    <value>Potable Water</value>
+  </data>
+  <data name="AlturaLibreF" xml:space="preserve">
+    <value>Free height</value>
+  </data>
+  <data name="AlturaLibreM" xml:space="preserve">
+    <value>Free height</value>
+  </data>
+  <data name="AniosConstruccion" xml:space="preserve">
+    <value>Date built</value>
+  </data>
+  <data name="Apellido" xml:space="preserve">
+    <value>Last name</value>
+  </data>
+  <data name="ApellidoAdministrado" xml:space="preserve">
+    <value>Last name adminstrator</value>
+  </data>
+  <data name="ApellidoCorredor" xml:space="preserve">
+    <value>Last name broker</value>
+  </data>
+  <data name="ApellidoPropietario" xml:space="preserve">
+    <value>Owner last name</value>
+  </data>
+  <data name="Archivos" xml:space="preserve">
+    <value>Files</value>
+  </data>
+  <data name="AreaOficina" xml:space="preserve">
+    <value>Area office</value>
+  </data>
+  <data name="CajonesEstacionamiento" xml:space="preserve">
+    <value>Parking stalls</value>
+  </data>
+  <data name="Calle" xml:space="preserve">
+    <value>Street</value>
+  </data>
+  <data name="Carga" xml:space="preserve">
+    <value>Floor load capacity</value>
+  </data>
+  <data name="CoberturaMaxima" xml:space="preserve">
+    <value>Max. allowed coverage</value>
+  </data>
+  <data name="Colonia" xml:space="preserve">
+    <value>Colony</value>
+  </data>
+  <data name="CondicionesArrendamiento" xml:space="preserve">
+    <value>Lease conditions</value>
+  </data>
+  <data name="Corredor" xml:space="preserve">
+    <value>Broker</value>
+  </data>
+  <data name="CorredorIndustrial" xml:space="preserve">
+    <value>Market</value>
+  </data>
+  <data name="CP" xml:space="preserve">
+    <value>Postal Code</value>
+  </data>
+  <data name="DescripcionAreaOf" xml:space="preserve">
+    <value>Description area office</value>
+  </data>
+  <data name="DescripcionCajonesEstac" xml:space="preserve">
+    <value>Description crawers parking</value>
+  </data>
+  <data name="DescripcionCarga" xml:space="preserve">
+    <value>Description load</value>
+  </data>
+  <data name="DescripcionCondiciones" xml:space="preserve">
+    <value>Description conditions lease</value>
+  </data>
+  <data name="DescripcionGas" xml:space="preserve">
+    <value>Description gas</value>
+  </data>
+  <data name="DescripcionHVAC" xml:space="preserve">
+    <value>Description HVAC</value>
+  </data>
+  <data name="DescripcionIluminacion" xml:space="preserve">
+    <value>Description lighting</value>
+  </data>
+  <data name="DescripcionLampara" xml:space="preserve">
+    <value>Description lamp</value>
+  </data>
+  <data name="DescripcionSistemaIncendio" xml:space="preserve">
+    <value>Description systems fire</value>
+  </data>
+  <data name="DescripcionTipoConstruccion" xml:space="preserve">
+    <value>Description construction</value>
+  </data>
+  <data name="Direccion" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="DisponibilidadTotalF" xml:space="preserve">
+    <value>Total availability</value>
+  </data>
+  <data name="DisponibilidadTotalM" xml:space="preserve">
+    <value>Total availability</value>
+  </data>
+  <data name="DisponibleApartir" xml:space="preserve">
+    <value>Available from</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EnergiaElectrica" xml:space="preserve">
+    <value>Power supply</value>
+  </data>
+  <data name="EspesorPiso" xml:space="preserve">
+    <value>Floor thickness</value>
+  </data>
+  <data name="Espuela" xml:space="preserve">
+    <value>Railroad track</value>
+  </data>
+  <data name="Estado" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="EstatusEntrega" xml:space="preserve">
+    <value>Delivery status</value>
+  </data>
+  <data name="GasNatural" xml:space="preserve">
+    <value>Natural gas</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="HVAC" xml:space="preserve">
+    <value>HVAC</value>
+  </data>
+  <data name="Iluminacion" xml:space="preserve">
+    <value>Iluminación natural</value>
+  </data>
+  <data name="Lampara" xml:space="preserve">
+    <value>Lightning</value>
+  </data>
+  <data name="MantenimientoAreas" xml:space="preserve">
+    <value>Maintenance fee</value>
+  </data>
+  <data name="Mapa" xml:space="preserve">
+    <value>Maps</value>
+  </data>
+  <data name="Mercado" xml:space="preserve">
+    <value>Market</value>
+  </data>
+  <data name="MinimoDivisibleF" xml:space="preserve">
+    <value>Divisible minimo </value>
+  </data>
+  <data name="MinimoDivisibleM" xml:space="preserve">
+    <value>Divisible minimo</value>
+  </data>
+  <data name="Municipio" xml:space="preserve">
+    <value>Municipality</value>
+  </data>
+  <data name="NavesTitulo" xml:space="preserve">
+    <value>Industrial ships</value>
+  </data>
+  <data name="NivelPisoNave" xml:space="preserve">
+    <value>Level Entry</value>
+  </data>
+  <data name="NoCajonesTrailer" xml:space="preserve">
+    <value>No. drawers trailer</value>
+  </data>
+  <data name="Nombre" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NombreAdministrado" xml:space="preserve">
+    <value>Name administrator</value>
+  </data>
+  <data name="NombreComercial" xml:space="preserve">
+    <value>Bussine name</value>
+  </data>
+  <data name="NombreCorredor" xml:space="preserve">
+    <value>Name broker</value>
+  </data>
+  <data name="NombreEmpresa" xml:space="preserve">
+    <value>Company name</value>
+  </data>
+  <data name="NombreNave" xml:space="preserve">
+    <value>Name ship</value>
+  </data>
+  <data name="NombreParque" xml:space="preserve">
+    <value>Name park</value>
+  </data>
+  <data name="NombrePropietario" xml:space="preserve">
+    <value>Owner name</value>
+  </data>
+  <data name="Numero" xml:space="preserve">
+    <value>Number</value>
+  </data>
+  <data name="OcupadoHasta" xml:space="preserve">
+    <value>Busy up</value>
+  </data>
+  <data name="ParqueIndustrial" xml:space="preserve">
+    <value>Industrial park</value>
+  </data>
+  <data name="Precio" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="PrecioRenta" xml:space="preserve">
+    <value>Rent price M2/Mes</value>
+  </data>
+  <data name="PrecioTotal" xml:space="preserve">
+    <value>Total price</value>
+  </data>
+  <data name="PrecioVenta" xml:space="preserve">
+    <value>Sales price M2</value>
+  </data>
+  <data name="Principal" xml:space="preserve">
+    <value>Principal</value>
+  </data>
+  <data name="Propietario" xml:space="preserve">
+    <value>Owner</value>
+  </data>
+  <data name="PuertaAnden" xml:space="preserve">
+    <value>Dock high doors</value>
+  </data>
+  <data name="Rampa" xml:space="preserve">
+    <value>Ramps</value>
+  </data>
+  <data name="Servicio" xml:space="preserve">
+    <value>Service</value>
+  </data>
+  <data name="ServicioTelecomunicaciones" xml:space="preserve">
+    <value>Telephony</value>
+  </data>
+  <data name="SistemasIncendio" xml:space="preserve">
+    <value>Fire systems</value>
+  </data>
+  <data name="SuperficieTerrenoF" xml:space="preserve">
+    <value>Land Size</value>
+  </data>
+  <data name="SuperficieTerrenoM" xml:space="preserve">
+    <value>Land surface</value>
+  </data>
+  <data name="SuperficieTotalBodegaF" xml:space="preserve">
+    <value>Land Area</value>
+  </data>
+  <data name="SuperficieTotalBodegaM" xml:space="preserve">
+    <value>Land Area</value>
+  </data>
+  <data name="TamanioMaximoF" xml:space="preserve">
+    <value>Max lot size</value>
+  </data>
+  <data name="TamanioMaximoM" xml:space="preserve">
+    <value>Max lot size</value>
+  </data>
+  <data name="TamanioMinimoF" xml:space="preserve">
+    <value>Min. lot size</value>
+  </data>
+  <data name="TamanioMinimoM" xml:space="preserve">
+    <value>Min. lot size</value>
+  </data>
+  <data name="TamanioParque" xml:space="preserve">
+    <value>Size park</value>
+  </data>
+  <data name="TechumbreNave" xml:space="preserve">
+    <value>Roof type</value>
+  </data>
+  <data name="Telefono" xml:space="preserve">
+    <value>Telephone service</value>
+  </data>
+  <data name="terrenoTitulo" xml:space="preserve">
+    <value>Ground</value>
+  </data>
+  <data name="TipoConstruccion" xml:space="preserve">
+    <value>Walls type</value>
+  </data>
+  <data name="SuperficieNaveF" xml:space="preserve">
+    <value>Warehouse rentable</value>
+  </data>
+  <data name="SuperficieNaveM" xml:space="preserve">
+    <value>Warehouse rentable</value>
+  </data>
+  <data name="comentarios" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="TipoMoneda" xml:space="preserve">
+    <value>Type currency</value>
+  </data>
+  <data name="TipoMonedaReport" xml:space="preserve">
+    <value>Type currency report</value>
+  </data>
+  <data name="MaximoDisponible" xml:space="preserve">
+    <value>Maximun</value>
+  </data>
+  <data name="MinimoDisponible" xml:space="preserve">
+    <value>Minimun</value>
+  </data>
+</root>

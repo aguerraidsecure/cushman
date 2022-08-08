@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "0b4d9490-3860-47db-800f-2628d4596979": {
+      "ProjectGuid": "0b4d9490-3860-47db-800f-2628d4596979",
+      "DisplayName": "wr_anit_cushman_one",
+      "ColorIndex": 0
+    },
+    "7b3195f5-04db-4278-b602-1f19445a5090": {
+      "ProjectGuid": "7b3195f5-04db-4278-b602-1f19445a5090",
+      "DisplayName": "PPTReport",
+      "ColorIndex": 1
+    },
+    "b7798489-c3e5-4710-b28d-11de043ba458": {
+      "ProjectGuid": "b7798489-c3e5-4710-b28d-11de043ba458",
+      "DisplayName": "wr_anit_cushman_one.Tests",
+      "ColorIndex": 2
+    },
+    "59bd7bf7-9418-475a-bdbf-b81a87b1852d": {
+      "ProjectGuid": "59bd7bf7-9418-475a-bdbf-b81a87b1852d",
+      "DisplayName": "Model",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}

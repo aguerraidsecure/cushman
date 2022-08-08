@@ -1,0 +1,55 @@
+﻿@model Model.Usuario
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="table-responsive container modal-content">
+    <h4 class="well"><strong>Detalle de Usuarios</strong></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Rol@*@Html.DisplayNameFor(model => model.Rol.Nombre)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rol.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Correo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Correo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+    </dl>
+
+    <div class="form-group container">
+        <div class="col-md-offset-0 col-md-1">
+            @Html.ActionLink("Editar", "Edit", "UsuariosC", new { id = Model.id }, new { @class = "btn btn-danger btn-block" })
+        </div>
+        <div class="col-md-offset-0 col-md-2">
+            @Html.ActionLink("Regresar a la Lista", "Index", "UsuariosC", new { @class = "btn btn-danger btn-block" })
+        </div>
+    </div>
+
+</div>
+

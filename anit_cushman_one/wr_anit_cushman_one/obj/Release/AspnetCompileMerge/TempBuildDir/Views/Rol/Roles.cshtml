@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Model.Rol>
+
+@{
+    ViewBag.Title = "Roles";
+}
+
+<div class="table-responsive container modal-content">
+    <div class="panel-heading ">
+        <h3 class="text-center active panel-title well"><strong>Listado de Roles</strong></h3>
+    </div>
+
+    <table class="table  table-striped table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Crud", new { id = item.id }, new { @class = "glyphicon glyphicon-edit" })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <br />
+</div>

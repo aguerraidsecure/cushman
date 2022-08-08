@@ -1,0 +1,45 @@
+﻿@model wr_anit_cushman_one.Models.tsg030_usuarios
+
+@{
+    ViewBag.Title = "Login";
+}
+@using (Html.BeginForm())
+{
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="~/image/logo_CW.png">
+            </div>
+            <div class="modal-body">
+                <form id="form-login">
+                    <div class="well">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="usuario" class="control-label">Usuario</label>
+                            </div>
+                            <div class="col-lg-5">
+                                @Html.EditorFor(model => model.nb_usuario, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                        <div class="row"><br /></div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="password" class="control-label">Password</label>
+                            </div>
+                            <div class="col-md-6">
+                                @Html.PasswordFor(model => model.nb_password, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                        <div class="row"><br /></div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-danger btn-block">Login</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+

@@ -1,0 +1,79 @@
+﻿@model LoginViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+    ViewBag.Title = "Acceso al sistema";
+}
+@section headtag
+{
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/msgBoxLight.css" rel="stylesheet" type="text/css" />
+
+    <!--Listado de Scripts Js-->
+
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-ui-1.10.4.custom.js"></script>
+    <script src="~/Scripts/jquery-ui-1.10.4.custom.min.js"></script>
+
+
+    <script src="@Url.Content("~/Scripts/i18n/es.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+    <script src="@Url.Content("~/Scripts/jquery.msgBox.js")" type="text/javascript"></script>
+    @* Implementación para utilizar los formularios con Ajax *@
+    <script src="@Url.Content("~/Scripts/jquery.form.min.js")"></script>
+    @* Implementación desde NuGet para las validadiones del formulario *@
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")"></script>
+
+    <script src="~/Scripts/jquery.util.login.js"></script>
+}
+
+@using (Html.BeginForm("Autenticar", "Login", FormMethod.Post, new { id = "frmLogin" }))
+{
+    <div class="container d-flex align-items-center justify-content-center vh-100">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card bg-white bg-opacity-50 rounded-5" style="width: 50rem;">
+
+                    <div class="card-header">
+                        <img src="~/image/logo_CW.png" alt="..." height="100" width="250">
+                    </div>
+                    <div class="card-body">
+                        <div class="row opacity-100">
+                            <div class="col-md-4 mt-5">
+                                @*<label for="usuario" class="control-label">Usuario</label>*@
+                                @Html.LabelFor(x => x.Correo)
+                            </div>
+                            <div class="col-md-8  mt-5" ">
+                                @Html.TextBoxFor(x => x.Correo, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(x => x.Correo, null, new { @class = "label label-danger" });
+                            </div>
+                            <div class="col-md-4  mt-5" ">
+                                @*<label for="password" class="control-label">Password</label>*@
+                                @Html.LabelFor(x => x.Password)
+                            </div>
+                            <div class="col-md-8  mt-5">
+                                <input type="password" name="Password" class="form-control" />
+                                @Html.ValidationMessageFor(x => x.Password, null, new { @class = "label label-danger" })
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-danger">Login</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+

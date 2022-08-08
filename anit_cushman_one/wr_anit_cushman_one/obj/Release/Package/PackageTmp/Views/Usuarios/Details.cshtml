@@ -1,0 +1,74 @@
+﻿@model wr_anit_cushman_one.Models.tsg030_usuarios
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tsg030_usuarios</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tsg031_perfil.nb_perfil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tsg031_perfil.nb_perfil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nb_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nb_nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cd_jerarquia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cd_jerarquia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.st_usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.st_usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nb_usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nb_usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nb_password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nb_password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fh_modif)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fh_modif)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.cd_usuario_ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

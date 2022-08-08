@@ -1,0 +1,144 @@
+﻿@model wr_anit_cushman_one.Models.tsg001_terreno
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>tsg001_terreno</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tsg007_mercado.nb_mercado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tsg007_mercado.nb_mercado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tsg008_corredor_ind.nb_corredor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tsg008_corredor_ind.nb_corredor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nb_comercial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nb_comercial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nb_calle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nb_calle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nu_direcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nu_direcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nu_cp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nu_cp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cd_estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cd_estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cd_ciudad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cd_ciudad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cd_municipio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cd_municipio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cd_colonia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cd_colonia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.st_parque_ind)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.st_parque_ind)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nu_tamano)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nu_tamano)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nu_latitud_longitud)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nu_latitud_longitud)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nu_poligono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nu_poligono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fh_modif)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fh_modif)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

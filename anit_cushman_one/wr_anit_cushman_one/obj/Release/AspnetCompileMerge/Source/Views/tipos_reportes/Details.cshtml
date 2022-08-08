@@ -1,0 +1,34 @@
+﻿@model wr_anit_cushman_one.Models.tsg046_tipos_reportes
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tsg046_tipos_reportes</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nb_reporte)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nb_reporte)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fh_modif)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fh_modif)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.cd_reporte }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

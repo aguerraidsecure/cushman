@@ -1,0 +1,117 @@
+﻿
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+
+            <!-- OANR-->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-1">
+                    <span class="sr-only">Menu</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbar-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="~/Home"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
+                    @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Admon_BR))
+                    {
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Administración de propiedades
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="~/Naves/Create">Naves industriales</a></li>
+                                <li><a href="~/Terrenos1/Crear">Terrenos</a></li>
+                            </ul>
+                        </li>
+                    }
+                    @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Catalogos))
+                    {
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+                                Catálogos
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="~/Areas/Index">Área de oficina</a></li>
+                                <li><a href="~/Cajones/Index">Cajones</a></li>
+                                <li><a href="~/CargaPisos/Index">Capacidad de carga</a></li>
+                                <li><a href="../Corredores/Index">Corredores</a></li>
+                                <li><a href="~/Espesores/Index">Espesor de piso</a></li>
+                                <li><a href="~/EspFerrs/Index">Espuela ferrocarril</a></li>
+                                <li><a href="~/EstatusEntregas/Index">Estatus entrega</a></li>
+                                <li><a href="~/Hvacs/Index">HVAC</a></li>
+                                <li><a href="~/IluminacionesNaturales/Index">Iluminicacion natural</a></li>
+                                <li><a href="../Mercados/Index">Mercados</a></li>
+                                <li><a href="~/SistIncendios/Index">Sistemas contra incendios</a></li>
+                                <li><a href="../TeContactos/Index">Contactos</a></li>
+                                <li><a href="~/TiposConstruccion/Index">Tipos construcción</a></li>
+                                <li><a href="~/TiposGasNat/Index">Tipos Gas natural</a></li>
+                                <li><a href="~/TiposLamparas/Index">Tipos lamparas</a></li>
+                                <li><a href="~/Estados/Index">Estados</a></li>
+                                <li><a href="~/Municipios/Index">Municipios</a></li>
+                                <li><a href="~/Colonias/Index">Colonias</a></li>
+                                <li><a href="~/CondicionesArrenda/Index">Condiciones arrendamiento</a></li>
+                                <li><a href="~/tp_tech/Index">Tipo techumbre</a></li>
+                                <li><a href="~/NivelPiso/Index">Nivel piso</a></li>
+                                <li><a href="~/Telefonias/Index">Telefonías</a></li>
+                                @*<li><a href="~/tipos_monedas/Index">Tipo moneda</a></li>
+                                <li><a href="~/tipos_reportes/Index">Tipo reporte</a></li>*@
+                            </ul>
+                        </li>
+                    }
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                           Reportes
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Reportes_PDF))
+                            {
+                                <li><a href="~/ReportNaves/Index">Reporte general</a></li>
+                            }
+                            @*@if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Reportes_Excel))
+                            {
+                                <li><a href="~/ExportData/Index">Reporte Excel</a></li>
+                            }*@                            
+                        </ul>
+                    </li>
+                    @*<li><a href="#">Contactos</a></li>*@
+                    @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Bitacoras))
+                    {
+                        <li><a href="~/BitacoraMov">Bitácora</a></li>                        
+                    }
+                    @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Seguridad))
+                    {
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Seguridad
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="~/UsuariosC/Index">Usuarios</a></li>
+                                <li><a href="~/Rol/Index">Roles</a></li>
+                                <li><a href="~/Permiso/Index">Módulos</a></li>
+                                <li><a href="~/Rol/Roles">Permisos por módulos</a></li>                               
+                            </ul>
+                        </li>
+                    }
+                </ul>                
+                @if (SessionHelper.ExistUserInSession())
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active">
+                            <div class="container navbar-brand">
+                                Bienvenido,
+                                <b>@FrontUser.Get().Nombre</b>
+                                <a href="~/home/salir"><span class="glyphicon glyphicon-log-out" data-tooltip title="Finalizar sesión"></span></a>
+                            </div>
+                        </li>
+                    </ul>
+                }
+            </div>
+        </div>
+    </nav>

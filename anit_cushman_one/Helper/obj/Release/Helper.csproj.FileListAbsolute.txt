@@ -1,0 +1,11 @@
+D:\Desarrollo\Proyectos\DYMS\anit_cushman_one\Helper\bin\Release\Helper.dll
+D:\Desarrollo\Proyectos\DYMS\anit_cushman_one\Helper\bin\Release\Helper.pdb
+D:\Desarrollo\Proyectos\DYMS\anit_cushman_one\Helper\obj\Release\Helper.csprojResolveAssemblyReference.cache
+D:\Desarrollo\Proyectos\DYMS\anit_cushman_one\Helper\obj\Release\Helper.dll
+D:\Desarrollo\Proyectos\DYMS\anit_cushman_one\Helper\obj\Release\Helper.pdb
+C:\SICREX\Desarrollo\Proyectos\DYMS\anit_cushman_one\Helper\bin\Release\Helper.dll
+C:\SICREX\Desarrollo\Proyectos\DYMS\anit_cushman_one\Helper\bin\Release\Helper.pdb
+C:\SICREX\Desarrollo\Proyectos\DYMS\anit_cushman_one\Helper\obj\Release\Helper.dll
+C:\SICREX\Desarrollo\Proyectos\DYMS\anit_cushman_one\Helper\obj\Release\Helper.pdb
+C:\SICREX\Desarrollo\Proyectos\DYMS\anit_cushman_one\Helper\obj\Release\Helper.csprojAssemblyReference.cache
+C:\SICREX\Desarrollo\Proyectos\DYMS\anit_cushman_one\Helper\obj\Release\Helper.csproj.CoreCompileInputs.cache

@@ -1,0 +1,1128 @@
+﻿@model wr_anit_cushman_one.Models.clsNaves
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@section headtag
+{
+    <script src="@Url.Content("~/Scripts/cboClasificacion.js")" type="text/javascript"></script>
+    <script defer src="@Url.Content("~/Scripts/Naves.js")" type="text/javascript"></script>
+
+    <script src="@Url.Content("~/Scripts/jquery.form.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")"></script>
+    
+}
+<div id="console-log"></div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content panel panel-warning">
+            <div class="well">
+                <button type="button" class="cerrar btn-danger" title="Cerrar" data-dismiss="modal" id="btnCerrar">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="hide">Close</span>
+                </button>
+                <h3>Búsqueda de Naves</h3>
+            </div>
+
+            <div class="modal-body">
+                <div id="findNaves">
+                    Cargando Contenido ...
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@using (Html.BeginForm("Create", "Naves", FormMethod.Post, new { enctype = "multipart/form-data", id = "frm-naves" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal table-responsive container modal-content panel panel-info">
+        <p class="container text-right">
+            <img SRC="/image/BANDERA-DE-MEXICO.ico" WIDTH=24 HEIGHT=24>@Html.ActionLink("Esp", "Change", "Naves", new { strLenguanje = "es" }, null)
+            |<img SRC="/image/bandera-usa.ico" WIDTH=24 HEIGHT=24>@Html.ActionLink("Us", "Change", "Naves", new { strLenguanje = "en" }, null)
+        </p>
+        @*<p class="container text-right">
+            <img SRC="/image/BANDERA-DE-MEXICO.ico" WIDTH=24 HEIGHT=24>@Html.ActionLink("Esp", "Change", "Naves", new { strLenguanje = "es" }, null)
+            |<img SRC="/image/bandera-usa.ico" WIDTH=24 HEIGHT=24>@Html.ActionLink("Us", "Change", "Naves", new { strLenguanje = "en" }, null)
+        </p>*@
+
+        <h4 class="well text-center">@wr_anit_cushman_one.Resources.rscIdioma.NavesTitulo</h4>
+
+        <div class="form-group">
+            <div class="col-lg-5">
+                @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Buscar_NI))
+                {
+                    <button type="button" data-url='@Url.Action("Buscar", "Naves")' id="btnBuscarTodo" name="Command" value="Buscar" class="btn btn-default" data-tooltip title="Búsqueda Básica">
+                        <span class="glyphicon glyphicon-eye-open"></span>
+                    </button>
+                }
+                @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Buscar_NI))
+                {
+                    <button type="button" data-url='@Url.Action("Buscar", "Naves")' id="btnBuscar" name="Command" value="Buscar" class="btn btn-default" data-tooltip title="Buscar">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                }
+                @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Nuevo_NI))
+                {
+                    <button type="button" id="btnNuevo" name="Command" value="Nuevo" class="btn btn-default" data-tooltip title="Nuevo">
+                        <span class="glyphicon glyphicon-file"></span>
+                    </button>
+                }
+                @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Editar_NI))
+                {
+                    <button type="button" id="btnEditar" name="Command" value="Editar" class="btn btn-default" data-tooltip title="Editar">
+                        <span class="glyphicon glyphicon-edit"></span>
+                    </button>
+                }
+                @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Editar_NI))
+                {
+                    <button type="button" id="btnCopiar" name="Command" value="Editar" class="btn btn-default" data-tooltip data-toggle="tooltip" title="Copiar">
+                        <span class="glyphicon glyphicon-paperclip"></span>
+                    </button>
+                    
+                }
+                @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Guardar_NI))
+                {
+                    <button type="submit" id="btnGuardar" name="Command" value="Guardar" class="btn btn-default" data-tooltip title="Guardar">
+                        <span class="glyphicon glyphicon-floppy-disk"></span>
+                    </button>
+                }
+                @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Eliminar_NI))
+                {
+                    <button type="button" id="btnEliminar" name="Command" value="Eliminar" class="btn btn-default" data-tooltip title="Eliminar">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                }
+                @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_PDF_NI))
+                {
+                    <button type="button" id="btnPdf" name="Command" value="Pdf" class="btn btn-default" data-tooltip title="Reporte Individual">
+                        <span class="glyphicon glyphicon-list-alt"></span>
+                    </button>
+                }
+                @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_PDF_NI))
+                {
+                    <button type="button" id="btnPpt" name="Command" value="Ppt" class="btn btn-default" data-tooltip title="Reporte Individual Power point">
+                        <span class="fa fa-file-powerpoint-o"  style="font-size:16px;color:red"></span>
+                    </button>
+                }
+                @*@if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_PDF_NI))
+                {
+                    <button type="button" id="btnPdf1" name="Command" value="Pdf" class="btn btn-default" data-tooltip title="Pdf Us">
+                        <span class="glyphicon glyphicon-list-alt"></span>
+                    </button>
+                }*@
+                @*@if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_PDF_NI))
+                {
+                    <button type="button" id="btnPdfSum" name="Command" value="Pdf Sum" class="btn btn-default" data-tooltip title="Pdf Summary">
+                        <span class="glyphicon glyphicon-list-alt"></span>
+                    </button>
+                }*@
+                @Html.ActionLink(" ", "iniCreate", "", new {@class = "glyphicon glyphicon-home btn btn-default", data_toggle = "tooltip", data_placement = "right", title = "Inicio"})
+            </div>
+        </div>
+        @*<div class="form-inline">*@
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @*<ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#inf_naves">Información Naves</a></li>
+                <li><a data-toggle="tab" href="#datos_gral">General</a></li>
+                <li><a data-toggle="tab" href="#mapas">Mapas</a></li>
+                <li><a data-toggle="tab" href="#servicio">Servicios</a></li>
+                <li><a data-toggle="tab" href="#precio">Precios</a></li>
+                <li><a data-toggle="tab" href="#Propietario">Propietario</a></li>
+                <li><a data-toggle="tab" href="#Administrador">Administrador</a></li>
+                <li><a data-toggle="tab" href="#Corredor">Corredor</a></li>
+            </ul>*@
+
+
+        <div role="tabpanel">
+            <ul class="nav nav-tabs bs-adaptive-tabs" role="tablist" id="myTab">
+                <li class="active" role="presentation"><a aria-expanded="true" aria-controls="seccion0" data-toggle="tab" role="tab" id="tab1-tab" href="#seccion0"><i class="fa fa-home danger"></i> <label>@wr_anit_cushman_one.Resources.rscIdioma.Principal</label></a></li>
+                <li role="presentation"><a aria-expanded="true" aria-controls="seccion1" data-toggle="tab" role="tab" id="tab2-tab" href="#seccion1" onclick="actu_imp()"><i class="fa fa-archive"></i> <label>@wr_anit_cushman_one.Resources.rscIdioma.General</label></a></li>
+                <li role="presentation"><a aria-expanded="true" aria-controls="seccion2" data-toggle="tab" role="tab" id="tab3-tab" href="#seccion2"><i class="fa fa-cog"></i> <label>@wr_anit_cushman_one.Resources.rscIdioma.Servicio</label></a></li>
+                <li role="presentation"><a aria-expanded="true" aria-controls="seccion3" data-toggle="tab" role="tab" id="tab4-tab" href="#seccion3"><i class="fa fa-money"></i> <label>@wr_anit_cushman_one.Resources.rscIdioma.Precio</label></a></li>
+                <li role="presentation"><a aria-expanded="true" aria-controls="seccion4" data-toggle="tab" role="tab" id="tab5-tab" href="#seccion4"><i class="fa fa-sitemap"></i> <label>@wr_anit_cushman_one.Resources.rscIdioma.Propietario</label></a></li>
+                <li role="presentation"><a aria-expanded="true" aria-controls="seccion5" data-toggle="tab" role="tab" id="tab6-tab" href="#seccion5"><i class="fa fa-tasks"></i> <label>@wr_anit_cushman_one.Resources.rscIdioma.Administrador</label></a></li>
+                <li role="presentation"><a aria-expanded="true" aria-controls="seccion6" data-toggle="tab" role="tab" id="tab7-tab" href="#seccion6"><i class="fa fa-male"></i> <label>@wr_anit_cushman_one.Resources.rscIdioma.CorredorIndustrial</label></a></li>
+                <li role="presentation"><a aria-expanded="true" aria-controls="seccion7" data-toggle="tab" role="tab" id="tab8-tab" href="#seccion7" onclick="obt_dir()"><i class="fa fa-map-marker"></i> <label>@wr_anit_cushman_one.Resources.rscIdioma.Mapa</label></a></li>
+                <li role="presentation"><a aria-expanded="true" aria-controls="seccion8" data-toggle="tab" role="tab" id="tab9-tab" href="#seccion8" onclick="obt_img()"><i class="fa fa-file-photo-o"></i> <label>@wr_anit_cushman_one.Resources.rscIdioma.Archivos</label></a></li>
+            </ul>
+        </div>
+        <div class="tab-content" id="myTabContent">
+
+            <div aria-labelledby="tab1-tab" role="tabpanel" class="tab-pane fade in active" id="seccion0">
+                <br />
+                   
+                        
+                            <div class="form-group">
+                                <div class="control-label col-md-2">Folio:</div>
+                                <div class="col-md-2">
+                                    <input type="text" id="folio" value=@ViewBag.Folio class="form-control"/>
+                                    @*@Html.EditorFor(model => model.tsg002_nave_industrial.cd_nave, new { htmlAttributes = new { @class = "form-control" } })*@
+                                </div>
+                                <div class="col-md-1">
+                                    <button type="button" id="btnBuscarFolio" name="Command" value="Buscar" class="btn btn-default" data-tooltip title="Buscar">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        
+                    
+                    <div class="form-group">
+                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.NombreParque:</div>
+                        <div class="col-md-10">
+                            @Html.Hidden("IdAction", (object)ViewBag.TpRegistro)
+                            @Html.HiddenFor(model => model.tsg002_nave_industrial.cd_nave, new { @id = "tsg002_nave_industrial_cd_nave" })                                                       
+                            @Html.HiddenFor(model => model.tsg002_nave_industrial.cd_estado, new { @id = "tsg002_nave_industrial_cd_estado_h" })
+                            @Html.HiddenFor(model => model.tsg002_nave_industrial.cd_municipio, new { @id = "tsg002_nave_industrial_cd_municipio_h" })
+                            @Html.HiddenFor(model => model.tsg002_nave_industrial.cd_colonia, new { @id = "tsg002_nave_industrial_cd_colonia_h" })
+                            @Html.HiddenFor(model => model.tsg002_nave_industrial.cd_mercado, new { @id = "tsg002_nave_industrial_cd_mercado_h" })
+                            @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_area, new { @id = "tsg009_ni_dt_gral_cd_area_h" })
+                            @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_carga, new { @id = "tsg009_ni_dt_gral_cd_carga_h" })
+                            @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_espesor, new { @id = "tsg009_ni_dt_gral_cd_espesor_h" })
+                            @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_sist_inc, new { @id = "tsg009_ni_dt_gral_cd_sist_inc_h" })
+                            @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_tp_construccion, new { @id = "tsg009_ni_dt_gral_cd_tp_construccion_h" })
+                            @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_tp_lampara, new { @id = "tsg009_ni_dt_gral_cd_tp_lampara_h" })
+                            @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_ilum_nat, new { @id = "tsg009_ni_dt_gral_cd_ilum_nat_h" })
+                            @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_hvac, new { @id = "tsg009_ni_dt_gral_cd_hvac_h" })
+                            @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_cajon_est, new { @id = "tsg009_ni_dt_gral_cd_cajon_est_h" })
+                            @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_tp_tech, new { @id = "tsg009_ni_dt_gral_cd_tp_tech_h" })
+                            @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_Nivel_Piso, new { @id = "tsg009_ni_dt_gral_cd_Nivel_Piso_h" })
+                            @Html.HiddenFor(model => model.tsg020_ni_servicio.cd_telefonia, new { @id = "tsg020_ni_servicio_cd_telefonia_h" })
+                            @Html.HiddenFor(model => model.tsg023_ni_precio.cd_rep_moneda, new { @id = "tsg023_ni_precio_cd_rep_moneda_h" })
+
+                            @Html.HiddenFor(model => model.tsg002_nave_industrial.cd_corredor, new { @id = "tsg002_nave_industrial_cd_corredor_h" })
+                            @Html.HiddenFor(model => model.tsg002_nave_industrial.st_parque_ind, new { @id = "tsg002_nave_industrial_st_parque_ind_h" })
+                            @Html.HiddenFor(model => model.tsg020_ni_servicio.cd_esp_ferr, new { @id = "tsg020_ni_servicio_cd_esp_ferr_h" })
+                            @Html.HiddenFor(model => model.tsg023_ni_precio.cd_cond_arr, new { @id = "tsg023_ni_precio_cd_cond_arr_h" })
+                            @Html.HiddenFor(model => model.tsg020_ni_servicio.cd_tp_gas_natural, new { @id = "tsg020_ni_servicio_cd_tp_gas_natural_h" })
+                            @Html.HiddenFor(model => model.tsg023_ni_precio.cd_moneda, new { @id = "tsg023_ni_precio_cd_moneda_h" })
+                            @Html.HiddenFor(model => model.tsg045_imagenes_naves.cd_reporte, new { @id = "tsg045_imagenes_naves_cd_reporte_h" })
+
+                            @Html.HiddenFor(model => model.tsg025_ni_contacto_P.cd_estado, new { @id = "tsg025_ni_contacto_P_cd_estado_h" })
+                            @Html.HiddenFor(model => model.tsg025_ni_contacto_P.cd_municipio, new { @id = "tsg025_ni_contacto_P_cd_municipio_h" })
+                            @Html.HiddenFor(model => model.tsg025_ni_contacto_P.cd_colonia, new { @id = "tsg025_ni_contacto_P_cd_colonia_h" })
+                            @Html.HiddenFor(model => model.tsg025_ni_contacto_A.cd_estado, new { @id = "tsg025_ni_contacto_A_cd_estado_h" })
+                            @Html.HiddenFor(model => model.tsg025_ni_contacto_A.cd_municipio, new { @id = "tsg025_ni_contacto_A_cd_municipio_h" })
+                            @Html.HiddenFor(model => model.tsg025_ni_contacto_A.cd_colonia, new { @id = "tsg025_ni_contacto_A_cd_colonia_h" })
+                            @Html.HiddenFor(model => model.tsg025_ni_contacto_C.cd_estado, new { @id = "tsg025_ni_contacto_C_cd_estado_h" })
+                            @Html.HiddenFor(model => model.tsg025_ni_contacto_C.cd_municipio, new { @id = "tsg025_ni_contacto_C_cd_municipio_h" })
+                            @Html.HiddenFor(model => model.tsg025_ni_contacto_C.cd_colonia, new { @id = "tsg025_ni_contacto_C_cd_colonia_h" })
+
+
+                            @Html.EditorFor(model => model.tsg002_nave_industrial.nb_parque, new { htmlAttributes = new { @class = "form-control" } })
+                            @*@Html.ValidationMessageFor(model => model.tsg002_nave_industrial.nb_parque, "", new { @class = "text-danger" })*@
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.NombreNave:</div>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.tsg002_nave_industrial.nb_nave, new { htmlAttributes = new { @class = "form-control" } })
+                            @*@Html.ValidationMessageFor(model => model.tsg002_nave_industrial.nb_nave, "", new { @class = "text-danger" })*@
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.comentarios:</div>
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.tsg002_nave_industrial.nb_comentarios, new { cols="50%", rows="3", hmlAttributes = new { @class = "form-control" } })
+                            @*@Html.ValidationMessageFor(model => model.tsg002_nave_industrial.nb_parque, "", new { @class = "text-danger" })*@
+                        </div>
+                    </div>
+                    <br />
+                    <div class="well">
+                        <h5 class="modal-header">@wr_anit_cushman_one.Resources.rscIdioma.Direccion:</h5>
+                        <table class="nav-justified table-responsive table-condensed">
+                            <tr>
+                                <td>
+                                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Calle:</div>
+                                </td>
+                                <td>
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.tsg002_nave_industrial.nb_calle, new { htmlAttributes = new { @class = "form-control" } })
+                                        @*@Html.ValidationMessageFor(model => model.tsg002_nave_industrial.nb_calle, "", new { @class = "text-danger" })*@
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Numero:</div>
+                                </td>
+                                <td>
+                                    <div class="col-md-10">
+
+                                        @Html.EditorFor(model => model.tsg002_nave_industrial.nu_direcion, new { htmlAttributes = new { @class = "form-control" } })
+                                        @*@Html.ValidationMessageFor(model => model.tsg002_nave_industrial.nu_direcion, "", new { @class = "text-danger" })*@
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.CP:</div></td>
+                                <td>
+                                    <div class="col-md-10">
+
+                                        @Html.EditorFor(model => model.tsg002_nave_industrial.nu_cp, new { htmlAttributes = new { @class = "form-control" } })
+                                        @*@Html.ValidationMessageFor(model => model.tsg002_nave_industrial.nu_cp, "", new { @class = "text-danger" })*@
+                                    </div>
+                                </td>
+
+                                <td><div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Estado:</div></td>
+                                <td>
+                                    <div class="col-md-10">
+                                        @*@Html.DropDownList("cd_estado", null, htmlAttributes: new { @class = "form-control" })*@
+                                        @Html.DropDownListFor(model => model.tsg002_nave_industrial.cd_estado, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+                                        @*@Html.EditorFor(model => model.tsg002_nave_industrial.cd_estado, new { htmlAttributes = new { @class = "form-control" } })*@
+                                        @*@Html.ValidationMessageFor(model => model.tsg002_nave_industrial.cd_estado, "", new { @class = "text-danger" })*@
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Municipio:</div></td>
+                                <td>
+                                    <div class="col-md-10">
+                                        @Html.DropDownListFor(model => model.tsg002_nave_industrial.cd_municipio, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+                                        @*@Html.DropDownList("cd_municipio", null, htmlAttributes: new { @class = "form-control" })*@
+                                        @*@Html.EditorFor(model => model.tsg002_nave_industrial.cd_municipio, new { htmlAttributes = new { @class = "form-control" } })*@
+                                        @*@Html.ValidationMessageFor(model => model.tsg002_nave_industrial.cd_municipio, "", new { @class = "text-danger" })*@
+                                    </div>
+                                </td>
+                                <td><div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Colonia:</div></td>
+
+                                <td>
+                                    <div class="col-md-10">
+                                        @Html.DropDownListFor(model => model.tsg002_nave_industrial.cd_colonia, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+                                        @*@Html.DropDownList("cd_colonia", null, htmlAttributes: new { @class = "form-control" })*@
+                                        @*@Html.EditorFor(model => model.tsg002_nave_industrial.cd_colonia, new { htmlAttributes = new { @class = "form-control" } })*@
+                                        @*@Html.ValidationMessageFor(model => model.tsg002_nave_industrial.cd_colonia, "", new { @class = "text-danger" })*@
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Mercado:</div></td>
+                                <td>
+                                    <div class="col-md-10">
+                                        @*@Html.DropDownList("cd_mercado", null, htmlAttributes: new { @class = "form-control" })*@
+                                        @Html.DropDownListFor(model => model.tsg002_nave_industrial.cd_mercado, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+                                        @*@Html.EditorFor(model => model.tsg002_nave_industrial.cd_mercado, new { htmlAttributes = new { @class = "form-control" } })*@
+                                        @*@Html.ValidationMessageFor(model => model.tsg002_nave_industrial.cd_mercado, "", new { @class = "text-danger" })*@
+                                    </div>
+                                </td>
+
+                                <td><div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Corredor:</div></td>
+                                <td>
+                                    <div class="col-md-10">
+                                        @Html.DropDownListFor(model => model.tsg002_nave_industrial.cd_corredor, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+                                        @*@Html.DropDownList("cd_corredor", null, htmlAttributes: new { @class = "form-control" })*@
+                                        @*@Html.EditorFor(model => model.tsg002_nave_industrial.cd_corredor, new { htmlAttributes = new { @class = "form-control" } })*@
+                                        @*@Html.ValidationMessageFor(model => model.tsg002_nave_industrial.cd_corredor, "", new { @class = "text-danger" })*@
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                    <br />
+
+                </div>
+
+            <div aria-labelledby="tab2-tab" role="tabpanel" class="tab-pane" id="seccion1" onclick="actu_imp()">
+                <br />
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.SuperficieNaveM M<sup>2</sup>:</div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.tsg009_ni_dt_gral.nu_superficie, new { htmlAttributes = new { @class = "form-control" } })
+                        @*@Html.ValidationMessageFor(model => model.tsg009_ni_dt_gral.nu_superficie, "", new { @class = "text-danger" })*@
+                    </div>
+                    <div class="control-label col-md-3">@wr_anit_cushman_one.Resources.rscIdioma.SuperficieNaveF Ft<sup>2</sup>:</div>
+                    <div class="col-md-3">
+                        <input type="text" id="nu_superficie_pies" class="form-control" onchange="convertir(5)" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.SuperficieTotalBodegaM M<sup>2</sup>:</div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.tsg009_ni_dt_gral.nu_bodega, new { htmlAttributes = new { @class = "form-control" } })
+                        @*@Html.ValidationMessageFor(model => model.tsg009_ni_dt_gral.nu_bodega, "", new { @class = "text-danger" })*@
+                    </div>
+                    <div class="control-label col-md-3">@wr_anit_cushman_one.Resources.rscIdioma.SuperficieTotalBodegaF Ft<sup>2</sup>:</div>
+                    <div class="col-md-3">
+                        <input type="text" id="nu_superficie_tot_pies" class="form-control" onchange="convertir(6)" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.DisponibilidadTotalM M<sup>2</sup>:</div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.tsg009_ni_dt_gral.nu_disponibilidad, new { htmlAttributes = new { @class = "form-control" } })
+                        @wr_anit_cushman_one.Resources.rscIdioma.MinimoDisponible
+                        @*@Html.ValidationMessageFor(model => model.tsg009_ni_dt_gral.nu_disponibilidad, "", new { @class = "text-danger" })*@
+                        @Html.TextBox("disponible_hasta",null, new { @class = "form-control" })                        
+                        @wr_anit_cushman_one.Resources.rscIdioma.MaximoDisponible
+                        
+                        @*,@style = "background-color: rgb(153, 102, 153)"*@
+                        
+                    </div>
+                    <div class="control-label col-md-3">@wr_anit_cushman_one.Resources.rscIdioma.DisponibilidadTotalF Ft<sup>2</sup>:</div>
+                    <div class="col-md-3">
+                        <input type="text" id="nu_disponibilidad_pies" class="form-control" onchange="convertir(7)"/>                        
+                    </div>                    
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.MinimoDivisibleM M<sup>2</sup>:</div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.tsg009_ni_dt_gral.nu_min_divisible, new { htmlAttributes = new { @class = "form-control" } })
+                        @*@Html.ValidationMessageFor(model => model.tsg009_ni_dt_gral.nu_min_divisible, "", new { @class = "text-danger" })*@
+                    </div>
+                    <div class="control-label col-md-3">@wr_anit_cushman_one.Resources.rscIdioma.MinimoDivisibleF Ft<sup>2</sup>:</div>
+                    <div class="col-md-3">
+                        <input type="text" id="nu_minimo_pies" class="form-control" onchange="convertir(8)" />                       
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.AreaOficina:</div>
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.tsg009_ni_dt_gral.cd_area, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+                        @*@Html.DropDownList("cd_area", null, htmlAttributes: new { @class = "form-control" })*@                        
+                    </div>
+                </div>
+                <div class="form-group" id="oculto2" style="display:none;">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.DescripcionAreaOf:</div>
+                    <div class="col-md-10">
+                       @Html.EditorFor(model => model.tsg009_ni_dt_gral.nb_area, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.AniosConstruccion:</div>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tsg009_ni_dt_gral.nu_anio_cons, new { htmlAttributes = new { @class = "form-control" } })
+                        @*@Html.ValidationMessageFor(model => model.tsg009_ni_dt_gral.nu_anio_cons, "", new { @class = "text-danger" })*@
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.AlturaLibreM M:</div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.tsg009_ni_dt_gral.nu_altura, new { htmlAttributes = new { @class = "form-control" } })
+                        @*@Html.ValidationMessageFor(model => model.tsg009_ni_dt_gral.nu_altura, "", new { @class = "text-danger" })*@
+                    </div>
+                    <div class="control-label col-md-3">@wr_anit_cushman_one.Resources.rscIdioma.AlturaLibreF Ft:</div>
+                    <div class="col-md-3">
+                        <input type="text" id="nu_altura" class="form-control" onchange="convertir(9)" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.PuertaAnden:</div>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tsg009_ni_dt_gral.nu_puertas, new { htmlAttributes = new { @class = "form-control" } })
+                        @*@Html.ValidationMessageFor(model => model.tsg009_ni_dt_gral.nu_puertas, "", new { @class = "text-danger" })*@
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Rampa:</div>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tsg009_ni_dt_gral.nu_rampas, new { htmlAttributes = new { @class = "form-control" } })
+                        @*@Html.ValidationMessageFor(model => model.tsg009_ni_dt_gral.nu_rampas, "", new { @class = "text-danger" })*@
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Carga:</div>
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.tsg009_ni_dt_gral.cd_carga, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+                        @*@Html.DropDownList("cd_carga", null, htmlAttributes: new { @class = "form-control" })*@                        
+                        @*@Html.ValidationMessageFor(model => model.tsg009_ni_dt_gral.cd_carga, "", new { @class = "text-danger" })*@
+                    </div>
+                </div>
+                <div class="form-group" id="oculto5" style="display:none;">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.DescripcionCarga:</div>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tsg009_ni_dt_gral.nb_carga, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.EspesorPiso:</div>
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.tsg009_ni_dt_gral.cd_espesor, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+                        @*//@Html.EditorFor(model => model.tsg009_ni_dt_gral.nb_espesor, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @*@Html.ValidationMessageFor(model => model.tsg009_ni_dt_gral.cd_espesor, "", new { @class = "text-danger" })*@
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.SistemasIncendio:</div>
+                    <div class="col-md-4">
+                        @Html.DropDownListFor(model => model.tsg009_ni_dt_gral.cd_sist_inc, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+                        @*@Html.DropDownList("cd_sist_inc", null, htmlAttributes: new { @class = "form-control" })*@                        
+                    </div>
+                    <div class="form-group" id="oculto6" style="display:none;">
+                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.DescripcionSistemaIncendio:</div>
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.tsg009_ni_dt_gral.nb_sist_inc, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                </div>
+                                
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.TipoConstruccion:</div>
+                    <div class="col-md-4">
+                        @Html.DropDownListFor(model => model.tsg009_ni_dt_gral.cd_tp_construccion, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+                        @*@Html.DropDownList("cd_tipo_const", null, htmlAttributes: new { @class = "form-control" })*@                        
+                        @*@Html.ValidationMessageFor(model => model.tsg009_ni_dt_gral.cd_tp_construccion, "", new { @class = "text-danger" })*@
+                    </div>
+                    <div class="form-group" id="oculto7" style="display:none;">
+                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.DescripcionTipoConstruccion:</div>
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.tsg009_ni_dt_gral.nb_tp_construccion, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.EstatusEntrega:</div>
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.tsg002_nave_industrial.st_parque_ind, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+                        @*@Html.DropDownList("cd_st_entrega", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.EditorFor(model => model.tsg009_ni_dt_gral.fh_entrega, new { htmlAttributes = new { @class = "form-control" } })*@
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Lampara:</div>
+                    <div class="col-md-4">
+                        @Html.DropDownListFor(model => model.tsg009_ni_dt_gral.cd_tp_lampara, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+                        @*@Html.DropDownList("cd_lamparas", null, htmlAttributes: new { @class = "form-control" })*@
+                    </div>
+                    <div class="form-group" id="oculto8" style="display:none;">
+                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.DescripcionLampara:</div>
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.tsg009_ni_dt_gral.nb_tp_lampara, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Iluminacion:</div>
+                    <div class="col-md-4">
+                        @Html.DropDownListFor(model => model.tsg009_ni_dt_gral.cd_ilum_nat, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+                        @*@Html.DropDownList("cd_iluminacion", null, htmlAttributes: new { @class = "form-control" })*@                        
+                        @*@Html.ValidationMessageFor(model => model.tsg009_ni_dt_gral.cd_ilum_nat, "", new { @class = "text-danger" })*@
+                    </div>
+                    <div class="form-group" id="oculto9" style="display:none;">
+                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.DescripcionIluminacion:</div>
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.tsg009_ni_dt_gral.n_ilum_nat, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.HVAC:</div>
+                    <div class="col-md-4">
+                        @Html.DropDownListFor(model => model.tsg009_ni_dt_gral.cd_hvac, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+                        @*@Html.DropDownList("cd_hvac", null, htmlAttributes: new { @class = "form-control" })*@                        
+                    </div>
+                    <div class="form-group" id="oculto10" style="display:none;">
+                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.DescripcionHVAC:</div>
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.tsg009_ni_dt_gral.nb_hvac, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.CajonesEstacionamiento:</div>
+                    <div class="col-md-4">
+                        @Html.DropDownListFor(model => model.tsg009_ni_dt_gral.cd_cajon_est, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+                        @*@Html.DropDownList("cd_caj_est", null, htmlAttributes: new { @class = "form-control" })*@                        
+                    </div>
+                    <div class="form-group" id="oculto11" style="display:none;">
+                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.DescripcionCajonesEstac:</div>
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.tsg009_ni_dt_gral.nb_cajon_est, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.NoCajonesTrailer:</div>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tsg009_ni_dt_gral.nu_caj_trailer, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.TechumbreNave:</div>
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.tsg009_ni_dt_gral.cd_tp_tech, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+                        @*@Html.DropDownList("cd_caj_est", null, htmlAttributes: new { @class = "form-control" })*@
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.NivelPisoNave:</div>
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.tsg009_ni_dt_gral.cd_Nivel_Piso, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+                        @*@Html.DropDownList("cd_caj_est", null, htmlAttributes: new { @class = "form-control" })*@
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.OcupadoHasta:</div>
+                    <div class="col-md-3 input-group date" id='datetimepicker1'>
+                        @Html.EditorFor(model => model.tsg009_ni_dt_gral.fh_hasta, new { htmlAttributes = new { @class = "form-control "} })
+                        @*<span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>*@                  
+                    </div>
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.DisponibleApartir:</div>
+                    <div class="col-md-3">
+                        @Html.EditorFor(model => model.tsg009_ni_dt_gral.fh_desde, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    </div>
+                </div>
+                <br />
+
+            </div>
+
+            <div aria-labelledby="tab3-tab" role="tabpanel" class="tab-pane" id="seccion2">
+                <br />
+                <div class="form-group form-inline">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Agua:</div>
+                    <div class="col-md-10">
+                        Servicio Municipal: @Html.CheckBoxFor(model => model.tsg020_ni_servicio.st_aguamunicipal, new { @class = "form-control",  style="height:20px;width:20px;"})
+                        Pozo: @Html.CheckBoxFor(model => model.tsg020_ni_servicio.st_aguapozo, new { @class = "form-control", style = "height:20px;width:20px;" })
+                        @*@Html.EditorFor(model => model.tsg020_ni_servicio.nu_agua, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @*@Html.ValidationMessageFor(model => model.tsg020_ni_servicio.nu_agua, "", new { @class = "text-danger" })*@
+                    </div>
+                </div>                
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.EnergiaElectrica:</div>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tsg020_ni_servicio.nu_kva, new { htmlAttributes = new { @class = "form-control" } })
+                        @*@Html.ValidationMessageFor(model => model.tsg020_ni_servicio.nu_kva, "", new { @class = "text-danger" })*@
+                    </div>
+                </div>
+                <div class="form-group form-inline">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.ServicioTelecomunicaciones:</div>
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.tsg020_ni_servicio.cd_telefonia, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+                        @*Telmex: @Html.CheckBoxFor(model => model.tsg020_ni_servicio.st_telmex, new { @class = "form-control", @disabled = "disabled", style = "height:20px;width:20px;" })                    
+                        Alestra: @Html.CheckBoxFor(model => model.tsg020_ni_servicio.st_alestra, new { @class = "form-control", @disabled = "disabled", style = "height:20px;width:20px;" })
+                        MCM: @Html.CheckBoxFor(model => model.tsg020_ni_servicio.st_MCM, new { @class = "form-control", @disabled = "disabled", style = "height:20px;width:20px;" })*@
+                    </div>                    
+                        @*@Html.EditorFor(model => model.tsg020_ni_servicio.nb_ser_tel_com, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @*@Html.ValidationMessageFor(model => model.tsg020_ni_servicio.nb_ser_tel_com, "", new { @class = "text-danger" })*@
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.GasNatural:</div>
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.tsg020_ni_servicio.cd_tp_gas_natural, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+                        @*@Html.DropDownList("cd_gas", null, htmlAttributes: new { @class = "form-control" })*@                        
+                    </div>
+                </div>
+                <div class="form-group" id="oculto3" style="display:none;">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.DescripcionGas:</div>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tsg020_ni_servicio.nb_tp_gas_natural, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Espuela:</div>
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.tsg020_ni_servicio.cd_esp_ferr, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+                        @*@Html.DropDownList("cd_esp_ferr", null, htmlAttributes: new { @class = "form-control" })*@
+
+                    </div>
+                </div>
+            </div>
+            <div aria-labelledby="tab4-tab" role="tabpanel" class="tab-pane" id="seccion3">
+                <br />
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.TipoMoneda:</div>
+                    <div class="col-md-4">
+                        @Html.DropDownListFor(model => model.tsg023_ni_precio.cd_moneda, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+                        @*Html.ValidationMessageFor(model => model.nu_tamano, "", new { @class = "text-danger" })*@
+                    </div>
+                    <div class="control-label col-md-3">@wr_anit_cushman_one.Resources.rscIdioma.TipoMonedaReport:</div>
+                    <div class="col-md-3">
+                        @Html.DropDownListFor(model => model.tsg023_ni_precio.cd_rep_moneda, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+                        @*Html.ValidationMessageFor(model => model.nu_tamano, "", new { @class = "text-danger" })*@
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.PrecioRenta:</div>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tsg023_ni_precio.im_renta, new { htmlAttributes = new { @class = "form-control" } })
+                        @*@Html.ValidationMessageFor(model => model.tsg023_ni_precio.im_renta, "", new { @class = "text-danger" })*@
+                    </div>
+                    
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.PrecioVenta:</div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.tsg023_ni_precio.im_venta, new { htmlAttributes = new { @class = "form-control" } })
+                        @*@Html.ValidationMessageFor(model => model.tsg023_ni_precio.im_venta, "", new { @class = "text-danger" })*@
+                    </div>
+                    <div class="control-label col-md-3">Tipo Cambio : @ViewBag.TipoCambio</div>
+                </div>
+
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.PrecioTotal:</div>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.tsg023_ni_precio.im_total, new { htmlAttributes = new { @class = "form-control" } })
+                        @*Html.ValidationMessageFor(model => model.nu_tamano, "", new { @class = "text-danger" })*@
+                    </div>
+                    <div class="control-label col-md-3">Valor Tipo Cambio:</div>
+                    <div class="col-md-3">@Html.EditorFor(model => model.tsg023_ni_precio.nu_tipo_cambio, new { htmlAttributes = new { @class = "form-control" } })</div>
+
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">MXN:</div>
+                    <div class="col-md-4"><input type="text" id="nu_total_mxn" class="form-control" disabled="disabled" /></div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">USD:</div>
+                    <div class="col-md-4"><input type="text" id="nu_total_usd" class="form-control" disabled="disabled" /></div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.CondicionesArrendamiento:</div>
+                    <div class="col-md-4">
+                        @Html.DropDownListFor(model => model.tsg023_ni_precio.cd_cond_arr, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+                        @*@Html.DropDownList("cd_cond_arrend", null, htmlAttributes: new { @class = "form-control" })*@                        
+                    </div>
+                    <div class="form-group" id="oculto4" style="display:none;">
+                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.DescripcionCondiciones:</div>
+                        <div class="col-md-4">
+                            @Html.EditorFor(model => model.tsg023_ni_precio.nb_cond_arr, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.MantenimientoAreas:</div>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tsg023_ni_precio.nu_ma_ac, new { htmlAttributes = new { @class = "form-control" } })
+                        @*@Html.ValidationMessageFor(model => model.tsg023_ni_precio.nu_ma_ac, "", new { @class = "text-danger" })*@
+                    </div>
+                </div>
+            </div>
+            <div aria-labelledby="tab5-tab" role="tabpanel" class="tab-pane" id="seccion4">
+                <br />
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.NombrePropietario:</div>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tsg025_ni_contacto_P.nb_propietario, new { htmlAttributes = new { @class = "form-control" } })
+                        @*@Html.ValidationMessageFor(model => model.tsg025_ni_contacto.nb_propietario, "", new { @class = "text-danger" })*@
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.ApellidoPropietario:</div>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tsg025_ni_contacto_P.nb_apellido, new { htmlAttributes = new { @class = "form-control" } })
+                        @*@Html.ValidationMessageFor(model => model.tsg025_ni_contacto.nb_propietario, "", new { @class = "text-danger" })*@
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.NombreEmpresa:</div>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tsg025_ni_contacto_P.nb_empresa, new { htmlAttributes = new { @class = "form-control" } })
+                        @*@Html.ValidationMessageFor(model => model.tsg025_ni_contacto.nb_propietario, "", new { @class = "text-danger" })*@
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Telefono:</div>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tsg025_ni_contacto_P.nu_telefono, new { htmlAttributes = new { @class = "form-control" } })
+                        @*@Html.ValidationMessageFor(model => model.tsg025_ni_contacto.nu_telefono, "", new { @class = "text-danger" })*@
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Email:</div>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tsg025_ni_contacto_P.nb_email, new { htmlAttributes = new { @class = "form-control" } })
+                        @*@Html.ValidationMessageFor(model => model.tsg025_ni_contacto.nb_email, "", new { @class = "text-danger" })*@
+                    </div>
+                </div>
+                <div class="well">
+                    <h5 class="modal-header">@wr_anit_cushman_one.Resources.rscIdioma.Direccion:</h5>
+                    <table class="nav-justified table-responsive table-condensed">
+                        <tr>
+                            <td><div  class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Calle:</div></td>
+                            <td>
+                                <div  class="col-md-10">
+                                    <div>
+                                        @Html.EditorFor(model => model.tsg025_ni_contacto_P.nb_calle, new { htmlAttributes = new { @class = "form-control" } })
+
+                                        @*Html.ValidationMessageFor(model => model.nb_calle, "", new { @class = "text-danger" })*@
+                                    </div>
+                                </div>
+                            </td>
+                            <td><div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Numero:</div></td>
+                            <td>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.tsg025_ni_contacto_P.nu_interior, new { htmlAttributes = new { @class = "form-control" } })
+                                    @*@Html.ValidationMessageFor(model => model.tsg025_ni_contacto.nu_interior, "", new { @class = "text-danger" })*@
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.CP:</div></td>
+                            <td>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.tsg025_ni_contacto_P.nu_cp, new { htmlAttributes = new { @class = "form-control" } })
+                                    @*@Html.ValidationMessageFor(model => model.tsg025_ni_contacto.nu_cp, "", new { @class = "text-danger" })*@
+                                </div>
+                            </td>
+
+                            <td><div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Estado:</div></td>
+                            <td>
+                                <div class="col-md-10">
+                                    @*@Html.DropDownList("cd_estado_p", null, htmlAttributes: new { @class = "form-control" })*@
+                                    @Html.DropDownListFor(model => model.tsg025_ni_contacto_P.cd_estado, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Municipio:</div>
+                            </td>
+                            <td>
+                                <div class="col-md-10">
+                                    @*@Html.DropDownList("cd_municipio_p", null, htmlAttributes: new { @class = "form-control" })*@
+                                    @Html.DropDownListFor(model => model.tsg025_ni_contacto_P.cd_municipio, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+
+                                </div>
+                            </td>
+                            <td><div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Colonia:</div></td>
+                            <td>
+                                <div class="col-md-10">
+                                    @*@Html.DropDownList("cd_colonia_p", null, htmlAttributes: new { @class = "form-control" })*@
+                                    @Html.DropDownListFor(model => model.tsg025_ni_contacto_P.cd_colonia, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+
+            <div aria-labelledby="tab6-tab" role="tabpanel" class="tab-pane" id="seccion5">
+                <br />
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.NombreAdministrado:</div>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tsg025_ni_contacto_A.nb_propietario, new { htmlAttributes = new { @class = "form-control" } })
+                        @*@Html.ValidationMessageFor(model => model.tsg025_ni_contacto.nb_propietario, "", new { @class = "text-danger" })*@
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.ApellidoAdministrado:</div>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tsg025_ni_contacto_A.nb_apellido, new { htmlAttributes = new { @class = "form-control" } })
+                        @*@Html.ValidationMessageFor(model => model.tsg025_ni_contacto.nb_propietario, "", new { @class = "text-danger" })*@
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.NombreEmpresa:</div>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tsg025_ni_contacto_A.nb_empresa, new { htmlAttributes = new { @class = "form-control" } })
+                        @*@Html.ValidationMessageFor(model => model.tsg025_ni_contacto.nb_propietario, "", new { @class = "text-danger" })*@
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Telefono:</div>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tsg025_ni_contacto_A.nu_telefono, new { htmlAttributes = new { @class = "form-control" } })
+                        @*@Html.ValidationMessageFor(model => model.tsg025_ni_contacto.nu_telefono, "", new { @class = "text-danger" })*@
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Email:</div>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tsg025_ni_contacto_A.nb_email, new { htmlAttributes = new { @class = "form-control" } })
+                        @*@Html.ValidationMessageFor(model => model.tsg025_ni_contacto.nb_email, "", new { @class = "text-danger" })*@
+                    </div>
+                </div>
+                <div class="well">
+                    <h5 class="modal-header">@wr_anit_cushman_one.Resources.rscIdioma.Direccion:</h5>
+                    <table class="nav-justified table-responsive table-condensed">
+                        <tr>
+                            <td><div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Calle:</div></td>
+                            <td>
+                                <div class="col-md-10">
+                                    <div>
+                                        @Html.EditorFor(model => model.tsg025_ni_contacto_A.nb_calle, new { htmlAttributes = new { @class = "form-control" } })
+
+                                        @*Html.ValidationMessageFor(model => model.nb_calle, "", new { @class = "text-danger" })*@
+                                    </div>
+                                </div>
+                            </td>
+                            <td><div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Numero:</div></td>
+                            <td>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.tsg025_ni_contacto_A.nu_interior, new { htmlAttributes = new { @class = "form-control" } })
+                                    @*@Html.ValidationMessageFor(model => model.tsg025_ni_contacto.nu_interior, "", new { @class = "text-danger" })*@
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.CP:</div>
+                            </td>
+                            <td>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.tsg025_ni_contacto_A.nu_cp, new { htmlAttributes = new { @class = "form-control" } })
+                                    @*@Html.ValidationMessageFor(model => model.tsg025_ni_contacto.nu_cp, "", new { @class = "text-danger" })*@
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Estado:</div>
+                            </td>
+                            <td>
+                                <div class="col-md-10">
+                                    @*@Html.DropDownList("cd_estado_p", null, htmlAttributes: new { @class = "form-control" })*@
+                                    @Html.DropDownListFor(model => model.tsg025_ni_contacto_A.cd_estado, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Municipio:</div>
+                            </td>
+                            <td>
+                                <div class="col-md-10">
+                                    @*@Html.DropDownList("cd_municipio_p", null, htmlAttributes: new { @class = "form-control" })*@
+                                    @Html.DropDownListFor(model => model.tsg025_ni_contacto_A.cd_municipio, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+
+                                </div>
+                            </td>
+                            <td>
+                                <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Colonia:</div>
+                            </td>
+                            <td>
+                                <div class="col-md-10">
+                                    @*@Html.DropDownList("cd_colonia_p", null, htmlAttributes: new { @class = "form-control" })*@
+                                    @Html.DropDownListFor(model => model.tsg025_ni_contacto_A.cd_colonia, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+            <div aria-labelledby="tab7-tab" role="tabpanel" class="tab-pane" id="seccion6">
+                <br />
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.NombreCorredor:</div>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tsg025_ni_contacto_C.nb_propietario, new { htmlAttributes = new { @class = "form-control" } })
+                        @*@Html.ValidationMessageFor(model => model.tsg025_ni_contacto.nb_propietario, "", new { @class = "text-danger" })*@
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.ApellidoCorredor:</div>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tsg025_ni_contacto_C.nb_apellido, new { htmlAttributes = new { @class = "form-control" } })
+                        @*@Html.ValidationMessageFor(model => model.tsg025_ni_contacto.nb_propietario, "", new { @class = "text-danger" })*@
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.NombreEmpresa:</div>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tsg025_ni_contacto_C.nb_empresa, new { htmlAttributes = new { @class = "form-control" } })
+                        @*@Html.ValidationMessageFor(model => model.tsg025_ni_contacto.nb_propietario, "", new { @class = "text-danger" })*@
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Telefono:</div>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tsg025_ni_contacto_C.nu_telefono, new { htmlAttributes = new { @class = "form-control" } })
+                        @*@Html.ValidationMessageFor(model => model.tsg025_ni_contacto.nu_telefono, "", new { @class = "text-danger" })*@
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Email:</div>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.tsg025_ni_contacto_C.nb_email, new { htmlAttributes = new { @class = "form-control" } })
+                        @*@Html.ValidationMessageFor(model => model.tsg025_ni_contacto.nb_email, "", new { @class = "text-danger" })*@
+                    </div>
+                </div>
+                <div class="well">
+                    <h5 class="modal-header">@wr_anit_cushman_one.Resources.rscIdioma.Direccion:</h5>
+                    <table class="nav-justified table-responsive table-condensed">
+                        <tr>
+                            <td><div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Calle:</div></td>
+                            <td>
+                                <div class="col-md-10">
+                                    <div>
+                                        @Html.EditorFor(model => model.tsg025_ni_contacto_C.nb_calle, new { htmlAttributes = new { @class = "form-control" } })
+                                        @*Html.ValidationMessageFor(model => model.nb_calle, "", new { @class = "text-danger" })*@
+                                    </div>
+                                </div>
+                            </td>
+                            <td><div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Numero:</div></td>
+                            <td>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.tsg025_ni_contacto_C.nu_interior, new { htmlAttributes = new { @class = "form-control" } })
+                                    @*@Html.ValidationMessageFor(model => model.tsg025_ni_contacto.nu_interior, "", new { @class = "text-danger" })*@
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.CP:</div>
+                            </td>
+                            <td>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.tsg025_ni_contacto_C.nu_cp, new { htmlAttributes = new { @class = "form-control" } })
+                                    @*@Html.ValidationMessageFor(model => model.tsg025_ni_contacto.nu_cp, "", new { @class = "text-danger" })*@
+                                </div>
+                            </td>
+                            <td>
+                                <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Estado:</div>
+                            </td>
+                            <td>
+                                <div class="col-md-10">
+                                    @*@Html.DropDownList("cd_estado_p", null, htmlAttributes: new { @class = "form-control" })*@
+                                    @Html.DropDownListFor(model => model.tsg025_ni_contacto_C.cd_estado, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Municipio:</div>
+                            </td>
+                            <td>
+                                <div class="col-md-10">
+                                    @*@Html.DropDownList("cd_municipio_p", null, htmlAttributes: new { @class = "form-control" })*@
+                                    @Html.DropDownListFor(model => model.tsg025_ni_contacto_C.cd_municipio, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+                                </div>
+                            </td>
+                            <td>
+                                <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Colonia:</div>
+                            </td>
+                            <td>
+                                <div class="col-md-10">
+                                    @*@Html.DropDownList("cd_colonia_p", null, htmlAttributes: new { @class = "form-control" })*@
+                                    @Html.DropDownListFor(model => model.tsg025_ni_contacto_C.cd_colonia, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+
+                                </div>
+                            </td>
+
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+            
+            <div aria-labelledby="tab8-tab" role="tabpanel" class="tab-pane" id="seccion7">               
+                <div class="form-group well container text-center">
+                    <label class="radio-inline">
+                        <input type="radio" name="optradio" onclick="mostrar1()">Cargar Archivo (KML)
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="optradio" onclick="mostrar()">Trabajar con Google Maps
+                    </label>
+                </div>
+                <div class="form-group" id="oculto1" style="display:none;">
+                    <div class="col-md-10">
+                        <input type="file" name="documento" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="container">
+                        <div>
+
+                            <div class="row">
+                                <label class="col-md-1">@wr_anit_cushman_one.Resources.rscIdioma.Direccion: </label>
+                                @*<input id="direccion" name="direccion" value="" disabled="disabled" class="form-control col-md-4" />*@
+                                @Html.EditorFor(model => model.tsg002_nave_industrial.nb_dir_nave, new { htmlAttributes = new { @class = "form-control col-md-2" } })
+                                <div id="oculto" style="display:none;">
+                                    <button type="button" id="pasar" class="btn btn-default" data-tooltip title="Buscar" name="pasar"><span class="glyphicon glyphicon-globe"></span></button>
+                                    <button type="button" id="borra" class="btn btn-default" data-tooltip title="Borrar" name="borra" onclick="borrar()"><span class="glyphicon glyphicon-remove"></span></button>
+                                    @*<input id="puntos" name="puntos" value="" disabled="disabled" type="hidden" />*@
+                                </div>
+                            </div>
+                        </div>
+                        <div id="googleMap" class="googleMap"></div>
+                        <div>
+                            @Html.EditorFor(model => model.tsg002_nave_industrial.nb_posicion, new { htmlAttributes = new { @class = "form-control col-md-1" } })
+                            @Html.EditorFor(model => model.tsg002_nave_industrial.nb_poligono, new { htmlAttributes = new { @class = "form-control col-md-1" } })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div aria-labelledby="tab9-tab" role="tabpanel" class="tab-pane" id="seccion8">
+                <div class="form-group container" id="oculto_img" style="display:none;">
+                    <br />
+                    <div class="form-group">
+                        <div class="control-label col-md-2">Tipo reporte</div>
+                        <div class="col-md-12">
+                            @Html.DropDownListFor(model => model.tsg045_imagenes_naves.cd_reporte, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <input id="fileupload" type="file" name="files[]" multiple  class="btn-danger">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <div id="Archivos_cushman"></div>
+                        </div>
+                        <div class="col-md-10">
+                            <br />
+                            <div id="Archivos"></div>
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </div>
+    </div>
+    
+}
+
+
+@section Scripts {
+    <style>
+        div.msgBoxBackGroundAjax {
+            top: 0;
+            left: 0;
+            position: absolute;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            opacity: 0.8;
+            z-index: 50001;
+        }
+
+        #div-dl-im {
+            position: fixed;
+            z-index: 5000;
+            left: 40%;
+            width: 450px;
+            height: 250px;
+            text-align: center;
+        }
+
+            #div-dl-im p {
+                margin: 5%;
+                font-weight: bold;
+                color: #ffffff;
+            }
+    </style>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVgJmOkAmCfI7J20ffVOMkvmNXGApRikI&signed_in=true&libraries=drawing&callback=initMap"></script>
+    <script type="text/javascript">
+        $("#tsg002_nave_industrial_cd_nave").removeAttr("data-val");
+        $("#tsg023_ni_precio_im_renta").removeAttr("data-val");
+        $("#tsg023_ni_precio_im_venta").removeAttr("data-val");
+        $("#tsg023_ni_precio_im_total").removeAttr("data-val");
+        $("#tsg023_ni_precio_nu_tipo_cambio").val(@ViewBag.TipoCambio);
+</script>
+
+
+}

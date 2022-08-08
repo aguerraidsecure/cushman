@@ -1,0 +1,51 @@
+﻿@model IEnumerable<wr_anit_cushman_one.Models.tsg045_imagenes_naves>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cd_nave)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nb_archivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tx_archivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fh_modif)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.cd_nave)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nb_archivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tx_archivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fh_modif)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.cd_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.cd_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.cd_id })
+        </td>
+    </tr>
+}
+
+</table>

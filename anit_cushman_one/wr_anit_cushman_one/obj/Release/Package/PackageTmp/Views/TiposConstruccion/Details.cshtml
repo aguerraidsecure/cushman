@@ -1,0 +1,37 @@
+﻿@model wr_anit_cushman_one.Models.tsg013_tp_construccion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="table-responsive container modal-content">
+    <h4 class="well"><strong>Detalle Tipo de Construcción</strong></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tipo Construcción
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nb_tp_construccion)
+        </dd>
+
+        <dt>
+            Fecha Modificación
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fh_modif)
+        </dd>
+
+    </dl>
+    <div class="form-group container">
+        <div class="col-md-offset-0 col-md-1">
+            @Html.ActionLink("Editar", "Edit", "TiposConstruccion", new { id = Model.cd_tp_construccion }, new { @class = "btn btn-danger btn-block" })
+        </div>
+        <div class="col-md-offset-0 col-md-2">
+            @Html.ActionLink("Regresar a la Lista", "Index", "TiposConstruccion", new { @class = "btn btn-danger btn-block" })
+        </div>
+    </div>
+</div>
+

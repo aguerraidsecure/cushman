@@ -1,0 +1,80 @@
+﻿@model wr_anit_cushman_one.Models.tsg030_usuarios
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>tsg030_usuarios</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tsg031_perfil.nb_perfil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tsg031_perfil.nb_perfil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nb_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nb_nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cd_jerarquia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cd_jerarquia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.st_usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.st_usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nb_usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nb_usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nb_password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nb_password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fh_modif)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fh_modif)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

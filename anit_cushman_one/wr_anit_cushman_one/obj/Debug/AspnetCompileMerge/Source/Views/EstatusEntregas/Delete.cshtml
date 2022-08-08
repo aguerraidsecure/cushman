@@ -1,0 +1,43 @@
+﻿@model wr_anit_cushman_one.Models.tsg017_st_entrega
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="table-responsive container modal-content">
+    <h4 class="well"><strong>¿Estas seguro de eliminar el registro?</strong></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Estatus Entrega
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nb_st_entrega)
+        </dd>
+
+        <dt>
+            Fecha de Modificación
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fh_modif)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group container">
+            <div class="col-md-offset-0 col-md-1">
+                <input type="submit" value="Eliminar" class="btn btn-danger" />
+            </div>
+            <div class="col-md-offset-0 col-md-2">
+                @Html.ActionLink("Regresar a la Lista", "Index", "EstatusEntregas", new { @class = "btn btn-danger btn-block" })
+            </div>
+        </div>
+    }
+</div>
+

@@ -1,0 +1,114 @@
+﻿@model wr_anit_cushman_one.Models.tsg028_te_contacto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tsg028_te_contacto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tsg001_terreno.nb_comercial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tsg001_terreno.nb_comercial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nb_propietario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nb_propietario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nu_telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nu_telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nb_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nb_email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nu_interior)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nu_interior)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cd_estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cd_estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cd_ciudad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cd_ciudad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cd_municipio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cd_municipio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cd_colonia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cd_colonia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nu_cp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nu_cp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.st_contacto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.st_contacto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fh_modif)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fh_modif)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.cd_contacto }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

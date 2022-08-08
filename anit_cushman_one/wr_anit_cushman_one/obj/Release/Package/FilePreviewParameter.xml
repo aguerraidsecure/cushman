@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="cushmanone" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\SICREX\\Desarrollo\\Proyectos\\DYMS\\anit_cushman_one\\wr_anit_cushman_one\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\SICREX\\Desarrollo\\Proyectos\\DYMS\\anit_cushman_one\\wr_anit_cushman_one\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="Cushman-Web.config Connection String" description="" value="data source= cushmanone.database.windows.net;initial catalog=cushmao1_one;persist security info=True;user id=cushman_one;password=pSzy63*3;MultipleActiveResultSets=True;App=EntityFramework" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\SICREX\\Desarrollo\\Proyectos\\DYMS\\anit_cushman_one\\wr_anit_cushman_one\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Cushman']/@connectionString" />
+  </parameter>
+</parameters>

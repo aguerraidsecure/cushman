@@ -1,0 +1,38 @@
+﻿@model wr_anit_cushman_one.Models.tsg019_cajon_est    
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="table-responsive container modal-content">
+    <h4 class="well"><strong>Detalle Cajones</strong></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Cajón
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nb_cajon_est)
+        </dd>
+
+        <dt>
+            Fecha Modificación
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fh_modif)
+        </dd>
+
+    </dl>
+
+    <div class="form-group container">
+        <div class="col-md-offset-0 col-md-1">
+            @Html.ActionLink("Editar", "Edit", "Cajones", new { id = Model.cd_cajon_est }, new { @class = "btn btn-danger btn-block" })
+        </div>
+        <div class="col-md-offset-0 col-md-2">
+            @Html.ActionLink("Regresar a la Lista", "Index", "Cajones", new { @class = "btn btn-danger btn-block" })
+        </div>
+    </div>
+
+</div>

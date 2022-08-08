@@ -1,0 +1,69 @@
+﻿@model IEnumerable<wr_anit_cushman_one.Models.tsg030_usuarios>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.tsg031_perfil.nb_perfil)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nb_nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cd_jerarquia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.st_usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nb_usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nb_password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fh_modif)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tsg031_perfil.nb_perfil)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nb_nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cd_jerarquia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.st_usuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nb_usuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nb_password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fh_modif)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.cd_usuario_ }) |
+            @Html.ActionLink("Details", "Details", new { id=item.cd_usuario_ }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.cd_usuario_ })
+        </td>
+    </tr>
+}
+
+</table>

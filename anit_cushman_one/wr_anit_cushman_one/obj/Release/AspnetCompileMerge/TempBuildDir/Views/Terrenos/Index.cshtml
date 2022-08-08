@@ -1,0 +1,117 @@
+﻿@model IEnumerable<wr_anit_cushman_one.Models.tsg001_terreno>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.tsg007_mercado.nb_mercado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tsg008_corredor_ind.nb_corredor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nb_comercial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nb_calle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nu_direcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nu_cp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cd_estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cd_ciudad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cd_municipio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cd_colonia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.st_parque_ind)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nu_tamano)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nu_latitud_longitud)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nu_poligono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fh_modif)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tsg007_mercado.nb_mercado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tsg008_corredor_ind.nb_corredor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nb_comercial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nb_calle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nu_direcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nu_cp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cd_estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cd_ciudad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cd_municipio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cd_colonia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.st_parque_ind)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nu_tamano)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nu_latitud_longitud)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nu_poligono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fh_modif)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.cd_terreno }) |
+            @Html.ActionLink("Details", "Details", new { id=item.cd_terreno }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.cd_terreno })
+        </td>
+    </tr>
+}
+
+</table>

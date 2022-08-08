@@ -1,0 +1,68 @@
+﻿@model PagedList.IPagedList<wr_anit_cushman_one.Models.tsg019_cajon_est>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="table-responsive container modal-content">
+    <div class="panel-heading ">
+        <h3 class="text-center active panel-title well"><strong>Catálogo Cajones Estacionamiento</strong></h3>
+    </div>
+
+    @using (Html.BeginForm("Index", "Cajones", FormMethod.Get))
+    {
+        <p>
+            Buscar por Cajón de estacionamiento: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+            <input type="submit" value="Buscar" class="btn btn-danger btn-md" />
+            @Html.ActionLink("Nuevo Registro", "Create", "Cajones", new { @class = "btn btn-danger btn-md" })
+            <a class="btn btn-danger" href="~/Cajones/Index" role="button">Recargar</a>
+        </p>
+    }
+
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.nb_estado)*@
+                @Html.ActionLink("Cajón", "Index", new { sortOrder = ViewBag.EstadoSortParam, currentFilter = ViewBag.CurrentFilter }, new { Style = "color: #b94a48;" })
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.fh_modif)*@
+                @Html.ActionLink("Fecha Modificación", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter }, new { Style = "color: #b94a48;" })
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nb_cajon_est)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fh_modif)
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Edit", new { id = item.cd_cajon_est }, new { @class = "glyphicon glyphicon-edit" }) |
+                    @Html.ActionLink(" ", "Details", new { id = item.cd_cajon_est }, new { @class = "glyphicon glyphicon-list-alt" }) |
+                    @Html.ActionLink(" ", "Delete", new { id = item.cd_cajon_est }, new { @class = "glyphicon glyphicon-trash" })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <table style="color:brown"  class="table-condensed">
+        <tr>
+            <td>
+                Paginas @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.PagedListPager(Model, page => Url.Action("Index",
+            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+            </td>
+        </tr>
+    </table>
+</div>

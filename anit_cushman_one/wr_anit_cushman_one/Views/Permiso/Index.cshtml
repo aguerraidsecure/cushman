@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Model.Permiso>
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="table-responsive container modal-content">
+    <div class="panel-heading ">
+        <h3 class="text-center active panel-title well"><strong>Modulos</strong></h3>
+    </div>
+
+    <table class="table  table-striped table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Modulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Modulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+            </tr>
+        }
+
+    </table>
+    <br />
+</div>

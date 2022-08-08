@@ -1,0 +1,170 @@
+﻿@model IEnumerable<wr_anit_cushman_one.Models.tsg002_nave_industrial>
+
+@{
+    ViewBag.Title = "ExportarExcel";
+    var grdNavesInd = new WebGrid(source: Model, canPage:false);
+}
+
+<style type="text/css">
+    table.gridtable {
+        font-family: verdana, arial, sans-serif;
+        font-size: 11px;
+        color: #333333;
+        border-width: 1px;
+        border-color: #666666;
+        border-collapse: collapse;
+    }
+    table.gridtable th {
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #666666;
+        background-color: #dedede;
+    }
+    table.gridtable td {
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #666666;
+        background-color: #ffffff;
+    }
+</style>
+
+<h2>Naves Industriales</h2>
+<div>
+    Exportar Datos: @Html.ActionLink("Excel", "GetExcel", "ExportData")
+</div>
+<div>
+    @grdNavesInd.GetHtml(
+        tableStyle: "gridtable",
+        columns: grdNavesInd.Columns(
+                grdNavesInd.Column("cd_mercado", "Mercado"),
+                grdNavesInd.Column("cd_corredor", "Corredor"),
+                grdNavesInd.Column("nb_parque", "Paque"),
+                grdNavesInd.Column("nb_nave", "Nombre Nave"),
+                grdNavesInd.Column("nb_calle", "Calle"),
+                grdNavesInd.Column("nu_direcion", "No."),
+                grdNavesInd.Column("nu_cp", "CP"),
+                grdNavesInd.Column("cd_estado", "Estado"),
+                grdNavesInd.Column("cd_municipio", "Municipio"),
+                grdNavesInd.Column("cd_colonia", "Colonia"),
+                grdNavesInd.Column("nb_dir_nave", "Direccion")
+
+            )
+    )
+</div>
+
+
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.tsg007_mercado.nb_mercado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tsg008_corredor_ind.nb_corredor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nb_parque)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nb_nave)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nb_calle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nu_direcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nu_cp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cd_estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cd_ciudad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cd_municipio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cd_colonia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.st_parque_ind)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nu_tamano)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fh_modif)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nb_posicion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nb_poligono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nb_dir_nave)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tsg007_mercado.nb_mercado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tsg008_corredor_ind.nb_corredor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nb_parque)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nb_nave)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nb_calle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nu_direcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nu_cp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cd_estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cd_ciudad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cd_municipio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cd_colonia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.st_parque_ind)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nu_tamano)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fh_modif)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nb_posicion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nb_poligono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nb_dir_nave)
+        </td>       
+    </tr>
+}
+
+</table>*@

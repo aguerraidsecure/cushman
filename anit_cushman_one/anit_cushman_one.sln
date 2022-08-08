@@ -1,0 +1,79 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29403.142
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "anit_cushman_one", "anit_cushman_one\anit_cushman_one.ccproj", "{91AA170D-FDCC-401E-9DDE-808F9CF67C7A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wr_anit_cushman_one", "wr_anit_cushman_one\wr_anit_cushman_one.csproj", "{0B4D9490-3860-47DB-800F-2628D4596979}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wr_anit_cushman_one.Tests", "wr_anit_cushman_one.Tests\wr_anit_cushman_one.Tests.csproj", "{B7798489-C3E5-4710-B28D-11DE043BA458}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helper", "Helper\Helper.csproj", "{99EAECDF-A49C-492F-ADD1-F3765C14F686}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{59BD7BF7-9418-475A-BDBF-B81A87B1852D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPTReport", "PPTReport\PPTReport.csproj", "{7B3195F5-04DB-4278-B602-1F19445A5090}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{91AA170D-FDCC-401E-9DDE-808F9CF67C7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91AA170D-FDCC-401E-9DDE-808F9CF67C7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91AA170D-FDCC-401E-9DDE-808F9CF67C7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91AA170D-FDCC-401E-9DDE-808F9CF67C7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B4D9490-3860-47DB-800F-2628D4596979}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B4D9490-3860-47DB-800F-2628D4596979}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B4D9490-3860-47DB-800F-2628D4596979}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B4D9490-3860-47DB-800F-2628D4596979}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7798489-C3E5-4710-B28D-11DE043BA458}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7798489-C3E5-4710-B28D-11DE043BA458}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7798489-C3E5-4710-B28D-11DE043BA458}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7798489-C3E5-4710-B28D-11DE043BA458}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99EAECDF-A49C-492F-ADD1-F3765C14F686}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99EAECDF-A49C-492F-ADD1-F3765C14F686}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99EAECDF-A49C-492F-ADD1-F3765C14F686}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99EAECDF-A49C-492F-ADD1-F3765C14F686}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59BD7BF7-9418-475A-BDBF-B81A87B1852D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59BD7BF7-9418-475A-BDBF-B81A87B1852D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59BD7BF7-9418-475A-BDBF-B81A87B1852D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59BD7BF7-9418-475A-BDBF-B81A87B1852D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B3195F5-04DB-4278-B602-1F19445A5090}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B3195F5-04DB-4278-B602-1F19445A5090}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B3195F5-04DB-4278-B602-1F19445A5090}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B3195F5-04DB-4278-B602-1F19445A5090}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {571D59AA-42D8-400B-A940-03C345ECDCDE}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 7
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://cushman.visualstudio.com/
+		SccProjectUniqueName0 = wr_anit_cushman_one.Tests\\wr_anit_cushman_one.Tests.csproj
+		SccProjectName0 = wr_anit_cushman_one.Tests
+		SccLocalPath0 = wr_anit_cushman_one.Tests
+		SccProjectUniqueName1 = Helper\\Helper.csproj
+		SccProjectName1 = Helper
+		SccLocalPath1 = Helper
+		SccProjectUniqueName2 = Model\\Model.csproj
+		SccProjectName2 = Model
+		SccLocalPath2 = Model
+		SccProjectUniqueName3 = anit_cushman_one\\anit_cushman_one.ccproj
+		SccProjectName3 = anit_cushman_one
+		SccLocalPath3 = anit_cushman_one
+		SccLocalPath4 = .
+		SccProjectUniqueName5 = PPTReport\\PPTReport.csproj
+		SccProjectName5 = PPTReport
+		SccLocalPath5 = PPTReport
+		SccProjectUniqueName6 = wr_anit_cushman_one\\wr_anit_cushman_one.csproj
+		SccProjectName6 = wr_anit_cushman_one
+		SccLocalPath6 = wr_anit_cushman_one
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,35 @@
+﻿@model wr_anit_cushman_one.Models.tsg039_colonias
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="table-responsive container modal-content">
+    <table class="nav-justified table-responsive table-condensed">
+        <tr>
+            <td><div>Estado</div></td>
+            <td>
+                <div class="form-group">
+                    <div>@Html.DropDownListFor(model => model.cd_estado, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><div>Municipio:</div></td>
+            <td>
+                <div class="form-group">
+                    <div>@Html.DropDownListFor(model => model.cd_municipio, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })</div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><div>Colonia:</div></td>
+            <td>
+                <div class="form-group">
+                    <div>@Html.DropDownListFor(model => model.cd_colonia, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })</div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

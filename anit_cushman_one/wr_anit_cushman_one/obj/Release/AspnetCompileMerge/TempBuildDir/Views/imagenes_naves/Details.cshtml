@@ -1,0 +1,50 @@
+﻿@model wr_anit_cushman_one.Models.tsg045_imagenes_naves
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tsg045_imagenes_naves</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cd_nave)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cd_nave)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nb_archivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nb_archivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tx_archivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tx_archivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fh_modif)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fh_modif)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.cd_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

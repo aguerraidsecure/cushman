@@ -1,0 +1,42 @@
+﻿@model wr_anit_cushman_one.Models.tsg014_tp_lampara
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="table-responsive container modal-content">
+    <h4 class="well"><strong>¿Estas seguro de eliminar el registro?</strong></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tipos Lamparas
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nb_tp_lampara)
+        </dd>
+
+        <dt>
+            Fecha de Modificación
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fh_modif)
+        </dd>
+
+    </dl>
+    <hr />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group container">
+            <div class="col-md-offset-0 col-md-1">
+                <input type="submit" value="Eliminar" class="btn btn-danger" />
+            </div>
+            <div class="col-md-offset-0 col-md-2">
+                @Html.ActionLink("Regresar a la Lista", "Index", "TiposLamparas", new { @class = "btn btn-danger btn-block" })
+            </div>
+        </div>
+    }
+</div>

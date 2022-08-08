@@ -1,0 +1,120 @@
+﻿@model wr_anit_cushman_one.Models.tsg028_te_contacto
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>tsg028_te_contacto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tsg001_terreno.nb_comercial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tsg001_terreno.nb_comercial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nb_propietario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nb_propietario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nu_telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nu_telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nb_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nb_email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nu_interior)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nu_interior)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cd_estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cd_estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cd_ciudad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cd_ciudad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cd_municipio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cd_municipio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cd_colonia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cd_colonia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nu_cp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nu_cp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.st_contacto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.st_contacto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fh_modif)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fh_modif)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,43 @@
+﻿@model wr_anit_cushman_one.Models.tsg042_Nivel_Piso
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="table-responsive container modal-content">
+    <h4 class="well"><strong>Detalle de Nivel Piso</strong></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Nivel Piso
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nb_nivel_piso)
+        </dd>
+
+        <dt>
+            Fecha de Modificación
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fh_modif)
+        </dd>
+
+    </dl>
+
+
+
+    <div class="form-group container">
+        <div class="col-md-offset-0 col-md-1">
+            @Html.ActionLink("Editar", "Edit", "tptech", new { id = Model.cd_nivel_piso }, new { @class = "btn btn-danger btn-block" })
+        </div>
+        <div class="col-md-offset-0 col-md-2">
+            @Html.ActionLink("Regresar a la Lista", "Index", "Nivel_Piso", new { @class = "btn btn-danger btn-block" })
+        </div>
+    </div>
+
+
+
+</div>
+

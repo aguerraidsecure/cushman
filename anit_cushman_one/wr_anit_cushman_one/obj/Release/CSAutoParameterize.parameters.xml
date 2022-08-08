@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="Cushman-Web.config Connection String" description="Cushman Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="data source= cushmanone.database.windows.net;initial catalog=cushmao1_one;persist security info=True;user id=cushman_one;password=pSzy63*3;MultipleActiveResultSets=True;App=EntityFramework" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\SICREX\\Desarrollo\\Proyectos\\DYMS\\anit_cushman_one\\wr_anit_cushman_one\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Cushman']/@connectionString" />
+  </parameter>
+</parameters>

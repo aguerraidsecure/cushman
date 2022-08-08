@@ -1,0 +1,140 @@
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\7- Vistas, Controladores\MiPrimerProyectoMVC\Model\bin\Debug\Model.dll
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\7- Vistas, Controladores\MiPrimerProyectoMVC\Model\bin\Debug\Model.pdb
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\7- Vistas, Controladores\MiPrimerProyectoMVC\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\7- Vistas, Controladores\MiPrimerProyectoMVC\Model\obj\Debug\Model.dll
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\7- Vistas, Controladores\MiPrimerProyectoMVC\Model\obj\Debug\Model.pdb
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\8- Enviando parámetros a la vista desde el controlador y viceversa\MiPrimerProyectoMVC\Model\bin\Debug\Model.dll
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\8- Enviando parámetros a la vista desde el controlador y viceversa\MiPrimerProyectoMVC\Model\bin\Debug\Model.pdb
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\8- Enviando parámetros a la vista desde el controlador y viceversa\MiPrimerProyectoMVC\Model\obj\Debug\Model.dll
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\8- Enviando parámetros a la vista desde el controlador y viceversa\MiPrimerProyectoMVC\Model\obj\Debug\Model.pdb
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\9- Creando nuestro modelo de la DB Test\MiPrimerProyectoMVC\Model\bin\Debug\Model.dll
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\9- Creando nuestro modelo de la DB Test\MiPrimerProyectoMVC\Model\bin\Debug\Model.pdb
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\9- Creando nuestro modelo de la DB Test\MiPrimerProyectoMVC\Model\bin\Debug\EntityFramework.dll
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\9- Creando nuestro modelo de la DB Test\MiPrimerProyectoMVC\Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\9- Creando nuestro modelo de la DB Test\MiPrimerProyectoMVC\Model\bin\Debug\EntityFramework.xml
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\9- Creando nuestro modelo de la DB Test\MiPrimerProyectoMVC\Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\9- Creando nuestro modelo de la DB Test\MiPrimerProyectoMVC\Model\obj\Debug\Model.dll
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\9- Creando nuestro modelo de la DB Test\MiPrimerProyectoMVC\Model\obj\Debug\Model.pdb
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\10- Formulario y validacion\MiPrimerProyectoMVC\Model\bin\Debug\Model.dll
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\10- Formulario y validacion\MiPrimerProyectoMVC\Model\bin\Debug\Model.pdb
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\10- Formulario y validacion\MiPrimerProyectoMVC\Model\bin\Debug\EntityFramework.dll
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\10- Formulario y validacion\MiPrimerProyectoMVC\Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\10- Formulario y validacion\MiPrimerProyectoMVC\Model\bin\Debug\EntityFramework.xml
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\10- Formulario y validacion\MiPrimerProyectoMVC\Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\10- Formulario y validacion\MiPrimerProyectoMVC\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\10- Formulario y validacion\MiPrimerProyectoMVC\Model\obj\Debug\Model.dll
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\10- Formulario y validacion\MiPrimerProyectoMVC\Model\obj\Debug\Model.pdb
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\12- Enviando el formulario mediante AJAX\MiPrimerProyectoMVC\Model\bin\Debug\Model.dll
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\12- Enviando el formulario mediante AJAX\MiPrimerProyectoMVC\Model\bin\Debug\Model.pdb
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\12- Enviando el formulario mediante AJAX\MiPrimerProyectoMVC\Model\bin\Debug\EntityFramework.dll
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\12- Enviando el formulario mediante AJAX\MiPrimerProyectoMVC\Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\12- Enviando el formulario mediante AJAX\MiPrimerProyectoMVC\Model\bin\Debug\EntityFramework.xml
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\12- Enviando el formulario mediante AJAX\MiPrimerProyectoMVC\Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\12- Enviando el formulario mediante AJAX\MiPrimerProyectoMVC\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\12- Enviando el formulario mediante AJAX\MiPrimerProyectoMVC\Model\obj\Debug\Model.dll
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\12- Enviando el formulario mediante AJAX\MiPrimerProyectoMVC\Model\obj\Debug\Model.pdb
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\13- Adjuntando cursos\MiPrimerProyectoMVC\Model\bin\Debug\Model.dll
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\13- Adjuntando cursos\MiPrimerProyectoMVC\Model\bin\Debug\Model.pdb
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\13- Adjuntando cursos\MiPrimerProyectoMVC\Model\bin\Debug\EntityFramework.dll
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\13- Adjuntando cursos\MiPrimerProyectoMVC\Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\13- Adjuntando cursos\MiPrimerProyectoMVC\Model\bin\Debug\EntityFramework.xml
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\13- Adjuntando cursos\MiPrimerProyectoMVC\Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\13- Adjuntando cursos\MiPrimerProyectoMVC\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\13- Adjuntando cursos\MiPrimerProyectoMVC\Model\obj\Debug\Model.dll
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\13- Adjuntando cursos\MiPrimerProyectoMVC\Model\obj\Debug\Model.pdb
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\14- Agregando adjuntos a un alumno\MiPrimerProyectoMVC\Model\bin\Debug\Model.dll
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\14- Agregando adjuntos a un alumno\MiPrimerProyectoMVC\Model\bin\Debug\Model.pdb
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\14- Agregando adjuntos a un alumno\MiPrimerProyectoMVC\Model\bin\Debug\EntityFramework.dll
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\14- Agregando adjuntos a un alumno\MiPrimerProyectoMVC\Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\14- Agregando adjuntos a un alumno\MiPrimerProyectoMVC\Model\bin\Debug\EntityFramework.xml
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\14- Agregando adjuntos a un alumno\MiPrimerProyectoMVC\Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\14- Agregando adjuntos a un alumno\MiPrimerProyectoMVC\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\14- Agregando adjuntos a un alumno\MiPrimerProyectoMVC\Model\obj\Debug\Model.dll
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\14- Agregando adjuntos a un alumno\MiPrimerProyectoMVC\Model\obj\Debug\Model.pdb
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\15- AnexGRID\MiPrimerProyectoMVC\Model\bin\Debug\Model.dll
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\15- AnexGRID\MiPrimerProyectoMVC\Model\bin\Debug\Model.pdb
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\15- AnexGRID\MiPrimerProyectoMVC\Model\bin\Debug\EntityFramework.dll
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\15- AnexGRID\MiPrimerProyectoMVC\Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\15- AnexGRID\MiPrimerProyectoMVC\Model\bin\Debug\EntityFramework.xml
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\15- AnexGRID\MiPrimerProyectoMVC\Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\15- AnexGRID\MiPrimerProyectoMVC\Model\obj\Debug\Model.dll
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\15- AnexGRID\MiPrimerProyectoMVC\Model\obj\Debug\Model.pdb
+D:\Mis Cursos\ASP.NET MVC Creando un portafolio profesional\15- AnexGRID\MiPrimerProyectoMVC\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\MiPrimerProyectoMVC\Model\bin\Debug\Model.dll
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\MiPrimerProyectoMVC\Model\bin\Debug\Model.pdb
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\MiPrimerProyectoMVC\Model\bin\Debug\EntityFramework.dll
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\MiPrimerProyectoMVC\Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\MiPrimerProyectoMVC\Model\bin\Debug\EntityFramework.xml
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\MiPrimerProyectoMVC\Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\MiPrimerProyectoMVC\Model\obj\Debug\Model.dll
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\MiPrimerProyectoMVC\Model\obj\Debug\Model.pdb
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\MiPrimerProyectoMVC\Model\bin\Debug\Helper.dll
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\MiPrimerProyectoMVC\Model\bin\Debug\Helper.pdb
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\MiPrimerProyectoMVC\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\MiPrimerProyectoMVC\Model\bin\Debug\Model.dll.config
+D:\Desarrollo\MVC\Ejemplos\Seguridad\MiPrimerProyectoMVC\Model\bin\Debug\Model.dll.config
+D:\Desarrollo\MVC\Ejemplos\Seguridad\MiPrimerProyectoMVC\Model\bin\Debug\Model.dll
+D:\Desarrollo\MVC\Ejemplos\Seguridad\MiPrimerProyectoMVC\Model\bin\Debug\Model.pdb
+D:\Desarrollo\MVC\Ejemplos\Seguridad\MiPrimerProyectoMVC\Model\bin\Debug\EntityFramework.dll
+D:\Desarrollo\MVC\Ejemplos\Seguridad\MiPrimerProyectoMVC\Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\Desarrollo\MVC\Ejemplos\Seguridad\MiPrimerProyectoMVC\Model\bin\Debug\Helper.dll
+D:\Desarrollo\MVC\Ejemplos\Seguridad\MiPrimerProyectoMVC\Model\bin\Debug\Helper.pdb
+D:\Desarrollo\MVC\Ejemplos\Seguridad\MiPrimerProyectoMVC\Model\bin\Debug\EntityFramework.xml
+D:\Desarrollo\MVC\Ejemplos\Seguridad\MiPrimerProyectoMVC\Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\Desarrollo\MVC\Ejemplos\Seguridad\MiPrimerProyectoMVC\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+D:\Desarrollo\MVC\Ejemplos\Seguridad\MiPrimerProyectoMVC\Model\obj\Debug\Model.dll
+D:\Desarrollo\MVC\Ejemplos\Seguridad\MiPrimerProyectoMVC\Model\obj\Debug\Model.pdb
+D:\Desarrollo\Proyectos\DYMS\anit_cushman_one\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+D:\Desarrollo\Proyectos\DYMS\anit_cushman_one\Model\obj\Debug\Model.dll
+D:\Desarrollo\Proyectos\DYMS\anit_cushman_one\Model\obj\Debug\Model.pdb
+D:\Desarrollo\Proyectos\DYMS\anit_cushman_one\Model\bin\Debug\Model.dll.config
+D:\Desarrollo\Proyectos\DYMS\anit_cushman_one\Model\bin\Debug\Model.dll
+D:\Desarrollo\Proyectos\DYMS\anit_cushman_one\Model\bin\Debug\Model.pdb
+D:\Desarrollo\Proyectos\DYMS\anit_cushman_one\Model\bin\Debug\EntityFramework.dll
+D:\Desarrollo\Proyectos\DYMS\anit_cushman_one\Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\Desarrollo\Proyectos\DYMS\anit_cushman_one\Model\bin\Debug\Helper.dll
+D:\Desarrollo\Proyectos\DYMS\anit_cushman_one\Model\bin\Debug\Helper.pdb
+D:\Desarrollo\Proyectos\DYMS\anit_cushman_one\Model\bin\Debug\EntityFramework.xml
+D:\Desarrollo\Proyectos\DYMS\anit_cushman_one\Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\SICREX\Desarrollo\Proyectos\DYMS\anit_cushman_one\Model\bin\Debug\Model.dll.config
+C:\SICREX\Desarrollo\Proyectos\DYMS\anit_cushman_one\Model\bin\Debug\Model.dll
+C:\SICREX\Desarrollo\Proyectos\DYMS\anit_cushman_one\Model\bin\Debug\Model.pdb
+C:\SICREX\Desarrollo\Proyectos\DYMS\anit_cushman_one\Model\bin\Debug\EntityFramework.dll
+C:\SICREX\Desarrollo\Proyectos\DYMS\anit_cushman_one\Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\SICREX\Desarrollo\Proyectos\DYMS\anit_cushman_one\Model\bin\Debug\Helper.dll
+C:\SICREX\Desarrollo\Proyectos\DYMS\anit_cushman_one\Model\bin\Debug\Helper.pdb
+C:\SICREX\Desarrollo\Proyectos\DYMS\anit_cushman_one\Model\bin\Debug\EntityFramework.xml
+C:\SICREX\Desarrollo\Proyectos\DYMS\anit_cushman_one\Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\SICREX\Desarrollo\Proyectos\DYMS\anit_cushman_one\Model\obj\Debug\Model.dll
+C:\SICREX\Desarrollo\Proyectos\DYMS\anit_cushman_one\Model\obj\Debug\Model.pdb
+C:\SICREX\Desarrollo\Proyectos\DYMS\anit_cushman_one\Model\obj\Debug\Model.csprojAssemblyReference.cache
+C:\SICREX\Desarrollo\Proyectos\DYMS\anit_cushman_one\Model\obj\Debug\Model.csproj.CopyComplete
+C:\SICREX\Desarrollo\Proyectos\DYMS\anit_cushman_one\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+C:\Desarrollo\Proyectos\Dyms\anit_cushman_one_08102020\anit_cushman_one\Model\bin\Debug\Model.dll.config
+C:\Desarrollo\Proyectos\Dyms\anit_cushman_one_08102020\anit_cushman_one\Model\bin\Debug\Model.dll
+C:\Desarrollo\Proyectos\Dyms\anit_cushman_one_08102020\anit_cushman_one\Model\bin\Debug\Model.pdb
+C:\Desarrollo\Proyectos\Dyms\anit_cushman_one_08102020\anit_cushman_one\Model\bin\Debug\EntityFramework.dll
+C:\Desarrollo\Proyectos\Dyms\anit_cushman_one_08102020\anit_cushman_one\Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Desarrollo\Proyectos\Dyms\anit_cushman_one_08102020\anit_cushman_one\Model\bin\Debug\Helper.dll
+C:\Desarrollo\Proyectos\Dyms\anit_cushman_one_08102020\anit_cushman_one\Model\bin\Debug\Helper.pdb
+C:\Desarrollo\Proyectos\Dyms\anit_cushman_one_08102020\anit_cushman_one\Model\bin\Debug\EntityFramework.xml
+C:\Desarrollo\Proyectos\Dyms\anit_cushman_one_08102020\anit_cushman_one\Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Desarrollo\Proyectos\Dyms\anit_cushman_one_08102020\anit_cushman_one\Model\obj\Debug\Model.csproj.AssemblyReference.cache
+C:\Desarrollo\Proyectos\Dyms\anit_cushman_one_08102020\anit_cushman_one\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+C:\Desarrollo\Proyectos\Dyms\anit_cushman_one_08102020\anit_cushman_one\Model\obj\Debug\Model.csproj.CopyComplete
+C:\Desarrollo\Proyectos\Dyms\anit_cushman_one_08102020\anit_cushman_one\Model\obj\Debug\Model.dll
+C:\Desarrollo\Proyectos\Dyms\anit_cushman_one_08102020\anit_cushman_one\Model\obj\Debug\Model.pdb
+D:\Persona\Proyectos\CUSHMAN\respaldo\anit_cushman_one\Model\bin\Debug\Model.dll.config
+D:\Persona\Proyectos\CUSHMAN\respaldo\anit_cushman_one\Model\bin\Debug\Model.dll
+D:\Persona\Proyectos\CUSHMAN\respaldo\anit_cushman_one\Model\bin\Debug\Model.pdb
+D:\Persona\Proyectos\CUSHMAN\respaldo\anit_cushman_one\Model\bin\Debug\EntityFramework.dll
+D:\Persona\Proyectos\CUSHMAN\respaldo\anit_cushman_one\Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\Persona\Proyectos\CUSHMAN\respaldo\anit_cushman_one\Model\bin\Debug\Helper.dll
+D:\Persona\Proyectos\CUSHMAN\respaldo\anit_cushman_one\Model\bin\Debug\Helper.pdb
+D:\Persona\Proyectos\CUSHMAN\respaldo\anit_cushman_one\Model\bin\Debug\EntityFramework.xml
+D:\Persona\Proyectos\CUSHMAN\respaldo\anit_cushman_one\Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\Persona\Proyectos\CUSHMAN\respaldo\anit_cushman_one\Model\obj\Debug\Model.csproj.AssemblyReference.cache
+D:\Persona\Proyectos\CUSHMAN\respaldo\anit_cushman_one\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+D:\Persona\Proyectos\CUSHMAN\respaldo\anit_cushman_one\Model\obj\Debug\Model.csproj.CopyComplete
+D:\Persona\Proyectos\CUSHMAN\respaldo\anit_cushman_one\Model\obj\Debug\Model.dll
+D:\Persona\Proyectos\CUSHMAN\respaldo\anit_cushman_one\Model\obj\Debug\Model.pdb

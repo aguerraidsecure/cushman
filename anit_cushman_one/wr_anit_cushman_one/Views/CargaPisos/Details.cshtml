@@ -1,0 +1,43 @@
+﻿@model wr_anit_cushman_one.Models.tsg011_carga_piso
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="table-responsive container modal-content">
+    <h4 class="well"><strong>Detalle Carga Piso</strong></h4>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Carga Piso
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nb_carga)
+        </dd>
+
+        <dt>
+            Fecha Modificación
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fh_modif)
+        </dd>
+
+    </dl>
+
+
+    <div class="form-group container">
+        <div class="col-md-offset-0 col-md-1">
+            @Html.ActionLink("Editar", "Edit", "CargaPisos", new { id = Model.cd_carga }, new { @class = "btn btn-danger btn-block" })
+        </div>
+        <div class="col-md-offset-0 col-md-2">
+            @Html.ActionLink("Regresar a la Lista", "Index", "CargaPisos", new { @class = "btn btn-danger btn-block" })
+        </div>
+    </div>
+
+</div>
+
+
+

@@ -1,0 +1,113 @@
+﻿@*@using Microsoft.Ajax.Utilities*@
+@model Model.Rol
+@{
+
+    ViewBag.Title = (Model.id > 0 ? Model.Nombre + " ": "Nuevo registro");
+    List<Model.Permiso > permisos = ViewBag.Permisos;
+}
+
+<ol class="breadcrumb">
+    <li><a href="~/Rol/Roles">Listado de Roles</a></li>
+    <li class="active">@(Model.id > 0 ? "Rol: " + Model.Nombre + " " : "Nuevo registro")</li>
+</ol>
+@section headtag
+{
+
+    <script src="@Url.Content("~/Scripts/jquery.form.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")"></script>
+}
+<div class="table-responsive container modal-content">
+
+    <!-- Nav tabs -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="informacion">
+
+            @using (Html.BeginForm("GuardarRol", "Rol", FormMethod.Post, new {id = "frm-rol"}))
+            {
+                @Html.HiddenFor(x => x.id)
+                <div class="panel panel-default well">                    
+                    <div class="panel-body">
+                        <div class="form-group">
+                            @Html.Label("Nombre del Rol")
+                            @Html.TextBoxFor(x => x.Nombre, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Nombre, null, new { @class = "label label-danger" })
+                        </div>                       
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">Seleccione las opciones a las que el usuario NO tiene Permisos</div>
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            @foreach (var c in permisos)
+                            {
+                                var tomado = false;
+                                foreach (var c2 in Model.Permiso)
+                                {
+                                    if (c.PermisoID == c2.PermisoID)
+                                    {
+                                        tomado = true;
+                                        break;
+                                    }
+                                }
+                                <li class="list-group-item">
+                                    <label><input type="checkbox" @(tomado ? "checked" : "") id="permisos_seleccionados" name="permisos_seleccionados" value="@(c.PermisoID)"/> @c.Descripcion</label>
+                                </li>
+                            }
+                        </ul>
+                        @Html.ValidationMessage("permisos", new {@class = "label label-danger", id = "permisos-validacion"})
+                    </div>
+                </div>
+                <div class="text-right">
+                    @*@if (Model.id > 0)
+                    {
+                        <a onclick="return confirm('¿Está SEGURO de eliminar este registro?');" href="~/home/eliminar/@Model.id" class="btn btn-danger">Eliminar</a>
+                    }*@
+                    <button type="submit" class="btn btn-danger">Guardar</button>
+                </div>
+            }
+
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+</div>
+
+<script type="text/javascript">
+    msgBoxImagePath = "/image/";
+    $(document)
+        .ready(function (){
+            $("#frm-rol").submit(function () {
+                var form = $(this);
+                if (form.validate()) {
+                    form.ajaxSubmit({
+                        dataType: 'JSON',
+                        type: 'POST',
+                        url: form.attr('action'),
+                        success: function (r) {
+                            if (r.response) {
+                                //window.location.href = r.redirect;
+                            }
+                            else {
+                                //$("#permisos-validacion").text(r.message)
+                                //                        .show();
+                                $.msgBox({
+                                    title: "ProyCushman",
+                                    content: r.message,
+                                    type: "alert"
+                                });
+                            }
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            alert(errorThrown);
+                        }
+                    });
+                }
+
+                return false;
+            })
+        });
+
+</script>

@@ -1,0 +1,115 @@
+﻿@model IEnumerable<wr_anit_cushman_one.Models.tsg028_te_contacto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="table-responsive">
+    <div class="panel-heading ">
+        <h3 class="text-center active panel-title">REGISTROS CONTACTOS</h3>
+    </div>
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>
+                Nombre Comercial <!-- @Html.DisplayNameFor(model => model.tsg001_terreno.nb_comercial)-->
+            </th>
+            <th>
+                Nombre Propietario <!--@Html.DisplayNameFor(model => model.nb_propietario)-->
+            </th>
+            <th>
+                N. Telefono <!--@Html.DisplayNameFor(model => model.nu_telefono)-->
+            </th>
+            <th>
+                email <!--@Html.DisplayNameFor(model => model.nb_email)-->
+            </th>
+            <th>
+                N. Interior <!--@Html.DisplayNameFor(model => model.nu_interior)-->
+            </th>
+            <th>
+                Estado <!--@Html.DisplayNameFor(model => model.cd_estado)-->
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cd_ciudad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cd_municipio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cd_colonia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nu_cp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.st_contacto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fh_modif)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tsg001_terreno.nb_comercial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nb_propietario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nu_telefono)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nb_email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nu_interior)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cd_estado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cd_ciudad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cd_municipio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cd_colonia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nu_cp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.st_contacto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fh_modif)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.cd_contacto }) |
+                    @Html.ActionLink("Detalle", "Details", new { id = item.cd_contacto }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.cd_contacto })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <table class="table">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="col-lg-2">@Html.ActionLink("Nuevo Registro", "Create", "TeContactos", new { @class = "btn btn-danger btn-block" })</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</div>
