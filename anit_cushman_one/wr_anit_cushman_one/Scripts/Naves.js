@@ -704,7 +704,7 @@ $(document)
         storeCargaCombo("/Utils/GetCdEstado", "tsg025_ni_contacto_A_cd_estado");
         storeCargaCombo("/Utils/GetCdEstado", "tsg025_ni_contacto_C_cd_estado");
         
-        $("#tsg002_nave_industrial_cd_corredor").select2({ placeholder: "Seleccione Corredor", width: "100%" });
+        /*$("#tsg002_nave_industrial_cd_corredor").select2({ placeholder: "Seleccione Corredor", width: "100%" });*/
 
         storeCargaCombo("/Utils/GetEstatus", "tsg002_nave_industrial_st_parque_ind");
         $("#tsg002_nave_industrial_st_parque_ind").select2({ placeholder: "Seleccione Estatus", width: "30%" });
@@ -757,7 +757,7 @@ $(document)
 
         storeCargaCombo("/Utils/GetMercados", "tsg002_nave_industrial_cd_mercado");
         //storeCargaCombo("/Utils/GetCdEstado", "tsg002_nave_industrial_cd_mercado");
-        $("#tsg002_nave_industrial_cd_mercado").select2({ placeholder: "Seleccione Mercado", width: "100%" });
+        /*$("#tsg002_nave_industrial_cd_mercado").select2({ placeholder: "Seleccione Mercado", width: "100%" });*/
 
         storeCargaCombo("/Utils/GetTipoMoneda", "tsg023_ni_precio_cd_moneda");
         $("#tsg023_ni_precio_cd_moneda").select2({ placeholder: "Seleccione Tipo Moneda", width: "30%" });
@@ -1702,15 +1702,15 @@ $(document)
                     "tsg002_nave_industrial_cd_municipio",
                     undefined);
                 //Se agrega el elemento vacio para poder desplegar que seleccione una opcion
-                $("#tsg002_nave_industrial_cd_colonia").select2({ placeholder: "Seleccione Colonia ", width: "100%" });
+               /* $("#tsg002_nave_industrial_cd_colonia").select2({ placeholder: "Seleccione Colonia ", width: "100%" });*/
                 //$("#cd_").select2({ placeholder: "Seleccione SubFamilia", width: "30%" });
                 return false;
             });
 
         //Recargar el plugin para que tenga la funcionalidad del componente
-        $("#tsg002_nave_industrial_cd_colonia").select2({ placeholder: "Seleccione Colonia", width: "100%" });
-        $("#tsg002_nave_industrial_cd_municipio").select2({ placeholder: "Seleccione Municipio", width: "100%" });
-        $("#tsg002_nave_industrial_cd_estado").select2({ placeholder: "Seleccione Estado", width: "100%" });
+        ////////////$("#tsg002_nave_industrial_cd_colonia").select2({ placeholder: "Seleccione Colonia", width: "100%" });
+        ////////////$("#tsg002_nave_industrial_cd_municipio").select2({ placeholder: "Seleccione Municipio", width: "100%" });
+        ////////////$("#tsg002_nave_industrial_cd_estado").select2({ placeholder: "Seleccione Estado", width: "100%" });
 
         $("#tsg002_nave_industrial_cd_colonia").change(function () {
             $("#tsg002_nave_industrial_cd_colonia_h").val($("#tsg002_nave_industrial_cd_colonia").val());
