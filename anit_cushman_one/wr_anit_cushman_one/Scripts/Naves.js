@@ -665,17 +665,19 @@ function convertir(id) {
 
 
 function borrar() {
+    console.log("Entro a borrar mapa");
     var x = document.getElementById("tsg002_nave_industrial_nb_posicion");
     x.value = "";
     var x1 = document.getElementById("tsg002_nave_industrial_nb_poligono");
     x1.value = "";
     initMap();
+    codeAddress();
 
-    if (!document.getElementById("tsg002_nave_industrial_nb_dir_nave").disabled) {
-        if (document.getElementById("tsg002_nave_industrial_nb_dir_nave").value != "") {
-            codeAddress();
-        }
-    }
+    //if (!document.getElementById("tsg002_nave_industrial_nb_dir_nave").disabled) {
+    //    if (document.getElementById("tsg002_nave_industrial_nb_dir_nave").value != "") {
+    //        codeAddress();
+    //    }
+    //}
 };
 
 
@@ -707,64 +709,64 @@ $(document)
         /*$("#tsg002_nave_industrial_cd_corredor").select2({ placeholder: "Seleccione Corredor", width: "100%" });*/
 
         storeCargaCombo("/Utils/GetEstatus", "tsg002_nave_industrial_st_parque_ind");
-        $("#tsg002_nave_industrial_st_parque_ind").select2({ placeholder: "Seleccione Estatus", width: "30%" });
+        //$("#tsg002_nave_industrial_st_parque_ind").select2({ placeholder: "Seleccione Estatus", width: "30%" });
 
         storeCargaCombo("/Utils/GetAreas", "tsg009_ni_dt_gral_cd_area");
-        $("#tsg009_ni_dt_gral_cd_area").select2({ placeholder: "Seleccione Area", width: "30%" });
+        /*$("#tsg009_ni_dt_gral_cd_area").select2({ placeholder: "Seleccione Area", width: "30%" });*/
 
         storeCargaCombo("/Utils/GetCargas", "tsg009_ni_dt_gral_cd_carga");
-        $("#tsg009_ni_dt_gral_cd_carga").select2({ placeholder: "Seleccione Carga", width: "30%" });
+        /*$("#tsg009_ni_dt_gral_cd_carga").select2({ placeholder: "Seleccione Carga", width: "30%" });*/
 
         storeCargaCombo("/Utils/GetSistInc", "tsg009_ni_dt_gral_cd_sist_inc");
-        $("#tsg009_ni_dt_gral_cd_sist_inc").select2({ placeholder: "Seleccione Sistema Incendio", width: "80%" });
+       /* $("#tsg009_ni_dt_gral_cd_sist_inc").select2({ placeholder: "Seleccione Sistema Incendio", width: "80%" });*/
 
         storeCargaCombo("/Utils/GetConstruccion", "tsg009_ni_dt_gral_cd_tp_construccion");
-        $("#tsg009_ni_dt_gral_cd_tp_construccion").select2({ placeholder: "Seleccione Construcciòn", width: "80%" });
+        /*$("#tsg009_ni_dt_gral_cd_tp_construccion").select2({ placeholder: "Seleccione Construcciòn", width: "80%" });*/
 
         storeCargaCombo("/Utils/GetLamparas", "tsg009_ni_dt_gral_cd_tp_lampara");
-        $("#tsg009_ni_dt_gral_cd_tp_lampara").select2({ placeholder: "Seleccione Lampara", width: "80%" });
+        /*$("#tsg009_ni_dt_gral_cd_tp_lampara").select2({ placeholder: "Seleccione Lampara", width: "80%" });*/
 
         storeCargaCombo("/Utils/GetHVAC", "tsg009_ni_dt_gral_cd_hvac");
-        $("#tsg009_ni_dt_gral_cd_hvac").select2({ placeholder: "Seleccione HVAC", width: "80%" });
+       /* $("#tsg009_ni_dt_gral_cd_hvac").select2({ placeholder: "Seleccione HVAC", width: "80%" });*/
 
         storeCargaCombo("/Utils/GetEspesor", "tsg009_ni_dt_gral_cd_espesor");
-        $("#tsg009_ni_dt_gral_cd_espesor").select2({ placeholder: "Seleccione Espesor", width: "30%" });
+        /*$("#tsg009_ni_dt_gral_cd_espesor").select2({ placeholder: "Seleccione Espesor", width: "30%" });*/
 
         storeCargaCombo("/Utils/GetIluminacion", "tsg009_ni_dt_gral_cd_ilum_nat");
-        $("#tsg009_ni_dt_gral_cd_ilum_nat").select2({ placeholder: "Seleccione Iluminaciòn", width: "80%" });
+        /*$("#tsg009_ni_dt_gral_cd_ilum_nat").select2({ placeholder: "Seleccione Iluminaciòn", width: "80%" });*/
 
         storeCargaCombo("/Utils/GetCajones", "tsg009_ni_dt_gral_cd_cajon_est");
-        $("#tsg009_ni_dt_gral_cd_cajon_est").select2({ placeholder: "Seleccione Cajón", width: "80%" });
+        /*$("#tsg009_ni_dt_gral_cd_cajon_est").select2({ placeholder: "Seleccione Cajón", width: "80%" });*/
 
         storeCargaCombo("/Utils/GetGas", "tsg020_ni_servicio_cd_tp_gas_natural");
-        $("#tsg020_ni_servicio_cd_tp_gas_natural").select2({ placeholder: "Seleccione Gas", width: "30%" });
+        /*$("#tsg020_ni_servicio_cd_tp_gas_natural").select2({ placeholder: "Seleccione Gas", width: "30%" });*/
 
         storeCargaCombo("/Utils/GetspFerr", "tsg020_ni_servicio_cd_esp_ferr");
-        $("#tsg020_ni_servicio_cd_esp_ferr").select2({ placeholder: "Seleccione Esp Ferr", width: "30%" });
+        /*$("#tsg020_ni_servicio_cd_esp_ferr").select2({ placeholder: "Seleccione Esp Ferr", width: "30%" });*/
 
         storeCargaCombo("/Utils/GetCondArrend", "tsg023_ni_precio_cd_cond_arr");
-        $("#tsg023_ni_precio_cd_cond_arr").select2({ placeholder: "Seleccione Arrendamiento", width: "30%" });
+        //$("#tsg023_ni_precio_cd_cond_arr").select2({ placeholder: "Seleccione Arrendamiento", width: "30%" });
 
 
         storeCargaCombo("/Utils/GettpTech", "tsg009_ni_dt_gral_cd_tp_tech");
-        $("#tsg009_ni_dt_gral_cd_tp_tech").select2({ placeholder: "Seleccione Tipo Techumbre", width: "30%" });
+        /*$("#tsg009_ni_dt_gral_cd_tp_tech").select2({ placeholder: "Seleccione Tipo Techumbre", width: "30%" });*/
 
         storeCargaCombo("/Utils/GetNivelPiso", "tsg009_ni_dt_gral_cd_Nivel_Piso");
-        $("#tsg009_ni_dt_gral_cd_Nivel_Piso").select2({ placeholder: "Seleccione Nivel Piso", width: "30%" });
+        /*$("#tsg009_ni_dt_gral_cd_Nivel_Piso").select2({ placeholder: "Seleccione Nivel Piso", width: "30%" });*/
 
         storeCargaCombo("/Utils/GetTelefonia", "tsg020_ni_servicio_cd_telefonia");
-        $("#tsg020_ni_servicio_cd_telefonia").select2({ placeholder: "Seleccione Telefonía", width: "30%" });
+        /*$("#tsg020_ni_servicio_cd_telefonia").select2({ placeholder: "Seleccione Telefonía", width: "30%" });*/
 
         storeCargaCombo("/Utils/GetMercados", "tsg002_nave_industrial_cd_mercado");
         //storeCargaCombo("/Utils/GetCdEstado", "tsg002_nave_industrial_cd_mercado");
         /*$("#tsg002_nave_industrial_cd_mercado").select2({ placeholder: "Seleccione Mercado", width: "100%" });*/
 
         storeCargaCombo("/Utils/GetTipoMoneda", "tsg023_ni_precio_cd_moneda");
-        $("#tsg023_ni_precio_cd_moneda").select2({ placeholder: "Seleccione Tipo Moneda", width: "30%" });
+        //$("#tsg023_ni_precio_cd_moneda").select2({ placeholder: "Seleccione Tipo Moneda", width: "30%" });
         storeCargaCombo("/Utils/GetTipoReporte", "tsg045_imagenes_naves_cd_reporte");
-        $("#tsg045_imagenes_naves_cd_reporte").select2({ placeholder: "Seleccione Reporte", width: "30%" });
+       /* $("#tsg045_imagenes_naves_cd_reporte").select2({ placeholder: "Seleccione Reporte", width: "30%" });*/
         storeCargaCombo("/Utils/GetTipoMoneda", "tsg023_ni_precio_cd_rep_moneda");
-        $("#tsg023_ni_precio_cd_rep_moneda").select2({ placeholder: "Seleccione Tipo Moneda", width: "30%" });
+   /*     $("#tsg023_ni_precio_cd_rep_moneda").select2({ placeholder: "Seleccione Tipo Moneda", width: "30%" });*/
 
 
         $("#nu_inventario").focus();
@@ -1761,15 +1763,15 @@ $(document)
                     "tsg025_ni_contacto_P_cd_municipio",
                     undefined);
                 //Se agrega el elemento vacio para poder desplegar que seleccione una opcion
-                $("#tsg025_ni_contacto_P_cd_colonia").select2({ placeholder: "Seleccione Colonia ", width: "100%" });
+                //$("#tsg025_ni_contacto_P_cd_colonia").select2({ placeholder: "Seleccione Colonia ", width: "100%" });
                 //$("#cd_").select2({ placeholder: "Seleccione SubFamilia", width: "30%" });
                 return false;
             });
 
         //Recargar el plugin para que tenga la funcionalidad del componente
-        $("#tsg025_ni_contacto_P_cd_colonia").select2({ placeholder: "Seleccione Colonia", width: "100%" });
-        $("#tsg025_ni_contacto_P_cd_municipio").select2({ placeholder: "Seleccione Municipio", width: "100%" });
-        $("#tsg025_ni_contacto_P_cd_estado").select2({ placeholder: "Seleccione Estado", width: "100%" });
+        //$("#tsg025_ni_contacto_P_cd_colonia").select2({ placeholder: "Seleccione Colonia", width: "100%" });
+        //$("#tsg025_ni_contacto_P_cd_municipio").select2({ placeholder: "Seleccione Municipio", width: "100%" });
+        //$("#tsg025_ni_contacto_P_cd_estado").select2({ placeholder: "Seleccione Estado", width: "100%" });
 
 
         $("#tsg025_ni_contacto_P_cd_colonia").change(function () {
@@ -1820,15 +1822,15 @@ $(document)
                     "tsg025_ni_contacto_A_cd_municipio",
                     undefined);
                 //Se agrega el elemento vacio para poder desplegar que seleccione una opcion
-                $("#tsg025_ni_contacto_A_cd_colonia").select2({ placeholder: "Seleccione Colonia ", width: "100%" });
+                //$("#tsg025_ni_contacto_A_cd_colonia").select2({ placeholder: "Seleccione Colonia ", width: "100%" });
                 //$("#cd_").select2({ placeholder: "Seleccione SubFamilia", width: "30%" });
                 return false;
             });
 
         //Recargar el plugin para que tenga la funcionalidad del componente
-        $("#tsg025_ni_contacto_A_cd_colonia").select2({ placeholder: "Seleccione Colonia", width: "100%" });
-        $("#tsg025_ni_contacto_A_cd_municipio").select2({ placeholder: "Seleccione Municipio", width: "100%" });
-        $("#tsg025_ni_contacto_A_cd_estado").select2({ placeholder: "Seleccione Estado", width: "100%" });
+        //$("#tsg025_ni_contacto_A_cd_colonia").select2({ placeholder: "Seleccione Colonia", width: "100%" });
+        //$("#tsg025_ni_contacto_A_cd_municipio").select2({ placeholder: "Seleccione Municipio", width: "100%" });
+        //$("#tsg025_ni_contacto_A_cd_estado").select2({ placeholder: "Seleccione Estado", width: "100%" });
 
         $("#tsg025_ni_contacto_A_cd_colonia").change(function () {
             $("#tsg002_nave_industrial_A_cd_colonia_h").val($("#tsg002_nave_industrial_A_cd_colonia").val());
@@ -1878,16 +1880,16 @@ $(document)
                     "tsg025_ni_contacto_C_cd_estado",
                     "tsg025_ni_contacto_C_cd_municipio",
                     undefined);
-                //Se agrega el elemento vacio para poder desplegar que seleccione una opcion
-                $("#tsg025_ni_contacto_C_cd_colonia").select2({ placeholder: "Seleccione Colonia ", width: "100%" });
+                ////Se agrega el elemento vacio para poder desplegar que seleccione una opcion
+                //$("#tsg025_ni_contacto_C_cd_colonia").select2({ placeholder: "Seleccione Colonia ", width: "100%" });
                 //$("#cd_").select2({ placeholder: "Seleccione SubFamilia", width: "30%" });
                 return false;
             });
 
         //Recargar el plugin para que tenga la funcionalidad del componente
-        $("#tsg025_ni_contacto_C_cd_colonia").select2({ placeholder: "Seleccione Colonia", width: "100%" });
-        $("#tsg025_ni_contacto_C_cd_municipio").select2({ placeholder: "Seleccione Municipio", width: "100%" });
-        $("#tsg025_ni_contacto_C_cd_estado").select2({ placeholder: "Seleccione Estado", width: "100%" });
+        //$("#tsg025_ni_contacto_C_cd_colonia").select2({ placeholder: "Seleccione Colonia", width: "100%" });
+        //$("#tsg025_ni_contacto_C_cd_municipio").select2({ placeholder: "Seleccione Municipio", width: "100%" });
+        //$("#tsg025_ni_contacto_C_cd_estado").select2({ placeholder: "Seleccione Estado", width: "100%" });
 
         $("#tsg025_ni_contacto_C_cd_colonia").change(function () {
             $("#tsg002_nave_industrial_C_cd_colonia_h").val($("#tsg002_nave_industrial_C_cd_colonia").val());
@@ -1905,10 +1907,11 @@ $(document)
         //*********** Parte de Google map ***************
 
         jQuery('#pasar').click(function () {
-            if (!document.getElementById("tsg002_nave_industrial_nb_nave").disabled) {
-                codeAddress();
-            }
-            return false;
+            //if (!document.getElementById("tsg002_nave_industrial_nb_nave").disabled) {
+            //    codeAddress();
+            //}
+            //return false;
+            codeAddress();
         });
         //Inicializamos la función de google maps una vez el DOM este cargado
         initMap();

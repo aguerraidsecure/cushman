@@ -25,7 +25,7 @@ function storeCargaCombo(Url, objComboLlenar, objComboPadre, ObjComboHijo, ObjCo
                 $("#" + objComboLlenar).append('<option value=""></option>');
             } else {
                 //Se agrega el elemento vacio para poder desplegar que seleccione una opcion
-                $("#" + objComboLlenar).append('<option value=""></option>');
+                /*$("#" + objComboLlenar).append('<option value=""></option>');*/
                 $.each(StoreData,
                     function (i, StoreData) {
                         $("#" + objComboLlenar)

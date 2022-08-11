@@ -3171,7 +3171,9 @@ namespace wr_anit_cushman_one.Controllers
         public JsonResult GetNavesAll()
         {
             List<object> tsi001_dts_naves = new List<object>();// db.tsg001_terreno.Select("new (cd_terreno, nb_comercial)");
-            var todo = db.tsg002_nave_industrial;//.Select("new (cd_terreno)");                
+            var todo = db.tsg002_nave_industrial;//.Select("new (cd_terreno)");
+            
+           
             if (todo.Count() > 0)
             {
                 foreach (var id in todo)
