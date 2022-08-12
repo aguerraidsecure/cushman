@@ -3172,8 +3172,10 @@ namespace wr_anit_cushman_one.Controllers
         {
             List<object> tsi001_dts_naves = new List<object>();// db.tsg001_terreno.Select("new (cd_terreno, nb_comercial)");
             var todo = db.tsg002_nave_industrial;//.Select("new (cd_terreno)");
-            
-           
+
+            //List<tsg002_nave_industrial> tsi001_dts_naves = db.tsg002_nave_industrial.ToList();
+
+
             if (todo.Count() > 0)
             {
                 foreach (var id in todo)
@@ -3184,7 +3186,7 @@ namespace wr_anit_cushman_one.Controllers
                              Select("new (cd_nave, nb_parque, nb_nave)"));
                 }
             }
-            return new JsonResult { Data = tsi001_dts_naves.ToList(), JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            return new JsonResult { Data = tsi001_dts_naves, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
         [HttpPost]
         public ActionResult GetNavesDisponible(string disp_desde_p, string disp_hasta_p)

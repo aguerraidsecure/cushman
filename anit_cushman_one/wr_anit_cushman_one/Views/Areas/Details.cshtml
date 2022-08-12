@@ -4,40 +4,41 @@
     ViewBag.Title = "Details";
 }
 
-<div class="table-responsive container modal-content">
-        <h4 class="well"><strong>Detalle de Areas</strong></h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                Areas
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.nb_area)
-            </dd>
-
-            <dt>
-                Fecha de Modificación
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.fh_modif)
-            </dd>
-
-        </dl>
-     
-
-
-    <div class="form-group container">
-        <div class="col-md-offset-0 col-md-1">
-            @Html.ActionLink("Editar", "Edit", "Areas", new { id = Model.cd_area }, new { @class = "btn btn-danger btn-block" })
-        </div>
-        <div class="col-md-offset-0 col-md-2">
-            @Html.ActionLink("Regresar a la Lista", "Index", "Areas", new { @class = "btn btn-danger btn-block" })
+<div class="row mt-3">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <div class="card  bg-primary bg-opacity-10">
+            <div class="card-header bg-primary bg-opacity-75 text-white fw-bold">
+                Detalle de áreas
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-floating mb-3">
+                            @Html.EditorFor(model => model.nb_area, new {  htmlAttributes = new { @class = "form-control", placeholder = "Nombre área" , disabled = "disabled" } })
+                            <label for="floatingInput" class="fw-bold text-center">Nombre área</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-floating mb-3">
+                            @Html.EditorFor(model => model.fh_modif, new { disabled = "disabled", htmlAttributes = new { @class = "form-control", placeholder = "Fecha de Modificación" } })
+                            <label for="floatingInput" class="fw-bold text-center">Fecha de Modificación</label>
+                        </div>
+                          
+                    </div>
+                 </div>
+            </div>
+            <div class="card-footer text-center">
+                
+                    @Html.ActionLink("Editar", "Edit", "Areas", new { id = Model.cd_area }, new { @class = "btn btn-danger btn-block" })
+                
+                    @Html.ActionLink("Regresar a la Lista", "Index", "Areas", new { @class = "btn btn-danger btn-block" })
+               
+            </div>
         </div>
     </div>
-
-
-
+    <div class="col-sm-4"></div>
 </div>
+
+
 

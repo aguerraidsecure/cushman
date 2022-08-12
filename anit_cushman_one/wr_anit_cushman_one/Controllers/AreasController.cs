@@ -18,6 +18,13 @@ namespace wr_anit_cushman_one.Controllers
     {
         private CushmanContext db = new CushmanContext();
         tsg029_bitacora_mov tsg029_bitacora_mov = new tsg029_bitacora_mov();
+
+        tsg010_area_of tsg010_area_of;
+
+        public AreasController()
+        {
+            tsg010_area_of = new tsg010_area_of();
+        }
         // GET: Areas
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
@@ -85,7 +92,7 @@ namespace wr_anit_cushman_one.Controllers
         public ActionResult Create()
         {
             ViewBag.UsuarioActivo = true;
-            return View();
+            return View(tsg010_area_of);
         }
 
         // POST: Areas/Create

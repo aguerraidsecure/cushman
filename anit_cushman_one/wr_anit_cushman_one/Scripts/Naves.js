@@ -166,9 +166,10 @@ function storeCargaTerrenos(Url) {
         $.ajax({
             type: 'POST',
             url: '/Naves/GetNavesDisponible',
-            datatype: "text",
+            datatype: "json",
             data: data,
             success: function (StoreData) {
+                console.log(StroeData);
                 if (StoreData.length === 0) {
                     alert("No hay datos");
                 } else {
@@ -187,7 +188,9 @@ function storeCargaTerrenos(Url) {
     }
     else {
         var data = {};
+        console.log(Url);
         data = JSON.stringify($('#frm-naves').serializeObject());
+        console.log({data});
 
         $.ajax({
             type: 'POST',
@@ -199,6 +202,7 @@ function storeCargaTerrenos(Url) {
             data: data,
             //En caso de resultado exitosos
             success: function (StoreData) {
+                console.log(StoreData);
                 if (StoreData.length === 0) {
                     alert("No hay datos");
                 } else {
@@ -207,6 +211,7 @@ function storeCargaTerrenos(Url) {
             },
             //Mensaje de error en caso de fallo
             error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textSataus);
                 $.msgBox({
                     title: "Naves",
                     content: "Error en el servidor: " + errorThrown,
@@ -219,6 +224,7 @@ function storeCargaTerrenos(Url) {
 
 function loadData(dataStoreData) {
 
+    console.log(dataStoreData);
 
     var tab = $('<table class="table"></table>');
     var thead = $('<thead></thead>');
@@ -248,7 +254,7 @@ function loadData(dataStoreData) {
                 .html('<a class="btn btn-primary" role="button"  href="/Naves/Create/' + val[0].cd_nave + '"> editar</a>');
             trow.append(th_link);
 
-            tbody.append(row);
+            tbody.append(trow);
         });
 
     tab.append(tbody);
