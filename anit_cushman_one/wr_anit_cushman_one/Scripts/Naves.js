@@ -220,7 +220,7 @@ function storeCargaTerrenos(Url) {
 function loadData(dataStoreData) {
 
 
-    var tab = $('<table class= "table table-striped table-hover"></table>');
+    var tab = $('<table class="table"></table>');
     var thead = $('<thead></thead>');
     var trowh = $('<tr class="bg-primary"></tr>');
     trowh.append('<th>Id</th>');
@@ -232,16 +232,23 @@ function loadData(dataStoreData) {
     var tbody = $('<tbody></tbody>');
     $.each(dataStoreData,
         function (i, val) {
+
+            var row = `<tr>
+                            <td>E${ val[0].cd_nave }</td>
+                            <td>E${ val[0].nb_parque }</td>
+                            <td>E${ val[0].nb_nave }</td>
+                             <td><button class="btn btn-primary">Editar</button></td>
+                       </tr>`;
             var trow = $('<tr></tr>');
             trow.append('<td>E' + val[0].cd_nave + '</td>');
             trow.append('<td>' + val[0].nb_parque + '</td>');
             trow.append('<td>' + val[0].nb_nave + '</td>');
             var th_link = $('<td><t/d>');
             th_link
-                .html('<a class="glyphicon glyphicon-edit" href="/Naves/Create/' + val[0].cd_nave + '"> </a>');
+                .html('<a class="btn btn-primary" role="button"  href="/Naves/Create/' + val[0].cd_nave + '"> editar</a>');
             trow.append(th_link);
 
-            tbody.append(trow);
+            tbody.append(row);
         });
 
     tab.append(tbody);

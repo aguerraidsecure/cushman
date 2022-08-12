@@ -14,7 +14,7 @@
     <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")"></script>
     
 }
-<div id="console-log"></div>
+@*<div id="console-log"></div>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content panel panel-warning">
@@ -33,8 +33,31 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 
+
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="modalBusqueda" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Búsqueda de Naves</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body modal-dialog modal-dialog-scrollable">
+                
+                <div id="findNaves">
+                    Cargando Contenido ...
+                </div>
+                
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
 
 @using (Html.BeginForm("Create", "Naves", FormMethod.Post, new { enctype = "multipart/form-data", id = "frm-naves" }))
 {
@@ -61,7 +84,7 @@
                             <div class="btn-group">
                                 @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Buscar_NI))
                                 {
-                                    <button type="button" data-url='@Url.Action("Buscar", "Naves")' id="btnBuscarTodo" name="Command" value="Buscar" class="btn btn-primary rounded-pill" data-tooltip title="Búsqueda Básica">
+                                    <button type="button" data-url='@Url.Action("Buscar", "Naves")' id="btnBuscarTodo" name="Command" value="Buscar" class="btn btn-primary rounded-pill" data-tooltip title="Búsqueda Básica" data-bs-toggle="modal" data-bs-target="#myModal">
                                         <i class="fa fa-eye" aria-hidden="true"></i> Búsqueda básica
                                     </button>
 
@@ -178,9 +201,9 @@
                                                         <div class="row">
                                                             <div class="col-sm-12">
                                                                 <div class="form-floating input-group mb-2">
-                                                                    <input type="text" class="form-control" id="folioInput" placeholder="Folio" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                                                    <input type="text" class="form-control" id="folio" value=@ViewBag.Folio placeholder="Folio" aria-label="Recipient's username" aria-describedby="btnBuscarFolio">
                                                                     <label for="folioInput">Folio</label>
-                                                                    <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fa fa-search"></i></button>
+                                                                    <button class="btn btn-outline-secondary" type="button" id="btnBuscarFolio"><i class="fa fa-search"></i></button>
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-12">
@@ -975,9 +998,19 @@
                                                         <div class="row">
                                                             <div class="col-sm-12 mt-3">
                                                                 <div class="form-floating">
-                                                                    @Html.DropDownListFor(model => model.tsg045_imagenes_naves.cd_reporte, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
-                                                                    <label for="floatingSelect">Tipo reporte</label>
+                                                                    @Html.DropDownListFor(model => model.tsg045_imagenes_naves.cd_reporte, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } }, new { @class = "form-select" })
+                                                                    <label for="tipo_reporte">Tipo reporte</label>
                                                                 </div>
+                                                            </div>
+                                                            <div class="col-sm-12 mt-2">
+                                                                <label for="fileupload" class="form-label"></label>
+                                                                <input class="form-control btn-danger" type="file" id="fileupload" name="files[]" multiple>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <div id="Archivos_cushman"></div>
+                                                            </div>
+                                                            <div class="col-sm-12 mt-2">
+                                                                <div id="Archivos"></div>
                                                             </div>
                                                         </div>
                                                     </div>
