@@ -138,3 +138,17 @@ D:\Persona\Proyectos\CUSHMAN\respaldo\anit_cushman_one\Model\obj\Debug\Model.csp
 D:\Persona\Proyectos\CUSHMAN\respaldo\anit_cushman_one\Model\obj\Debug\Model.csproj.CopyComplete
 D:\Persona\Proyectos\CUSHMAN\respaldo\anit_cushman_one\Model\obj\Debug\Model.dll
 D:\Persona\Proyectos\CUSHMAN\respaldo\anit_cushman_one\Model\obj\Debug\Model.pdb
+E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\Model\bin\Debug\Model.dll.config
+E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\Model\bin\Debug\Model.dll
+E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\Model\bin\Debug\Model.pdb
+E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\Model\bin\Debug\EntityFramework.dll
+E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\Model\bin\Debug\EntityFramework.SqlServer.dll
+E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\Model\bin\Debug\Helper.dll
+E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\Model\bin\Debug\Helper.pdb
+E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\Model\bin\Debug\EntityFramework.xml
+E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\Model\bin\Debug\EntityFramework.SqlServer.xml
+E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\Model\obj\Debug\Model.csproj.AssemblyReference.cache
+E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\Model\obj\Debug\Model.csproj.CopyComplete
+E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\Model\obj\Debug\Model.dll
+E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\Model\obj\Debug\Model.pdb

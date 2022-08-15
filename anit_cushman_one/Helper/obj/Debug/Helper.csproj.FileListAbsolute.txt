@@ -24,3 +24,9 @@ C:\Desarrollo\Proyectos\Dyms\anit_cushman_one_08102020\anit_cushman_one\Helper\o
 C:\Desarrollo\Proyectos\Dyms\anit_cushman_one_08102020\anit_cushman_one\Helper\obj\Debug\Helper.csproj.CoreCompileInputs.cache
 C:\Desarrollo\Proyectos\Dyms\anit_cushman_one_08102020\anit_cushman_one\Helper\obj\Debug\Helper.dll
 C:\Desarrollo\Proyectos\Dyms\anit_cushman_one_08102020\anit_cushman_one\Helper\obj\Debug\Helper.pdb
+E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\Helper\bin\Debug\Helper.dll
+E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\Helper\bin\Debug\Helper.pdb
+E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\Helper\obj\Debug\Helper.csproj.AssemblyReference.cache
+E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\Helper\obj\Debug\Helper.csproj.CoreCompileInputs.cache
+E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\Helper\obj\Debug\Helper.dll
+E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\Helper\obj\Debug\Helper.pdb
