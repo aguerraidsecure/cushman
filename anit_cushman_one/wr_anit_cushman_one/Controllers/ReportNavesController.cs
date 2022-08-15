@@ -26,11 +26,18 @@ namespace wr_anit_cushman_one.Controllers
     {
         // GET: ReportNaves
         CushmanContext db = new CushmanContext();
+
+        tsg039_colonias tsg039_colonias;
+
+        public ReportNavesController()
+        {
+            tsg039_colonias = new tsg039_colonias();
+        }
         public ActionResult Index()
         {
             ViewBag.UsuarioActivo = true;
             ViewBag.disabled = true;
-            return View();
+            return View(tsg039_colonias);
         }
         [HttpPost]
         public ActionResult ReportePP(int cd_estado, int cd_municipio, int cd_colonia)

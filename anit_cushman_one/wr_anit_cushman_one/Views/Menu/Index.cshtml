@@ -1,7 +1,7 @@
-﻿<nav class="navbar justify-content-center navbar-expand-lg navbar-primary bg-primary text-white">
-    <div class="container-fluid">
+﻿<nav class="navbar navbar-expand-lg navbar-primary bg-primary text-white">
+    <div class="container-fluid justify-content-center">
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-12 me-5">
                 
                 <img src="~/image/logo_CW.png" />
                 <p style="text-align: left; margin-bottom: 0; font-size:xx-small">Cushman &amp; Wakefield &copy;Derechos Reservados</p>
@@ -10,16 +10,16 @@
         
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav justify-content-center pl-5 me-auto mb-2 mb-lg-0 text-center">
-                <li class="nav-item"><a class="nav-link text-white active" href="~/Home"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
+                <li class="nav-item"><a class="nav-link text-white active me-3" href="~/Home"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
                 @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Admon_BR))
                 {
-                    <li class="nav-item"><a class="nav-link text-white" href="~/Naves/Create">Naves industriales</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="~/Terrenos1/Crear">Terrenos</a></li>
+                    <li class="nav-item"><a class="nav-link text-white me-3" href="~/Naves/Create">Naves industriales</a></li>
+                    <li class="nav-item"><a class="nav-link text-white me-3" href="~/Terrenos1/Crear">Terrenos</a></li>
                 }
                 @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Catalogos))
                 {
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-white me-3" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Catálogos
                             <span class="caret"></span>
                         </a>
@@ -52,7 +52,7 @@
                 }
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle text-white me-3" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Reportes
                         <span class="caret"></span>
                     </a>
@@ -66,13 +66,13 @@
                 </li>
                 @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Bitacoras))
                 {
-                    <li class="nav-item"><a class="nav-link text-white" href="~/BitacoraMov">Bitácora</a></li>
+                    <li class="nav-item"><a class="nav-link text-white me-3" href="~/BitacoraMov">Bitácora</a></li>
 
                 }
                
                 @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Seguridad))
                 {
-                    <li class="nav-item justify-content-center dropdown">
+                    <li class="nav-item justify-content-center dropdown me-3">
                         <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Seguridad
                             <span class="caret"></span>

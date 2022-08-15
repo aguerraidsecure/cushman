@@ -59,12 +59,12 @@
         <img src="~/image/logo_CW.png"/>
         <h5></h5>
 </div>*@
-    <div id="container menu">
+    @*<div id="container menu">*@
         @if (ViewBag.UsuarioActivo == true)
         {
             @RenderPage("../Menu/Index.cshtml")
         }
-    </div>
+    @*</div>*@
     
     <div id="body" class="body-content" >
         @RenderBody()
