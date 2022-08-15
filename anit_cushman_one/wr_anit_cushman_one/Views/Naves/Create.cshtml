@@ -85,14 +85,14 @@
                             <div class="btn-group">
                                 @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Buscar_NI))
                                 {
-                                    <button type="button" data-url='@Url.Action("Buscar", "Naves")' id="btnBuscarTodo" name="Command" value="Buscar" class="btn btn-primary rounded-pill" data-tooltip title="Búsqueda Básica" data-bs-toggle="modal" data-bs-target="#myModal">
+                                    <button type="button" data-url='@Url.Action("Buscar", "Naves")' id="btnBuscarTodo" name="Command" value="Buscar" class="btn btn-outline-danger rounded-pill" data-tooltip title="Búsqueda Básica" data-bs-toggle="modal" data-bs-target="#myModal">
                                         <i class="fa fa-eye" aria-hidden="true"></i> Búsqueda básica
                                     </button>
 
                                 }
                                 @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Buscar_NI))
                                 {
-                                    <button type="button" data-url='@Url.Action("Buscar", "Naves")' id="btnBuscar" name="Command" value="Buscar" class="btn btn-primary rounded-pill" data-tooltip title="Buscar">
+                                    <button type="button" data-url='@Url.Action("Buscar", "Naves")' id="btnBuscar" name="Command" value="Buscar" class="btn btn-outline-danger rounded-pill" data-tooltip title="Buscar">
                                         <i class="fa fa-search" aria-hidden="true"></i> Búsqueda
                                     </button>
 
@@ -100,40 +100,40 @@
 
                                 @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Nuevo_NI))
                                 {
-                                    <button type="button" id="btnNuevo" name="Command" value="Nuevo" class="btn btn-primary  rounded-pill" data-tooltip title="Nuevo">
+                                    <button type="button" id="btnNuevo" name="Command" value="Nuevo" class="btn btn-outline-danger  rounded-pill" data-tooltip title="Nuevo">
                                         <i class="fa fa-file-o" aria-hidden="true"></i> Nuevo
                                     </button>
 
                                 }
                                 @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Editar_NI))
                                 {
-                                    <button type="button" id="btnEditar" name="Command" value="Editar" class="btn btn-primary rounded-pill" data-tooltip title="Editar">
+                                    <button type="button" id="btnEditar" name="Command" value="Editar" class="btn btn-outline-danger rounded-pill" data-tooltip title="Editar">
                                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar
                                     </button>
                                 }
                                 @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Editar_NI))
                                 {
-                                    <button type="button" id="btnCopiar" name="Command" value="Editar" class="btn btn-primary  rounded-pill" data-tooltip data-toggle="tooltip" title="Copiar">
+                                    <button type="button" id="btnCopiar" name="Command" value="Editar" class="btn btn-outline-danger  rounded-pill" data-tooltip data-toggle="tooltip" title="Copiar">
                                         <i class="fa fa-files-o" aria-hidden="true"></i> Copiar
                                     </button>
 
                                 }
                                 @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Guardar_NI))
                                 {
-                                    <button type="submit" id="btnGuardar" name="Command" value="Guardar" class="btn btn-primary  rounded-pill" data-tooltip title="Guardar">
+                                    <button type="submit" id="btnGuardar" name="Command" value="Guardar" class="btn btn-outline-danger  rounded-pill" data-tooltip title="Guardar">
                                         <i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar
                                     </button>
                                 }
                                 @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Eliminar_NI))
                                 {
-                                    <button type="button" id="btnEliminar" name="Command" value="Eliminar" class="btn btn-primary  rounded-pill" data-tooltip title="Eliminar">
+                                    <button type="button" id="btnEliminar" name="Command" value="Eliminar" class="btn btn-outline-danger  rounded-pill" data-tooltip title="Eliminar">
                                         <i class="fa fa-trash-o" aria-hidden="true"></i> Eliminar
                                     </button>
                                 }
                                 @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_PDF_NI))
                                 {
                                     <div class="dropdown">
-                                        <button class="btn btn-primary dropdown-toggle rounded-pill" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <button class="btn btn-outline-danger dropdown-toggle rounded-pill" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                                             Reporte individual
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
@@ -144,7 +144,7 @@
                                     </div>
 
                                 }
-                                <button type="button" id="btnPpt" name="Command" value="Ppt" class="btn btn-primary  rounded-pill" data-tooltip title="Reporte Individual Power point">
+                                <button type="button" id="btnPpt" name="Command" value="Ppt" class="btn btn-outline-danger  rounded-pill" data-tooltip title="Reporte Individual Power point">
                                     <i class="fa fa-sign-out" aria-hidden="true"></i> Salir
                                 </button>
                                 @*@Html.ActionLink(" ", "iniCreate", "", new { @class = "fa fa-sign-out", data_toggle = "tooltip", data_placement = "right", title = "Inicio" })*@
