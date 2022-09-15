@@ -2070,7 +2070,111 @@ function initMap() {
     });
 
 }
+function initMap2() {
 
+    //$.ajax({
+    //    type: 'GET',
+    //    url: "/Naves/Index",
+        
+    //    success: function (storedata) {
+    //        console.log(storeData);
+    //    }
+    //});
+
+    $.get("/Naves/getNavesMapas", function (data) {
+        
+        
+        console.log(data);
+
+
+        try {
+
+            
+            pos = 6;
+
+            var latLng = new google.maps.LatLng(24.090303, -102.415217);
+
+
+
+            //Definimos algunas opciones del mapa a crear
+            var myOptions = {
+                center: latLng,//centro del mapa
+                zoom: pos,//zoom del mapa
+                mapTypeId: google.maps.MapTypeId.ROADMAP //tipo de mapa, carretera, híbrido,etc
+            };
+
+            //creamos el mapa con las opciones anteriores y le pasamos el elemento div
+            map = new google.maps.Map(document.getElementById("googleMap"), myOptions);
+            
+            for (let i = 0; i < data.length; i++) {
+               
+
+                const coords = data[i].nb_posicion.split(',');
+
+                
+
+                const latLng = new google.maps.LatLng(coords[0], coords[1]);
+
+                const titulo = `<h1>${data[i].nb_nave}</h1>`
+                //const image = "../../image/pinCushman.png";
+                const infoWindow = new google.maps.InfoWindow();
+
+
+                const image = {
+                    url: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
+                    // This marker is 20 pixels wide by 32 pixels high.
+                    size: new google.maps.Size(20, 32),
+                    // The origin for this image is (0, 0).
+                    origin: new google.maps.Point(0, 0),
+                    // The anchor for this image is the base of the flagpole at (0, 32).
+                    anchor: new google.maps.Point(0, 32),
+                };
+
+                //const svgMarker = {
+                //    path: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
+                //    fillColor: "blue",
+                //    fillOpacity: 0.6,
+                //    strokeWeight: 0,
+                //    rotation: 0,
+                //    scale: 2,
+                //    anchor: new google.maps.Point(15, 30),
+                //};
+
+
+                marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map,
+                    title: titulo,
+                    animation: google.maps.Animation.DROP,
+                    icon: image,
+                    label: `${data[i].cd_nave}`,
+                    optimized: false,
+
+                });
+
+                marker.addListener("click", () => {
+                    infoWindow.close();
+                    infoWindow.setContent(marker.getTitle());
+                    infoWindow.setPosition(latLng);
+                    infoWindow.open(marker.getMap(), marker);
+                });
+
+            }
+
+        } catch (e) {
+            var iError = e.number;
+        }
+    });
+
+    
+
+
+
+};
+
+function navexId() {
+    console.log("Entro a nave id");
+}
 //funcion que traduce la direccion en coordenadas
 function codeAddress() {
     //geocoder = new google.maps.Geocoder();
