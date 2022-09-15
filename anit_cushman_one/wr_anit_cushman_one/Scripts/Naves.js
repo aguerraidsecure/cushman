@@ -2116,6 +2116,13 @@ function initMap2() {
                 const latLng = new google.maps.LatLng(coords[0], coords[1]);
 
                 const titulo = `<h1>${data[i].nb_nave}</h1>`
+
+                const contentString =
+                    "<div class='alert alert-primary' role='alert'>" +
+                    "<h1>"+data[i].nb_nave+"</h1>" +
+                    "</div>" +
+                    //'<button type="button" class="btn btn-primary" onclick="navexId('+data[i].cd_nave+')">Primary</button>';
+                    '<a class="btn btn-primary" role="button"  href="/Naves/Create/' + data[i].cd_nave + '"> Entrar</a>'
                 //const image = "../../image/pinCushman.png";
                 const infoWindow = new google.maps.InfoWindow();
 
@@ -2144,8 +2151,7 @@ function initMap2() {
                 marker = new google.maps.Marker({
                     position: latLng,
                     map: map,
-                    title: titulo,
-                    animation: google.maps.Animation.DROP,
+                    title: titulo,                    
                     icon: image,
                     label: `${data[i].cd_nave}`,
                     optimized: false,
@@ -2154,9 +2160,16 @@ function initMap2() {
 
                 marker.addListener("click", () => {
                     infoWindow.close();
-                    infoWindow.setContent(marker.getTitle());
-                    infoWindow.setPosition(latLng);
-                    infoWindow.open(marker.getMap(), marker);
+                    infoWindow.setContent(contentString);
+                    //infoWindow.setPosition(latLng);
+                    console.log(marker.getMap());
+                    console.log(marker);
+                    //infoWindow.open(marker.getMap(), marker);
+                    infoWindow.open({
+                        anchor: marker,
+                        map,
+                        shouldFocus: false,
+                    })
                 });
 
             }
@@ -2172,8 +2185,12 @@ function initMap2() {
 
 };
 
-function navexId() {
-    console.log("Entro a nave id");
+function navexId(id) {
+    console.log("Entro a nave id" + id);
+
+    //$.get("/Naves/Create/" + id, function (data) {
+    //    console.log(data);
+    //}
 }
 //funcion que traduce la direccion en coordenadas
 function codeAddress() {
@@ -2214,5 +2231,5 @@ function codeAddress() {
 
 }
 
-
+window.initMap2 = initMap2;
 $.fn.select2.defaults.set('language', 'es');
