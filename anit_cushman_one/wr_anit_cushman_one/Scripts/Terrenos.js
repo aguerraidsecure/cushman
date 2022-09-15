@@ -637,26 +637,26 @@ $(document)
         storeCargaCombo("/Utils/GetCdEstado", "tsg028_te_contacto_Corr_cd_estado");
         //storeCargaCombo("/Utils/GetCdEstado", "tsg001_terreno_cd_mercado");
         storeCargaCombo("/Utils/GetMercados", "tsg001_terreno_cd_mercado");
-         $("#tsg001_terreno_cd_mercado").select2({ placeholder: "Seleccione Mercado", width: "30%" });
-        //storeCargaCombo("/Utils/GetCorredor", "tsg001_terreno_cd_corredor");
-         $("#tsg001_terreno_cd_corredor").select2({ placeholder: "Seleccione Corredor", width: "30%" });
+         //$("#tsg001_terreno_cd_mercado").select2({ placeholder: "Seleccione Mercado", width: "30%" });
+        storeCargaCombo("/Utils/GetCorredor", "tsg001_terreno_cd_corredor");
+        // $("#tsg001_terreno_cd_corredor").select2({ placeholder: "Seleccione Corredor", width: "30%" });
          storeCargaCombo("/Utils/GetEstatus", "tsg026_te_dt_gral_cd_st_entrega");
-         $("#tsg026_te_dt_gral_cd_st_entrega").select2({ placeholder: "Seleccione Estatus", width: "30%" });
+       //  $("#tsg026_te_dt_gral_cd_st_entrega").select2({ placeholder: "Seleccione Estatus", width: "30%" });
         storeCargaCombo("/Utils/GetEspuelas", "tsg027_te_servicio_cd_esp_fer");
-        $("#tsg027_te_servicio_cd_esp_fer").select2({ placeholder: "Seleccione Esp Ferr", width: "30%" });
+        //$("#tsg027_te_servicio_cd_esp_fer").select2({ placeholder: "Seleccione Esp Ferr", width: "30%" });
         storeCargaCombo("/Utils/GetCondArrend", "tsg023_ni_precio_cd_cond_arr");
-        $("#tsg023_ni_precio_cd_cond_arr").select2({ placeholder: "Seleccione Cond Arrend", width: "80%" });
+        //$("#tsg023_ni_precio_cd_cond_arr").select2({ placeholder: "Seleccione Cond Arrend", width: "80%" });
         storeCargaCombo("/Utils/GetGas", "tsg027_te_servicio_cd_tp_gas_natural");
-        $("#tsg027_te_servicio_cd_tp_gas_natural").select2({ placeholder: "Seleccione Tp Gas", width: "80%" });
+        //$("#tsg027_te_servicio_cd_tp_gas_natural").select2({ placeholder: "Seleccione Tp Gas", width: "80%" });
         storeCargaCombo("/Utils/GetTelefonia", "tsg027_te_servicio_cd_telefonia");
-        $("#tsg027_te_servicio_cd_telefonia").select2({ placeholder: "Seleccione Telefonía", width: "30%" });
+        //$("#tsg027_te_servicio_cd_telefonia").select2({ placeholder: "Seleccione Telefonía", width: "30%" });
 
         storeCargaCombo("/Utils/GetTipoMoneda", "tsg023_ni_precio_cd_moneda");
-        $("#tsg023_ni_precio_cd_moneda").select2({ placeholder: "Seleccione Tipo Moneda", width: "30%" });
+        //$("#tsg023_ni_precio_cd_moneda").select2({ placeholder: "Seleccione Tipo Moneda", width: "30%" });
         storeCargaCombo("/Utils/GetTipoReporte", "tsg040_imagenes_terrenos_cd_reporte");
-        $("#tsg040_imagenes_terrenos_cd_reporte").select2({ placeholder: "Seleccione Reporte", width: "30%" });
+        //$("#tsg040_imagenes_terrenos_cd_reporte").select2({ placeholder: "Seleccione Reporte", width: "30%" });
         storeCargaCombo("/Utils/GetTipoMoneda", "tsg023_ni_precio_cd_rep_moneda");
-        $("#tsg023_ni_precio_cd_rep_moneda").select2({ placeholder: "Seleccione Tipo Moneda", width: "30%" });
+        //$("#tsg023_ni_precio_cd_rep_moneda").select2({ placeholder: "Seleccione Tipo Moneda", width: "30%" });
 
         
 
@@ -1353,15 +1353,15 @@ $(document)
                     "tsg001_terreno_cd_municipio",
                     undefined);
                 //Se agrega el elemento vacio para poder desplegar que seleccione una opcion
-                $("#tsg001_terreno_cd_colonia").select2({ placeholder: "Seleccione Colonia ", width: "40%" });
+                //$("#tsg001_terreno_cd_colonia").select2({ placeholder: "Seleccione Colonia ", width: "40%" });
                 //$("#cd_").select2({ placeholder: "Seleccione SubFamilia", width: "30%" });
                 return false;
             });
        
         //Recargar el plugin para que tenga la funcionalidad del componente
-             $("#tsg001_terreno_cd_colonia").select2({ placeholder: "Seleccione Colonia", width: "40%" });
-             $("#tsg001_terreno_cd_municipio").select2({ placeholder: "Seleccione Municipio", width: "40%" });
-             $("#tsg001_terreno_cd_estado").select2({ placeholder: "Seleccione Estado", width: "40%" });
+             //$("#tsg001_terreno_cd_colonia").select2({ placeholder: "Seleccione Colonia", width: "40%" });
+             //$("#tsg001_terreno_cd_municipio").select2({ placeholder: "Seleccione Municipio", width: "40%" });
+             //$("#tsg001_terreno_cd_estado").select2({ placeholder: "Seleccione Estado", width: "100%" });
 
 
              $("#tsg001_terreno_cd_colonia").change(function () {
@@ -1416,15 +1416,15 @@ $(document)
                     "tsg028_te_contacto_Prop_cd_municipio",
                     undefined);
                 //Se agrega el elemento vacio para poder desplegar que seleccione una opcion
-                $("#tsg028_te_contacto_Prop_cd_colonia").select2({ placeholder: "Seleccione Colonia ", width: "40%" });
+                //$("#tsg028_te_contacto_Prop_cd_colonia").select2({ placeholder: "Seleccione Colonia ", width: "40%" });
                 //$("#cd_").select2({ placeholder: "Seleccione SubFamilia", width: "30%" });
                 return false;
             });
 
         //Recargar el plugin para que tenga la funcionalidad del componente
-             $("#tsg028_te_contacto_Prop_cd_colonia").select2({ placeholder: "Seleccione Colonia", width: "40%" });
-             $("#tsg028_te_contacto_Prop_cd_municipio").select2({ placeholder: "Seleccione Municipio", width: "40%" });
-             $("#tsg028_te_contacto_Prop_cd_estado").select2({ placeholder: "Seleccione Estado", width: "40%" });
+             //$("#tsg028_te_contacto_Prop_cd_colonia").select2({ placeholder: "Seleccione Colonia", width: "40%" });
+             //$("#tsg028_te_contacto_Prop_cd_municipio").select2({ placeholder: "Seleccione Municipio", width: "40%" });
+             //$("#tsg028_te_contacto_Prop_cd_estado").select2({ placeholder: "Seleccione Estado", width: "40%" });
 
              $("#tsg028_te_contacto_Prop_cd_colonia").change(function () {
                  $("#tsg028_te_contacto_Prop_cd_estado_h").val($("#tsg028_te_contacto_Prop_cd_estado").val());
@@ -1476,15 +1476,15 @@ $(document)
                     "tsg028_te_contacto_Adm_cd_municipio",
                     undefined);
                 //Se agrega el elemento vacio para poder desplegar que seleccione una opcion
-                $("#tsg028_te_contacto_Adm_cd_colonia").select2({ placeholder: "Seleccione Colonia ", width: "40%" });
+                //$("#tsg028_te_contacto_Adm_cd_colonia").select2({ placeholder: "Seleccione Colonia ", width: "40%" });
                 //$("#cd_").select2({ placeholder: "Seleccione SubFamilia", width: "30%" });
                 return false;
             });
 
         //Recargar el plugin para que tenga la funcionalidad del componente
-              $("#tsg028_te_contacto_Adm_cd_colonia").select2({ placeholder: "Seleccione Colonia", width: "40%" });
-              $("#tsg028_te_contacto_Adm_cd_municipio").select2({ placeholder: "Seleccione Municipio", width: "40%" });
-              $("#tsg028_te_contacto_Adm_cd_estado").select2({ placeholder: "Seleccione Estado", width: "40%" });
+              //$("#tsg028_te_contacto_Adm_cd_colonia").select2({ placeholder: "Seleccione Colonia", width: "40%" });
+              //$("#tsg028_te_contacto_Adm_cd_municipio").select2({ placeholder: "Seleccione Municipio", width: "40%" });
+              //$("#tsg028_te_contacto_Adm_cd_estado").select2({ placeholder: "Seleccione Estado", width: "40%" });
 
               $("#tsg028_te_contacto_Adm_cd_colonia").change(function () {
                   $("#tsg028_te_contacto_Adm_cd_estado_h").val($("#tsg028_te_contacto_Adm_cd_estado").val());
@@ -1536,15 +1536,15 @@ $(document)
                     "tsg028_te_contacto_Corr_cd_municipio",
                     undefined);
                 //Se agrega el elemento vacio para poder desplegar que seleccione una opcion
-                $("#tsg028_te_contacto_Corr_cd_colonia").select2({ placeholder: "Seleccione Colonia ", width: "40%" });
+                //$("#tsg028_te_contacto_Corr_cd_colonia").select2({ placeholder: "Seleccione Colonia ", width: "40%" });
                 //$("#cd_").select2({ placeholder: "Seleccione SubFamilia", width: "30%" });
                 return false;
             });
 
         //Recargar el plugin para que tenga la funcionalidad del componente
-             $("#tsg028_te_contacto_Corr_cd_colonia").select2({ placeholder: "Seleccione Colonia", width: "40%" });
-             $("#tsg028_te_contacto_Corr_cd_municipio").select2({ placeholder: "Seleccione Municipio", width: "40%" });
-             $("#tsg028_te_contacto_Corr_cd_estado").select2({ placeholder: "Seleccione Estado", width: "40%" });
+             //$("#tsg028_te_contacto_Corr_cd_colonia").select2({ placeholder: "Seleccione Colonia", width: "40%" });
+             //$("#tsg028_te_contacto_Corr_cd_municipio").select2({ placeholder: "Seleccione Municipio", width: "40%" });
+             //$("#tsg028_te_contacto_Corr_cd_estado").select2({ placeholder: "Seleccione Estado", width: "40%" });
 
              $("#tsg028_te_contacto_Corr_cd_colonia").change(function () {
                  $("#tsg028_te_contacto_Corr_cd_estado_h").val($("#tsg028_te_contacto_Corr_cd_estado").val());
