@@ -70,7 +70,9 @@ namespace wr_anit_cushman_one.Controllers
         public ActionResult Index()
         {
             ViewBag.UsuarioActivo = true;
+           
             return View();
+            // return new JsonResult { Data = listanaves, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
         private void ObtenerTipoCambio( decimal nu_tipo_cambio)
@@ -3167,6 +3169,11 @@ namespace wr_anit_cushman_one.Controllers
             }
 
             return new JsonResult { Data = tsi001_dts_naves.ToList(), JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+        public JsonResult getNavesMapas()
+        {
+            var result = db.tsg002_nave_industrial.Select("new (cd_nave, nb_parque, nb_nave, nb_posicion, nb_poligono)");
+            return new JsonResult { Data = result, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
         public JsonResult GetNavesAll()
         {
