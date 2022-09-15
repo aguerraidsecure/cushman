@@ -2121,7 +2121,7 @@ function initMap2() {
                     "<div class='alert alert-primary' role='alert'>" +
                     "<h1>"+data[i].nb_nave+"</h1>" +
                     "</div>" +
-                    //'<button type="button" class="btn btn-primary" onclick="navexId('+data[i].cd_nave+')">Primary</button>';
+                    
                     '<a class="btn btn-primary" role="button"  href="/Naves/Create/' + data[i].cd_nave + '"> Entrar</a>'
                 //const image = "../../image/pinCushman.png";
                 const infoWindow = new google.maps.InfoWindow();
