@@ -63,7 +63,7 @@ namespace wr_anit_cushman_one.Controllers
             terreno.tsg028_te_contacto_Adm      = administrador;
             terreno.tsg028_te_contacto_Corr     = corredor;
             terreno.tsg040_imagenes_terrenos    = imagenes_Terrenos;
-            r = new List<UploadFilesResult>();
+            //r = new List<UploadFilesResult>();
         }
 
         private IEnumerable<SelectItem> _makes = new List<SelectItem>
@@ -106,16 +106,22 @@ namespace wr_anit_cushman_one.Controllers
 
         const string Municipio_KEY = "tsg038_municipios";
 
-        
-        public async Task<ActionResult> Index()
-        {
-            var tsi001_terreno_dts_gra = db.tsg001_terreno.Include(t => t.tsg023_ni_precio)
-                .Include(t => t.tsg027_te_servicio)
-                .Include(t => t.tsg028_te_contacto)
-                .Include(t => t.tsg026_te_dt_gral);
-            return View(await tsi001_terreno_dts_gra.ToListAsync());
-        }
 
+        //public async Task<ActionResult> Index()
+        //{
+        //    var tsi001_terreno_dts_gra = db.tsg001_terreno.Include(t => t.tsg023_ni_precio)
+        //        .Include(t => t.tsg027_te_servicio)
+        //        .Include(t => t.tsg028_te_contacto)
+        //        .Include(t => t.tsg026_te_dt_gral);
+        //    return View(await tsi001_terreno_dts_gra.ToListAsync());
+        //}
+        public ActionResult Index()
+        {
+            ViewBag.UsuarioActivo = true;
+
+            return View();
+            // return new JsonResult { Data = listanaves, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
         public ActionResult Change(String strLenguanje)
         {
             ObtenerTipoCambio((decimal)(ViewBag.TipoCambio == null ? 0 : ViewBag.TipoCambio));
