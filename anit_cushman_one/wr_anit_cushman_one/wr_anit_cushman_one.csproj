@@ -201,6 +201,7 @@
     <Compile Include="Controllers\AJAXController.cs" />
     <Compile Include="Controllers\AreasController.cs" />
     <Compile Include="Controllers\BitacoraMovController.cs" />
+    <Compile Include="Controllers\BrokersController.cs" />
     <Compile Include="Controllers\CajonesController.cs" />
     <Compile Include="Controllers\CargaPisosController.cs" />
     <Compile Include="Controllers\ColoniaController.cs" />
@@ -300,6 +301,7 @@
     <Compile Include="Models\tsg044_tipos_monedas.cs" />
     <Compile Include="Models\tsg045_imagenes_naves.cs" />
     <Compile Include="Models\tsg046_tipos_reportes.cs" />
+    <Compile Include="Models\tsg047_brokers.cs" />
     <Compile Include="Models\UploadFilesResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\rscIdioma.en.Designer.cs">
