@@ -4,6 +4,8 @@ namespace wr_anit_cushman_one.Models
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using System.Data.Entity.Infrastructure.Annotations;
+    using System.Reflection;
 
     public partial class CushmanContext : DbContext
     {
@@ -321,7 +323,12 @@ namespace wr_anit_cushman_one.Models
 
             modelBuilder.Entity<tsg033_menu>()
                 .Property(e => e.tx_url)
-                .IsUnicode(false);
+                .IsUnicode(false);            
+            
+            modelBuilder.Entity<tsg047_brokers>()
+                .Property(e => e.nb_broker)
+                .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute("IX_NBIndex") { IsUnique = true }));
+            
         }
 
         public System.Data.Entity.DbSet<wr_anit_cushman_one.Models.tsg034_estados> tsg034_estados { get; set; }
@@ -349,5 +356,9 @@ namespace wr_anit_cushman_one.Models
         public System.Data.Entity.DbSet<wr_anit_cushman_one.Models.tsg045_imagenes_naves> tsg045_imagenes_naves { get; set; }
 
         public System.Data.Entity.DbSet<wr_anit_cushman_one.Models.tsg046_tipos_reportes> tsg046_tipos_reportes { get; set; }
+
+        public System.Data.Entity.DbSet<wr_anit_cushman_one.Models.tsg047_brokers> tsg047_brokers { get; set; }
+
+
     }
 }

@@ -1,0 +1,55 @@
+﻿@model PagedList.IPagedList<wr_anit_cushman_one.Models.tsg047_brokers>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{    
+    ViewBag.Title = "Bokers";
+}
+<div class="row mt-3">    
+    <div class="col-sm-12">
+        <div class="card  bg-primary bg-opacity-10">
+            <div class="card-header bg-primary bg-opacity-75 text-white fw-bold">
+                Catálogo Brokers
+            </div>
+            <div class="card-body">
+                <div class="shadow p-3 mb-2 bg-body rounded">
+                    <div class="row">
+                        <div class="col-sm-12 ">
+                            @using (Html.BeginForm("Index", "Brokers", FormMethod.Get))
+                            {
+                                <p>
+                                    Buscar por Broker: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                                    <input type="submit" value="Buscar" class="btn btn-outline-danger btn-md fw-bold" />
+                                    @Html.ActionLink("Nuevo Registro", "Create", "Brokers", new { @class = "btn  btn-outline-danger btn-md fw-bold" })
+                                    <a class="btn btn-outline-danger fw-bold" href="~/Brokers/Index" role="button">Recargar</a>
+                                </p>
+                            }
+                        </div>
+                        <div class="col-sm-12 text-end">
+                            Paginas @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+                        </div>
+                    </div>
+                    <div class="col-sm-12 mt-2">
+                        <table class="table table-striped table-hover table-bordered border-primary">
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.nb_broker)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.fh_modif)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink(" ", "Edit", new { id = item.cd_broker }, new { @class = "fa fa-pencil-square-o fs-3 text-danger" }) |
+                                        @Html.ActionLink(" ", "Details", new { id = item.cd_broker }, new { @class = "fa fa-list-alt fs-3 text-danger" }) |
+                                        @Html.ActionLink(" ", "Delete", new { id = item.cd_broker }, new { @class = "fa fa-trash-o fs-3 text-danger" })
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>                
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+﻿@model wr_anit_cushman_one.Models.tsg047_brokers
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>tsg047_brokers</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.nb_broker)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.nb_broker)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.fh_modif)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.fh_modif)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.cd_broker }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
