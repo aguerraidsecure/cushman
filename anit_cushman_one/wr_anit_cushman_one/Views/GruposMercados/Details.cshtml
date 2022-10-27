@@ -1,0 +1,58 @@
+﻿@model wr_anit_cushman_one.Models.tsg048_grupos_mercados
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>tsg048_grupos_mercados</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.tsg007_mercado.nb_mercado)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.tsg007_mercado.nb_mercado)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.tsg038_municipios.nb_municipio)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.tsg038_municipios.nb_municipio)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.cd_estado)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.cd_estado)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.fh_modif)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.fh_modif)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.cd_grupo }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

@@ -1,48 +1,44 @@
 ﻿@model wr_anit_cushman_one.Models.tsg047_brokers
 
 @{
-    Layout = null;
+    ViewBag.Title = "Eliminar Broker";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Delete</title>
-</head>
-<body>
-    <h3>Are you sure you want to delete this?</h3>
-    <div>
-        <h4>tsg047_brokers</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.nb_broker)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.nb_broker)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.fh_modif)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.fh_modif)
-            </dd>
-    
-        </dl>
-    
-        @using (Html.BeginForm()) {
-            @Html.AntiForgeryToken()
-    
-            <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-default" /> |
-                @Html.ActionLink("Back to List", "Index")
+<div class="row mt-3">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <div class="card  bg-primary bg-opacity-10">
+            <div class="card-header bg-primary bg-opacity-75 text-white fw-bold">
+                ¿Estas seguro de eliminar el registro?
             </div>
-        }
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-floating mb-3">
+                            @Html.EditorFor(model => model.nb_broker, new { htmlAttributes = new { @class = "form-control", placeholder = "Nombre Broker", disabled = "disabled" } })
+                            <label for="floatingInput" class="fw-bold text-center">Nombre Broker</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-floating mb-3">
+                            @Html.EditorFor(model => model.fh_modif, new { htmlAttributes = new { @class = "form-control", placeholder = "Fecha de Modificación" }, disabled = "disabled" })
+                            <label for="floatingInput" class="fw-bold text-center">Fecha de Modificación</label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-center">
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="submit" value="Eliminar" class="btn btn-danger" />
+                    @Html.ActionLink("Regresar a la Lista", "Index", "Brokers", new { @class = "btn btn-danger btn-block" })
+                }
+            </div>
+        </div>
     </div>
-</body>
-</html>
+    <div class="col-sm-4"></div>
+</div>
+

@@ -1,42 +1,56 @@
 ﻿@model wr_anit_cushman_one.Models.tsg047_brokers
 
 @{
-    Layout = null;
+    ViewBag.Title = "Detalle Broker";
 }
 
-<!DOCTYPE html>
+<div class="row mt-3">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <div class="card  bg-primary bg-opacity-10">
+            <div class="card-header bg-primary bg-opacity-75 text-white fw-bold">
+                Detalle de Bokers
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-floating mb-3">
+                            @Html.EditorFor(model => model.nb_broker, new { htmlAttributes = new { @class = "form-control", placeholder = "Nombre área", disabled = "disabled" } })
+                            <label for="floatingInput" class="fw-bold text-center">@wr_anit_cushman_one.Resources.rscIdioma.Nombre</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-floating mb-3">
+                            @Html.EditorFor(model => model.nb_puesto, new { htmlAttributes = new { @class = "form-control", placeholder = "Puesto", disabled = "disabled" } })
+                            <label for="floatingInput" class="fw-bold text-center">@wr_anit_cushman_one.Resources.rscIdioma.Puesto</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-floating mb-3">
+                            @Html.EditorFor(model => model.nu_telefono, new { htmlAttributes = new { @class = "form-control", placeholder = "Telefono", disabled = "disabled" } })
+                            <label for="floatingInput" class="fw-bold text-center">@wr_anit_cushman_one.Resources.rscIdioma.Telefono</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-floating mb-3">
+                            @Html.EditorFor(model => model.fh_modif, new { disabled = "disabled", htmlAttributes = new { @class = "form-control", placeholder = "Fecha de Modificación" } })
+                            <label for="floatingInput" class="fw-bold text-center">Fecha de Modificación</label>
+                        </div>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-    <div>
-        <h4>tsg047_brokers</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.nb_broker)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.nb_broker)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.fh_modif)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.fh_modif)
-            </dd>
-    
-        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-center">
+
+                @Html.ActionLink("Editar", "Edit", "Brokers", new { id = Model.cd_broker }, new { @class = "btn btn-danger btn-block" })
+
+                @Html.ActionLink("Regresar a la Lista", "Index", "Brokers", new { @class = "btn btn-danger btn-block" })
+
+            </div>
+        </div>
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.cd_broker }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-</body>
-</html>
+    <div class="col-sm-4"></div>
+</div>
+
+
+

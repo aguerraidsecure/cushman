@@ -1105,5 +1105,12 @@ namespace wr_anit_cushman_one.Controllers
             //blockBlob.DownloadToStream(Response.OutputStream);
             //}
         }
+
+        public JsonResult getNaves()
+        {
+            var result = db.tsg002_nave_industrial.Select("new (cd_nave, nb_parque, nb_nave)");            
+            return new JsonResult { Data = result, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+
     }
 }

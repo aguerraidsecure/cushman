@@ -1,13 +1,16 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Linq.Dynamic;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using wr_anit_cushman_one.Models;
-using PagedList;
 using wr_anit_cushman_one.Tags;
 
 namespace wr_anit_cushman_one.Controllers
@@ -20,6 +23,7 @@ namespace wr_anit_cushman_one.Controllers
         // GET: Brokers
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
+            ViewBag.UsuarioActivo = true;
             ViewBag.CurrentSort = sortOrder;
             ViewBag.EstadoSortParam = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
@@ -67,6 +71,7 @@ namespace wr_anit_cushman_one.Controllers
         // GET: Brokers/Details/5
         public ActionResult Details(int? id)
         {
+            ViewBag.UsuarioActivo = true;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -82,6 +87,7 @@ namespace wr_anit_cushman_one.Controllers
         // GET: Brokers/Create
         public ActionResult Create()
         {
+            ViewBag.UsuarioActivo = true;
             return View();
         }
 
@@ -90,10 +96,12 @@ namespace wr_anit_cushman_one.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "cd_broker,nb_broker,fh_modif")] tsg047_brokers tsg047_brokers)
+        public ActionResult Create([Bind(Include = "cd_broker,nb_broker,nb_puesto,nu_telefono,fh_modif")] tsg047_brokers tsg047_brokers)
         {
+            ViewBag.UsuarioActivo = true;
             if (ModelState.IsValid)
             {
+                tsg047_brokers.fh_modif = DateTime.Now;
                 db.tsg047_brokers.Add(tsg047_brokers);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -105,6 +113,7 @@ namespace wr_anit_cushman_one.Controllers
         // GET: Brokers/Edit/5
         public ActionResult Edit(int? id)
         {
+            ViewBag.UsuarioActivo = true;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -122,10 +131,11 @@ namespace wr_anit_cushman_one.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "cd_broker,nb_broker,fh_modif")] tsg047_brokers tsg047_brokers)
+        public ActionResult Edit([Bind(Include = "cd_broker,nb_broker,nb_puesto,nu_telefono,fh_modif")] tsg047_brokers tsg047_brokers)
         {
             if (ModelState.IsValid)
             {
+                tsg047_brokers.fh_modif = DateTime.Now;
                 db.Entry(tsg047_brokers).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -136,6 +146,7 @@ namespace wr_anit_cushman_one.Controllers
         // GET: Brokers/Delete/5
         public ActionResult Delete(int? id)
         {
+            ViewBag.UsuarioActivo = true;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -159,6 +170,12 @@ namespace wr_anit_cushman_one.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]        
+        public JsonResult GetBrokersbyName() {
+            var result = db.tsg047_brokers.Select("new (nb_Broker,nb_puesto)");
+            return new JsonResult { Data = result, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing)

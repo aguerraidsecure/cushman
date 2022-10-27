@@ -99,7 +99,7 @@ namespace wr_anit_cushman_one.Models
             modelBuilder.Entity<tsg005_municipio>()
                 .Property(e => e.nb_municipio)
                 .IsUnicode(false);
-
+                       
             modelBuilder.Entity<tsg006_colonia>()
                 .Property(e => e.nu_cp)
                 .IsUnicode(false);
@@ -107,6 +107,11 @@ namespace wr_anit_cushman_one.Models
             modelBuilder.Entity<tsg007_mercado>()
                 .Property(e => e.nb_mercado)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<tsg007_mercado>()
+                .HasMany(e => e.tsg048_grupos_mercados)
+                .WithOptional(e => e.tsg007_mercado)
+                .HasForeignKey(e => e.cd_mercado);
 
             modelBuilder.Entity<tsg008_corredor_ind>()
                 .Property(e => e.nb_corredor)
@@ -323,12 +328,19 @@ namespace wr_anit_cushman_one.Models
 
             modelBuilder.Entity<tsg033_menu>()
                 .Property(e => e.tx_url)
-                .IsUnicode(false);            
-            
+                .IsUnicode(false);
+
+            modelBuilder.Entity<tsg038_municipios>()
+                .HasMany(e => e.tsg048_grupos_mercados)
+                .WithOptional(e => e.tsg038_municipios)
+                .HasForeignKey(e => e.cd_municipio);
+
             modelBuilder.Entity<tsg047_brokers>()
                 .Property(e => e.nb_broker)
                 .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute("IX_NBIndex") { IsUnique = true }));
+
             
+
         }
 
         public System.Data.Entity.DbSet<wr_anit_cushman_one.Models.tsg034_estados> tsg034_estados { get; set; }
@@ -359,6 +371,7 @@ namespace wr_anit_cushman_one.Models
 
         public System.Data.Entity.DbSet<wr_anit_cushman_one.Models.tsg047_brokers> tsg047_brokers { get; set; }
 
+        public System.Data.Entity.DbSet<wr_anit_cushman_one.Models.tsg048_grupos_mercados> tsg048_grupos_mercados { get; set; }
 
     }
 }

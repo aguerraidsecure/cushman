@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29403.142
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32811.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "anit_cushman_one", "anit_cushman_one\anit_cushman_one.ccproj", "{91AA170D-FDCC-401E-9DDE-808F9CF67C7A}"
 EndProject
@@ -51,29 +51,5 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {571D59AA-42D8-400B-A940-03C345ECDCDE}
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 7
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://cushman.visualstudio.com/
-		SccProjectUniqueName0 = wr_anit_cushman_one.Tests\\wr_anit_cushman_one.Tests.csproj
-		SccProjectName0 = wr_anit_cushman_one.Tests
-		SccLocalPath0 = wr_anit_cushman_one.Tests
-		SccProjectUniqueName1 = Helper\\Helper.csproj
-		SccProjectName1 = Helper
-		SccLocalPath1 = Helper
-		SccProjectUniqueName2 = Model\\Model.csproj
-		SccProjectName2 = Model
-		SccLocalPath2 = Model
-		SccProjectUniqueName3 = anit_cushman_one\\anit_cushman_one.ccproj
-		SccProjectName3 = anit_cushman_one
-		SccLocalPath3 = anit_cushman_one
-		SccLocalPath4 = .
-		SccProjectUniqueName5 = PPTReport\\PPTReport.csproj
-		SccProjectName5 = PPTReport
-		SccLocalPath5 = PPTReport
-		SccProjectUniqueName6 = wr_anit_cushman_one\\wr_anit_cushman_one.csproj
-		SccProjectName6 = wr_anit_cushman_one
-		SccLocalPath6 = wr_anit_cushman_one
 	EndGlobalSection
 EndGlobal

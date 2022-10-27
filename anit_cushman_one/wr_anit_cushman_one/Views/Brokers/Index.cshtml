@@ -1,10 +1,13 @@
 ﻿@model PagedList.IPagedList<wr_anit_cushman_one.Models.tsg047_brokers>
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
-@{    
-    ViewBag.Title = "Bokers";
+
+@{
+    ViewBag.Title = "Brokers";
+
 }
-<div class="row mt-3">    
+
+<div class="row mt-3">
     <div class="col-sm-12">
         <div class="card  bg-primary bg-opacity-10">
             <div class="card-header bg-primary bg-opacity-75 text-white fw-bold">
@@ -30,11 +33,36 @@
                     </div>
                     <div class="col-sm-12 mt-2">
                         <table class="table table-striped table-hover table-bordered border-primary">
+                            <tr class="table-primary bg-opacity-25 text-center">
+                                <th>
+                                    @*@Html.DisplayNameFor(model => model.nb_areas)*@
+                                    @Html.ActionLink(@wr_anit_cushman_one.Resources.rscIdioma.Nombre, "Index", new { sortOrder = ViewBag.EstadoSortParam, currentFilter = ViewBag.CurrentFilter }, new { Style = "color: #b94a48;" })
+                                </th>
+                                <th>
+                                    @*@Html.DisplayNameFor(model => model.fh_modif)*@
+                                    @Html.ActionLink(@wr_anit_cushman_one.Resources.rscIdioma.Puesto, "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter }, new { Style = "color: #b94a48;" })
+                                </th>
+                                <th>
+                                    @*@Html.DisplayNameFor(model => model.fh_modif)*@
+                                    @Html.ActionLink(@wr_anit_cushman_one.Resources.rscIdioma.Telefono, "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter }, new { Style = "color: #b94a48;" })
+                                </th>
+                                <th>
+                                    @*@Html.DisplayNameFor(model => model.fh_modif)*@
+                                    @Html.ActionLink("Fecha Modificación", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter }, new { Style = "color: #b94a48;" })
+                                </th>
+                                <th></th>
+                            </tr>
                             @foreach (var item in Model)
                             {
                                 <tr>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.nb_broker)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.nb_puesto)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.nu_telefono)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.fh_modif)
@@ -48,8 +76,11 @@
                             }
                         </table>
                     </div>
+                    <div class="col-sm-12 text-center">
+                        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+                    </div>
                 </div>
-            </div>                
+            </div>
         </div>
     </div>
 </div>

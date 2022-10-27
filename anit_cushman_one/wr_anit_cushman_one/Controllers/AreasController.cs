@@ -102,8 +102,6 @@ namespace wr_anit_cushman_one.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "cd_area,nb_area,fh_modif")] tsg010_area_of tsg010_area_of)
         {
-             
-
             ViewBag.UsuarioActivo = true;
             if (ModelState.IsValid)
             {

@@ -16,7 +16,7 @@
         public DateTime fh_modif { get; set; }
 
         public virtual tsg037_estados tsg037_estados { get; set; }
-
         public virtual ICollection<tsg036_colonias> tsg036_colonias { get; set; }
+        public virtual ICollection<tsg048_grupos_mercados> tsg048_grupos_mercados { get; set; }
     }
 }

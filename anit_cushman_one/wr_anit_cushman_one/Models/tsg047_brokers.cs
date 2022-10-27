@@ -11,7 +11,8 @@
         public int cd_broker { get; set; }
 
         public string nb_broker { get; set; }
-
+        public string nb_puesto { get; set; }
+        public string nu_telefono { get; set; }
         public DateTime? fh_modif { get; set; }
     }
 }

@@ -1,55 +1,66 @@
 ﻿@model wr_anit_cushman_one.Models.tsg047_brokers
 
 @{
-    Layout = null;
+    ViewBag.Title = "Crear Broker";
 }
 
-<!DOCTYPE html>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
-</head>
-<body>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryval")
-    
-    
-    @using (Html.BeginForm()) 
-    {
-        @Html.AntiForgeryToken()
-        
-        <div class="form-horizontal">
-            <h4>tsg047_brokers</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.nb_broker, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.nb_broker, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.nb_broker, "", new { @class = "text-danger" })
+    <div class="row mt-2">
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <div class="card  bg-primary bg-opacity-10">
+                    <div class="card-header bg-primary bg-opacity-75 text-white fw-bold">
+                        Nuevo registro Broker
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="col-sm-12">
+                                    <div class="form-floating mb-3">
+                                        @Html.EditorFor(model => model.nb_broker, new { htmlAttributes = new { @class = "form-control", placeholder = "Nombre Broker" } })
+                                        @Html.ValidationMessageFor(model => model.nb_broker, "", new { @class = "text-danger" })
+                                        <label for="floatingInput" class="fw-bold text-center">@wr_anit_cushman_one.Resources.rscIdioma.Nombre</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="col-sm-12">
+                                    <div class="form-floating mb-3">
+                                        @Html.EditorFor(model => model.nb_puesto, new { htmlAttributes = new { @class = "form-control", placeholder = @wr_anit_cushman_one.Resources.rscIdioma.Puesto } })
+                                        @Html.ValidationMessageFor(model => model.nb_puesto, "", new { @class = "text-danger" })
+                                        <label for="floatingInput" class="fw-bold text-center">@wr_anit_cushman_one.Resources.rscIdioma.Puesto</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="col-sm-12">
+                                    <div class="form-floating mb-3">
+                                        @Html.EditorFor(model => model.nu_telefono, new { htmlAttributes = new { @class = "form-control", placeholder = @wr_anit_cushman_one.Resources.rscIdioma.Telefono } })
+                                        @Html.ValidationMessageFor(model => model.nu_telefono, "", new { @class = "text-danger" })
+                                        <label for="floatingInput" class="fw-bold text-center">@wr_anit_cushman_one.Resources.rscIdioma.Telefono</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <input type="submit" value="Guardar" class="btn btn-danger" />
+                        @Html.ActionLink("Regresar a la Lista", "Index", "Brokers", new { @class = "btn btn-danger btn-block" })
+                    </div>
                 </div>
             </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.fh_modif, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.fh_modif, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.fh_modif, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-            </div>
+            <div class="col-sm-4"></div>
         </div>
-    }
-    
-    <div>
-        @Html.ActionLink("Back to List", "Index")
     </div>
-</body>
-</html>
+    }

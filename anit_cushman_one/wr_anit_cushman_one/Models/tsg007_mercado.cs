@@ -26,6 +26,10 @@ namespace wr_anit_cushman_one.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tsg001_terreno> tsg001_terreno { get; set; }
 
+        
+        public virtual ICollection<tsg048_grupos_mercados> tsg048_grupos_mercados { get; set; }
+
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tsg002_nave_industrial> tsg002_nave_industrial { get; set; }
     }

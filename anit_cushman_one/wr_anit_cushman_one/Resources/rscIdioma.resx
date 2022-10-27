@@ -405,4 +405,13 @@
   <data name="MinimoDisponible" xml:space="preserve">
     <value>Mínimo</value>
   </data>
+  <data name="TipoReporte" xml:space="preserve">
+    <value>Edificio/Terreno</value>
+  </data>
+  <data name="RepNombreCliente" xml:space="preserve">
+    <value>Nombre del Cliente</value>
+  </data>
+  <data name="Puesto" xml:space="preserve">
+    <value>Puesto</value>
+  </data>
 </root>

@@ -1409,7 +1409,7 @@ $(document)
                         $.msgBox({
                             title: "Cushman ONE",
                             content: "El registro se encuentra listo para copiar solo necesita escribir el nombre de la nave y dar clic en guardar",
-                            type: "alert"
+                            type: "info"
                         });
                     }
                 }
