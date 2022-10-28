@@ -85,16 +85,20 @@
                             <div class="btn-group">
                                 @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Buscar_NI))
                                 {
+                                    <!--
                                     <button type="button" data-url='@Url.Action("Buscar", "Naves")' id="btnBuscarTodo" name="Command" value="Buscar" class="btn btn-outline-danger rounded-pill" data-tooltip title="Búsqueda Básica" data-bs-toggle="modal" data-bs-target="#myModal">
                                         <i class="fa fa-eye" aria-hidden="true"></i> Búsqueda básica
                                     </button>
+                                        -->
 
                                 }
                                 @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Buscar_NI))
                                 {
+                                    <!--
                                     <button type="button" data-url='@Url.Action("Buscar", "Naves")' id="btnBuscar" name="Command" value="Buscar" class="btn btn-outline-danger rounded-pill" data-tooltip title="Buscar">
                                         <i class="fa fa-search" aria-hidden="true"></i> Búsqueda
                                     </button>
+                                        -->
 
                                 }
 
@@ -137,14 +141,14 @@
                                             Reporte individual
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                            <li><a class="dropdown-item" href="#"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a></li>
-                                            <li><a class="dropdown-item" href="#"><i class="fa fa-file-powerpoint-o" aria-hidden="true"></i> Power Point</a></li>
+                                            <li><a class="dropdown-item" href="#">PDF</a></li>
+                                            <li><a class="dropdown-item" href="#">Power Point</a></li>
                                             
                                         </ul>
                                     </div>
 
                                 }
-                                <button type="button" id="btnPpt" name="Command" value="Ppt" class="btn btn-outline-danger  rounded-pill" data-tooltip title="Reporte Individual Power point">
+                                
                                 <button type="button" id="btnPpt" name="Command" value="Ppt" class="btn btn-outline-danger  rounded-pill" data-tooltip title="Reporte Individual Power point">
                                     <i class="fa fa-sign-out" aria-hidden="true"></i> Salir
                                 </button>
@@ -201,67 +205,73 @@
                                                      aria-labelledby="principal-tab">
                                                     <div class="shadow p-3 mb-2 bg-body rounded">
                                                         <div class="row">
-                                                            <div class="col-sm-12">
-                                                                <div class="form-floating input-group mb-2">
-                                                                    <input type="text" class="form-control" id="folio" value=@ViewBag.Folio placeholder="Folio" aria-label="Recipient's username" aria-describedby="btnBuscarFolio">
-                                                                    <label for="folioInput">Folio</label>
-                                                                    <button class="btn btn-outline-secondary" type="button" id="btnBuscarFolio"><i class="fa fa-search"></i></button>
+
+                                                            <div class="col-sm-6">
+                                                                <div class="row">
+
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-floating input-group mb-2">
+                                                                            <input type="text" class="form-control" id="folio" value=@ViewBag.Folio placeholder="Folio" aria-label="Recipient's username" aria-describedby="btnBuscarFolio">
+                                                                            <label for="folioInput">Folio</label>
+                                                                            <button class="btn btn-outline-secondary" type="button" id="btnBuscarFolio"><i class="fa fa-search"></i></button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-floating mb-2">
+                                                                            @Html.EditorFor(model => model.tsg002_nave_industrial.nb_parque, new { htmlAttributes = new { @class = "form-control", @id = "nbParqueInput", placeholder = "Nombre parque" } })
+                                                                            <label for="nbParqueInput">@wr_anit_cushman_one.Resources.rscIdioma.NombreParque</label>
+                                                                        </div>
+
+                                                                        @Html.Hidden("IdAction", (object)ViewBag.TpRegistro)
+                                                                        @Html.HiddenFor(model => model.tsg002_nave_industrial.cd_nave, new { @id = "tsg002_nave_industrial_cd_nave" })
+                                                                        @Html.HiddenFor(model => model.tsg002_nave_industrial.cd_estado, new { @id = "tsg002_nave_industrial_cd_estado_h" })
+                                                                        @Html.HiddenFor(model => model.tsg002_nave_industrial.cd_municipio, new { @id = "tsg002_nave_industrial_cd_municipio_h" })
+                                                                        @Html.HiddenFor(model => model.tsg002_nave_industrial.cd_colonia, new { @id = "tsg002_nave_industrial_cd_colonia_h" })
+                                                                        @Html.HiddenFor(model => model.tsg002_nave_industrial.cd_mercado, new { @id = "tsg002_nave_industrial_cd_mercado_h" })
+                                                                        @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_area, new { @id = "tsg009_ni_dt_gral_cd_area_h" })
+                                                                        @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_carga, new { @id = "tsg009_ni_dt_gral_cd_carga_h" })
+                                                                        @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_espesor, new { @id = "tsg009_ni_dt_gral_cd_espesor_h" })
+                                                                        @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_sist_inc, new { @id = "tsg009_ni_dt_gral_cd_sist_inc_h" })
+                                                                        @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_tp_construccion, new { @id = "tsg009_ni_dt_gral_cd_tp_construccion_h" })
+                                                                        @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_tp_lampara, new { @id = "tsg009_ni_dt_gral_cd_tp_lampara_h" })
+                                                                        @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_ilum_nat, new { @id = "tsg009_ni_dt_gral_cd_ilum_nat_h" })
+                                                                        @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_hvac, new { @id = "tsg009_ni_dt_gral_cd_hvac_h" })
+                                                                        @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_cajon_est, new { @id = "tsg009_ni_dt_gral_cd_cajon_est_h" })
+                                                                        @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_tp_tech, new { @id = "tsg009_ni_dt_gral_cd_tp_tech_h" })
+                                                                        @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_Nivel_Piso, new { @id = "tsg009_ni_dt_gral_cd_Nivel_Piso_h" })
+                                                                        @Html.HiddenFor(model => model.tsg020_ni_servicio.cd_telefonia, new { @id = "tsg020_ni_servicio_cd_telefonia_h" })
+                                                                        @Html.HiddenFor(model => model.tsg023_ni_precio.cd_rep_moneda, new { @id = "tsg023_ni_precio_cd_rep_moneda_h" })
+
+                                                                        @Html.HiddenFor(model => model.tsg002_nave_industrial.cd_corredor, new { @id = "tsg002_nave_industrial_cd_corredor_h" })
+                                                                        @Html.HiddenFor(model => model.tsg002_nave_industrial.st_parque_ind, new { @id = "tsg002_nave_industrial_st_parque_ind_h" })
+                                                                        @Html.HiddenFor(model => model.tsg020_ni_servicio.cd_esp_ferr, new { @id = "tsg020_ni_servicio_cd_esp_ferr_h" })
+                                                                        @Html.HiddenFor(model => model.tsg023_ni_precio.cd_cond_arr, new { @id = "tsg023_ni_precio_cd_cond_arr_h" })
+                                                                        @Html.HiddenFor(model => model.tsg020_ni_servicio.cd_tp_gas_natural, new { @id = "tsg020_ni_servicio_cd_tp_gas_natural_h" })
+                                                                        @Html.HiddenFor(model => model.tsg023_ni_precio.cd_moneda, new { @id = "tsg023_ni_precio_cd_moneda_h" })
+                                                                        @Html.HiddenFor(model => model.tsg045_imagenes_naves.cd_reporte, new { @id = "tsg045_imagenes_naves_cd_reporte_h" })
+
+                                                                        @Html.HiddenFor(model => model.tsg025_ni_contacto_P.cd_estado, new { @id = "tsg025_ni_contacto_P_cd_estado_h" })
+                                                                        @Html.HiddenFor(model => model.tsg025_ni_contacto_P.cd_municipio, new { @id = "tsg025_ni_contacto_P_cd_municipio_h" })
+                                                                        @Html.HiddenFor(model => model.tsg025_ni_contacto_P.cd_colonia, new { @id = "tsg025_ni_contacto_P_cd_colonia_h" })
+                                                                        @Html.HiddenFor(model => model.tsg025_ni_contacto_A.cd_estado, new { @id = "tsg025_ni_contacto_A_cd_estado_h" })
+                                                                        @Html.HiddenFor(model => model.tsg025_ni_contacto_A.cd_municipio, new { @id = "tsg025_ni_contacto_A_cd_municipio_h" })
+                                                                        @Html.HiddenFor(model => model.tsg025_ni_contacto_A.cd_colonia, new { @id = "tsg025_ni_contacto_A_cd_colonia_h" })
+                                                                        @Html.HiddenFor(model => model.tsg025_ni_contacto_C.cd_estado, new { @id = "tsg025_ni_contacto_C_cd_estado_h" })
+                                                                        @Html.HiddenFor(model => model.tsg025_ni_contacto_C.cd_municipio, new { @id = "tsg025_ni_contacto_C_cd_municipio_h" })
+                                                                        @Html.HiddenFor(model => model.tsg025_ni_contacto_C.cd_colonia, new { @id = "tsg025_ni_contacto_C_cd_colonia_h" })
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-floating mb-2">
+                                                                            @Html.EditorFor(model => model.tsg002_nave_industrial.nb_nave, new { htmlAttributes = new { @class = "form-control", @id = "nbNaveingInput", @placeholder = "Nombre nave" } })
+                                                                            <label for="nbNaveingInput">@wr_anit_cushman_one.Resources.rscIdioma.NombreNave</label>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-sm-12">
-                                                                <div class="form-floating mb-2">
-                                                                    @Html.EditorFor(model => model.tsg002_nave_industrial.nb_parque, new { htmlAttributes = new { @class = "form-control", @id = "nbParqueInput", placeholder = "Nombre parque" } })
-                                                                    <label for="nbParqueInput">@wr_anit_cushman_one.Resources.rscIdioma.NombreParque</label>
-                                                                </div>
-
-                                                                @Html.Hidden("IdAction", (object)ViewBag.TpRegistro)
-                                                                @Html.HiddenFor(model => model.tsg002_nave_industrial.cd_nave, new { @id = "tsg002_nave_industrial_cd_nave" })
-                                                                @Html.HiddenFor(model => model.tsg002_nave_industrial.cd_estado, new { @id = "tsg002_nave_industrial_cd_estado_h" })
-                                                                @Html.HiddenFor(model => model.tsg002_nave_industrial.cd_municipio, new { @id = "tsg002_nave_industrial_cd_municipio_h" })
-                                                                @Html.HiddenFor(model => model.tsg002_nave_industrial.cd_colonia, new { @id = "tsg002_nave_industrial_cd_colonia_h" })
-                                                                @Html.HiddenFor(model => model.tsg002_nave_industrial.cd_mercado, new { @id = "tsg002_nave_industrial_cd_mercado_h" })
-                                                                @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_area, new { @id = "tsg009_ni_dt_gral_cd_area_h" })
-                                                                @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_carga, new { @id = "tsg009_ni_dt_gral_cd_carga_h" })
-                                                                @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_espesor, new { @id = "tsg009_ni_dt_gral_cd_espesor_h" })
-                                                                @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_sist_inc, new { @id = "tsg009_ni_dt_gral_cd_sist_inc_h" })
-                                                                @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_tp_construccion, new { @id = "tsg009_ni_dt_gral_cd_tp_construccion_h" })
-                                                                @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_tp_lampara, new { @id = "tsg009_ni_dt_gral_cd_tp_lampara_h" })
-                                                                @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_ilum_nat, new { @id = "tsg009_ni_dt_gral_cd_ilum_nat_h" })
-                                                                @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_hvac, new { @id = "tsg009_ni_dt_gral_cd_hvac_h" })
-                                                                @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_cajon_est, new { @id = "tsg009_ni_dt_gral_cd_cajon_est_h" })
-                                                                @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_tp_tech, new { @id = "tsg009_ni_dt_gral_cd_tp_tech_h" })
-                                                                @Html.HiddenFor(model => model.tsg009_ni_dt_gral.cd_Nivel_Piso, new { @id = "tsg009_ni_dt_gral_cd_Nivel_Piso_h" })
-                                                                @Html.HiddenFor(model => model.tsg020_ni_servicio.cd_telefonia, new { @id = "tsg020_ni_servicio_cd_telefonia_h" })
-                                                                @Html.HiddenFor(model => model.tsg023_ni_precio.cd_rep_moneda, new { @id = "tsg023_ni_precio_cd_rep_moneda_h" })
-
-                                                                @Html.HiddenFor(model => model.tsg002_nave_industrial.cd_corredor, new { @id = "tsg002_nave_industrial_cd_corredor_h" })
-                                                                @Html.HiddenFor(model => model.tsg002_nave_industrial.st_parque_ind, new { @id = "tsg002_nave_industrial_st_parque_ind_h" })
-                                                                @Html.HiddenFor(model => model.tsg020_ni_servicio.cd_esp_ferr, new { @id = "tsg020_ni_servicio_cd_esp_ferr_h" })
-                                                                @Html.HiddenFor(model => model.tsg023_ni_precio.cd_cond_arr, new { @id = "tsg023_ni_precio_cd_cond_arr_h" })
-                                                                @Html.HiddenFor(model => model.tsg020_ni_servicio.cd_tp_gas_natural, new { @id = "tsg020_ni_servicio_cd_tp_gas_natural_h" })
-                                                                @Html.HiddenFor(model => model.tsg023_ni_precio.cd_moneda, new { @id = "tsg023_ni_precio_cd_moneda_h" })
-                                                                @Html.HiddenFor(model => model.tsg045_imagenes_naves.cd_reporte, new { @id = "tsg045_imagenes_naves_cd_reporte_h" })
-
-                                                                @Html.HiddenFor(model => model.tsg025_ni_contacto_P.cd_estado, new { @id = "tsg025_ni_contacto_P_cd_estado_h" })
-                                                                @Html.HiddenFor(model => model.tsg025_ni_contacto_P.cd_municipio, new { @id = "tsg025_ni_contacto_P_cd_municipio_h" })
-                                                                @Html.HiddenFor(model => model.tsg025_ni_contacto_P.cd_colonia, new { @id = "tsg025_ni_contacto_P_cd_colonia_h" })
-                                                                @Html.HiddenFor(model => model.tsg025_ni_contacto_A.cd_estado, new { @id = "tsg025_ni_contacto_A_cd_estado_h" })
-                                                                @Html.HiddenFor(model => model.tsg025_ni_contacto_A.cd_municipio, new { @id = "tsg025_ni_contacto_A_cd_municipio_h" })
-                                                                @Html.HiddenFor(model => model.tsg025_ni_contacto_A.cd_colonia, new { @id = "tsg025_ni_contacto_A_cd_colonia_h" })
-                                                                @Html.HiddenFor(model => model.tsg025_ni_contacto_C.cd_estado, new { @id = "tsg025_ni_contacto_C_cd_estado_h" })
-                                                                @Html.HiddenFor(model => model.tsg025_ni_contacto_C.cd_municipio, new { @id = "tsg025_ni_contacto_C_cd_municipio_h" })
-                                                                @Html.HiddenFor(model => model.tsg025_ni_contacto_C.cd_colonia, new { @id = "tsg025_ni_contacto_C_cd_colonia_h" })
-                                                            </div>
-                                                            <div class="col-sm-12">
-                                                                <div class="form-floating mb-2">
-                                                                    @Html.EditorFor(model => model.tsg002_nave_industrial.nb_nave, new { htmlAttributes = new { @class = "form-control", @id = "nbNaveingInput", @placeholder = "Nombre nave" } })
-                                                                    <label for="nbNaveingInput">@wr_anit_cushman_one.Resources.rscIdioma.NombreNave</label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-12">
+                                                            <div class="col-sm-6">
 
                                                                 <div class="form-floating mb-2">
-                                                                    @Html.TextAreaFor(model => model.tsg002_nave_industrial.nb_comentarios, new { cols = "50%", rows = "3", @class = "form-control" })
+                                                                    @Html.TextAreaFor(model => model.tsg002_nave_industrial.nb_comentarios, new { cols = "50%", rows = "10", @class = "form-control",style="height: 186px;" })
                                                                     <label for="tsg002_nave_industrial_nb_comentarios">@wr_anit_cushman_one.Resources.rscIdioma.comentarios</label>
                                                                 </div>
                                                             </div>
@@ -398,6 +408,9 @@
                                                                             <label for="nu_superficie_tot_pies"> @wr_anit_cushman_one.Resources.rscIdioma.MinimoDivisibleF Ft<sup>2</sup></label>
                                                                         </div>
                                                                     </div>
+
+                                                                     
+
                                                                     <div class="col-sm-6">
                                                                         <div class="form-floating mb-2">
 
@@ -523,6 +536,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-6"></div>
+                                                                    <!--
                                                                     <div class="col-sm-6">
                                                                         <div class="form-floating mb-2">
                                                                             @Html.DropDownListFor(model => model.tsg009_ni_dt_gral.cd_Nivel_Piso, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } }, new { @class = "form-select" })
@@ -530,6 +544,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-6"></div>
+                                                                    -->
                                                                     <div class="col-sm-6">
                                                                         <div class="form-floating mb-2">
                                                                             @Html.EditorFor(model => model.tsg009_ni_dt_gral.fh_hasta, new {  htmlAttributes = new { @class = "form-control", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.OcupadoHasta } })
@@ -626,6 +641,7 @@
                                                                             <label for="nbCPingInput"> @wr_anit_cushman_one.Resources.rscIdioma.PrecioTotal</label>
                                                                         </div>
                                                                     </div>
+                                                                    <!--
                                                                     <div class="col-sm-12">
                                                                         <div class="form-floating mb-2">
                                                                             <input type="text" id="nu_total_mxn" class="form-control" disabled="disabled" placeholder="MXN" />
@@ -638,6 +654,7 @@
                                                                             <label for="nu_total_usd">USD</label>
                                                                         </div>
                                                                     </div>
+                                                                    -->
                                                                     <div class="col-sm-12">
                                                                         <div class="form-floating mb-2">
                                                                             @Html.DropDownListFor(model => model.tsg023_ni_precio.cd_cond_arr, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } }, new { @class = "form-select" })
@@ -645,10 +662,32 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-12">
-                                                                        <div class="form-floating mb-2">
-                                                                            @Html.EditorFor(model => model.tsg023_ni_precio.nu_ma_ac, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.MantenimientoAreas } })
-                                                                            <label for="nbCPingInput"> @wr_anit_cushman_one.Resources.rscIdioma.MantenimientoAreas</label>
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12 fw-bold text-center">
+                                                                                 @wr_anit_cushman_one.Resources.rscIdioma.MantenimientoAreas
+                                                                            </div>
                                                                         </div>
+                                                                        <div class="row">
+                                                                            <div class="col-sm-4">
+                                                                                <div class="form-floating mb-2">
+                                                                                    <input type="text" class="form-control" id="Sfyrinput" placeholder="SF/yr"/>
+                                                                                    <label for="Sfyrinput">SF/yr </label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-4">
+                                                                                <div class="form-floating mb-2">
+                                                                                   <input type="text" class="form-control" id="sfmoinput" placeholder="SF/mo"/>
+                                                                                    <label for="sfmoinput">SF/mo </label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-4">
+                                                                                <div class="form-floating mb-2">
+                                                                                    @Html.EditorFor(model => model.tsg023_ni_precio.nu_ma_ac, new { htmlAttributes = new { @class = "form-control", @id = "smmoinput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.MantenimientoAreas } })
+                                                                                    <label for="smmoinput">SM/mo</label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -660,12 +699,14 @@
                                                                             <label for="select2-tsg002_nave_industrial_cd_estado-container">@wr_anit_cushman_one.Resources.rscIdioma.TipoMonedaReport</label>
                                                                         </div>
                                                                     </div>
+                                                                    <!--
                                                                     <div class="col-sm-12">
                                                                         <div class="form-floating mb-2">
                                                                             <input type="text" id="tipo_cambio" value=@ViewBag.TipoCambio class="form-control" disabled="disabled" placeholder="Tipo Cambio" />
                                                                             <label for="tipo_cambio">Tipo Cambio </label>
                                                                         </div>
                                                                     </div>
+                                                                    -->
                                                                     <div class="col-sm-12">
                                                                         <div class="form-floating mb-2">
                                                                             @Html.EditorFor(model => model.tsg023_ni_precio.nu_tipo_cambio, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = "Valor Tipo Cambio" } })

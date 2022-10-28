@@ -3172,7 +3172,31 @@ namespace wr_anit_cushman_one.Controllers
         }
         public JsonResult getNavesMapas()
         {
-            var result = db.tsg002_nave_industrial.Select("new (cd_nave, nb_parque, nb_nave, nb_posicion, nb_poligono)");
+            //var result = db.tsg002_nave_industrial.Select("new (cd_nave, nb_parque, nb_nave, nb_posicion, nb_poligono)");
+            var result = from a in db.tsg002_nave_industrial
+                         join b in db.tsg009_ni_dt_gral on a.cd_nave equals b.cd_nave
+                         //join c in db.tsg037_estados on a.cd_estado equals c.cd_estado
+                         //join d in db.tsg038_municipios on new { a.cd_estado, a.cd_municipio } equals new { d.cd_estado, d.cd_municipio }
+                         //join e in db.tsg039_colonias on new { a.cd_estado, a.cd_municipio, a.cd_colonia } equals new { e.cd_estado, e.cd_municipio, e.cd_colonia }
+                         select new
+                         {
+                             cd_nave = a.cd_nave,
+                             nb_parque = a.nb_parque,
+                             nb_nave = a.nb_nave,
+                             nu_superficie = b.nu_superficie,
+                             nu_bodega = b.nu_bodega,
+                             nu_disponibilidad = b.nu_disponibilidad,
+                             nu_min_divisible = b.nu_min_divisible,
+                             //nb_estado = db.,
+                             //nb_municipio = d.nb_municipio,
+                             //nb_colonia = e.nb_colonia,
+                             //nb_calle = a.nb_calle,
+                             //nu_direcion = a.nu_direcion,
+                             //nu_cp = a.nu_cp,
+                             nb_posicion = a.nb_posicion,
+                             nb_poligono = a.nb_poligono,
+                             nb_comentarios = a.nb_comentarios
+                         };
             return new JsonResult { Data = result, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
         public JsonResult GetNavesAll()

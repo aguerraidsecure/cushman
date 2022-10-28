@@ -334,7 +334,7 @@
     <value>Dock high doors</value>
   </data>
   <data name="Rampa" xml:space="preserve">
-    <value>Ramps</value>
+    <value>Floor access level</value>
   </data>
   <data name="Servicio" xml:space="preserve">
     <value>Service</value>
@@ -404,14 +404,5 @@
   </data>
   <data name="MinimoDisponible" xml:space="preserve">
     <value>Minimun</value>
-  </data>
-  <data name="TipoReporte" xml:space="preserve">
-    <value>Building/Land</value>
-  </data>
-  <data name="RepNombreCliente" xml:space="preserve">
-    <value>Customer Name</value>
-  </data>
-  <data name="Puesto" xml:space="preserve">
-    <value>Broker stall</value>
   </data>
 </root>

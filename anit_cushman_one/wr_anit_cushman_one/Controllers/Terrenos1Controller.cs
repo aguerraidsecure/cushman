@@ -2090,6 +2090,36 @@ namespace wr_anit_cushman_one.Controllers
             return new JsonResult { Data = tsi001_dts_terreno.ToList(), JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
+
+        public JsonResult getTerrenosMapas()
+        {
+            //var result = db.tsg002_nave_industrial.Select("new (cd_nave, nb_parque, nb_nave, nb_posicion, nb_poligono)");
+            var result = from a in db.tsg001_terreno
+                         join b in db.tsg026_te_dt_gral on a.cd_terreno equals b.cd_terreno
+                         //join c in db.tsg037_estados on a.cd_estado equals c.cd_estado
+                         //join d in db.tsg038_municipios on new { a.cd_estado, a.cd_municipio } equals new { d.cd_estado, d.cd_municipio }
+                         //join e in db.tsg039_colonias on new { a.cd_estado, a.cd_municipio, a.cd_colonia } equals new { e.cd_estado, e.cd_municipio, e.cd_colonia }
+                         select new
+                         {
+                             cd_terreno = a.cd_terreno,
+                             nb_comercial = a.nb_comercial,
+                             
+                             
+                             nu_disponibilidad = b.nu_disponiblidad,
+                             nu_tam_min = b.nu_tam_min,
+                             nu_tam_max = b.nu_tam_max,
+                             //nb_estado = db.,
+                             //nb_municipio = d.nb_municipio,
+                             //nb_colonia = e.nb_colonia,
+                             //nb_calle = a.nb_calle,
+                             //nu_direcion = a.nu_direcion,
+                             //nu_cp = a.nu_cp,
+                             nb_posicion = a.nb_posicion,
+                             nb_poligono = a.nb_poligono,
+                             nb_comentarios = a.nb_comentarios
+                         };
+            return new JsonResult { Data = result, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
         public JsonResult GetTerrenoAll()
         {
 

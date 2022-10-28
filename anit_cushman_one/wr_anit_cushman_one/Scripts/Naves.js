@@ -4,9 +4,9 @@ var divMsgBoxBackGroundId = divId + "BackGround";
 function getDocHeight() {
     var D = document;
     return Math.max(
-    Math.max(D.body.scrollHeight, D.documentElement.scrollHeight),
-    Math.max(D.body.offsetHeight, D.documentElement.offsetHeight),
-    Math.max(D.body.clientHeight, D.documentElement.clientHeight));
+        Math.max(D.body.scrollHeight, D.documentElement.scrollHeight),
+        Math.max(D.body.offsetHeight, D.documentElement.offsetHeight),
+        Math.max(D.body.clientHeight, D.documentElement.clientHeight));
 }
 
 function ShowLoading(e) {
@@ -45,30 +45,30 @@ function HiedeLoading() {
     divMsgBoxAjaxWindow.animate({ opacity: 0, "top": top - 50, "left": left }, 200);
     $("#" + divMsgBoxBackGroundId).fadeOut(300);
     setTimeout(
-            function () {
-                $("#div-dl-im").remove();
-                $("#" + divMsgBoxBackGroundId).remove();
-            }, 1000);
+        function () {
+            $("#div-dl-im").remove();
+            $("#" + divMsgBoxBackGroundId).remove();
+        }, 1000);
 }
 function set_Controles(queHago) {
     $(".form-control")
-                    .each(function () {
-                        var elemento = this;
-                        //var tipo = elemento.Attr().tipo;
-                        //if(tipo == 'text')
-                        //if (elemento.name == 'cd_mercado') {
-                        //    alert.toString('algo');
-                        //}
-                        elemento.disabled = queHago;
-                    });
+        .each(function () {
+            var elemento = this;
+            //var tipo = elemento.Attr().tipo;
+            //if(tipo == 'text')
+            //if (elemento.name == 'cd_mercado') {
+            //    alert.toString('algo');
+            //}
+            elemento.disabled = queHago;
+        });
 
     $("#frm-naves")
-                .find('select')
-                .each(function () {
-                    var elemento = this;
-                    elemento.disabled = queHago;
+        .find('select')
+        .each(function () {
+            var elemento = this;
+            elemento.disabled = queHago;
 
-                });
+        });
 };
 function set_Movimiento(queMovimiento) {
     //Contacto General
@@ -118,12 +118,12 @@ function set_Movimiento(queMovimiento) {
     $("#tsg009_ni_dt_gral_cd_espesor_h").empty();
 
     $("#tsg020_ni_servicio_cd_telefonia_h").empty();
-    
+
     storeCargaCombo("/Utils/GetCdEstado", "tsg002_nave_industrial_cd_estado");
     storeCargaCombo("/Utils/GetCdEstado", "tsg025_ni_contacto_P_cd_estado");
     storeCargaCombo("/Utils/GetCdEstado", "tsg025_ni_contacto_A_cd_estado");
     storeCargaCombo("/Utils/GetCdEstado", "tsg025_ni_contacto_C_cd_estado");
-    storeCargaCombo("/Utils/GetMercados", "tsg002_nave_industrial_cd_mercado");    
+    storeCargaCombo("/Utils/GetMercados", "tsg002_nave_industrial_cd_mercado");
     //storeCargaCombo("/Utils/GetCdEstado", "tsg002_nave_industrial_cd_mercado");
     storeCargaCombo("/Utils/GetTelefonia", "tsg020_ni_servicio_cd_telefonia");
 
@@ -158,11 +158,11 @@ $.fn.serializeObject = function () {
 //27052017 CAmbio AGGH para pasar parametros para
 // la búsqueda de disponibilidad
 function storeCargaTerrenos(Url) {
-    
+
     var disp_desde = $("#tsg009_ni_dt_gral_nu_disponibilidad").val();
     var disp_hasta = $("#disponible_hasta").val();
     if ($("#disponible_hasta").val().length > 0) {
-        data = { disp_desde_p: disp_desde, disp_hasta_p: disp_hasta};      
+        data = { disp_desde_p: disp_desde, disp_hasta_p: disp_hasta };
         $.ajax({
             type: 'POST',
             url: '/Naves/GetNavesDisponible',
@@ -190,7 +190,7 @@ function storeCargaTerrenos(Url) {
         var data = {};
         console.log(Url);
         data = JSON.stringify($('#frm-naves').serializeObject());
-        console.log({data});
+        console.log({ data });
 
         $.ajax({
             type: 'POST',
@@ -240,9 +240,9 @@ function loadData(dataStoreData) {
         function (i, val) {
 
             var row = `<tr>
-                            <td>E${ val[0].cd_nave }</td>
-                            <td>E${ val[0].nb_parque }</td>
-                            <td>E${ val[0].nb_nave }</td>
+                            <td>E${val[0].cd_nave}</td>
+                            <td>E${val[0].nb_parque}</td>
+                            <td>E${val[0].nb_nave}</td>
                              <td><button class="btn btn-primary">Editar</button></td>
                        </tr>`;
             var trow = $('<tr></tr>');
@@ -295,7 +295,7 @@ function loadArchivos(dataStoreData) {
             //th_link2
             //   .html('<a class="glyphicon glyphicon-download" href="/image/N' + val.cd_nave + '/' + val.nb_archivo + '" target="_blank"> </a>');
             th_link2
-               .html('<a class="glyphicon glyphicon-download" onclick="descargararchivo(\'' + val.nb_archivo + '\')"> </a>');
+                .html('<a class="glyphicon glyphicon-download" onclick="descargararchivo(\'' + val.nb_archivo + '\')"> </a>');
             trow.append(th_link2);
 
             tbody.append(trow);
@@ -609,41 +609,41 @@ function convertir(id) {
             var x = document.getElementById("tsg009_ni_dt_gral_nu_superficie");
             var x1 = document.getElementById("nu_superficie_pies");
             //x1.value = Math.round((x.value / 0.3048) * 100) / 100;
-            x1.value = Math.round((x.value *  10.7639)*100)/100;
+            x1.value = Math.round((x.value * 10.7639) * 100) / 100;
             break;
         case 2:
             //document.getElementById("nu_tam_min") = document.getElementById("tsg026_te_dt_gral_nu_tam_min").value() * 0.3048;
             var x = document.getElementById("tsg009_ni_dt_gral_nu_bodega");
             var x1 = document.getElementById("nu_superficie_tot_pies");
             //x1.value = Math.round((x.value / 0.3048) * 100) / 100;
-            x1.value = Math.round((x.value *  10.7639) * 100) / 100;
+            x1.value = Math.round((x.value * 10.7639) * 100) / 100;
             break;
         case 3:
             //document.getElementById("nu_tam_max") = document.getElementById("tsg026_te_dt_gral_nu_tam_max").value() * 0.3048;
             var x = document.getElementById("tsg009_ni_dt_gral_nu_disponibilidad");
             var x1 = document.getElementById("nu_disponibilidad_pies");
             //x1.value = Math.round((x.value / 0.3048) * 100) / 100;
-            x1.value = Math.round((x.value *  10.7639) * 100) / 100;
+            x1.value = Math.round((x.value * 10.7639) * 100) / 100;
             break;
         case 4:
             //document.getElementById("tsg026_te_dt_gral_nu_disponiblidad").value() = parseFloat(document.getElementById("nu_disponiblidad_pies").value) / 0.3048;
             var x = document.getElementById("tsg009_ni_dt_gral_nu_min_divisible");
             var x1 = document.getElementById("nu_minimo_pies");
-            x1.value = Math.round((x.value *  10.7639) * 100) / 100;
+            x1.value = Math.round((x.value * 10.7639) * 100) / 100;
             break;
         case 5:
             //document.getElementById("nu_disponiblidad_pies") = document.getElementById("tsg026_te_dt_gral_nu_disponiblidad").value() * 0.3048
             var x = document.getElementById("tsg009_ni_dt_gral_nu_superficie");
             var x1 = document.getElementById("nu_superficie_pies");
             //x.value = Math.round((x1.value * 0.3048) * 100) / 100;
-            x.value = Math.round((x1.value /  10.7639) * 100) / 100;
+            x.value = Math.round((x1.value / 10.7639) * 100) / 100;
             break;
         case 6:
             //document.getElementById("nu_tam_min") = document.getElementById("tsg026_te_dt_gral_nu_tam_min").value() * 0.3048;
             var x = document.getElementById("tsg009_ni_dt_gral_nu_bodega");
             var x1 = document.getElementById("nu_superficie_tot_pies");
             //x.value = Math.round((x1.value * 0.3048) * 100) / 100;
-            x.value = Math.round((x1.value /  10.7639) * 100) / 100;
+            x.value = Math.round((x1.value / 10.7639) * 100) / 100;
             break;
         case 7:
             //document.getElementById("nu_tam_max") = document.getElementById("tsg026_te_dt_gral_nu_tam_max").value() * 0.3048;
@@ -657,7 +657,7 @@ function convertir(id) {
             var x = document.getElementById("tsg009_ni_dt_gral_nu_min_divisible");
             var x1 = document.getElementById("nu_minimo_pies");
             //x.value = Math.round((x1.value * 0.3048) * 100) / 100;
-            x.value = Math.round((x1.value /  10.7639) * 100) / 100;
+            x.value = Math.round((x1.value / 10.7639) * 100) / 100;
             break;
         case 9:
             //document.getElementById("tsg026_te_dt_gral_nu_disponiblidad").value() = parseFloat(document.getElementById("nu_disponiblidad_pies").value) / 0.3048;
@@ -701,10 +701,11 @@ var map = null;
 var geocoder = null;
 var marker = null;
 var pos = 5;
+var datosNaves = null;
 
 $(document)
     .ready(function () {
-              
+
         if ($("#IdAction").val() === "Editar") {
             $("#btnNuevo").attr("disabled", true);
         } else {
@@ -718,7 +719,7 @@ $(document)
         storeCargaCombo("/Utils/GetCdEstado", "tsg025_ni_contacto_P_cd_estado");
         storeCargaCombo("/Utils/GetCdEstado", "tsg025_ni_contacto_A_cd_estado");
         storeCargaCombo("/Utils/GetCdEstado", "tsg025_ni_contacto_C_cd_estado");
-        
+
         /*$("#tsg002_nave_industrial_cd_corredor").select2({ placeholder: "Seleccione Corredor", width: "100%" });*/
 
         storeCargaCombo("/Utils/GetEstatus", "tsg002_nave_industrial_st_parque_ind");
@@ -731,7 +732,7 @@ $(document)
         /*$("#tsg009_ni_dt_gral_cd_carga").select2({ placeholder: "Seleccione Carga", width: "30%" });*/
 
         storeCargaCombo("/Utils/GetSistInc", "tsg009_ni_dt_gral_cd_sist_inc");
-       /* $("#tsg009_ni_dt_gral_cd_sist_inc").select2({ placeholder: "Seleccione Sistema Incendio", width: "80%" });*/
+        /* $("#tsg009_ni_dt_gral_cd_sist_inc").select2({ placeholder: "Seleccione Sistema Incendio", width: "80%" });*/
 
         storeCargaCombo("/Utils/GetConstruccion", "tsg009_ni_dt_gral_cd_tp_construccion");
         /*$("#tsg009_ni_dt_gral_cd_tp_construccion").select2({ placeholder: "Seleccione Construcciòn", width: "80%" });*/
@@ -740,7 +741,7 @@ $(document)
         /*$("#tsg009_ni_dt_gral_cd_tp_lampara").select2({ placeholder: "Seleccione Lampara", width: "80%" });*/
 
         storeCargaCombo("/Utils/GetHVAC", "tsg009_ni_dt_gral_cd_hvac");
-       /* $("#tsg009_ni_dt_gral_cd_hvac").select2({ placeholder: "Seleccione HVAC", width: "80%" });*/
+        /* $("#tsg009_ni_dt_gral_cd_hvac").select2({ placeholder: "Seleccione HVAC", width: "80%" });*/
 
         storeCargaCombo("/Utils/GetEspesor", "tsg009_ni_dt_gral_cd_espesor");
         /*$("#tsg009_ni_dt_gral_cd_espesor").select2({ placeholder: "Seleccione Espesor", width: "30%" });*/
@@ -777,9 +778,9 @@ $(document)
         storeCargaCombo("/Utils/GetTipoMoneda", "tsg023_ni_precio_cd_moneda");
         //$("#tsg023_ni_precio_cd_moneda").select2({ placeholder: "Seleccione Tipo Moneda", width: "30%" });
         storeCargaCombo("/Utils/GetTipoReporte", "tsg045_imagenes_naves_cd_reporte");
-       /* $("#tsg045_imagenes_naves_cd_reporte").select2({ placeholder: "Seleccione Reporte", width: "30%" });*/
+        /* $("#tsg045_imagenes_naves_cd_reporte").select2({ placeholder: "Seleccione Reporte", width: "30%" });*/
         storeCargaCombo("/Utils/GetTipoMoneda", "tsg023_ni_precio_cd_rep_moneda");
-   /*     $("#tsg023_ni_precio_cd_rep_moneda").select2({ placeholder: "Seleccione Tipo Moneda", width: "30%" });*/
+        /*     $("#tsg023_ni_precio_cd_rep_moneda").select2({ placeholder: "Seleccione Tipo Moneda", width: "30%" });*/
 
 
         $("#nu_inventario").focus();
@@ -789,102 +790,100 @@ $(document)
 
 
         $("#tsg009_ni_dt_gral_nu_superficie")
-         .change(function () {
-             convertir(1);
-             return false;
-         });
+            .change(function () {
+                convertir(1);
+                return false;
+            });
 
         $("#tsg009_ni_dt_gral_nu_bodega")
-          .change(function () {
-              convertir(2);
-              return false;
-          });
+            .change(function () {
+                convertir(2);
+                return false;
+            });
 
         $("#tsg009_ni_dt_gral_nu_disponibilidad")
-          .change(function () {
-              convertir(3);
-              $("#tsg023_ni_precio_im_total").val( $("#tsg009_ni_dt_gral_nu_disponibilidad").val() * $("#tsg023_ni_precio_im_venta").val());
-              return false;
-          });
+            .change(function () {
+                convertir(3);
+                $("#tsg023_ni_precio_im_total").val($("#tsg009_ni_dt_gral_nu_disponibilidad").val() * $("#tsg023_ni_precio_im_venta").val());
+                return false;
+            });
         $("#tsg023_ni_precio_im_venta")
-          .change(function () {
-             
-              $("#tsg023_ni_precio_im_total").val($("#tsg009_ni_dt_gral_nu_disponibilidad").val() * $("#tsg023_ni_precio_im_venta").val());
-              return false;
-          });
+            .change(function () {
+
+                $("#tsg023_ni_precio_im_total").val($("#tsg009_ni_dt_gral_nu_disponibilidad").val() * $("#tsg023_ni_precio_im_venta").val());
+                return false;
+            });
 
         $("#tsg023_ni_precio_nu_tipo_cambio")
-                 .change(function () {
-                     $("#nu_total_mxn").val($("#tsg023_ni_precio_im_total").val() * $("#tsg023_ni_precio_nu_tipo_cambio").val());
-                     $("#nu_total_usd").val($("#tsg023_ni_precio_im_total").val());
-                     if (document.getElementById("tsg023_ni_precio_cd_moneda").options[document.getElementById('tsg023_ni_precio_cd_moneda').selectedIndex].text == "USD") {
-                         $("#tsg023_ni_precio_im_total").val($("#nu_total_usd").val())
-                     }
-                     else {
-                         $("#tsg023_ni_precio_im_total").val($("#nu_total_mxn").val())
-                     }
-                     return false;
-                 });
+            .change(function () {
+                $("#nu_total_mxn").val($("#tsg023_ni_precio_im_total").val() * $("#tsg023_ni_precio_nu_tipo_cambio").val());
+                $("#nu_total_usd").val($("#tsg023_ni_precio_im_total").val());
+                if (document.getElementById("tsg023_ni_precio_cd_moneda").options[document.getElementById('tsg023_ni_precio_cd_moneda').selectedIndex].text == "USD") {
+                    $("#tsg023_ni_precio_im_total").val($("#nu_total_usd").val())
+                }
+                else {
+                    $("#tsg023_ni_precio_im_total").val($("#nu_total_mxn").val())
+                }
+                return false;
+            });
 
         $("#tsg023_ni_precio_cd_moneda")
-                  .change(function () {
-                      $("#nu_total_mxn").val($("#tsg023_ni_precio_im_total").val() * $("#tsg023_ni_precio_nu_tipo_cambio").val());
-                      $("#nu_total_usd").val($("#tsg023_ni_precio_im_total").val());
-                      if (document.getElementById("tsg023_ni_precio_cd_moneda").options[document.getElementById('tsg023_ni_precio_cd_moneda').selectedIndex].text == "USD") {
-                          $("#tsg023_ni_precio_im_total").val($("#nu_total_usd").val())
-                      }
-                      else {
-                          $("#tsg023_ni_precio_im_total").val($("#nu_total_mxn").val())
-                      }
-                      return false;
-                  });
+            .change(function () {
+                $("#nu_total_mxn").val($("#tsg023_ni_precio_im_total").val() * $("#tsg023_ni_precio_nu_tipo_cambio").val());
+                $("#nu_total_usd").val($("#tsg023_ni_precio_im_total").val());
+                if (document.getElementById("tsg023_ni_precio_cd_moneda").options[document.getElementById('tsg023_ni_precio_cd_moneda').selectedIndex].text == "USD") {
+                    $("#tsg023_ni_precio_im_total").val($("#nu_total_usd").val())
+                }
+                else {
+                    $("#tsg023_ni_precio_im_total").val($("#nu_total_mxn").val())
+                }
+                return false;
+            });
 
         $("#tsg009_ni_dt_gral_nu_min_divisible")
-          .change(function () {
-              if (parseFloat($("#tsg009_ni_dt_gral_nu_min_divisible").val()) > parseFloat($("#tsg009_ni_dt_gral_nu_disponibilidad").val()) || parseFloat($("#tsg009_ni_dt_gral_nu_min_divisible").val()) > parseFloat($("#tsg009_ni_dt_gral_nu_superficie").val()))
-              {
-                  //alert('El minino divisible no debe de ser mayor a Disponibilidad Total o Superficie Terreno');
-                  $.msgBox({
-                      title: "Cushman ONE",
-                      content: "El minino divisible no debe de ser mayor a Disponibilidad Total o Superficie Terreno",
-                      type: "alert"
-                  });
-                  return false;
-              }
-              convertir(4);
+            .change(function () {
+                if (parseFloat($("#tsg009_ni_dt_gral_nu_min_divisible").val()) > parseFloat($("#tsg009_ni_dt_gral_nu_disponibilidad").val()) || parseFloat($("#tsg009_ni_dt_gral_nu_min_divisible").val()) > parseFloat($("#tsg009_ni_dt_gral_nu_superficie").val())) {
+                    //alert('El minino divisible no debe de ser mayor a Disponibilidad Total o Superficie Terreno');
+                    $.msgBox({
+                        title: "Cushman ONE",
+                        content: "El minino divisible no debe de ser mayor a Disponibilidad Total o Superficie Terreno",
+                        type: "alert"
+                    });
+                    return false;
+                }
+                convertir(4);
 
-              return false;
-          });
+                return false;
+            });
 
         $("#tsg009_ni_dt_gral_nu_altura")
-          .change(function () {
-              convertir(10);
-              return false;
-          });
+            .change(function () {
+                convertir(10);
+                return false;
+            });
 
 
         $("#tsg002_nave_industrial_nu_cp")
-         .change(function () {
-             setCP("/Naves/BuscaCP",1);
-         });
+            .change(function () {
+                setCP("/Naves/BuscaCP", 1);
+            });
 
         $("#tsg025_ni_contacto_P_nu_cp")
-         .change(function () {
-             setCP("/Naves/BuscaCP", 2);
-         });
+            .change(function () {
+                setCP("/Naves/BuscaCP", 2);
+            });
 
         $("#tsg025_ni_contacto_A_nu_cp")
-         .change(function () {
-             setCP("/Naves/BuscaCP", 3);
-         });
+            .change(function () {
+                setCP("/Naves/BuscaCP", 3);
+            });
 
         $("#tsg025_ni_contacto_C_nu_cp")
-         .change(function () {
-             setCP("/Naves/BuscaCP", 4);
-         });
+            .change(function () {
+                setCP("/Naves/BuscaCP", 4);
+            });
 
-        function cargaCP(storedata, estado, municipio, colonia)
-        {
+        function cargaCP(storedata, estado, municipio, colonia) {
 
             var Msg = storedata.Result[0].cd_estado;
             $("#" + estado).val(Msg);
@@ -900,7 +899,7 @@ $(document)
 
 
         function setCP(Url, tp) {
-            if (tp == 1){
+            if (tp == 1) {
                 var idRegistro = $("#tsg002_nave_industrial_nu_cp").val();
             }
             if (tp == 2) {
@@ -965,28 +964,28 @@ $(document)
                         if (result === "Si") {
                             //setBorraRegistro("/Producto/Eliminar/" + $("#cd_producto").val());
                             ShowLoading();
-                            setGeneraPdf("/Naves/GeneraPdf",1);
+                            setGeneraPdf("/Naves/GeneraPdf", 1);
                         }
                     }
                 });
             });
 
         $("#btnPpt")
-             .click(function () {
-                 $.msgBox({
-                     title: "Cushman ONE",
-                     content: "Está seguro de generar la presentación?",
-                     type: "confirm",
-                     buttons: [{ value: "Si" }, { value: "No" }, { value: "Cancel" }],
-                     success: function (result) {
-                         if (result === "Si") {
-                             //setBorraRegistro("/Producto/Eliminar/" + $("#cd_producto").val());
-                             ShowLoading();
-                             setGeneraPdf("/Naves/GeneraPpt", 1);
-                         }
-                     }
-                 });
-             });
+            .click(function () {
+                $.msgBox({
+                    title: "Cushman ONE",
+                    content: "Está seguro de generar la presentación?",
+                    type: "confirm",
+                    buttons: [{ value: "Si" }, { value: "No" }, { value: "Cancel" }],
+                    success: function (result) {
+                        if (result === "Si") {
+                            //setBorraRegistro("/Producto/Eliminar/" + $("#cd_producto").val());
+                            ShowLoading();
+                            setGeneraPdf("/Naves/GeneraPpt", 1);
+                        }
+                    }
+                });
+            });
 
         $("#btnPdfSum")
             .click(function () {
@@ -1099,7 +1098,7 @@ $(document)
                 document.getElementById("console-log").innerHTML = "Tipo de Error: " + jqXHR.statusText + "Código de Error:" + jqXHR.readyState;
                 $("#console-log").fadeIn(5000);
                 $("#console-log").fadeOut(5000);
-                
+
             });
         };
 
@@ -1192,10 +1191,9 @@ $(document)
                 var form = $(this);
                 var camposObligatorios = "";
                 var bandValidacion = false;
-                if ($('#tsg002_nave_industrial_nb_parque').val() == "")
-                {
+                if ($('#tsg002_nave_industrial_nb_parque').val() == "") {
                     bandValidacion = true;
-                    camposObligatorios = camposObligatorios +  "Nombre parque.\n"
+                    camposObligatorios = camposObligatorios + "Nombre parque.\n"
                 }
                 if ($('#tsg002_nave_industrial_nb_nave').val() == "") {
                     bandValidacion = true;
@@ -1214,8 +1212,7 @@ $(document)
                     camposObligatorios = camposObligatorios + "Código Postal.\n"
                 }
 
-                if (bandValidacion)
-                {
+                if (bandValidacion) {
                     $.msgBox({
                         title: "Cushman ONE",
                         content: "Los siguientes valores son requeridos: " + camposObligatorios,
@@ -1241,7 +1238,7 @@ $(document)
                                         if (result == "No") {
                                             //window.location.href = r.redirect;
                                             //set_Controles(true);
-                                        } else {                                            
+                                        } else {
                                             window.location.replace("../../Naves/Create");
                                             $("#btnNuevo").attr("disabled", false);
                                         }
@@ -1277,7 +1274,7 @@ $(document)
         $("#btnCerrar").click(function () {
             $("#btnNuevo").attr("disabled", false);
         });
-        
+
         $("#btnBuscarTodo")
             .on('click',
                 function (evt) {
@@ -1302,7 +1299,7 @@ $(document)
                     evt.preventDefault();
                     evt.stopPropagation();
                     $("#btnNuevo").attr("disabled", true);
-                   
+
                     var $detailDiv = $('#findNaves'),
                         url = '/Naves/Buscar';
                     $.get(url, function (data) {
@@ -1314,7 +1311,7 @@ $(document)
                     });
                     storeCargaTerrenos("/Naves/GetNaves");
                 });
-         
+
         $("#btnEliminar")
             .click(function () {
                 $.msgBox({
@@ -1331,6 +1328,15 @@ $(document)
                 });
 
             });
+
+        $("#BuscarDireccion")
+            .click(function () {
+
+                console.log("Busca dirección");
+                console.log(document.getElementById("nb_direccion").value);
+                BuscaDireccionMapa();
+
+            })
 
         function setBorraRegistro(Url) {
             var idRegistro = $("#tsg002_nave_industrial_cd_nave").val();
@@ -1393,6 +1399,10 @@ $(document)
             var id_nave = $("#folio").val().replace("E", "");
             window.location.replace("../../Naves/Create/" + id_nave);
         })
+        $("#NuevoRegistro").click(function () {
+            console.log("nuevo registro");
+            window.location.replace("../../Naves/Create/");
+        })
 
         $("#btnCopiar").click(function () {
             $.msgBox({
@@ -1409,7 +1419,7 @@ $(document)
                         $.msgBox({
                             title: "Cushman ONE",
                             content: "El registro se encuentra listo para copiar solo necesita escribir el nombre de la nave y dar clic en guardar",
-                            type: "info"
+                            type: "alert"
                         });
                     }
                 }
@@ -1433,233 +1443,233 @@ $(document)
         })
 
         $("#tsg009_ni_dt_gral_cd_area")
-                  .change(function () {
-                      //Se limpia el contenido del dropdownlist
-                      $("#tsg009_ni_dt_gral_cd_area_h").val($("#tsg009_ni_dt_gral_cd_area").val());
+            .change(function () {
+                //Se limpia el contenido del dropdownlist
+                $("#tsg009_ni_dt_gral_cd_area_h").val($("#tsg009_ni_dt_gral_cd_area").val());
 
-                      if (document.getElementById("tsg009_ni_dt_gral_cd_area").options[document.getElementById('tsg009_ni_dt_gral_cd_area').selectedIndex].text == "Otro / Other") {
-                          // Funcion para Mostar Div Oculto                                                                                                                               
-                          mostrar2(1);
-                      }
-                      else {
-                          // Funcion para Mostar Div Oculto
-                          mostrar2(2);
-                      }
-                      return false;
-                  });
+                if (document.getElementById("tsg009_ni_dt_gral_cd_area").options[document.getElementById('tsg009_ni_dt_gral_cd_area').selectedIndex].text == "Otro / Other") {
+                    // Funcion para Mostar Div Oculto                                                                                                                               
+                    mostrar2(1);
+                }
+                else {
+                    // Funcion para Mostar Div Oculto
+                    mostrar2(2);
+                }
+                return false;
+            });
 
         $("#tsg023_ni_precio_cd_moneda")
-        .change(function () {
-            //Se limpia el contenido del dropdownlist
-            $("#tsg023_ni_precio_cd_moneda_h").val($("#tsg023_ni_precio_cd_moneda").val());
-            return false;
-        });
+            .change(function () {
+                //Se limpia el contenido del dropdownlist
+                $("#tsg023_ni_precio_cd_moneda_h").val($("#tsg023_ni_precio_cd_moneda").val());
+                return false;
+            });
         $("#tsg023_ni_precio_cd_rep_moneda")
-        .change(function () {
-            //Se limpia el contenido del dropdownlist
-            $("#tsg023_ni_precio_cd_rep_moneda_h").val($("#tsg023_ni_precio_cd_rep_moneda").val());
-            return false;
-        });
+            .change(function () {
+                //Se limpia el contenido del dropdownlist
+                $("#tsg023_ni_precio_cd_rep_moneda_h").val($("#tsg023_ni_precio_cd_rep_moneda").val());
+                return false;
+            });
 
         $("#tsg020_ni_servicio_cd_tp_gas_natural")
-           .change(function () {
-               $("#tsg020_ni_servicio_cd_tp_gas_natural_h").val($("#tsg020_ni_servicio_cd_tp_gas_natural").val());
-               //Se limpia el contenido del dropdownlist
-               if (document.getElementById("tsg020_ni_servicio_cd_tp_gas_natural").options[document.getElementById('tsg020_ni_servicio_cd_tp_gas_natural').selectedIndex].text == "Otro / Other") {
-                   // Funcion para Mostar Div Oculto
-                   mostrar2(3);
-               }
-               else {
-                   // Funcion para Mostar Div Oculto
-                   mostrar2(4);
-               }
-               return false;
-           });
+            .change(function () {
+                $("#tsg020_ni_servicio_cd_tp_gas_natural_h").val($("#tsg020_ni_servicio_cd_tp_gas_natural").val());
+                //Se limpia el contenido del dropdownlist
+                if (document.getElementById("tsg020_ni_servicio_cd_tp_gas_natural").options[document.getElementById('tsg020_ni_servicio_cd_tp_gas_natural').selectedIndex].text == "Otro / Other") {
+                    // Funcion para Mostar Div Oculto
+                    mostrar2(3);
+                }
+                else {
+                    // Funcion para Mostar Div Oculto
+                    mostrar2(4);
+                }
+                return false;
+            });
 
         $("#tsg023_ni_precio_cd_cond_arr")
-           .change(function () {
-               $("#tsg023_ni_precio_cd_cond_arr_h").val($("#tsg023_ni_precio_cd_cond_arr").val());
-               //Se limpia el contenido del dropdownlist
-               if (document.getElementById("tsg023_ni_precio_cd_cond_arr").options[document.getElementById('tsg023_ni_precio_cd_cond_arr').selectedIndex].text == "Otro / Other") {
-                   // Funcion para Mostar Div Oculto
-                   mostrar2(5);
-               }
-               else {
-                   // Funcion para Mostar Div Oculto
-                   mostrar2(6);
-               }
-               return false;
-           });
+            .change(function () {
+                $("#tsg023_ni_precio_cd_cond_arr_h").val($("#tsg023_ni_precio_cd_cond_arr").val());
+                //Se limpia el contenido del dropdownlist
+                if (document.getElementById("tsg023_ni_precio_cd_cond_arr").options[document.getElementById('tsg023_ni_precio_cd_cond_arr').selectedIndex].text == "Otro / Other") {
+                    // Funcion para Mostar Div Oculto
+                    mostrar2(5);
+                }
+                else {
+                    // Funcion para Mostar Div Oculto
+                    mostrar2(6);
+                }
+                return false;
+            });
 
 
         $("#tsg009_ni_dt_gral_cd_carga")
-           .change(function () {
-               $("#tsg009_ni_dt_gral_cd_carga_h").val($("#tsg009_ni_dt_gral_cd_carga").val());
-               //Se limpia el contenido del dropdownlist
-               if (document.getElementById("tsg009_ni_dt_gral_cd_carga").options[document.getElementById('tsg009_ni_dt_gral_cd_carga').selectedIndex].text == "Otro / Other") {
-                   // Funcion para Mostar Div Oculto
-                   mostrar2(7);
-               }
-               else {
-                   // Funcion para Mostar Div Oculto
-                   mostrar2(8);
-               }
-               return false;
-           });
+            .change(function () {
+                $("#tsg009_ni_dt_gral_cd_carga_h").val($("#tsg009_ni_dt_gral_cd_carga").val());
+                //Se limpia el contenido del dropdownlist
+                if (document.getElementById("tsg009_ni_dt_gral_cd_carga").options[document.getElementById('tsg009_ni_dt_gral_cd_carga').selectedIndex].text == "Otro / Other") {
+                    // Funcion para Mostar Div Oculto
+                    mostrar2(7);
+                }
+                else {
+                    // Funcion para Mostar Div Oculto
+                    mostrar2(8);
+                }
+                return false;
+            });
 
         $("#tsg009_ni_dt_gral_cd_sist_inc")
-           .change(function () {
-               $("#tsg009_ni_dt_gral_cd_sist_inc_h").val($("#tsg009_ni_dt_gral_cd_sist_inc").val());
-               //Se limpia el contenido del dropdownlist
-               if (document.getElementById("tsg009_ni_dt_gral_cd_sist_inc").options[document.getElementById('tsg009_ni_dt_gral_cd_sist_inc').selectedIndex].text == "Otro / Other") {
-                   // Funcion para Mostar Div Oculto
-                   mostrar2(9);
-               }
-               else {
-                   // Funcion para Mostar Div Oculto
-                   mostrar2(10);
-               }
-               return false;
-           });
+            .change(function () {
+                $("#tsg009_ni_dt_gral_cd_sist_inc_h").val($("#tsg009_ni_dt_gral_cd_sist_inc").val());
+                //Se limpia el contenido del dropdownlist
+                if (document.getElementById("tsg009_ni_dt_gral_cd_sist_inc").options[document.getElementById('tsg009_ni_dt_gral_cd_sist_inc').selectedIndex].text == "Otro / Other") {
+                    // Funcion para Mostar Div Oculto
+                    mostrar2(9);
+                }
+                else {
+                    // Funcion para Mostar Div Oculto
+                    mostrar2(10);
+                }
+                return false;
+            });
 
         $("#tsg009_ni_dt_gral_cd_tp_construccion")
-           .change(function () {
-               $("#tsg009_ni_dt_gral_cd_tp_construccion_h").val($("#tsg009_ni_dt_gral_cd_tp_construccion").val());
-               //Se limpia el contenido del dropdownlist
-               if (document.getElementById("tsg009_ni_dt_gral_cd_tp_construccion").options[document.getElementById('tsg009_ni_dt_gral_cd_tp_construccion').selectedIndex].text == "Otro / Other") {
-                   // Funcion para Mostar Div Oculto
-                   mostrar2(11);
-               }
-               else {
-                   // Funcion para Mostar Div Oculto
-                   mostrar2(12);
-               }
-               return false;
-           });
+            .change(function () {
+                $("#tsg009_ni_dt_gral_cd_tp_construccion_h").val($("#tsg009_ni_dt_gral_cd_tp_construccion").val());
+                //Se limpia el contenido del dropdownlist
+                if (document.getElementById("tsg009_ni_dt_gral_cd_tp_construccion").options[document.getElementById('tsg009_ni_dt_gral_cd_tp_construccion').selectedIndex].text == "Otro / Other") {
+                    // Funcion para Mostar Div Oculto
+                    mostrar2(11);
+                }
+                else {
+                    // Funcion para Mostar Div Oculto
+                    mostrar2(12);
+                }
+                return false;
+            });
 
 
         $("#tsg009_ni_dt_gral_cd_tp_lampara")
-           .change(function () {
-               $("#tsg009_ni_dt_gral_cd_tp_lampara_h").val($("#tsg009_ni_dt_gral_cd_tp_lampara").val());
-               //Se limpia el contenido del dropdownlist
-               if (document.getElementById("tsg009_ni_dt_gral_cd_tp_lampara").options[document.getElementById('tsg009_ni_dt_gral_cd_tp_lampara').selectedIndex].text == "Otro / Other") {
-                   // Funcion para Mostar Div Oculto
-                   mostrar2(13);
-               }
-               else {
-                   // Funcion para Mostar Div Oculto
-                   mostrar2(14);
-               }
-               return false;
-           });
+            .change(function () {
+                $("#tsg009_ni_dt_gral_cd_tp_lampara_h").val($("#tsg009_ni_dt_gral_cd_tp_lampara").val());
+                //Se limpia el contenido del dropdownlist
+                if (document.getElementById("tsg009_ni_dt_gral_cd_tp_lampara").options[document.getElementById('tsg009_ni_dt_gral_cd_tp_lampara').selectedIndex].text == "Otro / Other") {
+                    // Funcion para Mostar Div Oculto
+                    mostrar2(13);
+                }
+                else {
+                    // Funcion para Mostar Div Oculto
+                    mostrar2(14);
+                }
+                return false;
+            });
 
         $("#tsg009_ni_dt_gral_cd_ilum_nat")
-           .change(function () {
-               $("#tsg009_ni_dt_gral_cd_ilum_nat_h").val($("#tsg009_ni_dt_gral_cd_ilum_nat").val());
-               //Se limpia el contenido del dropdownlist
-               if (document.getElementById("tsg009_ni_dt_gral_cd_ilum_nat").options[document.getElementById('tsg009_ni_dt_gral_cd_ilum_nat').selectedIndex].text == "Otro / Other") {
-                   // Funcion para Mostar Div Oculto
-                   mostrar2(15);
-               }
-               else {
-                   // Funcion para Mostar Div Oculto
-                   mostrar2(16);
-               }
-               return false;
-           });
+            .change(function () {
+                $("#tsg009_ni_dt_gral_cd_ilum_nat_h").val($("#tsg009_ni_dt_gral_cd_ilum_nat").val());
+                //Se limpia el contenido del dropdownlist
+                if (document.getElementById("tsg009_ni_dt_gral_cd_ilum_nat").options[document.getElementById('tsg009_ni_dt_gral_cd_ilum_nat').selectedIndex].text == "Otro / Other") {
+                    // Funcion para Mostar Div Oculto
+                    mostrar2(15);
+                }
+                else {
+                    // Funcion para Mostar Div Oculto
+                    mostrar2(16);
+                }
+                return false;
+            });
 
         $("#tsg009_ni_dt_gral_cd_hvac")
-           .change(function () {
-               $("#tsg009_ni_dt_gral_cd_hvac_h").val($("#tsg009_ni_dt_gral_cd_hvac").val());
-               //Se limpia el contenido del dropdownlist
-               if (document.getElementById("tsg009_ni_dt_gral_cd_hvac").options[document.getElementById('tsg009_ni_dt_gral_cd_hvac').selectedIndex].text == "Otro / Other") {
-                   // Funcion para Mostar Div Oculto
-                   mostrar2(17);
-               }
-               else {
-                   // Funcion para Mostar Div Oculto
-                   mostrar2(18);
-               }
-               return false;
-           });
+            .change(function () {
+                $("#tsg009_ni_dt_gral_cd_hvac_h").val($("#tsg009_ni_dt_gral_cd_hvac").val());
+                //Se limpia el contenido del dropdownlist
+                if (document.getElementById("tsg009_ni_dt_gral_cd_hvac").options[document.getElementById('tsg009_ni_dt_gral_cd_hvac').selectedIndex].text == "Otro / Other") {
+                    // Funcion para Mostar Div Oculto
+                    mostrar2(17);
+                }
+                else {
+                    // Funcion para Mostar Div Oculto
+                    mostrar2(18);
+                }
+                return false;
+            });
 
         $("#tsg009_ni_dt_gral_cd_cajon_est")
-           .change(function () {
-               $("#tsg009_ni_dt_gral_cd_cajon_est_h").val($("#tsg009_ni_dt_gral_cd_cajon_est").val());
-               //Se limpia el contenido del dropdownlist
-               if (document.getElementById("tsg009_ni_dt_gral_cd_cajon_est").options[document.getElementById('tsg009_ni_dt_gral_cd_cajon_est').selectedIndex].text == "Otro / Other") {
-                   // Funcion para Mostar Div Oculto
-                   mostrar2(19);
-               }
-               else {
-                   // Funcion para Mostar Div Oculto
-                   mostrar2(20);
-               }
-               return false;
-           });
+            .change(function () {
+                $("#tsg009_ni_dt_gral_cd_cajon_est_h").val($("#tsg009_ni_dt_gral_cd_cajon_est").val());
+                //Se limpia el contenido del dropdownlist
+                if (document.getElementById("tsg009_ni_dt_gral_cd_cajon_est").options[document.getElementById('tsg009_ni_dt_gral_cd_cajon_est').selectedIndex].text == "Otro / Other") {
+                    // Funcion para Mostar Div Oculto
+                    mostrar2(19);
+                }
+                else {
+                    // Funcion para Mostar Div Oculto
+                    mostrar2(20);
+                }
+                return false;
+            });
 
         $("#tsg020_ni_servicio_cd_telefonia")
-        .change(function () {
-            //Se limpia el contenido del dropdownlist
-            $("#tsg020_ni_servicio_cd_telefonia_h").val($("#tsg020_ni_servicio_cd_telefonia").val());
-            return false;
-        });
+            .change(function () {
+                //Se limpia el contenido del dropdownlist
+                $("#tsg020_ni_servicio_cd_telefonia_h").val($("#tsg020_ni_servicio_cd_telefonia").val());
+                return false;
+            });
 
         $("#tsg002_nave_industrial_cd_mercado")
-        .change(function () {
-            //Se limpia el contenido del dropdownlist
-            $("#tsg002_nave_industrial_cd_mercado_h").val($("#tsg002_nave_industrial_cd_mercado").val());
-            return false;
-        });
+            .change(function () {
+                //Se limpia el contenido del dropdownlist
+                $("#tsg002_nave_industrial_cd_mercado_h").val($("#tsg002_nave_industrial_cd_mercado").val());
+                return false;
+            });
 
         $("#tsg002_nave_industrial_cd_corredor")
-        .change(function () {
-            //Se limpia el contenido del dropdownlist
-            $("#tsg002_nave_industrial_cd_corredor_h").val($("#tsg002_nave_industrial_cd_corredor").val());
-            return false;
-        });
+            .change(function () {
+                //Se limpia el contenido del dropdownlist
+                $("#tsg002_nave_industrial_cd_corredor_h").val($("#tsg002_nave_industrial_cd_corredor").val());
+                return false;
+            });
 
         $("#tsg009_ni_dt_gral_cd_espesor")
-        .change(function () {
-            //Se limpia el contenido del dropdownlist
-            $("#tsg009_ni_dt_gral_cd_espesor_h").val($("#tsg009_ni_dt_gral_cd_espesor").val());
-            return false;
-        });
-        
+            .change(function () {
+                //Se limpia el contenido del dropdownlist
+                $("#tsg009_ni_dt_gral_cd_espesor_h").val($("#tsg009_ni_dt_gral_cd_espesor").val());
+                return false;
+            });
+
         $("#tsg002_nave_industrial_st_parque_ind")
-        .change(function () {
-            //Se limpia el contenido del dropdownlist
-            $("#tsg002_nave_industrial_st_parque_ind_h").val($("#tsg002_nave_industrial_st_parque_ind").val());
-            return false;
-        });
+            .change(function () {
+                //Se limpia el contenido del dropdownlist
+                $("#tsg002_nave_industrial_st_parque_ind_h").val($("#tsg002_nave_industrial_st_parque_ind").val());
+                return false;
+            });
 
         $("#tsg009_ni_dt_gral_cd_tp_tech")
-        .change(function () {
-            //Se limpia el contenido del dropdownlist
-            $("#tsg009_ni_dt_gral_cd_tp_tech_h").val($("#tsg009_ni_dt_gral_cd_tp_tech").val());
-            return false;
-        });
+            .change(function () {
+                //Se limpia el contenido del dropdownlist
+                $("#tsg009_ni_dt_gral_cd_tp_tech_h").val($("#tsg009_ni_dt_gral_cd_tp_tech").val());
+                return false;
+            });
 
         $("#tsg009_ni_dt_gral_cd_Nivel_Piso")
-        .change(function () {
-            //Se limpia el contenido del dropdownlist
-            $("#tsg009_ni_dt_gral_cd_Nivel_Piso_h").val($("#tsg009_ni_dt_gral_cd_Nivel_Piso").val());
-            return false;
-        });
+            .change(function () {
+                //Se limpia el contenido del dropdownlist
+                $("#tsg009_ni_dt_gral_cd_Nivel_Piso_h").val($("#tsg009_ni_dt_gral_cd_Nivel_Piso").val());
+                return false;
+            });
 
         $("#tsg020_ni_servicio_cd_esp_ferr")
-        .change(function () {
-            //Se limpia el contenido del dropdownlist
-            $("#tsg020_ni_servicio_cd_esp_ferr_h").val($("#tsg020_ni_servicio_cd_esp_ferr").val());
-            return false;
-        });
+            .change(function () {
+                //Se limpia el contenido del dropdownlist
+                $("#tsg020_ni_servicio_cd_esp_ferr_h").val($("#tsg020_ni_servicio_cd_esp_ferr").val());
+                return false;
+            });
 
 
         $("#tsg023_ni_precio_im_renta")
-        .change(function () {            
-            $("#tsg023_ni_precio_im_renta").val(String.Format("{0:0.00}", $("#tsg023_ni_precio_im_renta").val()));
-            return false;
-        });
+            .change(function () {
+                $("#tsg023_ni_precio_im_renta").val(String.Format("{0:0.00}", $("#tsg023_ni_precio_im_renta").val()));
+                return false;
+            });
 
         ///////-*************************parte para naves industriales
         $("#tsg002_nave_industrial_cd_mercado")
@@ -1682,27 +1692,27 @@ $(document)
 
 
 
-  $("#tsg002_nave_industrial_cd_estado")
-    .change(function () {
-        //Se limpia el contenido del dropdownlist
-        $("#tsg002_nave_industrial_cd_municipio").empty();
-        $("#tsg002_nave_industrial_cd_colonia").empty();
-        //$("#cd_tipo_prod").empty();
-        storeCargaCombo("/Utils/GetMunicipioByCdEstado",
-            "tsg002_nave_industrial_cd_municipio",
-            "tsg002_nave_industrial_cd_estado",
-            "tsg002_nave_industrial_cd_municipio",
-            undefined,
-            "tsg002_nave_industrial_cd_estado",
-            undefined,
-            undefined);
-        //Se agrega el elemento vacio para poder desplegar que seleccione una opcion                
-        //Recargar el plugin para que tenga la funcionalidad del componente
-        //$("#tsg001_terreno_cd_municipio").select2({ placeholder: "Seleccione Municipo", width: "30%" });
-        //$("#tsg001_terreno_cd_estado").select2({ placeholder: "Seleccione Estado", width: "30%" });
-        //$("#cd_tipo_prod").select2({ placeholder: "Seleccione TpProducto", width: "30%" });
-        return false;
-    });
+        $("#tsg002_nave_industrial_cd_estado")
+            .change(function () {
+                //Se limpia el contenido del dropdownlist
+                $("#tsg002_nave_industrial_cd_municipio").empty();
+                $("#tsg002_nave_industrial_cd_colonia").empty();
+                //$("#cd_tipo_prod").empty();
+                storeCargaCombo("/Utils/GetMunicipioByCdEstado",
+                    "tsg002_nave_industrial_cd_municipio",
+                    "tsg002_nave_industrial_cd_estado",
+                    "tsg002_nave_industrial_cd_municipio",
+                    undefined,
+                    "tsg002_nave_industrial_cd_estado",
+                    undefined,
+                    undefined);
+                //Se agrega el elemento vacio para poder desplegar que seleccione una opcion                
+                //Recargar el plugin para que tenga la funcionalidad del componente
+                //$("#tsg001_terreno_cd_municipio").select2({ placeholder: "Seleccione Municipo", width: "30%" });
+                //$("#tsg001_terreno_cd_estado").select2({ placeholder: "Seleccione Estado", width: "30%" });
+                //$("#cd_tipo_prod").select2({ placeholder: "Seleccione TpProducto", width: "30%" });
+                return false;
+            });
         $("#tsg002_nave_industrial_cd_municipio")
             .change(function () {
                 //Se limpia el contenido del dropdownlist
@@ -1717,7 +1727,7 @@ $(document)
                     "tsg002_nave_industrial_cd_municipio",
                     undefined);
                 //Se agrega el elemento vacio para poder desplegar que seleccione una opcion
-               /* $("#tsg002_nave_industrial_cd_colonia").select2({ placeholder: "Seleccione Colonia ", width: "100%" });*/
+                /* $("#tsg002_nave_industrial_cd_colonia").select2({ placeholder: "Seleccione Colonia ", width: "100%" });*/
                 //$("#cd_").select2({ placeholder: "Seleccione SubFamilia", width: "30%" });
                 return false;
             });
@@ -1742,26 +1752,26 @@ $(document)
 
 
         $("#tsg025_ni_contacto_P_cd_estado")
-    .change(function () {
-        //Se limpia el contenido del dropdownlist
-        $("#tsg025_ni_contacto_P_cd_municipio").empty();
-        $("#tsg025_ni_contacto_P_cd_colonia").empty();
-        //$("#cd_tipo_prod").empty();
-        storeCargaCombo("/Utils/GetMunicipioByCdEstado",
-            "tsg025_ni_contacto_P_cd_municipio",
-            "tsg025_ni_contacto_P_cd_estado",
-            "tsg025_ni_contacto_P_cd_municipio",
-            undefined,
-            "tsg025_ni_contacto_P_cd_estado",
-            undefined,
-            undefined);
-        //Se agrega el elemento vacio para poder desplegar que seleccione una opcion                
-        //Recargar el plugin para que tenga la funcionalidad del componente
-        //$("#tsg001_terreno_cd_municipio").select2({ placeholder: "Seleccione Municipo", width: "30%" });
-        //$("#tsg001_terreno_cd_estado").select2({ placeholder: "Seleccione Estado", width: "30%" });
-        //$("#cd_tipo_prod").select2({ placeholder: "Seleccione TpProducto", width: "30%" });
-        return false;
-    });
+            .change(function () {
+                //Se limpia el contenido del dropdownlist
+                $("#tsg025_ni_contacto_P_cd_municipio").empty();
+                $("#tsg025_ni_contacto_P_cd_colonia").empty();
+                //$("#cd_tipo_prod").empty();
+                storeCargaCombo("/Utils/GetMunicipioByCdEstado",
+                    "tsg025_ni_contacto_P_cd_municipio",
+                    "tsg025_ni_contacto_P_cd_estado",
+                    "tsg025_ni_contacto_P_cd_municipio",
+                    undefined,
+                    "tsg025_ni_contacto_P_cd_estado",
+                    undefined,
+                    undefined);
+                //Se agrega el elemento vacio para poder desplegar que seleccione una opcion                
+                //Recargar el plugin para que tenga la funcionalidad del componente
+                //$("#tsg001_terreno_cd_municipio").select2({ placeholder: "Seleccione Municipo", width: "30%" });
+                //$("#tsg001_terreno_cd_estado").select2({ placeholder: "Seleccione Estado", width: "30%" });
+                //$("#cd_tipo_prod").select2({ placeholder: "Seleccione TpProducto", width: "30%" });
+                return false;
+            });
         $("#tsg025_ni_contacto_P_cd_municipio")
             .change(function () {
                 //Se limpia el contenido del dropdownlist
@@ -1917,6 +1927,15 @@ $(document)
             })
         });
 
+        $("#naveregistrada").change(function () {
+           
+            const coords = datosNaves.find(x => x.cd_nave == $("#naveregistrada").val()).nb_posicion.split(",");
+            const position = { lat: Number(coords[0]), lng: Number(coords[1]) };
+            map.setCenter(position);
+            map.setZoom(18);
+
+            
+        }); 
         //*********** Parte de Google map ***************
 
         jQuery('#pasar').click(function () {
@@ -1969,7 +1988,7 @@ function initMap() {
         for (var i = 0; i < arregloDeCadenas1.length; i++) {
             var cad = arregloDeCadenas1[i];
             //cad = cad.split(",");
-            var arregloDeCadenas2 = cad.split(",");        
+            var arregloDeCadenas2 = cad.split(",");
             lng = parseFloat(arregloDeCadenas2[0]);
             lat = parseFloat(arregloDeCadenas2[1]);
             poligono[i] = new google.maps.LatLng(lng, lat);
@@ -1981,7 +2000,7 @@ function initMap() {
             strokeWeight: 3,
             fillColor: "#FF0000",
             fillOpacity: 0.4
-        });        
+        });
     }
 
     //creamos el mapa con las opciones anteriores y le pasamos el elemento div
@@ -1998,7 +2017,7 @@ function initMap() {
         position: latLng,//objeto con latitud y longitud
         draggable: false //que el marcador se pueda arrastrar
     });
- 
+
 
     var drawingManager = new google.maps.drawing.DrawingManager({
         drawingMode: google.maps.drawing.OverlayType.MARKER,
@@ -2006,9 +2025,9 @@ function initMap() {
         drawingControlOptions: {
             position: google.maps.ControlPosition.TOP_CENTER,
             drawingModes: [
-              
-              google.maps.drawing.OverlayType.POLYGON
-              
+
+                google.maps.drawing.OverlayType.POLYGON
+
             ]
         },
         markerOptions: { icon: 'images/beachflag.png' },
@@ -2043,12 +2062,12 @@ function initMap() {
         alert('posicion : ' + e.latLng);
         document.getElementById("tsg002_nave_industrial_nb_posicion").value = e.latLng;
         marker.setMap(null);
-        
+
         marker = new google.maps.Marker({
             position: e.latLng
         });
         marker.setMap(map);
-        
+
     });
     map.addListener('click', function (e) {
         //alert('posicion : ' + e.latLng);
@@ -2075,58 +2094,95 @@ function initMap2() {
     //$.ajax({
     //    type: 'GET',
     //    url: "/Naves/Index",
-        
+
     //    success: function (storedata) {
     //        console.log(storeData);
     //    }
     //});
 
-    $.get("/Naves/getNavesMapas", function (data) {
-        
-        
-        console.log(data);
 
+    var $select = $('#naveregistrada');
+
+    geocoder = new google.maps.Geocoder();
+
+
+
+    //const center = { lat: 50.064192, lng: -130.605469 };
+    //// Create a bounding box with sides ~10km away from the center point
+    //const defaultBounds = {
+    //    north: center.lat + 0.1,
+    //    south: center.lat - 0.1,
+    //    east: center.lng + 0.1,
+    //    west: center.lng - 0.1,
+    //};
+    //const input = document.getElementById("nb_direccion");
+    //const options = {
+    //    bounds: defaultBounds,
+    //    componentRestrictions: { country: "us" },
+    //    fields: ["address_components", "geometry", "icon", "name"],
+    //    strictBounds: false
+    //};
+    //const autocomplete = new google.maps.places.Autocomplete(input, options);
+
+    $.get("/Naves/getNavesMapas", function (data) {
+
+        datosNaves = data;
 
         try {
-
-            
             pos = 6;
-
             var latLng = new google.maps.LatLng(24.090303, -102.415217);
-
-
 
             //Definimos algunas opciones del mapa a crear
             var myOptions = {
-                center: latLng,//centro del mapa
+                center: { lat: 24.090303, lng: -102.415217 },//centro del mapa
                 zoom: pos,//zoom del mapa
                 mapTypeId: google.maps.MapTypeId.ROADMAP //tipo de mapa, carretera, híbrido,etc
             };
 
             //creamos el mapa con las opciones anteriores y le pasamos el elemento div
             map = new google.maps.Map(document.getElementById("googleMap"), myOptions);
-            
-            for (let i = 0; i < data.length; i++) {
-               
 
-                const coords = data[i].nb_posicion.split(',');
 
-                
 
-                const latLng = new google.maps.LatLng(coords[0], coords[1]);
 
-                const titulo = `<h1>${data[i].nb_nave}</h1>`
+            for (let i = 0; i < datosNaves.length; i++) {
+                const coords = datosNaves[i].nb_posicion.split(',');
+                //const latLng = new google.maps.LatLng(coords[0], coords[1]);
+                //.log(latLng);
+
+
+                $select.append('<option value=' + datosNaves[i].cd_nave + '>' + 'E' + datosNaves[i].cd_nave + ' - ' + datosNaves[i].nb_parque + ' - ' + datosNaves[i].nb_nave + '</option>');
+
+                const titulo = datosNaves[i].nb_nave;
 
                 const contentString =
-                    "<div class='alert alert-primary' role='alert'>" +
-                    "<h1>"+data[i].nb_nave+"</h1>" +
-                    "</div>" +
-                    
-                    '<a class="btn btn-primary" role="button"  href="/Naves/Create/' + data[i].cd_nave + '"> Entrar</a>'
+                    '<div class="card" style="width:40rem;">' +
+                    '        <div class="card-header bg-danger text-white text-center fw-bold fs-4">' + datosNaves[i].nb_nave + '</div>' +
+                    '        <div class="shadow p-3 bg-body rounded" style="--bs-bg-opacity: .25;">' +
+                    '           <div class="card-body">' +
+                    '               <h5 class="card-title text-danger text-center">' + datosNaves[i].nb_parque + '</h5>' +
+                    '               <div class="row">' +
+                    '                  <div class="col-sm-6">' +
+                    '                      <div class="row">' +
+                    '                          <div class="col-sm-12><p class="fw-bold">Superficie nave M<sup>2</sup>: ' + new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(datosNaves[i].nu_superficie)  + '</p></div>' +
+                    '                          <div class="col-sm-12><p class="fw-bold">Superficie Terreno M<sup>2</sup>: ' + new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(datosNaves[i].nu_bodega)  + '</p></div>' +
+                    '                      </div>' +
+                    '                  </div>' +
+                    '                  <div class="col-sm-6">' +
+                    '                      <div class="row">' +
+                    '                          <div class="col-sm-12><p class="fw-bold">Disponibilidad total M<sup>2</sup>: ' + new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(datosNaves[i].nu_disponibilidad)  + '</p></div>' +
+                    '                          <div class="col-sm-12><p class="fw-bold">Minimo divisible M<sup>2</sup>: ' + new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(datosNaves[i].nu_min_divisible)  + '</p></div>' +
+                    '                      </div>' +
+                    '                  </div>' +
+                    '               </div>' +
+                    /*'               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>'+*/
+                    '           </div>' +
+                    '        </div>' +
+                    '        <div class="card-footer text-center"><a class="btn btn-outline-danger btn-sm" role="button" href="/Naves/Create/' + datosNaves[i].cd_nave + '">Consultar</a></div>' +
+                    '</div>';
+
                 //const image = "../../image/pinCushman.png";
                 const infoWindow = new google.maps.InfoWindow();
-
-
                 const image = {
                     url: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
                     // This marker is 20 pixels wide by 32 pixels high.
@@ -2146,14 +2202,14 @@ function initMap2() {
                 //    scale: 2,
                 //    anchor: new google.maps.Point(15, 30),
                 //};
+                const position = { lat: Number(coords[0]), lng: Number(coords[1]) };
 
-
-                marker = new google.maps.Marker({
-                    position: latLng,
+                const marker = new google.maps.Marker({
+                    position: position,
                     map: map,
-                    title: titulo,                    
-                    icon: image,
-                    label: `${data[i].cd_nave}`,
+                    title: titulo,
+                    //icon: image,
+                    label: `E${data[i].cd_nave}`,
                     optimized: false,
 
                 });
@@ -2161,16 +2217,45 @@ function initMap2() {
                 marker.addListener("click", () => {
                     infoWindow.close();
                     infoWindow.setContent(contentString);
-                    //infoWindow.setPosition(latLng);
-                    console.log(marker.getMap());
-                    console.log(marker);
-                    //infoWindow.open(marker.getMap(), marker);
-                    infoWindow.open({
-                        anchor: marker,
-                        map,
-                        shouldFocus: false,
-                    })
+                    infoWindow.open(marker.getMap(), marker);
                 });
+
+                //if (data[i].nb_poligono != "") {
+                //    console.log(data[i].nb_poligono);
+                //    let poligono=[];
+                //    var arrPoligonos = data[i].nb_poligono.split("|");
+                //    console.log(arrPoligonos)
+                //    console.log("paso variables");
+                //    for (let i = 0; i < arrPoligonos.length-1; i++) {
+                //        var poli = arrPoligonos[i].split(",");
+                //        console.log("Valor polis=>" + poli);
+                //        console.log("valor poli=>" + poli[0] +" " + poli[1]);
+                //        //poligono[i] = new gogle.maps.LatLng(lng:Number(poli[0]), lat:Number(poli[1]));
+
+                //        if (poli!=="") {
+                //            const lng = Number(poli[0]);
+                //            console.log("lng:" + lng);
+                //            const lat = Number(poli[1]);
+                //            console.log("lat:" + lat);
+                //            poligono[i] = new google.maps.LatLng(lng, lat);
+                //            //poligono.push({ lat:lat, lng:lngs });
+                //            console.log("poligono =>" + poligono);
+                //        }
+                //    }
+                //    console.log("Paso del for");
+                //    const miPoligono = new gogle.maps.Polygon({
+                //        paths: poligono,
+                //        strokeColor: "#FF0000",
+                //        strokeOpacity: 0.8,
+                //        strokeWeight: 3,
+                //        fillColor: "#FF0000",
+                //        fillOpacity: 0.4
+                //    });
+                //    console.log("Agrego los parametros del poligono");
+                    
+                //    miPoligono.setMap(map);
+                //    console.log("setteo el poligono al mapa");
+                //}
 
             }
 
@@ -2179,18 +2264,47 @@ function initMap2() {
         }
     });
 
-    
+
 
 
 
 };
 
-function navexId(id) {
-    console.log("Entro a nave id" + id);
+function createCenterControl() {
+    const controlInput = document.createElement("input");
 
-    //$.get("/Naves/Create/" + id, function (data) {
-    //    console.log(data);
-    //}
+    console.log(controlInput);
+
+    // Set CSS for the control.
+    controlInput.style.backgroundColor = "#fff";
+    controlInput.style.border = "2px solid #fff";
+    controlInput.style.borderRadius = "3px";
+    controlInput.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
+    controlInput.style.color = "rgb(25,25,25)";
+    controlInput.style.cursor = "pointer";
+    controlInput.style.fontFamily = "Roboto,Arial,sans-serif";
+    controlInput.style.fontSize = "16px";
+    controlInput.style.lineHeight = "38px";
+    controlInput.style.margin = "8px 0 22px";
+    controlInput.style.padding = "0 5px";
+    controlInput.style.textAlign = "center";
+
+    controlInput.title = "Click to recenter the map";
+    controlInput.type = "text";
+    
+    return controlButton;
+}
+
+
+function BuscaDireccionMapa() {
+    var direccion = document.getElementById("nb_direccion").value;
+    geocoder.geocode({ 'address': direccion }, function (results, status) {
+        console.log(results[0], status);
+        if (status == "OK") {
+            map.setCenter(results[0].geometry.location)
+            map.setZoom(14);
+        }
+    })
 }
 //funcion que traduce la direccion en coordenadas
 function codeAddress() {
@@ -2225,8 +2339,8 @@ function codeAddress() {
         }
 
     });
-       
-    
+
+
 
 
 }

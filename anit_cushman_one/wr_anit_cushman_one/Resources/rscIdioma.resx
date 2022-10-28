@@ -334,7 +334,7 @@
     <value>Puertas andén</value>
   </data>
   <data name="Rampa" xml:space="preserve">
-    <value>Rampa</value>
+    <value>Nivel de acceso a pisos</value>
   </data>
   <data name="Servicio" xml:space="preserve">
     <value>Servicios</value>
@@ -404,14 +404,5 @@
   </data>
   <data name="MinimoDisponible" xml:space="preserve">
     <value>Mínimo</value>
-  </data>
-  <data name="TipoReporte" xml:space="preserve">
-    <value>Edificio/Terreno</value>
-  </data>
-  <data name="RepNombreCliente" xml:space="preserve">
-    <value>Nombre del Cliente</value>
-  </data>
-  <data name="Puesto" xml:space="preserve">
-    <value>Puesto</value>
   </data>
 </root>

@@ -1,8 +1,8 @@
-﻿@* -----------------------------------------------------------------------Vista inicio Mapa Terrenos ------------------------------------------------------*@
+﻿
 @section headtag
 {
     <script src="@Url.Content("~/Scripts/cboClasificacion.js")" type="text/javascript"></script>
-    <script defer src="@Url.Content("~/Scripts/Naves.js")" type="text/javascript"></script>
+    <script defer src="@Url.Content("~/Scripts/Terrenos.js")" type="text/javascript"></script>
 
     <script src="@Url.Content("~/Scripts/jquery.form.min.js")"></script>
     <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")"></script>
@@ -11,20 +11,58 @@
 }
 
 <div class="row">
-    <div class="col-sm-12 mt-3">
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Email address</label>
+    <div class="col-sm-12">
+        <div class="card  bg-primary bg-opacity-10">
+            <div class="card-header bg-primary bg-opacity-75 text-white fw-bold">
+                Consulta de naves registradas.
+            </div>
+
+            <div class="card-body">
+
+                <div class="row mt-1">
+                    <div class="col-sm-8 mt-1">
+                        <div class="shadow p-3 bg-body rounded">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-floating mb-3">
+                                                <input type="text" id="nb_direccion" class="form-control" placeholder="name@example.com">
+                                                <label for="nb_direccion">Dirección</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <button type="button" class="btn btn-primary" id="BuscarDireccion">Buscar</button>
+                                            <button type="button" class="btn btn-primary">Nuevo</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div id="googleMap" class="googleMap"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 mt-1">
+                        <div class="shadow p-3 bg-body rounded">
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <select class="form-select" size="20" aria-label="multiple select example" name="terrenosregistrada" id="terrenosregistrada">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
-        <button type="button" class="btn btn-primary">Buscar</button>
-        <button type="button" class="btn btn-primary">Nuevo</button>
-    </div>
-    <div class="col-sm-12 mt-3">
-        <div id="googleMap" class="googleMap"></div>
     </div>
 </div>
 
 
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVgJmOkAmCfI7J20ffVOMkvmNXGApRikI&signed_in=true&libraries=drawing&callback=initMap2"></script>
-
-
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVgJmOkAmCfI7J20ffVOMkvmNXGApRikI&signed_in=true&libraries=drawing&callback=initMap2&v=weekly"></script>

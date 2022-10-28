@@ -736,29 +736,11 @@ namespace wr_anit_cushman_one.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Puesto.
-        /// </summary>
-        public static string Puesto {
-            get {
-                return ResourceManager.GetString("Puesto", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Rampa.
+        ///   Busca una cadena traducida similar a Nivel de acceso a pisos.
         /// </summary>
         public static string Rampa {
             get {
                 return ResourceManager.GetString("Rampa", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Nombre del Cliente.
-        /// </summary>
-        public static string RepNombreCliente {
-            get {
-                return ResourceManager.GetString("RepNombreCliente", resourceCulture);
             }
         }
         
@@ -939,15 +921,6 @@ namespace wr_anit_cushman_one.Resources {
         public static string TipoMonedaReport {
             get {
                 return ResourceManager.GetString("TipoMonedaReport", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Edificio/Terreno.
-        /// </summary>
-        public static string TipoReporte {
-            get {
-                return ResourceManager.GetString("TipoReporte", resourceCulture);
             }
         }
     }
