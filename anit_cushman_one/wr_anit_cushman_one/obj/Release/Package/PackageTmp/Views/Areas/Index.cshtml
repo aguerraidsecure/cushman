@@ -5,63 +5,72 @@
 @{
     ViewBag.Title = "Index";
 }
-<div class="table-responsive container modal-content">
-    <div class="panel-heading ">
-        <h3 class="text-center active panel-title well"><strong>Catálogo Areas de Oficina</strong></h3>
+
+
+<div class="row mt-3">
+    <div class="col-sm-12">        
+        <div class="card  bg-primary bg-opacity-10">
+            <div class="card-header bg-primary bg-opacity-75 text-white fw-bold">
+                Catálogo Areas de Oficina
+            </div>
+            <div class="card-body">
+                <div class="shadow p-3 mb-2 bg-body rounded">
+                    <div class="row">
+                        <div class="col-sm-12 ">
+                            @using (Html.BeginForm("Index", "Areas", FormMethod.Get))
+                            {
+                                <p>
+                                    Buscar por Area: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                                    <input type="submit" value="Buscar" class="btn btn-outline-danger btn-md fw-bold" />
+                                    @Html.ActionLink("Nuevo Registro", "Create", "Areas", new { @class = "btn  btn-outline-danger btn-md fw-bold" })
+                                    <a class="btn btn-outline-danger fw-bold" href="~/Areas/Index" role="button">Recargar</a>
+                                </p>
+                            }
+                        </div>
+                        <div class="col-sm-12 text-end">
+                            Paginas @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+                        </div>
+                        <div class="col-sm-12 mt-2">
+                            <table class="table table-striped table-hover table-bordered border-primary">
+                                <tr class="table-primary bg-opacity-25 text-center">
+                                    <th>
+                                        @*@Html.DisplayNameFor(model => model.nb_areas)*@
+                                        @Html.ActionLink("Areas", "Index", new { sortOrder = ViewBag.EstadoSortParam, currentFilter = ViewBag.CurrentFilter }, new { Style = "color: #b94a48;" })
+                                    </th>
+                                    <th>
+                                        @*@Html.DisplayNameFor(model => model.fh_modif)*@
+                                        @Html.ActionLink("Fecha Modificación", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter }, new { Style = "color: #b94a48;" })
+                                    </th>
+                                    <th></th>
+                                </tr>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="table-striped table-hover">
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.nb_area)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.fh_modif)
+                                        </td>
+                                        <td class="text-center">
+                                            @Html.ActionLink(" ", "Edit", new { id = item.cd_area }, new { @class = "fa fa-pencil-square-o fs-3 text-danger" }) |
+                                            @Html.ActionLink(" ", "Details", new { id = item.cd_area }, new { @class = "fa fa-list-alt fs-3 text-danger" }) |
+                                            @Html.ActionLink(" ", "Delete", new { id = item.cd_area }, new { @class = "fa fa-trash-o fs-3 text-danger" })
+                                        </td>
+                                    </tr>
+                                }
+
+                            </table>
+                        </div>
+                        <div class="col-sm-12 text-center">
+                            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    @using (Html.BeginForm("Index", "Areas", FormMethod.Get))
-    {
-        <p>
-            Buscar por Area: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
-            <input type="submit" value="Buscar" class="btn btn-danger btn-md" />
-            @Html.ActionLink("Nuevo Registro", "Create", "Areas", new { @class = "btn btn-danger btn-md" })            
-            <a class="btn btn-danger" href="~/Areas/Index" role="button">Recargar</a>
-        </p>
-    }
-
-    <table class="table table-striped table-hover ">
-        <tr>
-            <th>
-                @*@Html.DisplayNameFor(model => model.nb_areas)*@
-                @Html.ActionLink("Areas", "Index", new { sortOrder = ViewBag.EstadoSortParam, currentFilter = ViewBag.CurrentFilter }, new { Style = "color: #b94a48;" })
-            </th>
-            <th>
-                @*@Html.DisplayNameFor(model => model.fh_modif)*@
-                @Html.ActionLink("Fecha Modificación", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter }, new { Style = "color: #b94a48;" })
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.nb_area)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.fh_modif)
-                </td>
-                <td>
-                    @Html.ActionLink(" ", "Edit", new { id = item.cd_area }, new { @class = "glyphicon glyphicon-edit" }) |
-                    @Html.ActionLink(" ", "Details", new { id = item.cd_area }, new { @class = "glyphicon glyphicon-list-alt" }) |
-                    @Html.ActionLink(" ", "Delete", new { id = item.cd_area }, new { @class = "glyphicon glyphicon-trash" })
-                </td>
-            </tr>
-        }
-
-    </table>
-    <table style="color:brown"  class="table-condensed">
-        <tr>
-            <td>
-                Paginas @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
-            </td>
-        </tr>
-        <tr>
-            <td>
-                @Html.PagedListPager(Model, page => Url.Action("Index",
-            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-            </td>
-        </tr>
-    </table>
 </div>
+

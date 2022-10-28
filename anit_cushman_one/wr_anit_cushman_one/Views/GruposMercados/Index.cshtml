@@ -12,17 +12,11 @@
     @*CSS*@
     @Styles.Render("~/Content/datatables/datatables.min.css")
     @*Scripts*@
-    @Scripts.Render("~/Scripts/datatables/datatables.min.js")
-
-    <script type="module" src="@Url.Content("~/Scripts/config.js")"></script>
-
+    @Scripts.Render("~/Scripts/datatables/datatables.min.js")       
     <script src="@Url.Content("~/Scripts/cboClasificacion.js")" type="text/javascript"></script>
-    <script type="module" src="@Url.Content("~/Scripts/AgrupaMercados.js")" type="text/javascript"></script>
-
-
     <script src="@Url.Content("~/Scripts/jquery.msgBox.js")" type="text/javascript"></script>
     <link href="@Url.Content("~/Content/msgBoxLight.css")" rel="stylesheet" type="text/css" />
-      
+
 
 }
 
@@ -124,15 +118,13 @@
             text-align: center;
         }
 
-        #div-dl-im p {
-            margin: 5%;
-            font-weight: bold;
-            color: #ffffff;
-        }
+            #div-dl-im p {
+                margin: 5%;
+                font-weight: bold;
+                color: #ffffff;
+            }
     </style>
 
-    <script type="text/javascript">
-
-
-    </script>
+    <script src="~/Scripts/AgrupaMercados.js"></script>
+    <script type="text/javascript"></script>
 }

@@ -9,3 +9,9 @@ C:\SICREX\Desarrollo\Proyectos\DYMS\anit_cushman_one\Helper\obj\Release\Helper.d
 C:\SICREX\Desarrollo\Proyectos\DYMS\anit_cushman_one\Helper\obj\Release\Helper.pdb
 C:\SICREX\Desarrollo\Proyectos\DYMS\anit_cushman_one\Helper\obj\Release\Helper.csprojAssemblyReference.cache
 C:\SICREX\Desarrollo\Proyectos\DYMS\anit_cushman_one\Helper\obj\Release\Helper.csproj.CoreCompileInputs.cache
+E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\Helper\bin\Release\Helper.dll
+E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\Helper\bin\Release\Helper.pdb
+E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\Helper\obj\Release\Helper.csproj.AssemblyReference.cache
+E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\Helper\obj\Release\Helper.csproj.CoreCompileInputs.cache
+E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\Helper\obj\Release\Helper.dll
+E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\Helper\obj\Release\Helper.pdb

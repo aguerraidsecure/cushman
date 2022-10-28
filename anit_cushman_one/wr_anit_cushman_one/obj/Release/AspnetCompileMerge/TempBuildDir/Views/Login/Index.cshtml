@@ -1,7 +1,7 @@
 ﻿@model LoginViewModel
 
 @{
-    Layout = "~/Views/Shared/_LayoutPartial.cshtml";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
     ViewBag.Title = "Acceso al sistema";
 }
 @section headtag
@@ -33,56 +33,47 @@
 
     <script src="~/Scripts/jquery.util.login.js"></script>
 }
+
 @using (Html.BeginForm("Autenticar", "Login", FormMethod.Post, new { id = "frmLogin" }))
 {
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <img src="~/image/logo_CW.png">
-            </div>
-            <div class="modal-body">
-                <div class="well">
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2">
-                            <div class="col-md-4">
+    <div class="container d-flex align-items-center justify-content-center vh-100">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card bg-white bg-opacity-50 rounded-5" style="width: 50rem;">
+
+                    <div class="card-header">
+                        <img src="~/image/logo_CW.png" alt="..." height="100" width="250">
+                    </div>
+                    <div class="card-body">
+                        <div class="row opacity-100">
+                            <div class="col-md-4 mt-5">
                                 @*<label for="usuario" class="control-label">Usuario</label>*@
                                 @Html.LabelFor(x => x.Correo)
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8  mt-5" ">
                                 @Html.TextBoxFor(x => x.Correo, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(x => x.Correo, null, new { @class = "label label-danger" })
+                                @Html.ValidationMessageFor(x => x.Correo, null, new { @class = "label label-danger" });
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <br />
-                    </div>
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2">
-                            <div class="col-md-4">
+                            <div class="col-md-4  mt-5" ">
                                 @*<label for="password" class="control-label">Password</label>*@
                                 @Html.LabelFor(x => x.Password)
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8  mt-5">
                                 <input type="password" name="Password" class="form-control" />
                                 @Html.ValidationMessageFor(x => x.Password, null, new { @class = "label label-danger" })
                             </div>
+                            
                         </div>
                     </div>
-                    <div class="row">
-                        <br />
-                    </div>
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2">
-                            <div class="col-md-12">
-                                <button type="submit" class="btn btn-danger btn-block">Login</button>
-                            </div>
+                    <div class="card-footer text-center">
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-danger">Login</button>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </div>
+
     </div>
 }
 

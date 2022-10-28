@@ -659,3 +659,5 @@ E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\anit_cushman_one\obj\Debug\wr_an
 E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\anit_cushman_one\obj\Debug\wr_anit_cushman_one\bin\zh-Hant\Microsoft.Data.OData.resources.dll
 E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\anit_cushman_one\obj\Debug\wr_anit_cushman_one\bin\zh-Hant\Microsoft.Data.Services.Client.resources.dll
 E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\anit_cushman_one\obj\Debug\wr_anit_cushman_one\bin\zh-Hant\System.Spatial.resources.dll
+E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\anit_cushman_one\obj\Debug\wr_anit_cushman_one\bin\Scripts\AgrupaMercados.js
+E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\anit_cushman_one\obj\Debug\wr_anit_cushman_one\bin\Scripts\datatables\Spanish.json

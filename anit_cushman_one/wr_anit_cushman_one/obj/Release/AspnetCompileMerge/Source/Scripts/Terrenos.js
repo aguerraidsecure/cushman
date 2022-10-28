@@ -615,6 +615,7 @@ var map = null;
 var geocoder = null;
 var marker = null;
 var pos = 5;
+var datosTerrenos = null;
 
 $(document)
     .ready(function () {
@@ -637,26 +638,26 @@ $(document)
         storeCargaCombo("/Utils/GetCdEstado", "tsg028_te_contacto_Corr_cd_estado");
         //storeCargaCombo("/Utils/GetCdEstado", "tsg001_terreno_cd_mercado");
         storeCargaCombo("/Utils/GetMercados", "tsg001_terreno_cd_mercado");
-         $("#tsg001_terreno_cd_mercado").select2({ placeholder: "Seleccione Mercado", width: "30%" });
-        //storeCargaCombo("/Utils/GetCorredor", "tsg001_terreno_cd_corredor");
-         $("#tsg001_terreno_cd_corredor").select2({ placeholder: "Seleccione Corredor", width: "30%" });
+         //$("#tsg001_terreno_cd_mercado").select2({ placeholder: "Seleccione Mercado", width: "30%" });
+        storeCargaCombo("/Utils/GetCorredor", "tsg001_terreno_cd_corredor");
+        // $("#tsg001_terreno_cd_corredor").select2({ placeholder: "Seleccione Corredor", width: "30%" });
          storeCargaCombo("/Utils/GetEstatus", "tsg026_te_dt_gral_cd_st_entrega");
-         $("#tsg026_te_dt_gral_cd_st_entrega").select2({ placeholder: "Seleccione Estatus", width: "30%" });
+       //  $("#tsg026_te_dt_gral_cd_st_entrega").select2({ placeholder: "Seleccione Estatus", width: "30%" });
         storeCargaCombo("/Utils/GetEspuelas", "tsg027_te_servicio_cd_esp_fer");
-        $("#tsg027_te_servicio_cd_esp_fer").select2({ placeholder: "Seleccione Esp Ferr", width: "30%" });
+        //$("#tsg027_te_servicio_cd_esp_fer").select2({ placeholder: "Seleccione Esp Ferr", width: "30%" });
         storeCargaCombo("/Utils/GetCondArrend", "tsg023_ni_precio_cd_cond_arr");
-        $("#tsg023_ni_precio_cd_cond_arr").select2({ placeholder: "Seleccione Cond Arrend", width: "80%" });
+        //$("#tsg023_ni_precio_cd_cond_arr").select2({ placeholder: "Seleccione Cond Arrend", width: "80%" });
         storeCargaCombo("/Utils/GetGas", "tsg027_te_servicio_cd_tp_gas_natural");
-        $("#tsg027_te_servicio_cd_tp_gas_natural").select2({ placeholder: "Seleccione Tp Gas", width: "80%" });
+        //$("#tsg027_te_servicio_cd_tp_gas_natural").select2({ placeholder: "Seleccione Tp Gas", width: "80%" });
         storeCargaCombo("/Utils/GetTelefonia", "tsg027_te_servicio_cd_telefonia");
-        $("#tsg027_te_servicio_cd_telefonia").select2({ placeholder: "Seleccione Telefonía", width: "30%" });
+        //$("#tsg027_te_servicio_cd_telefonia").select2({ placeholder: "Seleccione Telefonía", width: "30%" });
 
         storeCargaCombo("/Utils/GetTipoMoneda", "tsg023_ni_precio_cd_moneda");
-        $("#tsg023_ni_precio_cd_moneda").select2({ placeholder: "Seleccione Tipo Moneda", width: "30%" });
+        //$("#tsg023_ni_precio_cd_moneda").select2({ placeholder: "Seleccione Tipo Moneda", width: "30%" });
         storeCargaCombo("/Utils/GetTipoReporte", "tsg040_imagenes_terrenos_cd_reporte");
-        $("#tsg040_imagenes_terrenos_cd_reporte").select2({ placeholder: "Seleccione Reporte", width: "30%" });
+        //$("#tsg040_imagenes_terrenos_cd_reporte").select2({ placeholder: "Seleccione Reporte", width: "30%" });
         storeCargaCombo("/Utils/GetTipoMoneda", "tsg023_ni_precio_cd_rep_moneda");
-        $("#tsg023_ni_precio_cd_rep_moneda").select2({ placeholder: "Seleccione Tipo Moneda", width: "30%" });
+        //$("#tsg023_ni_precio_cd_rep_moneda").select2({ placeholder: "Seleccione Tipo Moneda", width: "30%" });
 
         
 
@@ -1008,7 +1009,23 @@ $(document)
 
             });
 
-
+        
+        $("#btnPpt")
+            .click(function () {
+                $.msgBox({
+                    title: "Cushman ONE",
+                    content: "Está seguro de generar la presentación?",
+                    type: "confirm",
+                    buttons: [{ value: "Si" }, { value: "No" }, { value: "Cancel" }],
+                    success: function (result) {
+                        if (result === "Si") {
+                            //setBorraRegistro("/Producto/Eliminar/" + $("#cd_producto").val());
+                            ShowLoading();
+                            setGeneraPdf("/Terrenos1/GeneraPpt", 1);
+                        }
+                    }
+                });
+            });
         $("#btnPdf")
             .click(function () {
                 $.msgBox({
@@ -1337,15 +1354,15 @@ $(document)
                     "tsg001_terreno_cd_municipio",
                     undefined);
                 //Se agrega el elemento vacio para poder desplegar que seleccione una opcion
-                $("#tsg001_terreno_cd_colonia").select2({ placeholder: "Seleccione Colonia ", width: "40%" });
+                //$("#tsg001_terreno_cd_colonia").select2({ placeholder: "Seleccione Colonia ", width: "40%" });
                 //$("#cd_").select2({ placeholder: "Seleccione SubFamilia", width: "30%" });
                 return false;
             });
        
         //Recargar el plugin para que tenga la funcionalidad del componente
-             $("#tsg001_terreno_cd_colonia").select2({ placeholder: "Seleccione Colonia", width: "40%" });
-             $("#tsg001_terreno_cd_municipio").select2({ placeholder: "Seleccione Municipio", width: "40%" });
-             $("#tsg001_terreno_cd_estado").select2({ placeholder: "Seleccione Estado", width: "40%" });
+             //$("#tsg001_terreno_cd_colonia").select2({ placeholder: "Seleccione Colonia", width: "40%" });
+             //$("#tsg001_terreno_cd_municipio").select2({ placeholder: "Seleccione Municipio", width: "40%" });
+             //$("#tsg001_terreno_cd_estado").select2({ placeholder: "Seleccione Estado", width: "100%" });
 
 
              $("#tsg001_terreno_cd_colonia").change(function () {
@@ -1400,15 +1417,15 @@ $(document)
                     "tsg028_te_contacto_Prop_cd_municipio",
                     undefined);
                 //Se agrega el elemento vacio para poder desplegar que seleccione una opcion
-                $("#tsg028_te_contacto_Prop_cd_colonia").select2({ placeholder: "Seleccione Colonia ", width: "40%" });
+                //$("#tsg028_te_contacto_Prop_cd_colonia").select2({ placeholder: "Seleccione Colonia ", width: "40%" });
                 //$("#cd_").select2({ placeholder: "Seleccione SubFamilia", width: "30%" });
                 return false;
             });
 
         //Recargar el plugin para que tenga la funcionalidad del componente
-             $("#tsg028_te_contacto_Prop_cd_colonia").select2({ placeholder: "Seleccione Colonia", width: "40%" });
-             $("#tsg028_te_contacto_Prop_cd_municipio").select2({ placeholder: "Seleccione Municipio", width: "40%" });
-             $("#tsg028_te_contacto_Prop_cd_estado").select2({ placeholder: "Seleccione Estado", width: "40%" });
+             //$("#tsg028_te_contacto_Prop_cd_colonia").select2({ placeholder: "Seleccione Colonia", width: "40%" });
+             //$("#tsg028_te_contacto_Prop_cd_municipio").select2({ placeholder: "Seleccione Municipio", width: "40%" });
+             //$("#tsg028_te_contacto_Prop_cd_estado").select2({ placeholder: "Seleccione Estado", width: "40%" });
 
              $("#tsg028_te_contacto_Prop_cd_colonia").change(function () {
                  $("#tsg028_te_contacto_Prop_cd_estado_h").val($("#tsg028_te_contacto_Prop_cd_estado").val());
@@ -1460,15 +1477,15 @@ $(document)
                     "tsg028_te_contacto_Adm_cd_municipio",
                     undefined);
                 //Se agrega el elemento vacio para poder desplegar que seleccione una opcion
-                $("#tsg028_te_contacto_Adm_cd_colonia").select2({ placeholder: "Seleccione Colonia ", width: "40%" });
+                //$("#tsg028_te_contacto_Adm_cd_colonia").select2({ placeholder: "Seleccione Colonia ", width: "40%" });
                 //$("#cd_").select2({ placeholder: "Seleccione SubFamilia", width: "30%" });
                 return false;
             });
 
         //Recargar el plugin para que tenga la funcionalidad del componente
-              $("#tsg028_te_contacto_Adm_cd_colonia").select2({ placeholder: "Seleccione Colonia", width: "40%" });
-              $("#tsg028_te_contacto_Adm_cd_municipio").select2({ placeholder: "Seleccione Municipio", width: "40%" });
-              $("#tsg028_te_contacto_Adm_cd_estado").select2({ placeholder: "Seleccione Estado", width: "40%" });
+              //$("#tsg028_te_contacto_Adm_cd_colonia").select2({ placeholder: "Seleccione Colonia", width: "40%" });
+              //$("#tsg028_te_contacto_Adm_cd_municipio").select2({ placeholder: "Seleccione Municipio", width: "40%" });
+              //$("#tsg028_te_contacto_Adm_cd_estado").select2({ placeholder: "Seleccione Estado", width: "40%" });
 
               $("#tsg028_te_contacto_Adm_cd_colonia").change(function () {
                   $("#tsg028_te_contacto_Adm_cd_estado_h").val($("#tsg028_te_contacto_Adm_cd_estado").val());
@@ -1520,15 +1537,15 @@ $(document)
                     "tsg028_te_contacto_Corr_cd_municipio",
                     undefined);
                 //Se agrega el elemento vacio para poder desplegar que seleccione una opcion
-                $("#tsg028_te_contacto_Corr_cd_colonia").select2({ placeholder: "Seleccione Colonia ", width: "40%" });
+                //$("#tsg028_te_contacto_Corr_cd_colonia").select2({ placeholder: "Seleccione Colonia ", width: "40%" });
                 //$("#cd_").select2({ placeholder: "Seleccione SubFamilia", width: "30%" });
                 return false;
             });
 
         //Recargar el plugin para que tenga la funcionalidad del componente
-             $("#tsg028_te_contacto_Corr_cd_colonia").select2({ placeholder: "Seleccione Colonia", width: "40%" });
-             $("#tsg028_te_contacto_Corr_cd_municipio").select2({ placeholder: "Seleccione Municipio", width: "40%" });
-             $("#tsg028_te_contacto_Corr_cd_estado").select2({ placeholder: "Seleccione Estado", width: "40%" });
+             //$("#tsg028_te_contacto_Corr_cd_colonia").select2({ placeholder: "Seleccione Colonia", width: "40%" });
+             //$("#tsg028_te_contacto_Corr_cd_municipio").select2({ placeholder: "Seleccione Municipio", width: "40%" });
+             //$("#tsg028_te_contacto_Corr_cd_estado").select2({ placeholder: "Seleccione Estado", width: "40%" });
 
              $("#tsg028_te_contacto_Corr_cd_colonia").change(function () {
                  $("#tsg028_te_contacto_Corr_cd_estado_h").val($("#tsg028_te_contacto_Corr_cd_estado").val());
@@ -1542,6 +1559,16 @@ $(document)
                      }
                  })
              });
+
+        $("#terrenosregistrada").change(function () {
+
+            const coords = datosTerrenos.find(x => x.cd_terreno == $("#terrenosregistrada").val()).nb_posicion.split(",");
+            const position = { lat: Number(coords[0]), lng: Number(coords[1]) };
+            map.setCenter(position);
+            map.setZoom(18);
+
+
+        }); 
         //*********** Parte de Google map ***************
 
         jQuery('#pasar').click(function () {
@@ -1683,6 +1710,195 @@ function initMap() {
 
 }
 
+function initMap2() {
+
+    //$.ajax({
+    //    type: 'GET',
+    //    url: "/Naves/Index",
+
+    //    success: function (storedata) {
+    //        console.log(storeData);
+    //    }
+    //});
+
+
+    var $select = $('#terrenosregistrada');
+
+    geocoder = new google.maps.Geocoder();
+
+
+
+    //const center = { lat: 50.064192, lng: -130.605469 };
+    //// Create a bounding box with sides ~10km away from the center point
+    //const defaultBounds = {
+    //    north: center.lat + 0.1,
+    //    south: center.lat - 0.1,
+    //    east: center.lng + 0.1,
+    //    west: center.lng - 0.1,
+    //};
+    //const input = document.getElementById("nb_direccion");
+    //const options = {
+    //    bounds: defaultBounds,
+    //    componentRestrictions: { country: "us" },
+    //    fields: ["address_components", "geometry", "icon", "name"],
+    //    strictBounds: false
+    //};
+    //const autocomplete = new google.maps.places.Autocomplete(input, options);
+
+    $.get("/Terrenos1/getTerrenosMapas", function (data) {
+
+        datosTerrenos = data;
+
+        try {
+            pos = 6;
+            var latLng = new google.maps.LatLng(24.090303, -102.415217);
+
+            //Definimos algunas opciones del mapa a crear
+            var myOptions = {
+                center: { lat: 24.090303, lng: -102.415217 },//centro del mapa
+                zoom: pos,//zoom del mapa
+                mapTypeId: google.maps.MapTypeId.ROADMAP //tipo de mapa, carretera, híbrido,etc
+            };
+
+            //creamos el mapa con las opciones anteriores y le pasamos el elemento div
+            map = new google.maps.Map(document.getElementById("googleMap"), myOptions);
+
+
+
+
+            for (let i = 0; i < datosTerrenos.length; i++) {
+                const coords = datosTerrenos[i].nb_posicion.split(',');
+                //const latLng = new google.maps.LatLng(coords[0], coords[1]);
+                //.log(latLng);
+
+
+                $select.append('<option value=' + datosTerrenos[i].cd_terreno + '>' + 'T' + datosTerrenos[i].cd_terreno + ' - ' + datosTerrenos[i].nb_comercial + '</option>');
+
+                const titulo = datosTerrenos[i].nb_terreno;
+
+                const contentString =
+                    '<div class="card" style="width:40rem;">' +
+                    '        <div class="card-header bg-danger text-white text-center fw-bold fs-4">' + datosTerrenos[i].nb_comercial + '</div>' +
+                    '        <div class="shadow p-3 bg-body rounded" style="--bs-bg-opacity: .25;">' +
+                    '           <div class="card-body">' +
+                    '               <h5 class="card-title text-danger text-center">' + datosTerrenos[i].nb_comercial + '</h5>' +
+                    '               <div class="row">' +
+                    '                  <div class="col-sm-6">' +
+                    '                      <div class="row">' +
+                    '                          <div class="col-sm-12><p class="fw-bold">Superficie Terreno M<sup>2</sup>: ' + new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(datosTerrenos[i].nu_disponibilidad) + '</p></div>' +
+                    '                      </div>' +
+                    '                  </div>' +
+                    '                  <div class="col-sm-6">' +
+                    '                      <div class="row">' +
+                    '                          <div class="col-sm-12><p class="fw-bold">Disponibilidad minima M<sup>2</sup>: ' + new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(datosTerrenos[i].nu_tam_min) + '</p></div>' +
+                    '                          <div class="col-sm-12><p class="fw-bold">Disponibilidad maxima M<sup>2</sup>: ' + new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(datosTerrenos[i].nu_tam_max) + '</p></div>' +
+                    '                      </div>' +
+                    '                  </div>' +
+                    '               </div>' +
+                    /*'               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>'+*/
+                    '           </div>' +
+                    '        </div>' +
+                    '        <div class="card-footer text-center"><a class="btn btn-outline-danger btn-sm" role="button" href="/Terrenos1/Crear/' + datosTerrenos[i].cd_terreno + '">Consultar</a></div>' +
+                    '</div>';
+
+                //const image = "../../image/pinCushman.png";
+                const infoWindow = new google.maps.InfoWindow();
+                const image = {
+                    url: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
+                    // This marker is 20 pixels wide by 32 pixels high.
+                    size: new google.maps.Size(20, 32),
+                    // The origin for this image is (0, 0).
+                    origin: new google.maps.Point(0, 0),
+                    // The anchor for this image is the base of the flagpole at (0, 32).
+                    anchor: new google.maps.Point(0, 32),
+                };
+
+                //const svgMarker = {
+                //    path: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
+                //    fillColor: "blue",
+                //    fillOpacity: 0.6,
+                //    strokeWeight: 0,
+                //    rotation: 0,
+                //    scale: 2,
+                //    anchor: new google.maps.Point(15, 30),
+                //};
+                const position = { lat: Number(coords[0]), lng: Number(coords[1]) };
+
+                const marker = new google.maps.Marker({
+                    position: position,
+                    map: map,
+                    title: titulo,
+                    //icon: image,
+                    label: `T${data[i].cd_terreno}`,
+                    optimized: false,
+
+                });
+
+                marker.addListener("click", () => {
+                    infoWindow.close();
+                    infoWindow.setContent(contentString);
+                    infoWindow.open(marker.getMap(), marker);
+                });
+
+                //if (data[i].nb_poligono != "") {
+                //    console.log(data[i].nb_poligono);
+                //    let poligono=[];
+                //    var arrPoligonos = data[i].nb_poligono.split("|");
+                //    console.log(arrPoligonos)
+                //    console.log("paso variables");
+                //    for (let i = 0; i < arrPoligonos.length-1; i++) {
+                //        var poli = arrPoligonos[i].split(",");
+                //        console.log("Valor polis=>" + poli);
+                //        console.log("valor poli=>" + poli[0] +" " + poli[1]);
+                //        //poligono[i] = new gogle.maps.LatLng(lng:Number(poli[0]), lat:Number(poli[1]));
+
+                //        if (poli!=="") {
+                //            const lng = Number(poli[0]);
+                //            console.log("lng:" + lng);
+                //            const lat = Number(poli[1]);
+                //            console.log("lat:" + lat);
+                //            poligono[i] = new google.maps.LatLng(lng, lat);
+                //            //poligono.push({ lat:lat, lng:lngs });
+                //            console.log("poligono =>" + poligono);
+                //        }
+                //    }
+                //    console.log("Paso del for");
+                //    const miPoligono = new gogle.maps.Polygon({
+                //        paths: poligono,
+                //        strokeColor: "#FF0000",
+                //        strokeOpacity: 0.8,
+                //        strokeWeight: 3,
+                //        fillColor: "#FF0000",
+                //        fillOpacity: 0.4
+                //    });
+                //    console.log("Agrego los parametros del poligono");
+
+                //    miPoligono.setMap(map);
+                //    console.log("setteo el poligono al mapa");
+                //}
+
+            }
+
+        } catch (e) {
+            var iError = e.number;
+        }
+    });
+
+
+
+
+
+};
+function BuscaDireccionMapa() {
+    var direccion = document.getElementById("nb_direccion").value;
+    geocoder.geocode({ 'address': direccion }, function (results, status) {
+        console.log(results[0], status);
+        if (status == "OK") {
+            map.setCenter(results[0].geometry.location)
+            map.setZoom(14);
+        }
+    })
+}
 function cargaArchivo(rutaArchivo)
 {
     var mapOptions = {

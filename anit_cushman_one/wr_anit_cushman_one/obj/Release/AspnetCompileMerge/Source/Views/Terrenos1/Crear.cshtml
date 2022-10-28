@@ -1,866 +1,917 @@
-﻿@model wr_anit_cushman_one.Models.Terreno       
+﻿@model wr_anit_cushman_one.Models.Terreno
 
 @{
     ViewBag.Title = "Crear";
 }
 
 @section headtag
-{    
+{
     <script src="@Url.Content("~/Scripts/cboClasificacion.js")" type="text/javascript"></script>
-    <script src="@Url.Content("~/Scripts/Terrenos.js")" type="text/javascript"></script>    
+    <script defer src="@Url.Content("~/Scripts/Terrenos.js")" type="text/javascript"></script>
 
     <script src="@Url.Content("~/Scripts/jquery.form.min.js")"></script>
     <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")"></script>
     <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")"></script>
 }
-<div id="console-log"></div>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content panel panel-warning">
-            <div class="well">
-                <button type="button" class="cerrar btn-danger" title="Cerrar" data-dismiss="modal" id="btnCerrar">
-                    <span aria-hidden="true">&times;</span>
-                    <span class="hide">Close</span>
-                </button>
-                <h3>Búsqueda de Terrenos</h3>
-            </div>
+@*<div id="console-log"></div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content panel panel-warning">
+                <div class="well">
+                    <button type="button" class="cerrar btn-danger" title="Cerrar" data-dismiss="modal" id="btnCerrar">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="hide">Close</span>
+                    </button>
+                    <h3>Búsqueda de Terrenos</h3>
+                </div>
 
+                <div class="modal-body">
+                    <div id="findTerreno">
+                        Cargando Contenido ...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+*@
+
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="modalBusqueda" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Búsqueda de Terrenos</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
             <div class="modal-body">
-                <div id="findTerreno">
+                <div id="findNaves">
                     Cargando Contenido ...
                 </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
 </div>
 
-
-
 @*using (Html.BeginForm())*@
-    @using (Html.BeginForm("Crear", "Terrenos1", FormMethod.Post,  new { id = "frm-terreno", enctype = "multipart/form-data" }))
-    {
+@using (Html.BeginForm("Crear", "Terrenos1", FormMethod.Post, new { id = "frm-terreno", enctype = "multipart/form-data" }))
+{
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal table-responsive container modal-content panel panel-info">
-        <p class="container text-right">
-            <img SRC="/image/BANDERA-DE-MEXICO.ico" WIDTH=24 HEIGHT=24>@Html.ActionLink("Esp", "Change", "Terrenos1", new { strLenguanje = "es" }, null)
-            |<img SRC="/image/bandera-usa.ico" WIDTH=24 HEIGHT=24>@Html.ActionLink("Us", "Change", "Terrenos1", new { strLenguanje = "en" }, null)
-        </p>
 
-            <h4 class="well text-center">@wr_anit_cushman_one.Resources.rscIdioma.terrenoTitulo</h4>
-        
+    <div class="row mt-3">
 
-            @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
-        
-            <div class="form-group">
-                <div class="col-lg-5"> @*onclick="CallSendingForm(this);"*@
-                    @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Buscar_NI))
-                    {
-                        <button type="button" id="btnBuscarTodo" name="Command" value="Buscar" class="btn btn-default" data-tooltip data-toggle="tooltip" title="Búsqueda Básica">
-                            <span class="glyphicon glyphicon-eye-open"></span>
-                        </button>
-                    }
-                    @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Buscar_T))
-                    {
-                        <button type="button" id="btnBuscar" name="Command" value="Buscar" class="btn btn-default" data-tooltip data-toggle="tooltip" title="Buscar">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    }
-                    @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Nuevo_T))
-                    {
-                        <button type="button" id="btnNuevo" name="Command" value="Nuevo" class="btn btn-default" data-tooltip data-toggle="tooltip" title="Nuevo">
-                            <span class="glyphicon glyphicon-file"></span>
-                        </button>
-                        <!--Se agregó como boton eliminar-->
-                    }
-                    @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Editar_T))
-                    {
-                        <button type="button" id="btnEditar" name="Command" value="Editar" class="btn btn-default" data-tooltip data-toggle="tooltip" title="Editar">
-                            <span class="glyphicon glyphicon-edit"></span>
-                        </button>
-                    }
-                    @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Editar_T))
-                    {
-                        <button type="button" id="btnCopiar" name="Command" value="Editar" class="btn btn-default" data-tooltip data-toggle="tooltip" title="Copiar">
-                            <span class="glyphicon glyphicon-paperclip"></span>
-                        </button>
-                    }
-                    @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Guardar_T))
-                    {
-                        <button type="submit" id="btnGuardar" name="Command" value="Guardar" class="btn btn-default" data-tooltip data-toggle="tooltip" title="Guardar">
-                            <span class="glyphicon glyphicon-floppy-disk"></span>
-                        </button>
-                    }
-                    @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Eliminar_T))
-                    {
-                        <button type="button" id="btnEliminar" name="Command" value="Eliminar" class="btn btn-default" data-tooltip data-toggle="tooltip" title="Eliminar">
-                            <span class="glyphicon glyphicon-trash"></span>
-                        </button>
-                    }
-                    @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_PDF_T))
-                    {
-                        <button type="button" id="btnPdf" name="Command" value="Pdf" class="btn btn-default" data-tooltip data-toggle="tooltip" title="Reporte Individual">
-                            <span class="glyphicon glyphicon-list-alt"></span>
-                        </button>
-                    }
-                    @*@if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_PDF_T))
-                    {
-                        <button type="button" id="btnPdf1" name="Command" value="Pdf" class="btn btn-default" data-tooltip data-toggle="tooltip" title="Pdf Us">
-                            <span class="glyphicon glyphicon-list-alt"></span>
-                        </button>
-                    }*@
-                    @Html.ActionLink(" ", "iniCreate", "", new { @class = "glyphicon glyphicon-home btn btn-default", data_toggle = "tooltip", data_placement = "right", title = "Inicio" })
-                   </div>
-            </div>
-        
-
-            <div role="tabpanel">
-                <ul class="nav nav-tabs bs-adaptive-tabs" role="tablist" id="myTab">
-                    <li class="active" role="presentation"><a aria-expanded="true" aria-controls="seccion0" data-toggle="tab" role="tab" id="tab1-tab" href="#seccion0"><i class="fa fa-home danger"></i> <label>@wr_anit_cushman_one.Resources.rscIdioma.Principal</label></a></li>
-                    <li role="presentation"><a aria-expanded="true" aria-controls="seccion1" data-toggle="tab" role="tab" id="tab2-tab" href="#seccion1" onclick="actu_imp()"><i class="fa fa-archive"></i> <label>@wr_anit_cushman_one.Resources.rscIdioma.General</label></a></li>
-                    <li role="presentation"><a aria-expanded="true" aria-controls="seccion2" data-toggle="tab" role="tab" id="tab3-tab" href="#seccion2"><i class="fa fa-cog"></i> <label>@wr_anit_cushman_one.Resources.rscIdioma.Servicio</label></a></li>
-                    <li role="presentation"><a aria-expanded="true" aria-controls="seccion3" data-toggle="tab" role="tab" id="tab4-tab" href="#seccion3"><i class="fa fa-money"></i> <label>@wr_anit_cushman_one.Resources.rscIdioma.Precio</label></a></li>
-                    <li role="presentation"><a aria-expanded="true" aria-controls="seccion4" data-toggle="tab" role="tab" id="tab5-tab" href="#seccion4"><i class="fa fa-sitemap"></i> <label>@wr_anit_cushman_one.Resources.rscIdioma.Propietario</label></a></li>
-                    <li role="presentation"><a aria-expanded="true" aria-controls="seccion5" data-toggle="tab" role="tab" id="tab6-tab" href="#seccion5"><i class="fa fa-tasks"></i> <label>@wr_anit_cushman_one.Resources.rscIdioma.Administrador</label></a></li>
-                    <li role="presentation"><a aria-expanded="true" aria-controls="seccion6" data-toggle="tab" role="tab" id="tab7-tab" href="#seccion6"><i class="fa fa-male"></i> <label>@wr_anit_cushman_one.Resources.rscIdioma.CorredorIndustrial</label></a></li>
-                    <li role="presentation"><a aria-expanded="true" aria-controls="seccion7" data-toggle="tab" role="tab" id="tab8-tab" href="#seccion7" onclick="obt_dir()"><i class="fa fa-map-marker"></i> <label>@wr_anit_cushman_one.Resources.rscIdioma.Mapa</label></a></li>
-                    <li role="presentation"><a aria-expanded="true" aria-controls="seccion7" data-toggle="tab" role="tab" id="tab9-tab" href="#seccion8" onclick="obt_img()"><i class="fa fa-file-photo-o"></i> <label>@wr_anit_cushman_one.Resources.rscIdioma.Archivos</label></a></li>
-                </ul>
-            </div>
-
-
-            <div class="tab-content" id="myTabContent">
-                <div aria-labelledby="tab1-tab" role="tabpanel" class="tab-pane fade in active" id="seccion0">
-                    <br />
-                    <div class="form-group">
-                        <div class="control-label col-md-2">Folio:</div>
-                        <div class="col-md-2">
-                            <input type="text" id="folio" value=@ViewBag.Folio class="form-control" />
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header bg-primary bg-opacity-75">
+                    <div class="row">
+                        <div class="col-sm-10 text-white fw-bold ">
+                            @wr_anit_cushman_one.Resources.rscIdioma.terrenoTitulo
                         </div>
-                        <div class="col-md-1">
-                            <button type="button" id="btnBuscarFolio" name="Command" value="Buscar" class="btn btn-default" data-tooltip title="Buscar">
-                                <span class="glyphicon glyphicon-search"></span>
-                            </button>
+                        <div class="col-sm-2 text-white text-end">
+                            Idioma: <img SRC="/image/BANDERA-DE-MEXICO.ico" WIDTH=24 HEIGHT=24>@Html.ActionLink(" ", "Change", "Terrenos1", new { strLenguanje = "es" }, null)
+                            |<img SRC="/image/bandera-usa.ico" WIDTH=24 HEIGHT=24>@Html.ActionLink(" ", "Change", "Terrenos1", new { strLenguanje = "en" }, null)
+
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.NombreComercial:</div>
-                        <div class="col-md-10">
-                            @Html.Hidden("IdAction", (object)ViewBag.TpRegistro)
-                            @Html.HiddenFor(model => model.tsg001_terreno.cd_terreno, new { @id = "tsg001_terreno_cd_terreno" })
-                            @Html.HiddenFor(model => model.tsg001_terreno.cd_estado, new { @id = "tsg001_terreno_cd_estado_h" })
-                            @Html.HiddenFor(model => model.tsg001_terreno.cd_municipio, new { @id = "tsg001_terreno_cd_municipio_h" })
-                            @Html.HiddenFor(model => model.tsg001_terreno.cd_colonia, new { @id = "tsg001_terreno_cd_colonia_h" })
-
-                            @Html.HiddenFor(model => model.tsg001_terreno.cd_mercado, new { @id = "tsg001_terreno_cd_mercado_h" })
-                            @Html.HiddenFor(model => model.tsg001_terreno.cd_corredor, new { @id = "tsg001_terreno_cd_corredor_h" })
-                            @Html.HiddenFor(model => model.tsg001_terreno.st_parque_ind, new { @id = "tsg001_terreno_st_parque_ind_h" })
-                            @Html.HiddenFor(model => model.tsg027_te_servicio.cd_esp_fer, new { @id = "tsg027_te_servicio_cd_esp_fer_h" })
-                            @Html.HiddenFor(model => model.tsg023_ni_precio.cd_cond_arr, new { @id = "tsg023_ni_precio_cd_cond_arr_h" })
-                            @Html.HiddenFor(model => model.tsg027_te_servicio.cd_tp_gas_natural, new { @id = "tsg027_te_servicio_cd_tp_gas_natural_h" })
-                            @Html.HiddenFor(model => model.tsg027_te_servicio.cd_telefonia, new { @id = "tsg027_te_servicio_cd_telefonia_h" })
-                            @Html.HiddenFor(model => model.tsg023_ni_precio.cd_moneda, new { @id = "tsg023_ni_precio_cd_moneda_h" })
-                            @Html.HiddenFor(model => model.tsg040_imagenes_terrenos.cd_reporte, new { @id = "tsg040_imagenes_terrenos_cd_reporte_h" })
-                            @Html.HiddenFor(model => model.tsg023_ni_precio.cd_rep_moneda, new { @id = "tsg023_ni_precio_cd_rep_moneda_h" })
-                            @Html.HiddenFor(model => model.tsg026_te_dt_gral.cd_st_entrega, new { @id = "tsg026_te_dt_gral_cd_st_entrega_h" })
-                            
-                            @Html.HiddenFor(model => model.tsg028_te_contacto_Prop.cd_estado, new { @id = "tsg028_te_contacto_Prop_cd_estado_h" })
-                            @Html.HiddenFor(model => model.tsg028_te_contacto_Prop.cd_municipio, new { @id = "tsg028_te_contacto_Prop_cd_municipio_h" })
-                            @Html.HiddenFor(model => model.tsg028_te_contacto_Prop.cd_colonia, new { @id = "tsg028_te_contacto_Prop_cd_colonia_h" })
-                            @Html.HiddenFor(model => model.tsg028_te_contacto_Adm.cd_estado, new { @id = "tsg028_te_contacto_Adm_cd_estado_h" })
-                            @Html.HiddenFor(model => model.tsg028_te_contacto_Adm.cd_municipio, new { @id = "tsg028_te_contacto_Adm_cd_municipio_h" })
-                            @Html.HiddenFor(model => model.tsg028_te_contacto_Adm.cd_colonia, new { @id = "tsg028_te_contacto_Adm_cd_colonia_h" })
-                            @Html.HiddenFor(model => model.tsg028_te_contacto_Corr.cd_estado, new { @id = "tsg028_te_contacto_Corr_cd_estado_h" })
-                            @Html.HiddenFor(model => model.tsg028_te_contacto_Corr.cd_municipio, new { @id = "tsg028_te_contacto_Corr_cd_municipio_h" })
-                            @Html.HiddenFor(model => model.tsg028_te_contacto_Corr.cd_colonia, new { @id = "tsg028_te_contacto_Corr_cd_colonia_h" })
-
-                            @Html.EditorFor(model => model.tsg001_terreno.nb_comercial, new { htmlAttributes = new { @class = "form-control" } })        
-                            @*ViewBag.disabled  sdfasd
-                            @Html.EditorFor(model => model.tsg001_terreno.nb_comercial, new { htmlAttributes = new { @class = "form-control" } })                            
-                            @*Html.TextBoxFor(model => model.tsg001_terreno.nb_comercial, new { @class = "form-control" })
-
-                            @*( @ViewBag.disabled ?
-                             @Html.TextBoxFor(m => m.tsg001_terreno.nb_comercial, new { @class = "form-control", disabled = (@ViewBag.disabled ? "disabled" : "") }) :
-                             @Html.TextBoxFor(m => m.tsg001_terreno.nb_comercial, new { @class = "form-control" })
-                            )*@
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Nombre:</div>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.tsg001_terreno.nb_nombre, new { htmlAttributes = new { @class = "form-control" } })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Apellido:</div>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.tsg001_terreno.nb_apellido, new { htmlAttributes = new { @class = "form-control" } })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.comentarios:</div>
-                        <div class="col-md-10">
-                            @Html.TextAreaFor(model => model.tsg001_terreno.nb_comentarios, new { cols = "50%", rows = "3", hmlAttributes = new { @class = "form-control" } })
-                            @*@Html.ValidationMessageFor(model => model.tsg002_nave_industrial.nb_parque, "", new { @class = "text-danger" })*@
-                        </div>
-                    </div>
-                        <br />
-                        <div class="well">
-                            <h5 class="modal-header">@wr_anit_cushman_one.Resources.rscIdioma.Direccion:</h5>
-                            <table class="nav-justified table-responsive table-condensed">
-                                <tr>
-                                    <td><div>@wr_anit_cushman_one.Resources.rscIdioma.Calle</div></td>
-                                    <td>
-                                        <div class="form-group">
-                                            <div>
-                                                @Html.EditorFor(model => model.tsg001_terreno.nb_calle, new { htmlAttributes = new { @class = "form-control" } })
-
-                                                @*Html.ValidationMessageFor(model => model.nb_calle, "", new { @class = "text-danger" })*@
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td><div>@wr_anit_cushman_one.Resources.rscIdioma.Numero:</div></td>
-                                    <td>
-                                        <div class="form-group">
-                                            <div>
-                                                @Html.EditorFor(model => model.tsg001_terreno.nu_direcion, new { htmlAttributes = new { @class = "form-control" } })
-                                                @*Html.ValidationMessageFor(model => model.nu_direcion, "", new { @class = "text-danger" })*@
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td><div>@wr_anit_cushman_one.Resources.rscIdioma.CP:</div></td>
-                                    <td>
-                                        <div class="form-group">
-                                            <div>
-                                                @Html.EditorFor(model => model.tsg001_terreno.nu_cp, new { htmlAttributes = new { @class = "form-control" } })
-                                                @*Html.ValidationMessageFor(model => model.nu_cp, "", new { @class = "text-danger" })*@
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td><div>@wr_anit_cushman_one.Resources.rscIdioma.Estado:</div></td>
-                                    <td>
-                                        <div class="form-group">
-                                            <div>
-                                                @*Html.EditorFor(model => model.tsg001_terreno.cd_estado, new { htmlAttributes = new { @class = "form-control" } })*@
-                                                @*Html.DropDownList("cd_estado", null, "Seleccione una opción", htmlAttributes: new { @class = "form-control" })*@
-                                                @Html.DropDownListFor(model => model.tsg001_terreno.cd_estado, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
-                                                @Html.ValidationMessageFor(model => model.tsg001_terreno.cd_estado, "", new { @class = "text-danger" })
-                                                @*Html.ValidationMessageFor(model => model.cd_estado, "", new { @class = "text-danger" })*@
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><div>@wr_anit_cushman_one.Resources.rscIdioma.Municipio:</div></td>
-                                    <td>
-                                        <div class="form-group">
-                                            <div>
-                                                @*Html.EditorFor(model => model.tsg001_terreno.cd_municipio, new { htmlAttributes = new { @class = "form-control" } })*@
-                                                @*Html.DropDownList("cd_municipio", null, "Seleccione una opción", htmlAttributes: new { @class = "form-control" })*@
-                                                @Html.DropDownListFor(model => model.tsg001_terreno.cd_municipio, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
-                                                @Html.ValidationMessageFor(model => model.tsg001_terreno.cd_municipio, "", new { @class = "text-danger" })
-                                                @*Html.ValidationMessageFor(model => model.cd_municipio, "", new { @class = "text-danger" })*@
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td><div>@wr_anit_cushman_one.Resources.rscIdioma.Colonia:</div></td>
-                                    <td>
-                                        <div class="form-group">
-                                            <div>
-                                                @*Html.EditorFor(model => model.tsg001_terreno.cd_colonia, new { htmlAttributes = new { @class = "form-control" } })*@
-                                                @Html.DropDownListFor(model => model.tsg001_terreno.cd_colonia, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
-                                                @Html.ValidationMessageFor(model => model.tsg001_terreno.cd_colonia, "", new { @class = "text-danger" })
-                                                @*Html.ValidationMessageFor(model => model.cd_colonia, "", new { @class = "text-danger" })*@
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                            </table>
-                        </div>
-
-                        <br />
-
-                    </div>
-
-                <div aria-labelledby="tab2-tab" role="tabpanel" class="tab-pane" id="seccion1"  onclick="actu_imp()">
-                    <br />
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Mercado:</div>
-                        <div class="col-md-10">
-                            @*Html.DropDownList("cd_mercado", null, htmlAttributes: new { @class = "form-control" })*@
-                            @Html.DropDownListFor(model => model.tsg001_terreno.cd_mercado, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
-                            @*Html.ValidationMessageFor(model => model.cd_mercado, "", new { @class = "text-danger" })*@
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Corredor:</div>
-                        <div class="col-md-10">
-                            @*Html.DropDownList("cd_corredor", null, htmlAttributes: new { @class = "form-control" })*@
-                            @Html.DropDownListFor(model => model.tsg001_terreno.cd_corredor, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
-                            @*Html.ValidationMessageFor(model => model.cd_corredor, "", new { @class = "text-danger" })*@
-                        </div>
-                    </div>
-
-                    @*<div class="form-group">
-                        <div class="control-label col-md-2">Tamaño</div>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.tsg001_terreno.nu_tamano, new { htmlAttributes = new { @class = "form-control" } })
-                            @*Html.ValidationMessageFor(model => model.nu_tamano, "", new { @class = "text-danger" })*@
-                        @*</div>
-                    </div>*@
-
-
-
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.DisponibilidadTotalM M<sup>2</sup>:</div>
-                        <div class="col-md-4">
-                            @Html.EditorFor(model => model.tsg026_te_dt_gral.nu_disponiblidad, new { htmlAttributes = new { @class = "form-control" } })
-                            @*Html.ValidationMessageFor(model => model.cd_mercado, "", new { @class = "text-danger" })*@
-                            @wr_anit_cushman_one.Resources.rscIdioma.MinimoDisponible                            
-                            @Html.TextBox("disponible_hasta", null, new { @class = "form-control" })
-                            @wr_anit_cushman_one.Resources.rscIdioma.MaximoDisponible
-                        </div>
-                        <div class="control-label col-md-3">@wr_anit_cushman_one.Resources.rscIdioma.DisponibilidadTotalF Ft<sup>2</sup>:</div>
-                        <div class="col-md-3">
-                            <input type="text" id="nu_disponiblidad_pies" class="form-control"  onchange="convertir(4)" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.TamanioMinimoM M<sup>2</sup>:</div>
-                        <div class="col-md-4">
-                            @Html.EditorFor(model => model.tsg026_te_dt_gral.nu_tam_min, new { htmlAttributes = new { @class = "form-control" } })
-                            @*Html.ValidationMessageFor(model => model.cd_corredor, "", new { @class = "text-danger" })*@
-                        </div>
-                        <div class="control-label col-md-3">@wr_anit_cushman_one.Resources.rscIdioma.TamanioMinimoF Ft<sup>2</sup>:</div>
-                        <div class="col-md-3">
-                            <input type="text" id="nu_tam_min" class="form-control"  onchange="convertir(5)" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.TamanioMaximoM M<sup>2</sup>:</div>
-                        <div class="col-md-4">
-                            @Html.EditorFor(model => model.tsg026_te_dt_gral.nu_tam_max, new { htmlAttributes = new { @class = "form-control" } })
-                            @*Html.ValidationMessageFor(model => model.st_parque_ind, "", new { @class = "text-danger" })*@
-                        </div>
-                        <div class="control-label col-md-3">@wr_anit_cushman_one.Resources.rscIdioma.TamanioMaximoF Ft<sup>2</sup>:</div>
-                        <div class="col-md-3">
-                            <input type="text" id="nu_tam_max" class="form-control"  onchange="convertir(6)" />
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.CoberturaMaxima:</div>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.tsg026_te_dt_gral.nb_radio_cob, new { htmlAttributes = new { @class = "form-control" } })
-                            @*Html.ValidationMessageFor(model => model.nu_tamano, "", new { @class = "text-danger" })*@
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.EstatusEntrega:</div>
-                        <div class="col-md-10">
-                            @*Html.EditorFor(model => model.tsg017_st_entrega.nb_st_entrega, new { htmlAttributes = new { @class = "form-control" } })*@
-                            @*Html.DropDownList("cd_st_entrega", null, htmlAttributes: new { @class = "form-control" })*@
-                            @Html.DropDownListFor(model => model.tsg026_te_dt_gral.cd_st_entrega, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
-                            @*Html.ValidationMessageFor(model => model.nu_tamano, "", new { @class = "text-danger" })*@
-                        </div>
-                    </div>
-                    
-                    <br />
                 </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <div class="btn-group">
+                                @*onclick="CallSendingForm(this);"*@
+                                @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Buscar_NI))
+                                {
+                                    @*<button type="button" id="btnBuscarTodo" name="Command" value="Buscar" class="btn btn-default" data-tooltip data-toggle="tooltip" title="Búsqueda Básica">
+                                            <span class="glyphicon glyphicon-eye-open"></span>
+                                        </button>*@
+                                    @*<button type="button" data-url='@Url.Action("Buscar", "Terrenos")' id="btnBuscarTodo" name="Command" value="Buscar" class="btn btn-outline-danger rounded-pill" data-tooltip title="Búsqueda Básica" data-bs-toggle="modal" data-bs-target="#myModal">
+                                        <i class="fa fa-eye" aria-hidden="true"></i> Búsqueda básica
+                                    </button>*@
 
-                <div aria-labelledby="tab3-tab" role="tabpanel" class="tab-pane" id="seccion2">
-                    <br />
-                    <div class="form-group form-inline">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Agua:</div>
-                        <div class="col-md-10">
-                            Servicio Municipal: @Html.CheckBoxFor(model => model.tsg027_te_servicio.st_aguamunicipal, new { @class = "form-control", style = "height:20px;width:20px;" })
-                            Pozo: @Html.CheckBoxFor(model => model.tsg027_te_servicio.st_aguapozo, new { @class = "form-control", style = "height:20px;width:20px;" })
-                            @*@Html.EditorFor(model => model.tsg027_te_servicio.nu_agua, new { htmlAttributes = new { @class = "form-control" } })*@
-                            @*Html.ValidationMessageFor(model => model.st_parque_ind, "", new { @class = "text-danger" })*@
-                        </div>
-                    </div>
+                                }
+                                @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Buscar_T))
+                                {
+                                    @*<button type="button" id="btnBuscar" name="Command" value="Buscar" class="btn btn-default" data-tooltip data-toggle="tooltip" title="Buscar">
+                                            <span class="glyphicon glyphicon-search"></span>
+                                        </button>*@
+                                    @*<button type="button" data-url='@Url.Action("Buscar", "Terrenos")' id="btnBuscar" name="Command" value="Buscar" class="btn btn-outline-danger rounded-pill" data-tooltip title="Buscar">
+                                        <i class="fa fa-search" aria-hidden="true"></i> Búsqueda
+                                    </button>*@
+                                }
+                                @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Nuevo_T))
+                                {
+                                    @*<button type="button" id="btnNuevo" name="Command" value="Nuevo" class="btn btn-default" data-tooltip data-toggle="tooltip" title="Nuevo">
+                                            <span class="glyphicon glyphicon-file"></span>
+                                        </button>*@
+                                    <!--Se agregó como boton eliminar-->
+                                    @*<button type="button" id="btnNuevo" name="Command" value="Nuevo" class="btn btn-outline-danger  rounded-pill" data-tooltip title="Nuevo">
+                                        <i class="fa fa-file-o" aria-hidden="true"></i> Nuevo
+                                    </button>*@
+                                }
+                                @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Editar_T))
+                                {
+                                    @*<button type="button" id="btnEditar" name="Command" value="Editar" class="btn btn-default" data-tooltip data-toggle="tooltip" title="Editar">
+                                            <span class="glyphicon glyphicon-edit"></span>
+                                        </button>*@
+                                    <button type="button" id="btnEditar" name="Command" value="Editar" class="btn btn-outline-danger rounded-pill" data-tooltip title="Editar">
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar
+                                    </button>
+                                }
+                                @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Editar_T))
+                                {
+                                    @*<button type="button" id="btnCopiar" name="Command" value="Editar" class="btn btn-default" data-tooltip data-toggle="tooltip" title="Copiar">
+                                            <span class="glyphicon glyphicon-paperclip"></span>
+                                        </button>*@
+                                    <button type="button" id="btnCopiar" name="Command" value="Editar" class="btn btn-outline-danger  rounded-pill" data-tooltip data-toggle="tooltip" title="Copiar">
+                                        <i class="fa fa-files-o" aria-hidden="true"></i> Copiar
+                                    </button>
+                                }
+                                @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Guardar_T))
+                                {
+                                    @*<button type="submit" id="btnGuardar" name="Command" value="Guardar" class="btn btn-default" data-tooltip data-toggle="tooltip" title="Guardar">
+                                            <span class="glyphicon glyphicon-floppy-disk"></span>
+                                        </button>*@
+                                    <button type="submit" id="btnGuardar" name="Command" value="Guardar" class="btn btn-outline-danger  rounded-pill" data-tooltip title="Guardar">
+                                        <i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar
+                                    </button>
+                                }
+                                @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Eliminar_T))
+                                {
+                                    @*<button type="button" id="btnEliminar" name="Command" value="Eliminar" class="btn btn-default" data-tooltip data-toggle="tooltip" title="Eliminar">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button>*@
+                                    <button type="button" id="btnEliminar" name="Command" value="Eliminar" class="btn btn-outline-danger  rounded-pill" data-tooltip title="Eliminar">
+                                        <i class="fa fa-trash-o" aria-hidden="true"></i> Eliminar
+                                    </button>
+                                }
+                                @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_PDF_T))
+                                {
+                                    @*<button type="button" id="btnPdf" name="Command" value="Pdf" class="btn btn-default" data-tooltip data-toggle="tooltip" title="Reporte Individual">
+                                            <span class="glyphicon glyphicon-list-alt"></span>
+                                        </button>*@
 
-                    <div class="form-group form-inline">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.ServicioTelecomunicaciones:</div>
-                        <div class="col-md-10">
-                            @*Telmex @Html.RadioButtonFor(model => model.tsg027_te_servicio.nb_ser_tel_com, "Telmex")
-                            Alestra @Html.RadioButtonFor(model => model.tsg027_te_servicio.nb_ser_tel_com, "Alestra")
-                            MCM @Html.RadioButtonFor(model => model.tsg027_te_servicio.nb_ser_tel_com, "MCM")
-                            AT&tau;T @Html.RadioButtonFor(model => model.tsg027_te_servicio.nb_ser_tel_com, "AT&T")*@
-                            @*Telmex: @Html.CheckBoxFor(model => model.tsg027_te_servicio.st_telmex, new { @class = "form-control", @disabled = "disabled", style = "height:20px;width:20px;" })
-                            Alestra: @Html.CheckBoxFor(model => model.tsg027_te_servicio.st_alestra, new { @class = "form-control", @disabled = "disabled", style = "height:20px;width:20px;" })
-                            MCM: @Html.CheckBoxFor(model => model.tsg027_te_servicio.st_MCM, new { @class = "form-control", @disabled = "disabled", style = "height:20px;width:20px;" })*@                           
-                            @Html.DropDownListFor(model => model.tsg027_te_servicio.cd_telefonia, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
-                        </div>
-                    </div>
 
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.GasNatural:</div>
-                        <div class="col-md-4">
-                            @Html.DropDownListFor(model => model.tsg027_te_servicio.cd_tp_gas_natural, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
-                            @*Html.ValidationMessageFor(model => model.nu_tamano, "", new { @class = "text-danger" })*@
+                                    <div class="dropdown">
+                                        <button class="btn btn-outline-danger dropdown-toggle rounded-pill" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Reporte individual
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                            <li><a class="dropdown-item" href="#"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a></li>
+                                            <li><a class="dropdown-item" href="#"><i class="fa fa-file-powerpoint-o" aria-hidden="true"></i> Power Point</a></li>
+
+                                        </ul>
+                                    </div>
+                                }
+                                @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_PDF_T))
+                                {
+                                    @*<button type="button" id="btnPpt" name="Command" value="Ppt" class="btn btn-default" data-tooltip data-toggle="tooltip" title="Reporte Individual Power Point">
+                                            <span class="fa fa-file-powerpoint-o" style="font-size:16px;color:red"></span>
+                                        </button>*@
+
+                                    <button type="button" id="btnEliminar" name="Command" value="Eliminar" class="btn btn-outline-danger  rounded-pill" data-tooltip title="Reporte Individual PPT">
+                                        <i class="fa fa-trash-o" aria-hidden="true"></i> Reporte Individual Power Point
+                                    </button>
+                                }
+                                <button type="button" id="btnPpt" name="Command" value="Ppt" class="btn btn-outline-danger  rounded-pill" data-tooltip title="Reporte Individual Power point">
+                                    <i class="fa fa-sign-out" aria-hidden="true"></i> Salir
+                                </button>
+                                @*@Html.ActionLink(" ", "iniCreate", "", new { @class = "glyphicon glyphicon-home btn btn-default", data_toggle = "tooltip", data_placement = "right", title = "Inicio" })*@
+                            </div>
                         </div>
-                        <div class="form-group" id="oculto2" style="display:none;">
-                            <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.DescripcionGas:</div>
-                            <div class="col-md-4">
-                                @Html.EditorFor(model => model.tsg027_te_servicio.nb_tp_gas_natural, new { htmlAttributes = new { @class = "form-control" } })
+                        <div class="col-sm-12 mt-3">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">                       
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active"
+                                            id="principal-tab"
+                                            data-bs-toggle="tab"
+                                            data-bs-target="#principal"
+                                            type="button"
+                                            role="tab"
+                                            aria-controls="principal"
+                                            aria-selected="true">
+                                        <i class="fa fa-home" aria-hidden="true"></i> @wr_anit_cushman_one.Resources.rscIdioma.Principal
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="general-tab" data-bs-toggle="tab" data-bs-target="#general" type="button" role="tab" aria-controls="general" aria-selected="false"><i class="fa fa-archive"></i> @wr_anit_cushman_one.Resources.rscIdioma.General</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="servicio-tab" data-bs-toggle="tab" data-bs-target="#servicio" type="button" role="tab" aria-controls="servicio" aria-selected="false"><i class="fa fa-cog"></i> @wr_anit_cushman_one.Resources.rscIdioma.Servicio</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="precio-tab" data-bs-toggle="tab" data-bs-target="#precio" type="button" role="tab" aria-controls="precio" aria-selected="false"><i class="fa fa-money"></i> @wr_anit_cushman_one.Resources.rscIdioma.Precio</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="propietario-tab" data-bs-toggle="tab" data-bs-target="#propietario" type="button" role="tab" aria-controls="propietario" aria-selected="false"><i class="fa fa-sitemap"></i> @wr_anit_cushman_one.Resources.rscIdioma.Propietario</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="administrador-tab" data-bs-toggle="tab" data-bs-target="#administrador" type="button" role="tab" aria-controls="administrador" aria-selected="false"><i class="fa fa-tasks"></i> @wr_anit_cushman_one.Resources.rscIdioma.Administrador</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="broker-tab" data-bs-toggle="tab" data-bs-target="#broker" type="button" role="tab" aria-controls="broker" aria-selected="false"><i class="fa fa-male"></i> @wr_anit_cushman_one.Resources.rscIdioma.CorredorIndustrial</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="mapa-tab" data-bs-toggle="tab" data-bs-target="#mapa" type="button" role="tab" aria-controls="mapa" aria-selected="false"><i class="fa fa-map-marker"></i> @wr_anit_cushman_one.Resources.rscIdioma.Mapa</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="archivo-tab" data-bs-toggle="tab" data-bs-target="#archivo" type="button" role="tab" aria-controls="archivo" aria-selected="false"><i class="fa fa-file-photo-o"></i> @wr_anit_cushman_one.Resources.rscIdioma.Archivos</button>
+                                </li>
+                            </ul>
+                            <div class="card">
+                                <div class="card-body bg-primary bg-opacity-10" id="navbar-example3">
+                                    <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-offset="0" tabindex="0">
+                                        <div class="tab-content" id="myTabContent">
+                                            <div class="tab-content" id="myTabContent">
+                                                @* Tab Principal *@
+                                                <div class="tab-pane fade show active" id="principal" role="tabpanel" aria-labelledby="principal-tab">
+                                                     @* Seccion principal buscador y datos principales del terreno*@
+                                                    <div class="shadow p-3 mb-2 bg-body rounded">
+                                                        <div class="row">                                                                                                                
+                                                            @* Datos Principales del Terreno *@
+                                                            <div class="col-sm-12">
+                                                                <div class="form-floating input-group mb-2">
+                                                                    <input type="text" class="form-control" id="folio" value=@ViewBag.Folio placeholder="Folio" aria-label="Recipient's username" aria-describedby="btnBuscarFolio">
+                                                                    <label for="folioInput">Folio</label>
+                                                                    <button class="btn btn-outline-secondary" type="button" id="btnBuscarFolio"><i class="fa fa-search"></i></button>
+                                                                </div>
+                                                            </div>                                                            
+                                                            <div class="col-sm-12">
+                                                                <div class="form-floating mb-2">
+                                                                    @Html.EditorFor(model => model.tsg001_terreno.nb_comercial, new { htmlAttributes = new { @class = "form-control", @id = "nbComercialInput", placeholder = "Nombre comercial" } })
+                                                                    <label for="nbParqueInput">@wr_anit_cushman_one.Resources.rscIdioma.NombreComercial</label>
+                                                                    
+                                                                    @Html.Hidden("IdAction", (object)ViewBag.TpRegistro)
+                                                                    @Html.HiddenFor(model => model.tsg001_terreno.cd_terreno, new { @id = "tsg001_terreno_cd_terreno" })
+                                                                    @Html.HiddenFor(model => model.tsg001_terreno.cd_estado, new { @id = "tsg001_terreno_cd_estado_h" })
+                                                                    @Html.HiddenFor(model => model.tsg001_terreno.cd_municipio, new { @id = "tsg001_terreno_cd_municipio_h" })
+                                                                    @Html.HiddenFor(model => model.tsg001_terreno.cd_colonia, new { @id = "tsg001_terreno_cd_colonia_h" })
+
+                                                                    @Html.HiddenFor(model => model.tsg001_terreno.cd_mercado, new { @id = "tsg001_terreno_cd_mercado_h" })
+                                                                    @Html.HiddenFor(model => model.tsg001_terreno.cd_corredor, new { @id = "tsg001_terreno_cd_corredor_h" })
+                                                                    @Html.HiddenFor(model => model.tsg001_terreno.st_parque_ind, new { @id = "tsg001_terreno_st_parque_ind_h" })
+                                                                    @Html.HiddenFor(model => model.tsg027_te_servicio.cd_esp_fer, new { @id = "tsg027_te_servicio_cd_esp_fer_h" })
+                                                                    @Html.HiddenFor(model => model.tsg023_ni_precio.cd_cond_arr, new { @id = "tsg023_ni_precio_cd_cond_arr_h" })
+                                                                    @Html.HiddenFor(model => model.tsg027_te_servicio.cd_tp_gas_natural, new { @id = "tsg027_te_servicio_cd_tp_gas_natural_h" })
+                                                                    @Html.HiddenFor(model => model.tsg027_te_servicio.cd_telefonia, new { @id = "tsg027_te_servicio_cd_telefonia_h" })
+                                                                    @Html.HiddenFor(model => model.tsg023_ni_precio.cd_moneda, new { @id = "tsg023_ni_precio_cd_moneda_h" })
+                                                                    @Html.HiddenFor(model => model.tsg040_imagenes_terrenos.cd_reporte, new { @id = "tsg040_imagenes_terrenos_cd_reporte_h" })
+                                                                    @Html.HiddenFor(model => model.tsg023_ni_precio.cd_rep_moneda, new { @id = "tsg023_ni_precio_cd_rep_moneda_h" })
+                                                                    @Html.HiddenFor(model => model.tsg026_te_dt_gral.cd_st_entrega, new { @id = "tsg026_te_dt_gral_cd_st_entrega_h" })
+
+                                                                    @Html.HiddenFor(model => model.tsg028_te_contacto_Prop.cd_estado, new { @id = "tsg028_te_contacto_Prop_cd_estado_h" })
+                                                                    @Html.HiddenFor(model => model.tsg028_te_contacto_Prop.cd_municipio, new { @id = "tsg028_te_contacto_Prop_cd_municipio_h" })
+                                                                    @Html.HiddenFor(model => model.tsg028_te_contacto_Prop.cd_colonia, new { @id = "tsg028_te_contacto_Prop_cd_colonia_h" })
+                                                                    @Html.HiddenFor(model => model.tsg028_te_contacto_Adm.cd_estado, new { @id = "tsg028_te_contacto_Adm_cd_estado_h" })
+                                                                    @Html.HiddenFor(model => model.tsg028_te_contacto_Adm.cd_municipio, new { @id = "tsg028_te_contacto_Adm_cd_municipio_h" })
+                                                                    @Html.HiddenFor(model => model.tsg028_te_contacto_Adm.cd_colonia, new { @id = "tsg028_te_contacto_Adm_cd_colonia_h" })
+                                                                    @Html.HiddenFor(model => model.tsg028_te_contacto_Corr.cd_estado, new { @id = "tsg028_te_contacto_Corr_cd_estado_h" })
+                                                                    @Html.HiddenFor(model => model.tsg028_te_contacto_Corr.cd_municipio, new { @id = "tsg028_te_contacto_Corr_cd_municipio_h" })
+                                                                    @Html.HiddenFor(model => model.tsg028_te_contacto_Corr.cd_colonia, new { @id = "tsg028_te_contacto_Corr_cd_colonia_h" })
+
+                                                                    @* @Html.EditorFor(model => model.tsg001_terreno.nb_comercial, new { htmlAttributes = new { @class = "form-control" } }) *@
+                                                                    @*ViewBag.disabled  sdfasd
+                                                                        @Html.EditorFor(model => model.tsg001_terreno.nb_comercial, new { htmlAttributes = new { @class = "form-control" } })
+                                                                        @*Html.TextBoxFor(model => model.tsg001_terreno.nb_comercial, new { @class = "form-control" })
+
+                                                                        @*( @ViewBag.disabled ?
+                                                                        @Html.TextBoxFor(m => m.tsg001_terreno.nb_comercial, new { @class = "form-control", disabled = (@ViewBag.disabled ? "disabled" : "") }) :
+                                                                        @Html.TextBoxFor(m => m.tsg001_terreno.nb_comercial, new { @class = "form-control" })
+                                                                        )*@
+                                                                </div>
+                                                                <div class="col-sm-12">                                                                    
+                                                                    <div class="form-floating mb-2">
+                                                                        @Html.EditorFor(model => model.tsg001_terreno.nb_nombre, new { htmlAttributes = new { @class = "form-control", @id = "nbNombreInput", @placeholder = "Nombre" } })
+                                                                        <label for="nbNaveingInput">@wr_anit_cushman_one.Resources.rscIdioma.Nombre</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-12">
+                                                                    <div class="form-floating mb-2">                                                                        
+                                                                        @Html.EditorFor(model => model.tsg001_terreno.nb_apellido, new { htmlAttributes = new { @class = "form-control", @id = "nbApellidoInput", @placeholder = "Apellido" } })
+                                                                        <label for="tsg001_terreno_nb_comentarios">@wr_anit_cushman_one.Resources.rscIdioma.Apellido</label>
+                                                                    </div>                                                                        
+                                                                </div>
+                                                                <div class="col-sm-12">
+                                                                    <div class="form-floating mb-2">
+                                                                        @Html.TextAreaFor(model => model.tsg001_terreno.nb_comentarios, new { cols = "50%", rows = "3", @class = "form-control",@id = "nbComentariosInput", @placeholder = "Comentarios" })
+                                                                        <label for="tsg001_terreno_nb_comentarios">@wr_anit_cushman_one.Resources.rscIdioma.comentarios</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>                                                            
+                                                        </div>
+                                                    </div>
+                                                    @* Seccion Dirección*@
+                                                    <div class="shadow p-3 mb-2 bg-secondary bg-opacity-25 rounded">
+                                                        <div class="row">
+                                                            <div class="col-sm-12 text-center">
+                                                                <h4>@wr_anit_cushman_one.Resources.rscIdioma.Direccion</h4>
+                                                            </div>
+                                                        </div>
+                                                        <hr />
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-floating mb-2">
+                                                                            @Html.EditorFor(model => model.tsg001_terreno.nu_cp, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = "Número" } })
+                                                                            <label for="nbCPingInput">@wr_anit_cushman_one.Resources.rscIdioma.CP</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-floating mb-2">
+                                                                            @Html.DropDownListFor(model => model.tsg001_terreno.cd_estado, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } }, new { @class = "form-select" })
+                                                                            <label for="select2-tsg001_terreno_cd_estado-container">@wr_anit_cushman_one.Resources.rscIdioma.Estado</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-floating mb-2">                                                                            
+                                                                            @Html.DropDownListFor(model => model.tsg001_terreno.cd_municipio, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } }, new { @class = "form-select" })
+                                                                            <label for="tsg001_terreno_cd_municipio">@wr_anit_cushman_one.Resources.rscIdioma.Municipio</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-floating mb-2">
+                                                                            @Html.DropDownListFor(model => model.tsg001_terreno.cd_colonia, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } }, new { @class = "form-select" })
+                                                                            <label for="tsg001_terreno_cd_colonia">@wr_anit_cushman_one.Resources.rscIdioma.Colonia</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-floating mb-2">
+                                                                            @Html.EditorFor(model => model.tsg001_terreno.nb_calle, new { htmlAttributes = new { @class = "form-control", @id = "nbNaveingInput", @placeholder = "Calle" } })
+                                                                            <label for="nbCalleingInput">@wr_anit_cushman_one.Resources.rscIdioma.Calle</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-floating mb-2">
+                                                                            @Html.EditorFor(model => model.tsg001_terreno.nu_direcion, new { htmlAttributes = new { @class = "form-control", @id = "nbNumeroingInput", @placeholder = "Número" } })
+                                                                            <label for="nbNumeroingInput">@wr_anit_cushman_one.Resources.rscIdioma.Numero</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-floating mb-2">
+                                                                            @Html.DropDownListFor(model => model.tsg001_terreno.cd_mercado, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } }, new { @class = "form-select" })
+                                                                            <label for="tsg001_terreno_cd_mercado"> @wr_anit_cushman_one.Resources.rscIdioma.Mercado</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-floating mb-2">
+                                                                            @Html.DropDownListFor(model => model.tsg001_terreno.cd_corredor, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } }, new { @class = "form-select" })
+                                                                            <label for="tsg001_terreno_cd_corredor">@wr_anit_cushman_one.Resources.rscIdioma.Corredor</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @* Tab General *@
+                                                <div class="tab-pane fade" id="general" role="tabpanel" aria-labelledby="general-tab">
+                                                    <div class="shadow p-3 mb-2 bg-body rounded">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-floating mb-2">
+                                                                            @Html.DropDownListFor(model => model.tsg001_terreno.cd_mercado, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } }, new { @class = "form-select" })
+                                                                            <label for="tsg001_terreno_cd_mercado">@wr_anit_cushman_one.Resources.rscIdioma.Mercado</label>
+                                                                        </div>                                                                        
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-floating mb-2">
+                                                                            @Html.DropDownListFor(model => model.tsg001_terreno.cd_corredor, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } }, new { @class = "form-select" })
+                                                                            <label for="tsg001_terreno_cd_corredor">@wr_anit_cushman_one.Resources.rscIdioma.Corredor</label>
+                                                                        </div>                                                                        
+                                                                    </div>                                                                    
+                                                                    <div class="col-sm-8 text-center fw-bold"> @wr_anit_cushman_one.Resources.rscIdioma.DisponibilidadTotalM M<sup>2</sup> </div>                                                                    
+                                                                    <div class="col-sm-4"></div>
+                                                                    <div class="col-sm-4">
+                                                                        <div class="form-floating mb-2">
+                                                                            @Html.EditorFor(model => model.tsg026_te_dt_gral.nu_disponiblidad, new { htmlAttributes = new { @class = "form-control", @id = "nbNumeroingInput", @placeholder = "Superficie Terreno M2" } })
+                                                                            <label for="nbNumeroingInput">@wr_anit_cushman_one.Resources.rscIdioma.MinimoDisponible</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-4">
+                                                                        <div class="form-floating mb-2">
+                                                                            @Html.TextBox("disponible_hasta", null, new { @class = "form-control", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.MaximoDisponible })
+                                                                            <label for="nu_superficie_tot_pies">  @wr_anit_cushman_one.Resources.rscIdioma.MaximoDisponible</label>
+                                                                        </div>
+                                                                    </div>                                                                    
+                                                                    <div class="col-sm-4">
+                                                                        <div class="form-floating mb-2">
+                                                                            <input type="text" id="nu_disponibilidad_pies" class="form-control" onchange="convertir(7)" placeholder=@wr_anit_cushman_one.Resources.rscIdioma.DisponibilidadTotalF +"Ft2" />
+                                                                            <label for="nu_disponibilidad_pies"> @wr_anit_cushman_one.Resources.rscIdioma.DisponibilidadTotalF Ft<sup>2</sup></label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-floating mb-2">
+                                                                            @Html.EditorFor(model => model.tsg026_te_dt_gral.nu_tam_min, new { htmlAttributes = new { @class = "form-control", @id = "nbNumTamMinInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.TamanioMinimoM + "M2" } })
+                                                                            <label for="tsg026_te_dt_gral_nu_tam_min"> @wr_anit_cushman_one.Resources.rscIdioma.TamanioMinimoM M<sup>2</sup></label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-floating mb-2">
+                                                                            <input type="text" id="nu_tam_min" class="form-control" onchange="convertir(5)" placeholder=@wr_anit_cushman_one.Resources.rscIdioma.TamanioMinimoF +"Ft2" />
+                                                                            <label for="nu_tam_min"> @wr_anit_cushman_one.Resources.rscIdioma.TamanioMinimoF Ft<sup>2</sup></label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-floating mb-2">
+                                                                            @Html.EditorFor(model => model.tsg026_te_dt_gral.nu_tam_max, new { htmlAttributes = new { @class = "form-control", @id = "nbNumTamMaxInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.TamanioMaximoM + "M2" } })
+                                                                            <label for="nbNumTamMaxInput"> @wr_anit_cushman_one.Resources.rscIdioma.TamanioMaximoM M<sup>2</sup></label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <div class="form-floating mb-2">
+                                                                            <input type="text" id="nu_tam_max" class="form-control" onchange="convertir(5)" placeholder=@wr_anit_cushman_one.Resources.rscIdioma.TamanioMaximoF +"Ft2" />
+                                                                            <label for="nu_tam_max"> @wr_anit_cushman_one.Resources.rscIdioma.TamanioMaximoF Ft<sup>2</sup></label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-floating mb-2">
+                                                                            @Html.EditorFor(model => model.tsg026_te_dt_gral.nb_radio_cob, new { htmlAttributes = new { @class = "form-control", @id = "nbCoberturaNaxPerInput", @placeholder = "CObertura mpaxima permitida" } })
+                                                                            <label for="nbCoberturaNaxPerInput">@wr_anit_cushman_one.Resources.rscIdioma.CoberturaMaxima</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-floating mb-2">
+                                                                            @Html.DropDownListFor(model => model.tsg026_te_dt_gral.cd_st_entrega, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } }, new { @class = "form-select" })
+                                                                            <label for="tsg026_te_dt_gral_cd_st_entrega">@wr_anit_cushman_one.Resources.rscIdioma.EstatusEntrega</label>
+                                                                        </div>                                                                        
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                            </div>                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @* Tab Servicio *@
+                                                <div class="tab-pane fade" id="servicio" role="tabpanel" aria-labelledby="servicio-tab">
+                                                    <div class="shadow p-3 mb-2 bg-body rounded">
+                                                        <div class="row">
+                                                            <div class="col-sm-2 fw-bold">
+                                                                @wr_anit_cushman_one.Resources.rscIdioma.Agua:
+                                                            </div>
+                                                            <div class="col-sm-2 text-end fw-bold">
+                                                                Servicio Municipal:
+                                                            </div>
+                                                            <div class="col-sm-1">
+                                                                @Html.CheckBoxFor(model => model.tsg027_te_servicio.st_aguamunicipal, new { @class = "form-check-input", style = "height:20px;width:20px;" })
+                                                            </div>
+                                                            <div class="col-sm-2 text-end fw-bold">
+                                                                Pozo
+                                                            </div>
+                                                            <div class="col-sm-1">
+                                                                @Html.CheckBoxFor(model => model.tsg027_te_servicio.st_aguapozo, new { @class = "form-check-input", style = "height:20px;width:20px;" })
+                                                            </div>
+                                                            <div class="col-sm-4"></div>
+                                                            <div class="col-sm-4 mt-3">
+                                                                <div class="form-floating mb-2">
+                                                                    @Html.DropDownListFor(model => model.tsg027_te_servicio.cd_telefonia, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } }, new { @class = "form-select" })                                                                    
+                                                                    <label for="tsg001_terreno_cd_estado"> @wr_anit_cushman_one.Resources.rscIdioma.ServicioTelecomunicaciones</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-4 mt-3">
+                                                                <div class="form-floating mb-2">
+                                                                    @Html.DropDownListFor(model => model.tsg027_te_servicio.cd_tp_gas_natural, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } }, new { @class = "form-select" })
+                                                                    <label for="tsg001_terreno_cd_estado">@wr_anit_cushman_one.Resources.rscIdioma.GasNatural</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-4 mt-3">                                                                
+                                                                <div class="form-floating mb-2">
+                                                                    @Html.DropDownListFor(model => model.tsg027_te_servicio.cd_esp_fer, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } }, new { @class = "form-select" })
+                                                                    <label for="tsg001_terreno_cd_estado">@wr_anit_cushman_one.Resources.rscIdioma.Espuela</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @* Tab Precio *@
+                                                <div class="tab-pane fade" id="precio" role="tabpanel" aria-labelledby="servicio-tab">
+                                                    <div class="shadow p-3 mb-2 bg-body rounded">
+                                                        <div class="row">
+                                                            <div class="col-sm-3"></div>
+                                                            <div class="col-sm-3">
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-floating mb-2">
+                                                                            @Html.DropDownListFor(model => model.tsg023_ni_precio.cd_moneda, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } }, new { @class = "form-select" })
+                                                                            <label for="select2-tsg001_terreno_cd_estado-container">@wr_anit_cushman_one.Resources.rscIdioma.TipoMoneda</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-floating mb-2">
+                                                                            @Html.EditorFor(model => model.tsg023_ni_precio.im_renta, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.PrecioRenta } })
+                                                                            <label for="nbCPingInput">@wr_anit_cushman_one.Resources.rscIdioma.PrecioRenta</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-floating mb-2">
+                                                                            @Html.EditorFor(model => model.tsg023_ni_precio.im_venta, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.PrecioVenta } })
+                                                                            <label for="nbCPingInput">@wr_anit_cushman_one.Resources.rscIdioma.PrecioVenta</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-floating mb-2">
+                                                                            @Html.EditorFor(model => model.tsg023_ni_precio.im_total, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.PrecioTotal } })
+                                                                            <label for="nbCPingInput"> @wr_anit_cushman_one.Resources.rscIdioma.PrecioTotal</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-floating mb-2">
+                                                                            <input type="text" id="nu_total_mxn" class="form-control" disabled="disabled" placeholder="MXN" />
+                                                                            <label for="nu_total_mxn">MXN</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-floating mb-2">
+                                                                            <input type="text" id="nu_total_usd" class="form-control" disabled="disabled" placeholder="USD" />
+                                                                            <label for="nu_total_usd">USD</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-floating mb-2">
+                                                                            @Html.DropDownListFor(model => model.tsg023_ni_precio.cd_cond_arr, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } }, new { @class = "form-select" })
+                                                                            <label for="select2-tsg001_terreno_cd_estado-container">@wr_anit_cushman_one.Resources.rscIdioma.CondicionesArrendamiento</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-floating mb-2">
+                                                                            @Html.EditorFor(model => model.tsg023_ni_precio.nu_ma_ac, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.MantenimientoAreas } })
+                                                                            <label for="nbCPingInput"> @wr_anit_cushman_one.Resources.rscIdioma.MantenimientoAreas</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-floating mb-2">
+                                                                            @Html.DropDownListFor(model => model.tsg023_ni_precio.cd_rep_moneda, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } }, new { @class = "form-select" })
+                                                                            <label for="select2-tsg001_terreno_cd_estado-container">@wr_anit_cushman_one.Resources.rscIdioma.TipoMonedaReport</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-floating mb-2">
+                                                                            <input type="text" id="tipo_cambio" value=@ViewBag.TipoCambio class="form-control" disabled="disabled" placeholder="Tipo Cambio" />
+                                                                            <label for="tipo_cambio">Tipo Cambio </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-floating mb-2">
+                                                                            @Html.EditorFor(model => model.tsg023_ni_precio.nu_tipo_cambio, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = "Valor Tipo Cambio" } })
+                                                                            <label for="nbCPingInput"> Valor Tipo Cambio</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-3"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @* Tab Propietario *@
+                                                <div class="tab-pane fade" id="propietario" role="tabpanel" aria-labelledby="servicio-tab">
+                                                    <div class="shadow p-3 mb-2 bg-body rounded">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <div class="form-floating mb-2">
+                                                                    @Html.EditorFor(model => model.tsg028_te_contacto_Prop.nb_propietario, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.NombrePropietario } })
+                                                                    <label for="nbCPingInput">@wr_anit_cushman_one.Resources.rscIdioma.NombrePropietario</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <div class="form-floating mb-2">
+                                                                    @Html.EditorFor(model => model.tsg028_te_contacto_Prop.nb_apellido, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.ApellidoPropietario } })
+                                                                    <label for="nbCPingInput">@wr_anit_cushman_one.Resources.rscIdioma.ApellidoPropietario</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <div class="form-floating mb-2">
+                                                                    @Html.EditorFor(model => model.tsg028_te_contacto_Prop.nb_empresa, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.NombreEmpresa } })
+                                                                    <label for="nbCPingInput">@wr_anit_cushman_one.Resources.rscIdioma.NombreEmpresa</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <div class="form-floating mb-2">
+                                                                    @Html.EditorFor(model => model.tsg028_te_contacto_Prop.nu_telefono, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.Telefono } })
+                                                                    <label for="nbCPingInput">@wr_anit_cushman_one.Resources.rscIdioma.Telefono</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <div class="form-floating mb-2">
+                                                                    @Html.EditorFor(model => model.tsg028_te_contacto_Prop.nb_email, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.Email } })
+                                                                    <label for="nbCPingInput">@wr_anit_cushman_one.Resources.rscIdioma.Email</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="shadow p-3 mb-2 bg-secondary bg-opacity-25 rounded">
+                                                        <div class="row">
+                                                            <div class="col-sm-12 text-center">
+                                                                @wr_anit_cushman_one.Resources.rscIdioma.Direccion
+                                                            </div>
+                                                            <hr />
+                                                            <div class="col-sm-6">
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-floating mb-2">
+                                                                            @Html.EditorFor(model => model.tsg028_te_contacto_Prop.nu_cp, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.CP } })
+                                                                            <label for="nbCPingInput">@wr_anit_cushman_one.Resources.rscIdioma.CP</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-floating mb-2">
+                                                                            @Html.DropDownListFor(model => model.tsg028_te_contacto_Prop.cd_estado, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } }, new { @class = "form-select" })
+                                                                            <label for="select2-tsg001_terreno_cd_estado-container">@wr_anit_cushman_one.Resources.rscIdioma.Estado</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-floating mb-2">
+                                                                            @Html.DropDownListFor(model => model.tsg028_te_contacto_Prop.cd_municipio, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } }, new { @class = "form-select" })
+                                                                            <label for="select2-tsg001_terreno_cd_estado-container">@wr_anit_cushman_one.Resources.rscIdioma.Municipio</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-floating mb-2">
+                                                                            @Html.DropDownListFor(model => model.tsg028_te_contacto_Prop.cd_colonia, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } }, new { @class = "form-select" })
+                                                                            <label for="select2-tsg001_terreno_cd_estado-container">@wr_anit_cushman_one.Resources.rscIdioma.Colonia</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-floating mb-2">
+                                                                            @Html.EditorFor(model => model.tsg028_te_contacto_Prop.nb_calle, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.Calle } })
+                                                                            <label for="nbCPingInput">@wr_anit_cushman_one.Resources.rscIdioma.Calle</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <div class="form-floating mb-2">
+                                                                            @Html.EditorFor(model => model.tsg028_te_contacto_Prop.nu_interior, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.Numero } })
+                                                                            <label for="nbCPingInput">@wr_anit_cushman_one.Resources.rscIdioma.Numero</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @* Tab Administrador *@
+                                                <div class="tab-pane fade" id="administrador" role="tabpanel" aria-labelledby="servicio-tab">
+                                                    <div class="shadow p-3 mb-2 bg-body rounded">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <div class="form-floating mb-2">
+                                                                    @Html.EditorFor(model => model.tsg028_te_contacto_Adm.nb_propietario, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.NombreAdministrado } })
+                                                                    <label for="nbCPingInput">@wr_anit_cushman_one.Resources.rscIdioma.NombreAdministrado</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <div class="form-floating mb-2">
+                                                                    @Html.EditorFor(model => model.tsg028_te_contacto_Adm.nb_apellido, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.ApellidoAdministrado } })
+                                                                    <label for="nbCPingInput">@wr_anit_cushman_one.Resources.rscIdioma.ApellidoAdministrado</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <div class="form-floating mb-2">
+                                                                    @Html.EditorFor(model => model.tsg028_te_contacto_Adm.nb_empresa, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.NombreEmpresa } })
+                                                                    <label for="nbCPingInput">@wr_anit_cushman_one.Resources.rscIdioma.NombreEmpresa</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <div class="form-floating mb-2">
+                                                                    @Html.EditorFor(model => model.tsg028_te_contacto_Adm.nu_telefono, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.Telefono } })
+                                                                    <label for="nbCPingInput">@wr_anit_cushman_one.Resources.rscIdioma.Telefono</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <div class="form-floating mb-2">
+                                                                    @Html.EditorFor(model => model.tsg028_te_contacto_Adm.nb_email, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.Email } })
+                                                                    <label for="nbCPingInput">@wr_anit_cushman_one.Resources.rscIdioma.Email</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="shadow p-3 mb-2 bg-secondary bg-opacity-25 rounded">
+                                                        <div class="row">
+                                                            <div class="col-sm-12 text-center">@wr_anit_cushman_one.Resources.rscIdioma.Direccion</div>
+                                                            <hr />
+                                                            <div class="col-sm-12">
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="form-floating mb-2">
+                                                                                    @Html.EditorFor(model => model.tsg028_te_contacto_Adm.nu_cp, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.CP } })
+                                                                                    <label for="nbCPingInput">@wr_anit_cushman_one.Resources.rscIdioma.CP</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-12">
+                                                                                <div class="form-floating mb-2">
+                                                                                    @Html.DropDownListFor(model => model.tsg028_te_contacto_Adm.cd_estado, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } }, new { @class = "form-select" })
+                                                                                    <label for="select2-tsg001_terreno_cd_estado-container">@wr_anit_cushman_one.Resources.rscIdioma.Estado</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-12">
+                                                                                <div class="form-floating mb-2">
+                                                                                    @Html.DropDownListFor(model => model.tsg028_te_contacto_Adm.cd_municipio, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } }, new { @class = "form-select" })
+                                                                                    <label for="select2-tsg001_terreno_cd_estado-container">@wr_anit_cushman_one.Resources.rscIdioma.Municipio</label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="form-floating mb-2">
+                                                                                    @Html.DropDownListFor(model => model.tsg028_te_contacto_Adm.cd_colonia, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } }, new { @class = "form-select" })
+                                                                                    <label for="select2-tsg001_terreno_cd_estado-container">@wr_anit_cushman_one.Resources.rscIdioma.Colonia</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-12">
+                                                                                <div class="form-floating mb-2">
+                                                                                    @Html.EditorFor(model => model.tsg028_te_contacto_Adm.nb_calle, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.Calle } })
+                                                                                    <label for="nbCPingInput">@wr_anit_cushman_one.Resources.rscIdioma.Calle</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-12">
+                                                                                <div class="form-floating mb-2">
+                                                                                    @Html.EditorFor(model => model.tsg028_te_contacto_Adm.nu_interior, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.Numero } })
+                                                                                    <label for="nbCPingInput">@wr_anit_cushman_one.Resources.rscIdioma.Numero</label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @* Tab Broker *@
+                                                <div class="tab-pane fade" id="broker" role="tabpanel" aria-labelledby="servicio-tab">
+                                                    <div class="shadow p-3 mb-2 bg-body rounded">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <div class="form-floating mb-2">
+                                                                    @Html.EditorFor(model => model.tsg028_te_contacto_Corr.nb_propietario, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.NombreCorredor } })
+                                                                    <label for="nbCPingInput">@wr_anit_cushman_one.Resources.rscIdioma.NombreCorredor</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <div class="form-floating mb-2">
+                                                                    @Html.EditorFor(model => model.tsg028_te_contacto_Corr.nb_apellido, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.ApellidoCorredor } })
+                                                                    <label for="nbCPingInput">@wr_anit_cushman_one.Resources.rscIdioma.ApellidoCorredor</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <div class="form-floating mb-2">
+                                                                    @Html.EditorFor(model => model.tsg028_te_contacto_Corr.nb_empresa, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.NombreEmpresa } })
+                                                                    <label for="nbCPingInput">@wr_anit_cushman_one.Resources.rscIdioma.NombreEmpresa</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <div class="form-floating mb-2">
+                                                                    @Html.EditorFor(model => model.tsg028_te_contacto_Corr.nu_telefono, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.Telefono } })
+                                                                    <label for="nbCPingInput">@wr_anit_cushman_one.Resources.rscIdioma.Telefono</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <div class="form-floating mb-2">
+                                                                    @Html.EditorFor(model => model.tsg028_te_contacto_Corr.nb_email, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.Email } })
+                                                                    <label for="nbCPingInput">@wr_anit_cushman_one.Resources.rscIdioma.Email</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="shadow p-3 mb-2 bg-secondary bg-opacity-25 rounded">
+                                                        <div class="row">
+                                                            <div class="col-sm-12 text-center">@wr_anit_cushman_one.Resources.rscIdioma.Direccion</div>
+                                                            <hr />
+                                                            <div class="col-sm-12">
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="form-floating mb-2">
+                                                                                    @Html.EditorFor(model => model.tsg028_te_contacto_Corr.nu_cp, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.CP } })
+                                                                                    <label for="nbCPingInput">@wr_anit_cushman_one.Resources.rscIdioma.CP</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-12">
+                                                                                <div class="form-floating mb-2">
+                                                                                    @Html.DropDownListFor(model => model.tsg028_te_contacto_Corr.cd_estado, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } }, new { @class = "form-select" })
+                                                                                    <label for="select2-tsg001_terreno_cd_estado-container">@wr_anit_cushman_one.Resources.rscIdioma.Estado</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-12">
+                                                                                <div class="form-floating mb-2">
+                                                                                    @Html.DropDownListFor(model => model.tsg028_te_contacto_Corr.cd_municipio, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } }, new { @class = "form-select" })
+                                                                                    <label for="select2-tsg001_terreno_cd_estado-container">@wr_anit_cushman_one.Resources.rscIdioma.Municipio</label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="form-floating mb-2">
+                                                                                    @Html.DropDownListFor(model => model.tsg028_te_contacto_Corr.cd_colonia, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } }, new { @class = "form-select" })
+                                                                                    <label for="select2-tsg001_terreno_cd_estado-container">@wr_anit_cushman_one.Resources.rscIdioma.Colonia</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-12">
+                                                                                <div class="form-floating mb-2">
+                                                                                    @Html.EditorFor(model => model.tsg028_te_contacto_Corr.nb_calle, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.Calle } })
+                                                                                    <label for="nbCPingInput">@wr_anit_cushman_one.Resources.rscIdioma.Calle</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-12">
+                                                                                <div class="form-floating mb-2">
+                                                                                    @Html.EditorFor(model => model.tsg028_te_contacto_Corr.nu_interior, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.Numero } })
+                                                                                    <label for="nbCPingInput">@wr_anit_cushman_one.Resources.rscIdioma.Numero</label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @* Tab Mapas *@
+                                                <div class="tab-pane fade" id="mapa" role="tabpanel" aria-labelledby="servicio-tab">
+                                                    <div class="shadow p-3 mb-2 bg-body rounded">
+                                                        <div class="row">
+                                                            <div class="col-sm-12 text-center fw-bold">
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioKml" onclick="mostrar1()">
+                                                                    <label class="form-check-label" for="flexRadioDefault1">
+                                                                        Cargar Archivo (KML)
+                                                                    </label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDireccion" onclick="mostrar()">
+                                                                    <label class="form-check-label" for="flexRadioDefault2">
+                                                                        Trabajar con Google Maps
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12 mt-2" id="oculto1" style="display:none">
+                                                                <label for="formFile" class="form-label"></label>
+                                                                <input class="form-control" type="file" id="formFile" name="documento">
+                                                            </div>
+                                                            <div class="col-sm-12 mt-2" id="oculto" style="display:none;">
+                                                                <div class="input-group mb-3" >
+                                                                    @Html.EditorFor(model => model.tsg001_terreno.nb_dir_terr, new { htmlAttributes = new { @class = "form-control" } })
+                                                                    
+                                                                    <button class="btn btn-outline-secondary" type="button" id="pasar" data-tooltip title="Buscar" name="pasar"><i class="fa fa-globe" aria-hidden="true"></i></button>
+                                                                    <button class="btn btn-outline-secondary" type="button" id="borra" data-tooltip title="Borrar" name="borra" onclick="borrar()"><i class="fa fa-times" aria-hidden="true"></i></button>
+                                                                    
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12 mt-2">
+                                                                <div id="googleMap" class="googleMap"></div>
+                                                            </div>
+                                                            <div class="col-sm-12 mt-2">
+                                                                <div class="row">
+                                                                    <div class="col-sm-3">
+                                                                        @Html.EditorFor(model => model.tsg001_terreno.nb_posicion, new { htmlAttributes = new { @class = "form-control col-md-1" } })
+                                                                    </div>
+                                                                    <div class="col-sm-3">
+                                                                        @Html.EditorFor(model => model.tsg001_terreno.nb_poligono, new { htmlAttributes = new { @class = "form-control col-md-1" } })
+                                                                    </div>
+                                                                    <div class="col-sm-6"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @* Tab Archivos *@
+                                                <div class="tab-pane fade" id="archivo" role="tabpanel" aria-labelledby="servicio-tab">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Espuela:</div>
-                        <div class="col-md-10">
-                            @*Html.EditorFor(model => model.tsg027_te_servicio.cd_esp_fer, new { htmlAttributes = new { @class = "form-control" } })*@
-                            @Html.DropDownListFor(model => model.tsg027_te_servicio.cd_esp_fer, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
-                            @*Html.DropDownList("cd_esp_ferr", null, htmlAttributes: new { @class = "form-control" })*@
-                            @*Html.ValidationMessageFor(model => model.nu_tamano, "", new { @class = "text-danger" })*@
-                        </div>
-                    </div>
-
-                    <br />
                 </div>
+            </div>
+        </div>
+    
 
-
-
-                <div aria-labelledby="tab4-tab" role="tabpanel" class="tab-pane" id="seccion3">
-                    <br />
-
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.TipoMoneda:</div>
-                        <div class="col-md-4">
-                            @Html.DropDownListFor(model => model.tsg023_ni_precio.cd_moneda, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
-                            @*Html.ValidationMessageFor(model => model.nu_tamano, "", new { @class = "text-danger" })*@
-                        </div>
-                        <div class="control-label col-md-3">@wr_anit_cushman_one.Resources.rscIdioma.TipoMonedaReport:</div>
-                        <div class="col-md-3">
-                            @Html.DropDownListFor(model => model.tsg023_ni_precio.cd_rep_moneda, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
-                            @*Html.ValidationMessageFor(model => model.nu_tamano, "", new { @class = "text-danger" })*@
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.PrecioRenta<sup>2</sup>/mes:</div>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.tsg023_ni_precio.im_renta, new { htmlAttributes = new { @class = "form-control" } })
-                            @*Html.ValidationMessageFor(model => model.nu_tamano, "", new { @class = "text-danger" })*@
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.PrecioVenta<sup>2</sup>:</div>
-                        <div class="col-md-4">
-                            @Html.EditorFor(model => model.tsg023_ni_precio.im_venta, new { htmlAttributes = new { @class = "form-control" } })
-                            @*Html.ValidationMessageFor(model => model.nu_tamano, "", new { @class = "text-danger" })*@
-                        </div>
-                        <div class="control-label col-md-3">Tipo Cambio : @ViewBag.TipoCambio</div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.PrecioTotal:</div>
-                        <div class="col-md-4">
-                            @Html.EditorFor(model => model.tsg023_ni_precio.im_total, new { htmlAttributes = new { @class = "form-control" } })
-                            @*Html.ValidationMessageFor(model => model.nu_tamano, "", new { @class = "text-danger" })*@
-                        </div>
-                        <div class="control-label col-md-3">Valor Tipo Cambio:</div>
-                        <div class="col-md-3">@Html.EditorFor(model => model.tsg023_ni_precio.nu_tipo_cambio, new { htmlAttributes = new { @class = "form-control" } })</div>
-                   </div>
-                   <div class="form-group">
-                    <div class="control-label col-md-2">MXN:</div>
-                    <div class="col-md-4"><input type="text" id="nu_total_mxn" class="form-control" disabled="disabled" /></div>
-                  </div>
-                  <div class="form-group">
-                    <div class="control-label col-md-2">USD:</div>
-                    <div class="col-md-4"><input type="text" id="nu_total_usd" class="form-control" disabled="disabled" /></div>
-                  </div>
-
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.CondicionesArrendamiento:</div>
-                        <div class="col-md-4">
-                            @*@Html.EditorFor(model => model.tsg023_ni_precio.cd_cond_arr, new { htmlAttributes = new { @class = "form-control" } })*@
-                            @Html.DropDownListFor(model => model.tsg023_ni_precio.cd_cond_arr, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
-                            @*Html.ValidationMessageFor(model => model.nu_tamano, "", new { @class = "text-danger" })*@
-                        </div>
-                        <div class="form-group" id="oculto3" style="display:none;">
-                            <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.DescripcionCondiciones:</div>
-                            <div class="col-md-4">
-                                @Html.EditorFor(model => model.tsg023_ni_precio.nb_cond_arr, new { htmlAttributes = new { @class = "form-control" } })
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.MantenimientoAreas:</div>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.tsg023_ni_precio.nu_ma_ac, new { htmlAttributes = new { @class = "form-control" } })
-                            @*Html.ValidationMessageFor(model => model.nu_tamano, "", new { @class = "text-danger" })*@
-                        </div>
-                    </div>
-                    <hr />
-                    <br />
-
-                </div>
-
-
-
-
-                <div aria-labelledby="tab5-tab" role="tabpanel" class="tab-pane" id="seccion4">
-                    <br />
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.NombrePropietario:</div>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.tsg028_te_contacto_Prop.nb_propietario, new { htmlAttributes = new { @class = "form-control" } })
-                            @*Html.ValidationMessageFor(model => model.st_parque_ind, "", new { @class = "text-danger" })*@
-                        </div>
-                    </div>  
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.ApellidoPropietario:</div>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.tsg028_te_contacto_Prop.nb_apellido, new { htmlAttributes = new { @class = "form-control" } })
-                            @*@Html.ValidationMessageFor(model => model.tsg025_ni_contacto.nb_propietario, "", new { @class = "text-danger" })*@
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.NombreEmpresa:</div>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.tsg028_te_contacto_Prop.nb_empresa, new { htmlAttributes = new { @class = "form-control" } })
-                            @*@Html.ValidationMessageFor(model => model.tsg025_ni_contacto.nb_propietario, "", new { @class = "text-danger" })*@
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Telefono:</div>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.tsg028_te_contacto_Prop.nu_telefono, new { htmlAttributes = new { @class = "form-control" } })
-                            @*Html.ValidationMessageFor(model => model.nu_tamano, "", new { @class = "text-danger" })*@
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Email:</div>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.tsg028_te_contacto_Prop.nb_email, new { htmlAttributes = new { @class = "form-control" } })
-                            @*Html.ValidationMessageFor(model => model.nu_tamano, "", new { @class = "text-danger" })*@
-                        </div>
-                    </div>
-                    <!--<br /><br /><br />-->
-
-                    <div class="well">
-                        <h5 class="modal-header">@wr_anit_cushman_one.Resources.rscIdioma.Direccion:</h5>
-                        <table class="nav-justified table-responsive">
-                            <tr>
-                                <td><div>@wr_anit_cushman_one.Resources.rscIdioma.Calle</div></td>
-                                <td>
-                                    <div class="form-group">
-                                        <div>
-                                            @Html.EditorFor(model => model.tsg028_te_contacto_Prop.nb_calle, new { htmlAttributes = new { @class = "form-control" } })
-
-                                            @*Html.ValidationMessageFor(model => model.nb_calle, "", new { @class = "text-danger" })*@
-                                        </div>
-                                    </div>
-                                </td>
-                                <td><div>@wr_anit_cushman_one.Resources.rscIdioma.Numero:</div></td>
-                                <td>
-                                    <div class="form-group">
-                                        <div>
-                                            @Html.EditorFor(model => model.tsg028_te_contacto_Prop.nu_interior, new { htmlAttributes = new { @class = "form-control" } })
-                                            @*Html.ValidationMessageFor(model => model.nu_direcion, "", new { @class = "text-danger" })*@
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><div>@wr_anit_cushman_one.Resources.rscIdioma.CP:</div></td>
-                                <td>
-                                    <div class="form-group">
-                                        <div>
-                                            @Html.EditorFor(model => model.tsg028_te_contacto_Prop.nu_cp, new { htmlAttributes = new { @class = "form-control" } })
-                                            @*Html.ValidationMessageFor(model => model.nu_cp, "", new { @class = "text-danger" })*@
-                                        </div>
-                                    </div>
-                                </td>
-                                <td><div>@wr_anit_cushman_one.Resources.rscIdioma.Estado:</div></td>
-                                <td>
-                                    <div class="form-group">
-                                        <div>
-                                            @Html.DropDownListFor(model => model.tsg028_te_contacto_Prop.cd_estado, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
-                                            @Html.ValidationMessageFor(model => model.tsg028_te_contacto_Prop.cd_estado, "", new { @class = "text-danger" })
-                                            @*Html.EditorFor(model => model.tsg028_te_contacto_Prop.cd_estado, new { htmlAttributes = new { @class = "form-control" } })*@
-                                            @*Html.ValidationMessageFor(model => model.cd_estado, "", new { @class = "text-danger" })*@
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><div>@wr_anit_cushman_one.Resources.rscIdioma.Municipio:</div></td>
-                                <td>
-                                    <div class="form-group">
-                                        <div>
-                                            @Html.DropDownListFor(model => model.tsg028_te_contacto_Prop.cd_municipio, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
-                                            @Html.ValidationMessageFor(model => model.tsg028_te_contacto_Prop.cd_municipio, "", new { @class = "text-danger" })
-                                            @*Html.EditorFor(model => model.tsg028_te_contacto_Prop.cd_municipio, new { htmlAttributes = new { @class = "form-control" } })*@
-                                            @*Html.ValidationMessageFor(model => model.cd_municipio, "", new { @class = "text-danger" })*@
-                                        </div>
-                                    </div>
-                                </td>
-                                <td><div>@wr_anit_cushman_one.Resources.rscIdioma.Colonia:</div></td>
-                                <td>
-                                    <div class="form-group">
-                                        <div>
-                                            @Html.DropDownListFor(model => model.tsg028_te_contacto_Prop.cd_colonia, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
-                                            @Html.ValidationMessageFor(model => model.tsg028_te_contacto_Prop.cd_colonia, "", new { @class = "text-danger" })
-                                            @*Html.EditorFor(model => model.tsg028_te_contacto_Prop.cd_colonia, new { htmlAttributes = new { @class = "form-control" } })*@
-                                            @*Html.ValidationMessageFor(model => model.cd_colonia, "", new { @class = "text-danger" })*@
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-
-                        </table>
-                    </div>
-
-
-                </div>
-
-                <div aria-labelledby="tab6-tab" role="tabpanel" class="tab-pane" id="seccion5">
-
-
-                    <br />
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.NombreAdministrado:</div>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.tsg028_te_contacto_Adm.nb_propietario, new { htmlAttributes = new { @class = "form-control" } })
-                            @*Html.ValidationMessageFor(model => model.st_parque_ind, "", new { @class = "text-danger" })*@
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.ApellidoAdministrado:</div>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.tsg028_te_contacto_Adm.nb_apellido, new { htmlAttributes = new { @class = "form-control" } })
-                            @*@Html.ValidationMessageFor(model => model.tsg025_ni_contacto.nb_propietario, "", new { @class = "text-danger" })*@
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.NombreEmpresa:</div>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.tsg028_te_contacto_Adm.nb_empresa, new { htmlAttributes = new { @class = "form-control" } })
-                            @*@Html.ValidationMessageFor(model => model.tsg025_ni_contacto.nb_propietario, "", new { @class = "text-danger" })*@
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Telefono:</div>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.tsg028_te_contacto_Adm.nu_telefono, new { htmlAttributes = new { @class = "form-control" } })
-                            @*Html.ValidationMessageFor(model => model.nu_tamano, "", new { @class = "text-danger" })*@
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Email:</div>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.tsg028_te_contacto_Adm.nb_email, new { htmlAttributes = new { @class = "form-control" } })
-                            @*Html.ValidationMessageFor(model => model.nu_tamano, "", new { @class = "text-danger" })*@
-                        </div>
-                    </div>
-                    <!--<br /><br /><br />-->
-
-
-
-                    <div class="well">
-                        <h5 class="modal-header">@wr_anit_cushman_one.Resources.rscIdioma.Direccion:</h5>
-                        <table class="nav-justified table-responsive">
-                            <tr>
-                                <td><div>@wr_anit_cushman_one.Resources.rscIdioma.Calle:</div></td>
-                                <td>
-                                    <div class="form-group">
-                                        <div>
-                                            @Html.EditorFor(model => model.tsg028_te_contacto_Adm.nb_calle, new { htmlAttributes = new { @class = "form-control" } })
-
-                                            @*Html.ValidationMessageFor(model => model.nb_calle, "", new { @class = "text-danger" })*@
-                                        </div>
-                                    </div>
-                                </td>
-                                <td><div>@wr_anit_cushman_one.Resources.rscIdioma.Numero:</div></td>
-                                <td>
-                                    <div class="form-group">
-                                        <div>
-                                            @Html.EditorFor(model => model.tsg028_te_contacto_Adm.nu_interior, new { htmlAttributes = new { @class = "form-control" } })
-                                            @*Html.ValidationMessageFor(model => model.nu_direcion, "", new { @class = "text-danger" })*@
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><div>@wr_anit_cushman_one.Resources.rscIdioma.CP:</div></td>
-                                <td>
-                                    <div class="form-group">
-                                        <div>
-                                            @Html.EditorFor(model => model.tsg028_te_contacto_Adm.nu_cp, new { htmlAttributes = new { @class = "form-control" } })
-                                            @*Html.ValidationMessageFor(model => model.nu_cp, "", new { @class = "text-danger" })*@
-                                        </div>
-                                    </div>
-                                </td>
-                                <td><div>@wr_anit_cushman_one.Resources.rscIdioma.Estado:</div></td>
-                                <td>
-                                    <div class="form-group">
-                                        <div>
-                                            @Html.DropDownListFor(model => model.tsg028_te_contacto_Adm.cd_estado, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
-                                            @Html.ValidationMessageFor(model => model.tsg028_te_contacto_Adm.cd_estado, "", new { @class = "text-danger" })
-                                            @*Html.EditorFor(model => model.tsg028_te_contacto_Adm.cd_estado, new { htmlAttributes = new { @class = "form-control" } })*@
-                                            @*Html.ValidationMessageFor(model => model.cd_estado, "", new { @class = "text-danger" })*@
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><div>@wr_anit_cushman_one.Resources.rscIdioma.Municipio:</div></td>
-                                <td>
-                                    <div class="form-group">
-                                        <div>
-                                            @Html.DropDownListFor(model => model.tsg028_te_contacto_Adm.cd_municipio, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
-                                            @Html.ValidationMessageFor(model => model.tsg028_te_contacto_Adm.cd_municipio, "", new { @class = "text-danger" })
-                                            @*Html.EditorFor(model => model.tsg028_te_contacto_Adm.cd_municipio, new { htmlAttributes = new { @class = "form-control" } })*@
-                                            @*Html.ValidationMessageFor(model => model.cd_municipio, "", new { @class = "text-danger" })*@
-                                        </div>
-                                    </div>
-                                </td>
-                                <td><div>@wr_anit_cushman_one.Resources.rscIdioma.Colonia:</div></td>
-                                <td>
-                                    <div class="form-group">
-                                        <div>
-                                            @Html.DropDownListFor(model => model.tsg028_te_contacto_Adm.cd_colonia, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
-                                            @Html.ValidationMessageFor(model => model.tsg028_te_contacto_Adm.cd_colonia, "", new { @class = "text-danger" })
-                                            @*Html.EditorFor(model => model.tsg028_te_contacto_Adm.cd_colonia, new { htmlAttributes = new { @class = "form-control" } })*@
-                                            @*Html.ValidationMessageFor(model => model.cd_colonia, "", new { @class = "text-danger" })*@
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-
-
-                </div>
-
-                <div aria-labelledby="tab7-tab" role="tabpanel" class="tab-pane" id="seccion6">
-                    <br />
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.NombreCorredor:</div>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.tsg028_te_contacto_Corr.nb_propietario, new { htmlAttributes = new { @class = "form-control" } })
-                            @*Html.ValidationMessageFor(model => model.st_parque_ind, "", new { @class = "text-danger" })*@
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.ApellidoCorredor:</div>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.tsg028_te_contacto_Corr.nb_apellido, new { htmlAttributes = new { @class = "form-control" } })
-                            @*@Html.ValidationMessageFor(model => model.tsg025_ni_contacto.nb_propietario, "", new { @class = "text-danger" })*@
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.NombreEmpresa:</div>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.tsg028_te_contacto_Corr.nb_empresa, new { htmlAttributes = new { @class = "form-control" } })
-                            @*@Html.ValidationMessageFor(model => model.tsg025_ni_contacto.nb_propietario, "", new { @class = "text-danger" })*@
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Telefono:</div>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.tsg028_te_contacto_Corr.nu_telefono, new { htmlAttributes = new { @class = "form-control" } })
-                            @*Html.ValidationMessageFor(model => model.nu_tamano, "", new { @class = "text-danger" })*@
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="control-label col-md-2">@wr_anit_cushman_one.Resources.rscIdioma.Email:</div>
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.tsg028_te_contacto_Corr.nb_email, new { htmlAttributes = new { @class = "form-control" } })
-                            @*Html.ValidationMessageFor(model => model.nu_tamano, "", new { @class = "text-danger" })*@
-                        </div>
-                    </div>
-                    <!--<br /><br /><br />-->
-
-
-                    <div class="well">
-                        <h5 class="modal-header">@wr_anit_cushman_one.Resources.rscIdioma.Direccion:</h5>
-                        <table class="nav-justified table-responsive">
-                            <tr>
-                                <td><div>@wr_anit_cushman_one.Resources.rscIdioma.Calle:</div></td>
-                                <td>
-                                    <div class="form-group">
-                                        <div>
-                                            @Html.EditorFor(model => model.tsg028_te_contacto_Corr.nb_calle, new { htmlAttributes = new { @class = "form-control" } })
-
-                                            @*Html.ValidationMessageFor(model => model.nb_calle, "", new { @class = "text-danger" })*@
-                                        </div>
-                                    </div>
-                                </td>
-                                <td><div>@wr_anit_cushman_one.Resources.rscIdioma.Numero:</div></td>
-                                <td>
-                                    <div class="form-group">
-                                        <div>
-                                            @Html.EditorFor(model => model.tsg028_te_contacto_Corr.nu_interior, new { htmlAttributes = new { @class = "form-control" } })
-                                            @*Html.ValidationMessageFor(model => model.nu_direcion, "", new { @class = "text-danger" })*@
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><div>@wr_anit_cushman_one.Resources.rscIdioma.CP:</div></td>
-                                <td>
-                                    <div class="form-group">
-                                        <div>
-                                            @Html.EditorFor(model => model.tsg028_te_contacto_Corr.nu_cp, new { htmlAttributes = new { @class = "form-control" } })
-                                            @*Html.ValidationMessageFor(model => model.nu_cp, "", new { @class = "text-danger" })*@
-                                        </div>
-                                    </div>
-                                </td>
-                                <td><div>@wr_anit_cushman_one.Resources.rscIdioma.Estado:</div></td>
-                                <td>
-                                    <div class="form-group">
-                                        <div>
-                                            @Html.DropDownListFor(model => model.tsg028_te_contacto_Corr.cd_estado, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
-                                            @Html.ValidationMessageFor(model => model.tsg028_te_contacto_Corr.cd_estado, "", new { @class = "text-danger" })
-                                            @*Html.EditorFor(model => model.tsg028_te_contacto_Corr.cd_estado, new { htmlAttributes = new { @class = "form-control" } })*@
-                                            @*Html.ValidationMessageFor(model => model.cd_estado, "", new { @class = "text-danger" })*@
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><div>@wr_anit_cushman_one.Resources.rscIdioma.Municipio:</div></td>
-                                <td>
-                                    <div class="form-group">
-                                        <div>
-                                            @Html.DropDownListFor(model => model.tsg028_te_contacto_Corr.cd_municipio, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
-                                            @Html.ValidationMessageFor(model => model.tsg028_te_contacto_Corr.cd_municipio, "", new { @class = "text-danger" })
-                                            @*Html.EditorFor(model => model.tsg028_te_contacto_Corr.cd_municipio, new { htmlAttributes = new { @class = "form-control" } })*@
-                                            @*Html.ValidationMessageFor(model => model.cd_municipio, "", new { @class = "text-danger" })*@
-                                        </div>
-                                    </div>
-                                </td>
-                                <td><div>@wr_anit_cushman_one.Resources.rscIdioma.Colonia:</div></td>
-                                <td>
-                                    <div class="form-group">
-                                        <div>
-                                            @Html.DropDownListFor(model => model.tsg028_te_contacto_Corr.cd_colonia, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } })
-                                            @Html.ValidationMessageFor(model => model.tsg028_te_contacto_Corr.cd_colonia, "", new { @class = "text-danger" })
-                                            @*Html.EditorFor(model => model.tsg028_te_contacto_Corr.cd_colonia, new { htmlAttributes = new { @class = "form-control" } })*@
-                                            @*Html.ValidationMessageFor(model => model.cd_colonia, "", new { @class = "text-danger" })*@
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
+            <div class="tab-content" id="myTabContent">                
+                
                 <div aria-labelledby="tab8-tab" role="tabpanel" class="tab-pane" id="seccion7">
                     <div class="form-group well container text-center">
                         <label class="radio-inline">
@@ -878,9 +929,9 @@
                     <div class="form-group">
                         <div class="container">
                             @*<input id="pac-input" class="controls" type="text" placeholder="Buscar....">
-                    <button type="button" id="btnSearch" name="Command" value="Buscar" class="btn btn-default" data-tooltip title="Buscar">
-                        <span class="glyphicon glyphicon-search"></span>
-                    </button>*@
+                                <button type="button" id="btnSearch" name="Command" value="Buscar" class="btn btn-default" data-tooltip title="Buscar">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>*@
                             <div>
 
                                 <div class="row">
@@ -917,25 +968,25 @@
                                 <input id="fileupload" type="file" name="files[]" multiple class="btn-danger">
                             </div>
                         </div>
-                        
+
                         <br />
                         <div class="form-group container">
                             <div class="col-md-10">
-                                <div id="Archivos_cushman"></div>     
+                                <div id="Archivos_cushman"></div>
                             </div>
                             <div class="col-md-10">
                                 <br />
-                                <div id="Archivos"></div>                            
+                                <div id="Archivos"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-               </div>
-             </div>
+            </div>
+        </div>
 }
 
 
-@section Scripts {
+    @section Scripts {
         <style>
             div.msgBoxBackGroundAjax {
                 top: 0;
@@ -967,13 +1018,13 @@
         </style>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVgJmOkAmCfI7J20ffVOMkvmNXGApRikI&signed_in=true&libraries=drawing&callback=initMap"></script>
 
-       <script type="text/javascript">
+        <script type="text/javascript">
            $("#tsg001_terreno_cd_terreno").removeAttr("data-val");
            $("#cd_terreno").removeAttr("data-val");
            $("#tsg023_ni_precio_im_renta").removeAttr("data-val");
            $("#tsg023_ni_precio_im_venta").removeAttr("data-val");
            $("#tsg023_ni_precio_im_total").removeAttr("data-val");
-                    
+
            $("#tsg023_ni_precio_nu_tipo_cambio").val(@ViewBag.TipoCambio);
                 //var map;
                 //function initMap() {
@@ -1009,6 +1060,6 @@
                 //    drawingManager.setMap(map);
                 //}
 
-</script>
+        </script>
 
     }

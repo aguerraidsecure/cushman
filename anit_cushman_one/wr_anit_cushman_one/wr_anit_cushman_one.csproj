@@ -475,19 +475,27 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <None Include="Properties\PublishProfiles\cushman.pubxml" />
+    <None Include="Properties\PublishProfiles\cushmaniis.pubxml" />
     <None Include="Properties\PublishProfiles\cushmanIISLocal.pubxml" />
     <None Include="Properties\PublishProfiles\cushmanLocal.pubxml" />
     <None Include="Properties\PublishProfiles\cushmanone - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\cushmanone - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\cushmanone - Web Deploy %283%29.pubxml" />
+    <None Include="Properties\PublishProfiles\cushmanone - Web Deploy %284%29.pubxml" />
     <None Include="Properties\PublishProfiles\cushmanone - Web Deploy %285%29.pubxml" />
     <None Include="Properties\PublishProfiles\cushmanone - Web Deploy %286%29.pubxml" />
     <None Include="Properties\PublishProfiles\cushmanone - Web Deploy %287%29.pubxml" />
     <None Include="Properties\PublishProfiles\cushmanone - Web Deploy %288%29.pubxml" />
     <None Include="Properties\PublishProfiles\cushmanone - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\cushmanonedevs - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\cushmanoneqa - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\cushmanone_produccion.pubxml" />
+    <None Include="Properties\PublishProfiles\DYMS.pubxml" />
     <None Include="Properties\PublishProfiles\iis_cushman.pubxml" />
-    <Content Include="Scripts\AgrupaMercados.js" />
+    <Content Include="Scripts\AgrupaMercados.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -501,7 +509,9 @@
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\config.js" />
-    <Content Include="Scripts\datatables\Spanish.json" />
+    <Content Include="Scripts\datatables\Spanish.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\cboClasificacion.js" />
     <Content Include="Scripts\datatables\dataTables.bootstrap.js" />

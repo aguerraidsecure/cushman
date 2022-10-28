@@ -304,3 +304,5 @@ E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\wr_anit_cushman_one.Tests\obj\De
 E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\wr_anit_cushman_one.Tests\obj\Debug\wr_anit_cushman_one.Tests.csproj.CopyComplete
 E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\wr_anit_cushman_one.Tests\obj\Debug\wr_anit_cushman_one.Tests.dll
 E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\wr_anit_cushman_one.Tests\obj\Debug\wr_anit_cushman_one.Tests.pdb
+E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\wr_anit_cushman_one.Tests\bin\Debug\Scripts\AgrupaMercados.js
+E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\wr_anit_cushman_one.Tests\bin\Debug\Scripts\datatables\Spanish.json
