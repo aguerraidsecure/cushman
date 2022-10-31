@@ -109,6 +109,29 @@ namespace wr_anit_cushman_one.Controllers
 
             return View(tsg047_brokers);
         }
+        // POST: Brokers/Create
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
+        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddBroker([Bind(Include = "cd_broker,nb_broker,nb_puesto,nu_telefono,fh_modif")] tsg047_brokers tsg047_brokers)
+        {
+            ViewBag.UsuarioActivo = true;
+            if (ModelState.IsValid)
+            {
+                tsg047_brokers.fh_modif = DateTime.Now;
+                db.tsg047_brokers.Add(tsg047_brokers);
+                db.SaveChanges();
+            }
+            var result = (
+                              from a in db.tsg047_brokers
+                              orderby a.cd_broker descending
+                              select new
+                              {
+                                  cd_broker = a.cd_broker
+                              }).FirstOrDefault();
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
 
         // GET: Brokers/Edit/5
         public ActionResult Edit(int? id)

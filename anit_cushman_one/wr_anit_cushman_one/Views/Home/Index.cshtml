@@ -8,7 +8,7 @@
     <script src="@Url.Content("~/Scripts/cboClasificacion.js")" type="text/javascript"></script>
     <!-- plugin -->
     <!-- common libraries -->
- 
+
 
     <script src="@Url.Content("~/Scripts/jquery.bootstrap-duallistbox.js")"></script>
     <link href="~/Content/bootstrap-duallistbox.min.css" rel="stylesheet" />
@@ -23,66 +23,67 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-12 mt-3">            
+        <div class="col-sm-12 mt-3">
             <div class="card">
-                @*<div class="card-header bg-primary bg-opacity-75">
-                        <div class="col-sm-10 text-white fw-bold ">
-                            @wr_anit_cushman_one.Resources.rscIdioma.NavesTitulo
-                        </div>
-                    </div>*@
-                <div class="card-body" id="navbar-reportes">                    
-                    @*Tab Reportes de Naves*@                        
+                <div class="card-body" id="navbar-reportes">
+                    @*Tab Reportes de Naves*@
                     <div class="row justify-content-center">
                         <!-- Listado de Brokers -->
-                        <div class="col-sm-12 shadow mb-2 ps-2 pt-3 bg-ligth bg-gradient rounded">
+                        <div class="col-sm-12 shadow mb-2 ps-2 pt-3 bg-light bg-gradient rounded">
                             <div class="row">
                                 <div class="col text-center">
-                                    <form>
+                                    <form id="tpReporte">
                                         @*<p><strong>Paso 1:</strong> Seleccione Boker's </p>*@
                                         <div class="row justify-content-center">
-                                            <div class="col-sm-4 ps-4">                                            
+                                            <div class="col-sm-4 ps-4">
                                                 <div class="input-group">
                                                     <div class="form-check-inline">
-                                                        <input class="form-check-input mt-3" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-                                                        <label class="form-check-label display-6" for="flexRadioDefault1">
+                                                        <input class="form-check-input mt-3" type="radio" name="tpReporteNaves" id="tpReporteNaves" checked>
+                                                        <label class="form-check-label display-6" for="tpReporteNaves">
                                                             Naves Industriales
                                                         </label>
                                                     </div>
                                                     <div class="form-check-inline">
-                                                        <input class="form-check-input mt-3" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                                                        <label class="form-check-label display-6"" for="flexRadioDefault2">
+                                                        <input class="form-check-input mt-3" type="radio" name="tpReporteTerrenos" id="tpReporteTerrenos">
+                                                        <label class="form-check-label display-6" " for="tpReporteTerrenos">
                                                             Terrenos
                                                         </label>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-sm-1 d-flex align-content-start">
-                                                <i class="fa fa-search fa-2x"></i>
                                             </div>
                                         </div>
                                     </form>
                                     <hr />
                                 </div>
                             </div>
-                            <div class="row justify-content-center">
-                                <div class="col">
-                                    <div class="row justify-content-center align-items-center">
-                                        <div class="col-sm-7">
-                                            <div class="text-dark fw-bold">Seleccione Broker <span class="text-danger fw-bold">*</span> </div>
-                                            <select multiple="multiple" size="10" name="duallistbox_naves[]" title="duallistbox_naves[]"></select>
+                            <div class="row justify-content-center mt-1">
+                                <div class="col-sm-5 mt-2">
+                                    <div class="col-sm-12 text-dark fw-bold">
+                                        <div class="row justify-content-start align-items-center">
+                                            <div class="col-sm-3">
+                                                Seleccione Broker <span class="text-danger fw-bold">*</span>
+                                            </div>
+                                            <div class="col-sm-4">                                                
+                                                <a href="javascript:void(0)" class="btn btn-outline-success rounded-pill tooltip-test" id="addBroker"  title="Nuevo Broker"><i class="fa fa-plus-circle"></i></a>
+                                            </div>
                                         </div>
-                                        <div class="col-sm-5">
-                                            <div class="row">
-                                                <div class="col-sm-9 align-content-center">
-                                                    <div class="form-floating mb-2">
+                                    </div>
+                                    <select multiple="multiple" size="16" name="duallistbox_naves[]" title="duallistbox_naves[]"></select>
+                                </div>
+                                <div class="col-sm-5 mh-100">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="row justify-content-center">
+                                                <div class="col-sm-8">
+                                                    <div class="form-floating mt-2">
                                                         <input class="form-control text-box single-line" data-val="true" id="NbCliente" name="NbCliente" placeholder="@wr_anit_cushman_one.Resources.rscIdioma.RepNombreCliente" type="text" value="" />
                                                         <label for="nbCPingInput">@wr_anit_cushman_one.Resources.rscIdioma.RepNombreCliente</label>
                                                     </div>
-                                                    <div class="form-floating mt-5">
-                                                        <input class="form-control text-box single-line" data-val="true" id="TpReporte" name="TpReporte" placeholder="@wr_anit_cushman_one.Resources.rscIdioma.TipoReporte" type="text" value="" />
-                                                        <label for="nbCPingInput">@wr_anit_cushman_one.Resources.rscIdioma.TipoReporte</label>
-                                                    </div>
-                                                    <div class="form-floating mt-5">
+                                                </div>
+                                            </div>
+                                            <div class="row justify-content-center">
+                                                <div class="col-sm-8">
+                                                    <div class="form-floating mt-2">
                                                         <select class="form-select" id="cd_mercado" name="">
                                                             <option value=""></option>
                                                         </select>
@@ -91,243 +92,248 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>                                            
-                                </div>
-                            </div>                                    
-                            <div class="row justify-content-center">
-                                <div class="col-sm-4">
-                                    <div class="text-dark fw-bold">Seleccione Municipio <span class="text-danger fw-bold">*</span> </div>
-                                    <select multiple="multiple" size="10" name="duallistbox_municipios[]" title="duallistbox_municipios[]"></select>
-                                </div>
-                                <div class="col-sm-3">
-                                    <form>
-                                        <div class="row justify-content-center mt-xl-3">
-                                            <div class="col-sm-4 ps-4">
-                                                <div class="text-dark fw-bold">
-                                                    Rango
-                                                </div>
-                                                <div class="input-group">
-                                                    <div class="form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-                                                        <label class="form-check-label" for="flexRadioDefault1">
-                                                            SF
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                                                        <label class="form-check-label" for="flexRadioDefault2">
-                                                            SM
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-8"></div>
+                                        <div class="col-sm-12">
+                                            <div class="text-dark fw-bold mt-2">Seleccione Municipio <span class="text-danger fw-bold">*</span> </div>
+                                            <select multiple="multiple" size="10" name="duallistbox_municipios[]" title="duallistbox_municipios[]"></select>
                                         </div>
-                                    </form>
-                                    <form>
-                                        <div class="row justify-content-center mt-xl-3">
-                                            <div class="col-sm-7 ps-4">
-                                                <div class="text-dark fw-bold">
-                                                    Alquiler preferido
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center mt-1">
+                                <div class="container">
+                                    <div class="row justify-content-center">
+                                        <div class="col-sm-5">
+                                            <form>
+                                                <div class="row justify-content-center mt-3">
+                                                    <div class="col-sm-12">
+                                                        <div class="text-dark fw-bold">
+                                                            Rango
+                                                        </div>
+                                                        <div class="input-group mt-3">
+                                                            <div class="form-check-inline">
+                                                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                                    SF
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check-inline">
+                                                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                                                                <label class="form-check-label" for="flexRadioDefault2">
+                                                                    SM
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
+                                                <div class="row justify-content-center mt-3">
+                                                    <div class="col-sm-12">
+                                                        <div class="row">
+                                                            <label for="minRange" class="form-label">M&iacute;nimo</label>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <input type="range" class="form-range" min="0" max="10000" step=".5" id="minRange" value=0>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <input type="number" class="form-control text-box single-line" value="0" id="num_min" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row justify-content-center mt-3 pb-2">
+                                                    <div class="col-sm-12">
+                                                        <div class="row">
+                                                            <label for="maxRange" class="form-label">M&aacute;ximo</label>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <input type="range" class="form-range" min="0" max="10000" step=".5" id="maxRange" value=0>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <input type="number" class="form-control text-box single-line" value="0" id="num_max" />
+                                                            </div>
+                                                        </div>
 
-                                                <div class="form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-                                                    <label class="form-check-label" for="flexRadioDefault1">
-                                                        SF/yr
-                                                    </label>
+                                                    </div>
                                                 </div>
-                                                <div class="form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                                                    <label class="form-check-label" for="flexRadioDefault2">
-                                                        SF/mo
-                                                    </label>
-                                                </div>
-                                                <div class="form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                                                    <label class="form-check-label" for="flexRadioDefault2">
-                                                        SM/mo
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-5"></div>
+                                            </form>
                                         </div>
-                                    </form>
-                                    <form>
-                                        <div class="row justify-content-center mt-xl-3">
-                                            <div class="col-sm-10 ps-4">
-                                                <div class="text-dark fw-bold">
-                                                    Venta preferida
+                                        <div class="col-sm-5">
+                                            <div class="row align-items-center h-100 mt-3">
+                                                <div class="col-sm-12">
+                                                    <form action="/" method="post">
+                                                        <div class="text-dark fw-bold">
+                                                            Alquiler preferido
+                                                        </div>
+                                                        <div class="form-check-inline mt-3">
+                                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                                SF/yr
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                                                            <label class="form-check-label" for="flexRadioDefault2">
+                                                                SF/mo
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                                                            <label class="form-check-label" for="flexRadioDefault2">
+                                                                SM/mo
+                                                            </label>
+                                                        </div>
+                                                    </form>
+                                                    <form>
+                                                        <div class="text-dark fw-bold mt-3">
+                                                            Venta preferida
+                                                        </div>
+                                                        <div class="form-check-inline mt-3">
+                                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                                (USD/SF)
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                                                            <label class="form-check-label" for="flexRadioDefault2">
+                                                                (USD/SM)
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                                                            <label class="form-check-label" for="flexRadioDefault2">
+                                                                (MXN/SF)
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                                                            <label class="form-check-label" for="flexRadioDefault2">
+                                                                (MXN/SM)
+                                                            </label>
+                                                        </div>
+                                                    </form>
+                                                    <form action="/" method="post">
+                                                        <div class="form-floating mt-3">
+                                                            <input class="form-control text-box single-line" data-val="true" id="TpCambio" name="TpCambio" placeholder="Tipo de Cambio" type="text" value="" />
+                                                            <label for="TpCambio">Tipo de Cambio</label>
+                                                        </div>
+                                                    </form>
+                                                    <div class="col-sm-12 mt-3">
+                                                        <div class="row justify-content-center">
+                                                            <div class="col-sm-3">
+                                                                <button type="button" data-url='@Url.Action("", "")' id="btnBuscarTodo" name="Command" value="Buscar" class="btn btn-outline-danger rounded-pill" data-tooltip title="Búsqueda" data-bs-toggle="modal" data-bs-target="#myModal">
+                                                                    <i class="fa fa-eye" aria-hidden="true"></i> Buscar
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-                                                    <label class="form-check-label" for="flexRadioDefault1">
-                                                        (USD/SF)
-                                                    </label>
-                                                </div>
-                                                <div class="form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                                                    <label class="form-check-label" for="flexRadioDefault2">
-                                                        (USD/SM)
-                                                    </label>
-                                                </div>
-                                                <div class="form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                                                    <label class="form-check-label" for="flexRadioDefault2">
-                                                        (MXN/SF)
-                                                    </label>
-                                                </div>
-                                                <div class="form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                                                    <label class="form-check-label" for="flexRadioDefault2">
-                                                        (MXN/SM)
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-2"></div>
-                                        </div>
-                                    </form>
-                                    <div class="row mt-xl-3">
-                                        <div class="col">
-                                            <div class="form-floating mb-2">
-                                                <input class="form-control text-box single-line" data-val="true" id="TpCambio" name="TpCambio" placeholder="Tipo de Cambio" type="text" value="" />
-                                                <label for="TpCambio">Tipo de Cambio</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-xl-3">
-                                        <div class="col">
-                                            <div class="form-floating mb-2">
-                                                <input class="form-control text-box single-line" data-val="true" id="IdPropiedad" name="TpCambio" placeholder="Propiedad adicional" type="text" value="" />
-                                                <label for="IdPropiedad">Propiedad adicional</label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-5">                                    
-                                    <div class="row">
-                                        @*<div class="text-dark fw-bold">Seleccione Mercado <span class="text-danger fw-bold">*</span> </div>
-        <select multiple="multiple" size="10" name="duallistbox_mercado[]" title="duallistbox_mercado[]"></select>*@
-                                        <div class="col-sm-5 align-self-center">
-                                            <button type="button" data-url='@Url.Action("", "")' id="btnBuscarTodo" name="Command" value="Buscar" class="btn btn-outline-danger rounded-pill" data-tooltip title="Búsqueda" data-bs-toggle="modal" data-bs-target="#myModal">
-                                                <i class="fa fa-eye" aria-hidden="true"></i> Buscar
-                                            </button>
-                                        </div>
-                                        
-                                    </div>                                    
+                            </div>
+                        </div>
+                        <div class="col-sm-12 shadow p-3 mb-2 bg-secondary bg-opacity-25 rounded">
+                            <div class="row">
+                                <div class="col-sm-12 text-center">
+                                    Resultados del Filtro Naves
                                 </div>
-                            </div>                                
-                    </div>
-                    <div class="shadow p-3 mb-2 bg-secondary bg-opacity-25 rounded">
-                        <div class="row">
-                            <div class="col-sm-12 text-center">
-                                Resultados del Filtro Naves
                             </div>
                         </div>
                     </div>
-                        
-                        
-                    
-
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
 
+    <div class="modal fade" id="ajaxcrudmodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="ajaxcrudmodalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="rowCrudModal"></h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="rowFormBroker" name="rowFormBroker" class="form-horizontal">
+                        <!-- cd_broker,nb_broker,nb_puesto,nu_telefono,fh_modif -->
+                        @Html.AntiForgeryToken()
+                        <div class="row">
+                            <div class="col-sm-12">                          
+                                <div class="col-sm-12">
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control text-box single-line" data-val="true" id="nb_broker" name="nb_broker" placeholder="@wr_anit_cushman_one.Resources.rscIdioma.Nombre" type="text" value="" />
+                                        <label for="nb_broker">@wr_anit_cushman_one.Resources.rscIdioma.Nombre</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">                                
+                                <div class="col-sm-12">
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control text-box single-line" data-val="true" id="nb_puesto" name="nb_puesto" placeholder="@wr_anit_cushman_one.Resources.rscIdioma.Puesto" type="text" value="" />
+                                        <label for="nb_puesto" class="fw-bold text-center">@wr_anit_cushman_one.Resources.rscIdioma.Puesto</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">                                
+                                <div class="col-sm-12">
+                                    <div class="form-floating mb-3">
+                                        <input class="form-control text-box single-line" data-val="true" id="nu_telefono" name="nu_telefono" placeholder="@wr_anit_cushman_one.Resources.rscIdioma.Telefono" type="text" value="" />
+                                        <label for="nu_telefono" class="fw-bold text-center">@wr_anit_cushman_one.Resources.rscIdioma.Telefono</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary Gurdar"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar Cambios</button>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 
-@section Scripts {
-    <style>
-        .moveall,
-        .removeall {
-            border: 1px solid #ccc !important;
-            &:hover
+    @section Scripts {
+        <style>
+            .moveall,
+            .removeall {
+                border: 1px solid #ccc !important;
+                &:hover
 
-        {
-            background: #efefef;
-        }
-
-        }
-
-        // Only included because button labels aren't showing
-
-        .moveall::after {
-            content: attr(title);
-        }
-
-        .removeall::after {
-            content: attr(title);
-        }
-
-        // Custom styling form
-        .form-control option {
-            padding: 10px;
-            border-bottom: 1px solid #efefef;
-        }
-    </style>
-
-    <script type="text/javascript">
-        $("#cd_mercado").empty();
-        var BrokersList = $('select[name="duallistbox_naves[]"]').bootstrapDualListbox({
-            nonSelectedListLabel: 'Broker(s) disponibles',
-            selectedListLabel: 'Broker(s) seleccionado(s)',
-            preserveSelectionOnMove: 'moved',
-            moveOnSelect: false,
-            moveAllLabel: '',
-            removeAllLabel: ' ',
-            filterPlaceHolder: 'Filtro',
-            infoText: 'Encontrados {0}',
-            infoTextEmpty: 'Lista vacía',
-            infoTextFiltered: '<span class="label label-warning">Filtrados</span> {0} de {1}'
-        });
-        var MunicipioList = $('select[name="duallistbox_municipios[]"]').bootstrapDualListbox({
-            nonSelectedListLabel: 'Municipio(s) disponible(s)',
-            selectedListLabel: 'Municipio(s) seleccionado(s)',
-            preserveSelectionOnMove: 'moved',
-            moveOnSelect: false,
-            moveAllLabel: '',
-            removeAllLabel: ' ',
-            filterPlaceHolder: 'Filtro',
-            infoText: 'Encontrados {0}',
-            infoTextEmpty: 'Lista vacía',
-            infoTextFiltered: '<span class="label label-warning">Filtrados</span> {0} de {1}'
-        });
-        //var MercadoList = $('select[name="duallistbox_mercado[]"]').bootstrapDualListbox({
-        //    nonSelectedListLabel: 'Mercado(s) disponible(s)',
-        //    selectedListLabel: 'Mercado(s) seleccionado(s)',
-        //    preserveSelectionOnMove: 'moved',
-        //    moveOnSelect: false,
-        //    moveAllLabel: '',
-        //    removeAllLabel: ' ',
-        //    filterPlaceHolder: 'Filtro',
-        //    infoText: 'Encontrados {0}',
-        //    infoTextEmpty: 'Lista vacía',
-        //    infoTextFiltered: '<span class="label label-warning">Filtrados</span> {0} de {1}'
-        //});
-        storeCargaCombo("/Utils/GetMercados", "cd_mercado");
-        //storeCargaCombo("/Utils/GetMercados", "tsg002_nave_industrial_cd_mercado");            
-        $.ajax({
-            type: 'GET',
-            url: '/Brokers/GetBrokersbyName',
-            datatype: "json/application",
-            success: function (StoreData) {
-                $.each(StoreData, function (i, item) {
-                    let o = "<option value='" + item.nb_broker + "'>" + item.nb_broker + " | " + item.nb_puesto + "</option>"
-                    BrokersList.append(o);
-                });
-                BrokersList.bootstrapDualListbox('refresh');
-                
-                $("#cd_mercado").change(function () {
-                    if ($("#cd_mercado").val() != null) {
-                        storeGetDualList("/GruposMercados/GetGruposListById", MunicipioList, $("#cd_mercado").val());
-                    }
-                    return false;
-                });
+            {
+                background: #efefef;
             }
-        })
 
-    </script>
+            }
 
-}
+            // Only included because button labels aren't showing
+
+            .moveall::after {
+                content: attr(title);
+            }
+
+            .removeall::after {
+                content: attr(title);
+            }
+
+            // Custom styling form
+            .form-control option {
+                padding: 10px;
+                border-bottom: 1px solid #efefef;
+            }           
+        </style>
+        <script src="~/Scripts/Home.js"></script>
+        <script type="text/javascript"></script>
+
+    }
