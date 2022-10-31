@@ -509,6 +509,7 @@
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\config.js" />
+    <Content Include="Scripts\DataTableIdioma.js" />
     <Content Include="Scripts\datatables\Spanish.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -532,6 +533,7 @@
     <Content Include="Scripts\datatables\datatables.min.js" />
     <Content Include="Scripts\datatables\dataTables.semanticui.js" />
     <Content Include="Scripts\datatables\dataTables.semanticui.min.js" />
+    <Content Include="Scripts\Home.js" />
     <Content Include="Scripts\i18n\ar.js" />
     <Content Include="Scripts\i18n\az.js" />
     <Content Include="Scripts\i18n\bg.js" />
@@ -611,6 +613,7 @@
     <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\select2.min.js" />
     <Content Include="Scripts\Terrenos.js" />
+    <Content Include="Scripts\Utils.js" />
     <Content Include="Scripts\_references.js" />
     <None Include="Service References\ws_banxico\configuration91.svcinfo" />
     <None Include="Service References\ws_banxico\configuration.svcinfo" />
