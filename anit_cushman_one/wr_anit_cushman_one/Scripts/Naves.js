@@ -373,15 +373,15 @@ function descargaarch() {
 }
 
 
-function obt_img() {
-    var x = document.getElementById("tsg002_nave_industrial_cd_nave");
-    if (x.value > 0) {
-        document.getElementById('oculto_img').style.display = 'block';
-        descargaarch();
-    } else {
-        document.getElementById('oculto_img').style.display = 'none';
-    }
-}
+//function obt_img() {
+//    var x = document.getElementById("tsg002_nave_industrial_cd_nave");
+//    if (x.value > 0) {
+//        document.getElementById('oculto_img').style.display = 'block';
+//        descargaarch();
+//    } else {
+//        document.getElementById('oculto_img').style.display = 'none';
+//    }
+//}
 
 
 
@@ -413,28 +413,28 @@ function obt_dir() {
 
 
 // Funcion para Mostar Div Oculto
-function mostrar() {
-    document.getElementById('oculto').style.display = 'block';
-    document.getElementById('oculto1').style.display = 'none';
-    initMap();
-};
+//function mostrar() {
+//    document.getElementById('oculto').style.display = 'block';
+//    document.getElementById('oculto1').style.display = 'none';
+//    initMap();
+//};
 
 // Funcion para Mostar Div Oculto
-function mostrar1() {
-    document.getElementById('oculto').style.display = 'none';
-    document.getElementById('oculto1').style.display = 'block';
-    initMap();
-    //initAutocomplete();
-};
+//function mostrar1() {
+//    document.getElementById('oculto').style.display = 'none';
+//    document.getElementById('oculto1').style.display = 'block';
+//    initMap();
+//    //initAutocomplete();
+//};
 
 // Funcion para Mostar Div Oculto
-function mostrar2() {
-    document.getElementById('oculto2').style.display = 'block';
-};
-// Funcion para Mostar Div Oculto
-function mostrar3() {
-    document.getElementById('oculto2').style.display = 'none';
-};
+//function mostrar2() {
+//    document.getElementById('oculto2').style.display = 'block';
+//};
+//// Funcion para Mostar Div Oculto
+//function mostrar3() {
+//    document.getElementById('oculto2').style.display = 'none';
+//};
 
 ///select2
 function select2Dropdown(hiddenID, valueID, ph, listAction, getAction, isMultiple) {
@@ -526,71 +526,71 @@ function s2FormatSelection(item) {
     return item.text;
 }
 
-function mostrar2(id) {
-    switch (id) {
-        case 1:
-            document.getElementById('oculto2').style.display = 'block';
-            break;
-        case 2:
-            document.getElementById('oculto2').style.display = 'none';
-            break;
-        case 3:
-            document.getElementById('oculto3').style.display = 'block';
-            break;
-        case 4:
-            document.getElementById('oculto3').style.display = 'none';
-            break;
-        case 5:
-            document.getElementById('oculto4').style.display = 'block';
-            break;
-        case 6:
-            document.getElementById('oculto4').style.display = 'none';
-            break;
-        case 7:
-            document.getElementById('oculto5').style.display = 'block';
-            break;
-        case 8:
-            document.getElementById('oculto5').style.display = 'none';
-            break;
-        case 9:
-            document.getElementById('oculto6').style.display = 'block';
-            break;
-        case 10:
-            document.getElementById('oculto6').style.display = 'none';
-            break;
-        case 11:
-            document.getElementById('oculto7').style.display = 'block';
-            break;
-        case 12:
-            document.getElementById('oculto7').style.display = 'none';
-            break;
-        case 13:
-            document.getElementById('oculto8').style.display = 'block';
-            break;
-        case 14:
-            document.getElementById('oculto8').style.display = 'none';
-            break;
-        case 15:
-            document.getElementById('oculto9').style.display = 'block';
-            break;
-        case 16:
-            document.getElementById('oculto9').style.display = 'none';
-            break;
-        case 17:
-            document.getElementById('oculto10').style.display = 'block';
-            break;
-        case 18:
-            document.getElementById('oculto10').style.display = 'none';
-            break;
-        case 19:
-            document.getElementById('oculto11').style.display = 'block';
-            break;
-        case 20:
-            document.getElementById('oculto11').style.display = 'none';
-            break;
+//function mostrar2(id) {
+//    switch (id) {
+//        case 1:
+//            document.getElementById('oculto2').style.display = 'block';
+//            break;
+//        case 2:
+//            document.getElementById('oculto2').style.display = 'none';
+//            break;
+//        case 3:
+//            document.getElementById('oculto3').style.display = 'block';
+//            break;
+//        case 4:
+//            document.getElementById('oculto3').style.display = 'none';
+//            break;
+//        case 5:
+//            document.getElementById('oculto4').style.display = 'block';
+//            break;
+//        case 6:
+//            document.getElementById('oculto4').style.display = 'none';
+//            break;
+//        case 7:
+//            document.getElementById('oculto5').style.display = 'block';
+//            break;
+//        case 8:
+//            document.getElementById('oculto5').style.display = 'none';
+//            break;
+//        case 9:
+//            document.getElementById('oculto6').style.display = 'block';
+//            break;
+//        case 10:
+//            document.getElementById('oculto6').style.display = 'none';
+//            break;
+//        case 11:
+//            document.getElementById('oculto7').style.display = 'block';
+//            break;
+//        case 12:
+//            document.getElementById('oculto7').style.display = 'none';
+//            break;
+//        case 13:
+//            document.getElementById('oculto8').style.display = 'block';
+//            break;
+//        case 14:
+//            document.getElementById('oculto8').style.display = 'none';
+//            break;
+//        case 15:
+//            document.getElementById('oculto9').style.display = 'block';
+//            break;
+//        case 16:
+//            document.getElementById('oculto9').style.display = 'none';
+//            break;
+//        case 17:
+//            document.getElementById('oculto10').style.display = 'block';
+//            break;
+//        case 18:
+//            document.getElementById('oculto10').style.display = 'none';
+//            break;
+//        case 19:
+//            document.getElementById('oculto11').style.display = 'block';
+//            break;
+//        case 20:
+//            document.getElementById('oculto11').style.display = 'none';
+//            break;
 
-    }
-};
+//    }
+//};
 
 
 function actu_imp() {
@@ -603,10 +603,11 @@ function actu_imp() {
 
 
 function convertir(id) {
+    console.log("convertidor", id);
     switch (id) {
         case 1:
             //document.getElementById("nu_disponiblidad_pies") = document.getElementById("tsg026_te_dt_gral_nu_disponiblidad").value() * 0.3048
-            var x = document.getElementById("tsg009_ni_dt_gral_nu_superficie");
+            var x = document.getElementById("tsg009_ni_dt_gral_nu_superficie"); //tsg009_ni_dt_gral_nu_superficie
             var x1 = document.getElementById("nu_superficie_pies");
             //x1.value = Math.round((x.value / 0.3048) * 100) / 100;
             x1.value = Math.round((x.value * 10.7639) * 100) / 100;
@@ -673,8 +674,90 @@ function convertir(id) {
             x1.value = Math.round((x.value / 0.3048) * 100) / 100;
             //x1.value = Math.round((x.value * 10.7639) * 100) / 100;
             break;
+        case 11:
+            var sfyr = document.getElementById("sfyrinput");
+            var sfmo = document.getElementById("sfmoinput");
+            var smmo = document.getElementById("tsg023_ni_precio_im_renta");
+            sfmo.value = Number(sfyr.value) / 12;
+            smmo.value = (Number(sfyr.value) * 10.7639) / 12;
+
+            break;
+
+        case 12:
+            var sfyr = document.getElementById("sfyrinput");
+            var sfmo = document.getElementById("sfmoinput");
+            var smmo = document.getElementById("tsg023_ni_precio_im_renta");
+            sfyr.value = Number(sfmo.value) * 12;
+            smmo.value = Number(sfmo.value) * 10.7639;
+            break;
+        case 13:
+            var sfyr = document.getElementById("sfyrinput");
+            var sfmo = document.getElementById("sfmoinput");
+            var smmo = document.getElementById("tsg023_ni_precio_im_renta");
+            sfyr.value = (Number(smmo.value) / 10.7639) * 12;
+            sfmo.value = (Number(smmo.value) / 10.7639);
+            break;
+        case 14:
+            var condArr = document.getElementById("tsg023_ni_precio_cd_cond_arr");
+            var sfyrmant = document.getElementById("sfyrmantinput");
+            var sfmomant = document.getElementById("sfmomantinput");
+            var smmomant = document.getElementById("tsg023_ni_precio_nu_ma_ac");
+            console.log(condArr.value);
+            if (condArr.value != 1 && condArr.value != 3) {
+                sfmomant.value = Number(sfyrmant.value) / 12;
+                smmomant.value = (Number(sfyrmant.value) * 10.7939) / 12;
+
+            }
+            else {
+                sfyrmant.value = 0;
+                sfmomant.value = 0;
+                smmomant.value = 0;
+            }
+            break;
+        case 15:
+            var condArr = document.getElementById("tsg023_ni_precio_cd_cond_arr");
+            var sfyrmant = document.getElementById("sfyrmantinput");
+            var sfmomant = document.getElementById("sfmomantinput");
+            var smmomant = document.getElementById("tsg023_ni_precio_nu_ma_ac");
+            console.log(condArr.value);
+            if (condArr.value != 1 && condArr.value != 3) {
+                sfyrmant.value = Number(sfmomant.value) * 12;
+                smmomant.value = Number(sfmomant.value) * 10.7939 ;
+
+            }
+            else {
+                sfyrmant.value = 0;
+                sfmomant.value = 0;
+                smmomant.value = 0;
+            }
+            break;
+        case 16:
+            var condArr = document.getElementById("tsg023_ni_precio_cd_cond_arr");
+            var sfyrmant = document.getElementById("sfyrmantinput");
+            var sfmomant = document.getElementById("sfmomantinput");
+            var smmomant = document.getElementById("tsg023_ni_precio_nu_ma_ac");
+            console.log(condArr.value);
+            if (condArr.value != 1 && condArr.value != 3) {
+                sfyrmant.value = (Number(smmomant.value) * 10.7939) / 12;
+                sfmomant.value = Number(smmomant.value) / 10.7939;
+
+            }
+            else {
+                sfyrmant.value = 0;
+                sfmomant.value = 0;
+                smmomant.value = 0;
+            }
+            break;
+
+            
     }
 };
+
+function calcPrecioTotal() {
+    console.log("Calcula precio total");
+    $("#tsg023_ni_precio_im_total").val($("#tsg009_ni_dt_gral_nu_disponibilidad").val() * $("#tsg023_ni_precio_im_venta").val());
+    return;
+}
 
 
 function borrar() {
@@ -705,6 +788,10 @@ var datosNaves = null;
 
 $(document)
     .ready(function () {
+
+        $('input[type=text]').on('input', function () {
+            $(this).trigger('change');
+        });
 
         if ($("#IdAction").val() === "Editar") {
             $("#btnNuevo").attr("disabled", true);
@@ -789,30 +876,31 @@ $(document)
 
 
 
-        $("#tsg009_ni_dt_gral_nu_superficie")
-            .change(function () {
-                convertir(1);
-                return false;
-            });
+        //$("#tsg009_ni_dt_gral_nu_superficie")
+        //    .change(function () {
+        //        console.log("convertir superfice");
+        //        convertir(1);
+        //        return false;
+        //    });
 
-        $("#tsg009_ni_dt_gral_nu_bodega")
-            .change(function () {
-                convertir(2);
-                return false;
-            });
+        //$("#tsg009_ni_dt_gral_nu_bodega")
+        //    .change(function () {
+        //        convertir(2);
+        //        return false;
+        //    });
 
-        $("#tsg009_ni_dt_gral_nu_disponibilidad")
-            .change(function () {
-                convertir(3);
-                $("#tsg023_ni_precio_im_total").val($("#tsg009_ni_dt_gral_nu_disponibilidad").val() * $("#tsg023_ni_precio_im_venta").val());
-                return false;
-            });
-        $("#tsg023_ni_precio_im_venta")
-            .change(function () {
+        //$("#tsg009_ni_dt_gral_nu_disponibilidad")  //tsg009_ni_dt_gral_nu_superficie
+        //    .change(function () {
+        //        convertir(3);
+        //        $("#tsg023_ni_precio_im_total").val($("#tsg009_ni_dt_gral_nu_disponibilidad").val() * $("#tsg023_ni_precio_im_venta").val());
+        //        return false;
+        //    });
+        //$("#tsg023_ni_precio_im_venta")
+        //    .change(function () {
 
-                $("#tsg023_ni_precio_im_total").val($("#tsg009_ni_dt_gral_nu_disponibilidad").val() * $("#tsg023_ni_precio_im_venta").val());
-                return false;
-            });
+        //        $("#tsg023_ni_precio_im_total").val($("#tsg009_ni_dt_gral_nu_disponibilidad").val() * $("#tsg023_ni_precio_im_venta").val());
+        //        return false;
+        //    });
 
         $("#tsg023_ni_precio_nu_tipo_cambio")
             .change(function () {
@@ -840,27 +928,27 @@ $(document)
                 return false;
             });
 
-        $("#tsg009_ni_dt_gral_nu_min_divisible")
-            .change(function () {
-                if (parseFloat($("#tsg009_ni_dt_gral_nu_min_divisible").val()) > parseFloat($("#tsg009_ni_dt_gral_nu_disponibilidad").val()) || parseFloat($("#tsg009_ni_dt_gral_nu_min_divisible").val()) > parseFloat($("#tsg009_ni_dt_gral_nu_superficie").val())) {
-                    //alert('El minino divisible no debe de ser mayor a Disponibilidad Total o Superficie Terreno');
-                    $.msgBox({
-                        title: "Cushman ONE",
-                        content: "El minino divisible no debe de ser mayor a Disponibilidad Total o Superficie Terreno",
-                        type: "alert"
-                    });
-                    return false;
-                }
-                convertir(4);
+        //$("#tsg009_ni_dt_gral_nu_min_divisible")
+        //    .change(function () {
+        //        if (parseFloat($("#tsg009_ni_dt_gral_nu_min_divisible").val()) > parseFloat($("#tsg009_ni_dt_gral_nu_disponibilidad").val()) || parseFloat($("#tsg009_ni_dt_gral_nu_min_divisible").val()) > parseFloat($("#tsg009_ni_dt_gral_nu_superficie").val())) {
+        //            //alert('El minino divisible no debe de ser mayor a Disponibilidad Total o Superficie Terreno');
+        //            $.msgBox({
+        //                title: "Cushman ONE",
+        //                content: "El minino divisible no debe de ser mayor a Disponibilidad Total o Superficie Terreno",
+        //                type: "alert"
+        //            });
+        //            return false;
+        //        }
+        //        convertir(4);
 
-                return false;
-            });
+        //        return false;
+        //    });
 
-        $("#tsg009_ni_dt_gral_nu_altura")
-            .change(function () {
-                convertir(10);
-                return false;
-            });
+        //$("#tsg009_ni_dt_gral_nu_altura")
+        //    .change(function () {
+        //        convertir(10);
+        //        return false;
+        //    });
 
 
         $("#tsg002_nave_industrial_nu_cp")
@@ -1449,11 +1537,11 @@ $(document)
 
                 if (document.getElementById("tsg009_ni_dt_gral_cd_area").options[document.getElementById('tsg009_ni_dt_gral_cd_area').selectedIndex].text == "Otro / Other") {
                     // Funcion para Mostar Div Oculto                                                                                                                               
-                    mostrar2(1);
+                    //mostrar2(1);
                 }
                 else {
                     // Funcion para Mostar Div Oculto
-                    mostrar2(2);
+                    //mostrar2(2);
                 }
                 return false;
             });
@@ -1477,11 +1565,11 @@ $(document)
                 //Se limpia el contenido del dropdownlist
                 if (document.getElementById("tsg020_ni_servicio_cd_tp_gas_natural").options[document.getElementById('tsg020_ni_servicio_cd_tp_gas_natural').selectedIndex].text == "Otro / Other") {
                     // Funcion para Mostar Div Oculto
-                    mostrar2(3);
+                    //mostrar2(3);
                 }
                 else {
                     // Funcion para Mostar Div Oculto
-                    mostrar2(4);
+                    //mostrar2(4);
                 }
                 return false;
             });
@@ -1492,11 +1580,11 @@ $(document)
                 //Se limpia el contenido del dropdownlist
                 if (document.getElementById("tsg023_ni_precio_cd_cond_arr").options[document.getElementById('tsg023_ni_precio_cd_cond_arr').selectedIndex].text == "Otro / Other") {
                     // Funcion para Mostar Div Oculto
-                    mostrar2(5);
+                    //mostrar2(5);
                 }
                 else {
                     // Funcion para Mostar Div Oculto
-                    mostrar2(6);
+                    //mostrar2(6);
                 }
                 return false;
             });
@@ -1508,11 +1596,11 @@ $(document)
                 //Se limpia el contenido del dropdownlist
                 if (document.getElementById("tsg009_ni_dt_gral_cd_carga").options[document.getElementById('tsg009_ni_dt_gral_cd_carga').selectedIndex].text == "Otro / Other") {
                     // Funcion para Mostar Div Oculto
-                    mostrar2(7);
+                    //mostrar2(7);
                 }
                 else {
                     // Funcion para Mostar Div Oculto
-                    mostrar2(8);
+                    //mostrar2(8);
                 }
                 return false;
             });
@@ -1523,11 +1611,11 @@ $(document)
                 //Se limpia el contenido del dropdownlist
                 if (document.getElementById("tsg009_ni_dt_gral_cd_sist_inc").options[document.getElementById('tsg009_ni_dt_gral_cd_sist_inc').selectedIndex].text == "Otro / Other") {
                     // Funcion para Mostar Div Oculto
-                    mostrar2(9);
+                    //mostrar2(9);
                 }
                 else {
                     // Funcion para Mostar Div Oculto
-                    mostrar2(10);
+                    //mostrar2(10);
                 }
                 return false;
             });
@@ -1538,11 +1626,11 @@ $(document)
                 //Se limpia el contenido del dropdownlist
                 if (document.getElementById("tsg009_ni_dt_gral_cd_tp_construccion").options[document.getElementById('tsg009_ni_dt_gral_cd_tp_construccion').selectedIndex].text == "Otro / Other") {
                     // Funcion para Mostar Div Oculto
-                    mostrar2(11);
+                    //mostrar2(11);
                 }
                 else {
                     // Funcion para Mostar Div Oculto
-                    mostrar2(12);
+                    //mostrar2(12);
                 }
                 return false;
             });
@@ -1554,11 +1642,11 @@ $(document)
                 //Se limpia el contenido del dropdownlist
                 if (document.getElementById("tsg009_ni_dt_gral_cd_tp_lampara").options[document.getElementById('tsg009_ni_dt_gral_cd_tp_lampara').selectedIndex].text == "Otro / Other") {
                     // Funcion para Mostar Div Oculto
-                    mostrar2(13);
+                    //mostrar2(13);
                 }
                 else {
                     // Funcion para Mostar Div Oculto
-                    mostrar2(14);
+                    //mostrar2(14);
                 }
                 return false;
             });
@@ -1569,11 +1657,11 @@ $(document)
                 //Se limpia el contenido del dropdownlist
                 if (document.getElementById("tsg009_ni_dt_gral_cd_ilum_nat").options[document.getElementById('tsg009_ni_dt_gral_cd_ilum_nat').selectedIndex].text == "Otro / Other") {
                     // Funcion para Mostar Div Oculto
-                    mostrar2(15);
+                    //mostrar2(15);
                 }
                 else {
                     // Funcion para Mostar Div Oculto
-                    mostrar2(16);
+                    //mostrar2(16);
                 }
                 return false;
             });
@@ -1584,11 +1672,11 @@ $(document)
                 //Se limpia el contenido del dropdownlist
                 if (document.getElementById("tsg009_ni_dt_gral_cd_hvac").options[document.getElementById('tsg009_ni_dt_gral_cd_hvac').selectedIndex].text == "Otro / Other") {
                     // Funcion para Mostar Div Oculto
-                    mostrar2(17);
+                    //mostrar2(17);
                 }
                 else {
                     // Funcion para Mostar Div Oculto
-                    mostrar2(18);
+                    //mostrar2(18);
                 }
                 return false;
             });
@@ -1599,11 +1687,11 @@ $(document)
                 //Se limpia el contenido del dropdownlist
                 if (document.getElementById("tsg009_ni_dt_gral_cd_cajon_est").options[document.getElementById('tsg009_ni_dt_gral_cd_cajon_est').selectedIndex].text == "Otro / Other") {
                     // Funcion para Mostar Div Oculto
-                    mostrar2(19);
+                    //mostrar2(19);
                 }
                 else {
                     // Funcion para Mostar Div Oculto
-                    mostrar2(20);
+                    //mostrar2(20);
                 }
                 return false;
             });
@@ -2128,6 +2216,28 @@ function initMap2() {
 
         datosNaves = data;
 
+        console.log({ datosNaves });
+
+        const svgMarkerBlue = {
+            path: "M10.453 14.016l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z",
+            fillColor: "blue",
+            fillOpacity: 1,
+            strokeWeight: 0,
+            rotation: 0,
+            scale: 2,
+            anchor: new google.maps.Point(15, 30),
+        };
+
+        const svgMarkerRed = {
+            path: "M10.453 14.016l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z",
+            fillColor: "red",
+            fillOpacity: 1,
+            strokeWeight: 0,
+            rotation: 0,
+            scale: 2,
+            anchor: new google.maps.Point(15, 30),
+        };
+
         try {
             pos = 6;
             var latLng = new google.maps.LatLng(24.090303, -102.415217);
@@ -2153,12 +2263,12 @@ function initMap2() {
 
                 $select.append('<option value=' + datosNaves[i].cd_nave + '>' + 'E' + datosNaves[i].cd_nave + ' - ' + datosNaves[i].nb_parque + ' - ' + datosNaves[i].nb_nave + '</option>');
 
-                const titulo = datosNaves[i].nb_nave;
+                const titulo = datosNaves[i].cd_nave + " " +  datosNaves[i].nb_nave;
 
                 const contentString =
-                    '<div class="card" style="width:40rem;">' +
-                    '        <div class="card-header bg-danger text-white text-center fw-bold fs-4">' + datosNaves[i].nb_nave + '</div>' +
-                    '        <div class="shadow p-3 bg-body rounded" style="--bs-bg-opacity: .25;">' +
+                    '<div class="card" style="width:30rem;">' +
+                    '        <div class="card-header bg-danger text-white text-center fw-bold fs-6">E' + datosNaves[i].cd_nave + " " + datosNaves[i].nb_nave + '</div>' +
+                    '        <div class="shadow p-1 bg-body rounded" style="--bs-bg-opacity: .25;">' +
                     '           <div class="card-body">' +
                     '               <h5 class="card-title text-danger text-center">' + datosNaves[i].nb_parque + '</h5>' +
                     '               <div class="row">' +
@@ -2183,15 +2293,15 @@ function initMap2() {
 
                 //const image = "../../image/pinCushman.png";
                 const infoWindow = new google.maps.InfoWindow();
-                const image = {
-                    url: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
-                    // This marker is 20 pixels wide by 32 pixels high.
-                    size: new google.maps.Size(20, 32),
-                    // The origin for this image is (0, 0).
-                    origin: new google.maps.Point(0, 0),
-                    // The anchor for this image is the base of the flagpole at (0, 32).
-                    anchor: new google.maps.Point(0, 32),
-                };
+                //const image = {
+                //    url: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
+                //    // This marker is 20 pixels wide by 32 pixels high.
+                //    size: new google.maps.Size(20, 32),
+                //    // The origin for this image is (0, 0).
+                //    origin: new google.maps.Point(0, 0),
+                //    // The anchor for this image is the base of the flagpole at (0, 32).
+                //    anchor: new google.maps.Point(0, 32),
+                //};
 
                 //const svgMarker = {
                 //    path: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
@@ -2203,22 +2313,55 @@ function initMap2() {
                 //    anchor: new google.maps.Point(15, 30),
                 //};
                 const position = { lat: Number(coords[0]), lng: Number(coords[1]) };
+                // Change the border color.
+                //const pinViewBackground = new google.maps.Marker.PinView({
+                //    background: "#FBBC04",
+                //});
+                //const markerViewBorder = new google.maps.marker.AdvancedMarkerView({
+                //    map,
+                //    position: { lat: 37.415, lng: -122.03 },
+                //    content: pinViewBorder.element,
+                //});
 
-                const marker = new google.maps.Marker({
-                    position: position,
-                    map: map,
-                    title: titulo,
-                    //icon: image,
-                    label: `E${data[i].cd_nave}`,
-                    optimized: false,
+                /*console.log("nu_disponibilidad" + Number(datosNaves[i].nu_disponibilidad));*/
+               
+                if (Number(datosNaves[i].nu_disponibilidad) > 0) {
+                    const marker = new google.maps.Marker({
+                        position: position,
+                        //content: pinViewBackground.element,
+                        map: map,
+                        title: titulo,
+                        icon: svgMarkerRed,
+                        label: `E${data[i].cd_nave}`,
 
-                });
 
-                marker.addListener("click", () => {
-                    infoWindow.close();
-                    infoWindow.setContent(contentString);
-                    infoWindow.open(marker.getMap(), marker);
-                });
+                    });
+                    marker.addListener("click", () => {
+                        infoWindow.close();
+                        infoWindow.setContent(contentString);
+                        infoWindow.open(marker.getMap(), marker);
+                    });
+                }
+                else {
+                    const marker = new google.maps.Marker({
+                        position: position,
+                        //content: pinViewBackground.element,
+                        map: map,
+                        title: titulo,
+                        icon: svgMarkerBlue,
+                        label: `E${data[i].cd_nave}`,
+
+
+                    });
+                    marker.addListener("click", () => {
+                        infoWindow.close();
+                        infoWindow.setContent(contentString);
+                        infoWindow.open(marker.getMap(), marker);
+                    });
+                }
+                
+
+                
 
                 //if (data[i].nb_poligono != "") {
                 //    console.log(data[i].nb_poligono);

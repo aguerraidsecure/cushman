@@ -25,7 +25,7 @@
     </Endpoints>
     <Contents>
       <Content destination=".\">
-        <SourceDirectory path="E:\SICREX\DYMS\Cushman\cushman\anit_cushman_one\anit_cushman_one\rcf\Debug\wr_anit_cushman_oneContent\" />
+        <SourceDirectory path="E:\SICREX\DYMS\Cushman\p\cushman\anit_cushman_one\anit_cushman_one\rcf\Debug\wr_anit_cushman_oneContent\" />
       </Content>
     </Contents>
   </WebRole>
