@@ -3175,6 +3175,9 @@ namespace wr_anit_cushman_one.Controllers
             //var result = db.tsg002_nave_industrial.Select("new (cd_nave, nb_parque, nb_nave, nb_posicion, nb_poligono)");
             var result = from a in db.tsg002_nave_industrial
                          join b in db.tsg009_ni_dt_gral on a.cd_nave equals b.cd_nave
+                         where a.nb_poligono != null
+                            && a.nb_posicion != null
+                           
                          //join c in db.tsg037_estados on a.cd_estado equals c.cd_estado
                          //join d in db.tsg038_municipios on new { a.cd_estado, a.cd_municipio } equals new { d.cd_estado, d.cd_municipio }
                          //join e in db.tsg039_colonias on new { a.cd_estado, a.cd_municipio, a.cd_colonia } equals new { e.cd_estado, e.cd_municipio, e.cd_colonia }

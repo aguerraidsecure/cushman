@@ -104,16 +104,16 @@
 
                                 @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Nuevo_NI))
                                 {
-                                    <button type="button" id="btnNuevo" name="Command" value="Nuevo" class="btn btn-outline-danger  rounded-pill" data-tooltip title="Nuevo">
+                                    @*<button type="button" id="btnNuevo" name="Command" value="Nuevo" class="btn btn-outline-danger  rounded-pill" data-tooltip title="Nuevo">
                                         <i class="fa fa-file-o" aria-hidden="true"></i> Nuevo
-                                    </button>
+                                    </button>*@
 
                                 }
                                 @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Editar_NI))
                                 {
-                                    <button type="button" id="btnEditar" name="Command" value="Editar" class="btn btn-outline-danger rounded-pill" data-tooltip title="Editar">
+                                    @*<button type="button" id="btnEditar" name="Command" value="Editar" class="btn btn-outline-danger rounded-pill" data-tooltip title="Editar">
                                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar
-                                    </button>
+                                    </button>*@
                                 }
                                 @if (FrontUser.TienePermiso(RolesPermisos.Usuario_No_Puede_Visualizar_Editar_NI))
                                 {
@@ -354,8 +354,12 @@
                                                                 <div class="row">
                                                                     <div class="col-sm-6">
                                                                         <div class="form-floating mb-2">
-                                                                            @Html.EditorFor(model => model.tsg009_ni_dt_gral.nu_superficie, new { htmlAttributes = new { @class = "form-control", @id = "nbNumeroingInput", @placeholder = "Superficie nave M2" } })
-                                                                            <label for="nbNumeroingInput">@wr_anit_cushman_one.Resources.rscIdioma.SuperficieNaveM M<sup>2</sup></label>
+                                                                            @Html.EditorFor(model => model.tsg009_ni_dt_gral.nu_superficie, 
+                                                                                            new {  htmlAttributes = new { @class         = "form-control", 
+                                                                                                                            @id          = "tsg009_ni_dt_gral_nu_superficie", 
+                                                                                                                            @placeholder = "Superficie nave M2", 
+                                                                                                                            onchange     = "convertir(1)" } })
+                                                                            <label for="tsg009_ni_dt_gral_nu_superficie">@wr_anit_cushman_one.Resources.rscIdioma.SuperficieNaveM M<sup>2</sup></label>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-6">
@@ -366,8 +370,12 @@
                                                                     </div>
                                                                     <div class="col-sm-6">
                                                                         <div class="form-floating mb-2">
-                                                                            @Html.EditorFor(model => model.tsg009_ni_dt_gral.nu_bodega, new { htmlAttributes = new { @class = "form-control", @id = "nbNumeroingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.SuperficieTotalBodegaM + "M2" } })
-                                                                            <label for="nbNumeroingInput">@wr_anit_cushman_one.Resources.rscIdioma.SuperficieTotalBodegaM M<sup>2</sup></label>
+                                                                            @Html.EditorFor(model => model.tsg009_ni_dt_gral.nu_bodega, 
+                                                                                            new { htmlAttributes = new { @class         = "form-control", 
+                                                                                                                         @id            = "tsg009_ni_dt_gral_nu_bodega", 
+                                                                                                                         @placeholder   = @wr_anit_cushman_one.Resources.rscIdioma.SuperficieTotalBodegaM + "M2",
+                                                                                                                         onchange       =  "convertir(2)"} })
+                                                                            <label for="tsg009_ni_dt_gral_nu_bodega">@wr_anit_cushman_one.Resources.rscIdioma.SuperficieTotalBodegaM M<sup>2</sup></label>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-6">
@@ -378,18 +386,22 @@
                                                                     </div>
                                                                     <div class="col-sm-6 text-center fw-bold"> @wr_anit_cushman_one.Resources.rscIdioma.DisponibilidadTotalM M<sup>2</sup> </div>
                                                                     <div class="col-sm-6"></div>
-                                                                    <div class="col-sm-3">
+                                                                    <div class="col-sm-6">
                                                                         <div class="form-floating mb-2">
-                                                                            @Html.EditorFor(model => model.tsg009_ni_dt_gral.nu_disponibilidad, new { htmlAttributes = new { @class = "form-control", @id = "nbNumeroingInput", @placeholder = "Superficie Terreno M2" } })
-                                                                            <label for="nbNumeroingInput">@wr_anit_cushman_one.Resources.rscIdioma.MinimoDisponible</label>
+                                                                            @Html.EditorFor(model => model.tsg009_ni_dt_gral.nu_disponibilidad, 
+                                                                                             new { htmlAttributes = new { @class        = "form-control", 
+                                                                                                                          @id           = "tsg009_ni_dt_gral_nu_disponibilidad", 
+                                                                                                                          @placeholder  = "Superficie Terreno M2", 
+                                                                                                                          onchange      = "convertir(3)"}})
+                                                                            <label for="tsg009_ni_dt_gral_nu_disponibilidad">@wr_anit_cushman_one.Resources.rscIdioma.MinimoDisponible</label>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-sm-3">
+                                                                    @*<div class="col-sm-3">
                                                                         <div class="form-floating mb-2">
                                                                             @Html.TextBox("disponible_hasta", null, new { @class = "form-control", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.MaximoDisponible })
                                                                             <label for="nu_superficie_tot_pies">  @wr_anit_cushman_one.Resources.rscIdioma.MaximoDisponible</label>
                                                                         </div>
-                                                                    </div>
+                                                                    </div>*@
                                                                     <div class="col-sm-6">
                                                                         <div class="form-floating mb-2">
                                                                             <input type="text" id="nu_disponibilidad_pies" class="form-control" onchange="convertir(7)" placeholder=@wr_anit_cushman_one.Resources.rscIdioma.DisponibilidadTotalF +"Ft2" />
@@ -398,14 +410,18 @@
                                                                     </div>
                                                                     <div class="col-sm-6">
                                                                         <div class="form-floating mb-2">
-                                                                            @Html.EditorFor(model => model.tsg009_ni_dt_gral.nu_min_divisible, new { htmlAttributes = new { @class = "form-control", @id = "nbNumeroingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.MinimoDivisibleM + "M2" } })
-                                                                            <label for="nu_superficie_tot_pies"> @wr_anit_cushman_one.Resources.rscIdioma.MinimoDivisibleM M<sup>2</sup></label>
+                                                                            @Html.EditorFor(model => model.tsg009_ni_dt_gral.nu_min_divisible, 
+                                                                                            new { htmlAttributes = new { @class         = "form-control", 
+                                                                                                                         @id            = "tsg009_ni_dt_gral_nu_min_divisible", 
+                                                                                                                         @placeholder   = @wr_anit_cushman_one.Resources.rscIdioma.MinimoDivisibleM + "M2",
+                                                                                                                         onchange       = "convertir(4)"}})
+                                                                            <label for="tsg009_ni_dt_gral_nu_min_divisible"> @wr_anit_cushman_one.Resources.rscIdioma.MinimoDivisibleM M<sup>2</sup></label>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-6">
                                                                         <div class="form-floating mb-2">
                                                                             <input type="text" id="nu_minimo_pies" class="form-control" onchange="convertir(8)" placeholder=@wr_anit_cushman_one.Resources.rscIdioma.MinimoDivisibleF +"Ft2" />
-                                                                            <label for="nu_superficie_tot_pies"> @wr_anit_cushman_one.Resources.rscIdioma.MinimoDivisibleF Ft<sup>2</sup></label>
+                                                                            <label for="nu_minimo_pies"> @wr_anit_cushman_one.Resources.rscIdioma.MinimoDivisibleF Ft<sup>2</sup></label>
                                                                         </div>
                                                                     </div>
 
@@ -428,8 +444,12 @@
                                                                     <div class="col-sm-6"></div>
                                                                     <div class="col-sm-6">
                                                                         <div class="form-floating mb-2">
-                                                                            @Html.EditorFor(model => model.tsg009_ni_dt_gral.nu_altura, new { htmlAttributes = new { @class = "form-control", @id = "nbNumeroingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.AlturaLibreM + "M" } })
-                                                                            <label for="nbNumeroingInput">@wr_anit_cushman_one.Resources.rscIdioma.AlturaLibreM M</label>
+                                                                            @Html.EditorFor(model => model.tsg009_ni_dt_gral.nu_altura, 
+                                                                                            new { htmlAttributes = new { @class         = "form-control", 
+                                                                                                                         @id            = "tsg009_ni_dt_gral_nu_altura", 
+                                                                                                                         @placeholder   = @wr_anit_cushman_one.Resources.rscIdioma.AlturaLibreM + "M",
+                                                                                                                         onchange       = "convertir(10)"} })
+                                                                            <label for="tsg009_ni_dt_gral_nu_altura">@wr_anit_cushman_one.Resources.rscIdioma.AlturaLibreM M</label>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-6">
@@ -624,21 +644,55 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-12">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12">
+                                                                                @wr_anit_cushman_one.Resources.rscIdioma.PrecioRenta
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-sm-4">
+                                                                                <div class="form-floating mb-2">
+                                                                                    <input type="text" class="form-control" id="sfyrinput" placeholder="SF/yr" onchange="convertir(11)"/>
+                                                                                    <label for="sfyrinput">SF/yr </label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-4">
+                                                                                <div class="form-floating mb-2">
+                                                                                    <input type="text" class="form-control" id="sfmoinput" placeholder="SF/mo" onchange="convertir(12)"/>
+                                                                                    <label for="sfmoinput">SF/mo </label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-4">
+                                                                                <div class="form-floating mb-2">
+                                                                                    @Html.EditorFor(model => model.tsg023_ni_precio.im_renta,
+                                                                                                    new { htmlAttributes = new { @class         = "form-control",
+                                                                                                                                @id            = "tsg023_ni_precio_im_renta",
+                                                                                                                                @placeholder   = @wr_anit_cushman_one.Resources.rscIdioma.PrecioRenta,
+                                                                                                                                onchange = "convertir(13)"} })
+                                                                                    <label for="tsg023_ni_precio_im_renta">SM/mo</label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        
+                                                                    </div>
+                                                                    <div class="col-sm-12">
                                                                         <div class="form-floating mb-2">
-                                                                            @Html.EditorFor(model => model.tsg023_ni_precio.im_renta, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.PrecioRenta } })
-                                                                            <label for="nbCPingInput">@wr_anit_cushman_one.Resources.rscIdioma.PrecioRenta</label>
+                                                                            @Html.EditorFor(model => model.tsg023_ni_precio.im_venta,
+                                                                                            new { htmlAttributes = new { @class = "form-control",
+                                                                                                                        @id = "tsg023_ni_precio_im_venta",
+                                                                                                                        @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.PrecioVenta,
+                                                                                                                        onchange = "calcPrecioTotal()"
+                                                                                            } })
+                                                                            <label for="tsg023_ni_precio_im_venta">@wr_anit_cushman_one.Resources.rscIdioma.PrecioVenta</label>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-sm-12">
                                                                         <div class="form-floating mb-2">
-                                                                            @Html.EditorFor(model => model.tsg023_ni_precio.im_venta, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.PrecioVenta } })
-                                                                            <label for="nbCPingInput">@wr_anit_cushman_one.Resources.rscIdioma.PrecioVenta</label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-sm-12">
-                                                                        <div class="form-floating mb-2">
-                                                                            @Html.EditorFor(model => model.tsg023_ni_precio.im_total, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.PrecioTotal } })
-                                                                            <label for="nbCPingInput"> @wr_anit_cushman_one.Resources.rscIdioma.PrecioTotal</label>
+                                                                            @Html.EditorFor(model => model.tsg023_ni_precio.im_total, 
+                                                                                            new { htmlAttributes = new { @class = "form-control", 
+                                                                                                                         @id = "tsg023_ni_precio_im_total", 
+                                                                                                                         @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.PrecioTotal } })
+                                                                            <label for="tsg023_ni_precio_im_total"> @wr_anit_cushman_one.Resources.rscIdioma.PrecioTotal</label>
                                                                         </div>
                                                                     </div>
                                                                     <!--
@@ -657,7 +711,10 @@
                                                                     -->
                                                                     <div class="col-sm-12">
                                                                         <div class="form-floating mb-2">
-                                                                            @Html.DropDownListFor(model => model.tsg023_ni_precio.cd_cond_arr, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } }, new { @class = "form-select" })
+                                                                            @Html.DropDownListFor(model => model.tsg023_ni_precio.cd_cond_arr, 
+                                                                                                    new List<SelectListItem> {  new SelectListItem { Text = "", Value = "" } }, 
+                                                                                                                                new { @class = "form-select", 
+                                                                                                                                      @id = "tsg023_ni_precio_cd_cond_arr" })
                                                                             <label for="select2-tsg002_nave_industrial_cd_estado-container">@wr_anit_cushman_one.Resources.rscIdioma.CondicionesArrendamiento</label>
                                                                         </div>
                                                                     </div>
@@ -670,20 +727,24 @@
                                                                         <div class="row">
                                                                             <div class="col-sm-4">
                                                                                 <div class="form-floating mb-2">
-                                                                                    <input type="text" class="form-control" id="Sfyrinput" placeholder="SF/yr"/>
-                                                                                    <label for="Sfyrinput">SF/yr </label>
+                                                                                    <input type="text" class="form-control" id="sfyrmantinput" placeholder="SF/yr" onchange="convertir(14)"/>
+                                                                                    <label for="sfyrmantinput">SF/yr </label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-sm-4">
                                                                                 <div class="form-floating mb-2">
-                                                                                   <input type="text" class="form-control" id="sfmoinput" placeholder="SF/mo"/>
-                                                                                    <label for="sfmoinput">SF/mo </label>
+                                                                                   <input type="text" class="form-control" id="sfmomantinput" placeholder="SF/mo" onchange="convertir(15)"/>
+                                                                                    <label for="sfmomantinput">SF/mo </label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-sm-4">
                                                                                 <div class="form-floating mb-2">
-                                                                                    @Html.EditorFor(model => model.tsg023_ni_precio.nu_ma_ac, new { htmlAttributes = new { @class = "form-control", @id = "smmoinput", @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.MantenimientoAreas } })
-                                                                                    <label for="smmoinput">SM/mo</label>
+                                                                                    @Html.EditorFor(model => model.tsg023_ni_precio.nu_ma_ac,
+                                                                                                    new { htmlAttributes = new { @class = "form-control",
+                                                                                                                                @id = "tsg023_ni_precio_nu_ma_ac",
+                                                                                                                                @placeholder = @wr_anit_cushman_one.Resources.rscIdioma.MantenimientoAreas,
+                                                                                                                                onchange = "convertir(16)"} })
+                                                                                    <label for="tsg023_ni_precio_nu_ma_ac">SM/mo</label>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -693,12 +754,12 @@
                                                             </div>
                                                             <div class="col-sm-3">
                                                                 <div class="row">
-                                                                    <div class="col-sm-12">
+                                                                    @*<div class="col-sm-12">
                                                                         <div class="form-floating mb-2">
                                                                             @Html.DropDownListFor(model => model.tsg023_ni_precio.cd_rep_moneda, new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } }, new { @class = "form-select" })
                                                                             <label for="select2-tsg002_nave_industrial_cd_estado-container">@wr_anit_cushman_one.Resources.rscIdioma.TipoMonedaReport</label>
                                                                         </div>
-                                                                    </div>
+                                                                    </div>*@
                                                                     <!--
                                                                     <div class="col-sm-12">
                                                                         <div class="form-floating mb-2">
@@ -707,12 +768,12 @@
                                                                         </div>
                                                                     </div>
                                                                     -->
-                                                                    <div class="col-sm-12">
+                                                                    @*<div class="col-sm-12">
                                                                         <div class="form-floating mb-2">
                                                                             @Html.EditorFor(model => model.tsg023_ni_precio.nu_tipo_cambio, new { htmlAttributes = new { @class = "form-control", @id = "nbCPingInput", @placeholder = "Valor Tipo Cambio" } })
                                                                             <label for="nbCPingInput"> Valor Tipo Cambio</label>
                                                                         </div>
-                                                                    </div>
+                                                                    </div>*@
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-3"></div>
